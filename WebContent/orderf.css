@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#header{
+	width: 100%;
+	height: 100px;
+}
+.top{
+	width: 700px;
+	height: 65px;
+
+	margin: 0 auto;
+	
+}
+#box{
+	width: 185px;
+	height: 65px;
+	border: 1px solid #BCB0FE;
+	border-radius: 15px;
+	float: left;
+	text-align: center;
+	line-height: 65px;
+	font-family:roboto;
+	font-weight: bold;
+	font-size:18px;
+}
+#bin{
+	width: 40px;
+	height: 65px;
+	float: left;
+}
+#txt_box{
+	width: auto;
+	height: auto;
+	text-align:center;
+}
+span{
+	font-size:48px;
+	font-family:ro
+	boto;
+	font-weight:bold;
+}
+table{
+	margin-left: 0 auto;
+}
+td{
+	padding-left: 20px;
+	font-family:roboto;
+	font-weight:bold;
+}
