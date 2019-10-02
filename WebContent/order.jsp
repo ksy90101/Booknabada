@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문확인</title>
+<title>주문확인123</title>
 <link href="order.css" rel="stylesheet">
 
 </head>
