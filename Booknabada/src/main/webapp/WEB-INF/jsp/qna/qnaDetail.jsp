@@ -11,8 +11,8 @@
 <link href="css/boardDetail.css" rel="stylesheet">
 </head>
 <body>
+	
 	<div class="top_navi">
-
 		<div class="top_content">
 			<div id="box01" style="background: #BCB0FE; color: white;">공지사항</div>
 			<div id="bin"></div>

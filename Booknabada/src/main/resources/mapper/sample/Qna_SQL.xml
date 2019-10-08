@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="qna">
+
+	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.QnaDTO">
 		SELECT * FROM board
+	</select>
+	
+	<!-- 해당 번호의 DB 가져오기 -->
+	<select id="detail" parameterType="Integer" resultType="com.poseidon.dto.QnaDTO">
+		SELECT * FROM board WHERE board_no = #{reBno}
 	</select>
 </mapper>

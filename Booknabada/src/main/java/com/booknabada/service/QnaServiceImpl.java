@@ -14,15 +14,17 @@ import com.booknabada.dto.QnaDTO;
 public class QnaServiceImpl implements QnaService{
 	Logger log = Logger.getLogger(this.getClass());
 	
-	
 	@Resource(name="qnaDAO")
 	private QnaDAO qnaDAO;
 
-
 	@Override
 	public List<QnaDTO> board() throws Exception {
-		
 		return qnaDAO.board();
+	}
+
+	@Override
+	public QnaDTO detail(int reBno) throws Exception {
+		return qnaDAO.detail(reBno);
 	}
 
 }
