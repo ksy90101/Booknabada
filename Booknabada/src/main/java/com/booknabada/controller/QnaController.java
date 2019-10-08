@@ -21,7 +21,7 @@ public class QnaController {
 	
 	@RequestMapping(value="qna/qnaBoard.do")
 	public ModelAndView fqa() throws Exception{
-		ModelAndView mv = new ModelAndView("qnaBoard");
+		ModelAndView mv = new ModelAndView("qna/qnaBoard");
 		
 		List<QnaDTO> board = qnaService.board();
 		
