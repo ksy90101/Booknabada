@@ -51,12 +51,12 @@
 			<br>주문 / 결제
 		</h1>
 		<div class="dl_wrap">
-			<dl>
 			<c:forEach items="${board }" var="i">
+			<dl>
 					<dt class="question">${i.fqa_qustion }</dt> 
 					<dd class="answer">${i.fqa_answer }</dd>
-			</c:forEach>
 			</dl>
+			</c:forEach>
 		</div>
 	</div>
 </body>
