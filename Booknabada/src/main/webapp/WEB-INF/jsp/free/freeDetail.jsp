@@ -23,9 +23,9 @@
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">FAQ</div>
 			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
+			<div id="box01" style="color: #BCB0FE;">QNA</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"  onclick="location.href='../free.do'">자유게시판</div>
+			<div id="box01" style="background: #BCB0FE; color: white;">자유게시판</div>
 		</div>
 	</div>
 

@@ -14,5 +14,6 @@
 index
 ㅎㅇ
 ㅎㅇ
+<a href="./free/freeBoard.do">free</a>
 </body>
 </html>

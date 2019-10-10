@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>글 작성</title>
+
 <link href="../css/boardWrite.css" rel="stylesheet">
 <!-- <style type="text/css">
 </style> -->
