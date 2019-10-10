@@ -95,7 +95,7 @@ a:hover{
 
 #underBar{
 	margin: 0 auto;
-	width: 750px;
+	width: 780px;
 	line-height: 60px;
 }
 </style>
