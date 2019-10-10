@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="free">
+	<select id="board" resultType="com.booknabada.dto.FreeDTO">
+		SELECT * from freeBoard_view
+	</select>
+	
+	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">
+		SELECT * from freeBoard_view where board_no=#{reBno}
+	</select>
+	
+	<update id="countUp" parameterType="Integer">
+		<![CDATA[
+				update board set board_count=board_count+1
+		where board_no =#{reBno}
+		]]>
+	</update>
+	
+	
+</mapper>
