@@ -126,4 +126,35 @@ public class QnaController {
 		return mv;
 	}
 	
+	//글삭제
+	@RequestMapping(value="qna/detailDelete.do")
+	public ModelAndView detailDetele(HttpServletRequest request) throws Exception {
+//		HttpSession session = request.getSession();
+			
+		//보드로 되돌아가기 1번
+		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
+
+		//세션추가
+//		if (session.getAttribute("name") != null && 
+//			session.getAttribute("id") != null && 
+//			session.getAttribute("board3_no") != null) {
+			String board_no = request.getParameter("board_no");
+				
+			//숫자를 체크
+			int detail_no = Util.checkInt("board_no");
+				
+			QnaDTO dto = new QnaDTO();
+			dto.setBoard_no(detail_no);
+//			dto.setUser_name((String)session.getAttribute("id"));
+				
+			//DB쪽으로 보내기
+			qnaService.detailDelete(dto);
+			
+//		} else {
+//			mv.setViewName("error?code=4");
+//		}
+			
+			return mv;
+		}
+	
 }

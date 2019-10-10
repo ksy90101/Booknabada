@@ -12,6 +12,32 @@
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 <link href="../css/boardDetail.css" rel="stylesheet">
+<script type="text/javascript">
+	function modify(num){
+		//alert("수정하기 숫자: " + num);
+		var check = confirm("수정하실꺼냐?");
+		
+		if (check) {
+			location.href= 'detailModify.do?board_no='+num;
+		}
+	}
+	function del(num){
+		alert("삭제하기 숫자: " + num);
+		/* var check = confirm("삭제를하려고?");
+		
+		if (check) {
+			location.href= 'detailDelete.do?board_no='+num; 
+		} */
+	}
+/* 	function comentDel(num, bno){
+	//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
+		var check = confirm("삭제할꺼냐?");
+		if (check) {
+			location.href= 'comentDelete.do?coment_no='+num+'&board3_no='+bno;
+		} */	
+			
+	}
+</script>
 </head>
 <body>
 	
@@ -25,7 +51,7 @@
 			<div id="bin"></div>
 			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../freeBoard.do'">자유게시판</div>
 		</div>
 	</div>
 
@@ -50,9 +76,9 @@
 	</div>
 	
 	<div class="BoardbuttonPart">
-		<button id="Boardbutton" style="background-color: #E8E8E8;">수정</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return modify(${detail.board_no})">수정</button>
 		<div id="bin2"></div>
-		<button id="Boardbutton" style="background-color: #E8E8E8;">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return del(${detail.board_no})">삭제</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>
 	</div>

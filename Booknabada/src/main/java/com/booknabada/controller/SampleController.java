@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.service.SampleService;
-import com.common.common.CommandMap;
 
 @Controller
 public class SampleController {
@@ -18,7 +17,7 @@ public class SampleController {
 	private SampleService sampleService;
 	
 	@RequestMapping(value="index.do")
-    public ModelAndView index(CommandMap commandMap) throws Exception{
+    public ModelAndView index() throws Exception{
     	ModelAndView mv = new ModelAndView("index");
     	
     	return mv;

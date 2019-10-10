@@ -26,9 +26,14 @@
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
 			VALUES(
-			#{board_title}, #{board_content}, 1 , 1, #{board_picture }) 
-			
+			#{board_title}, #{board_content}, 1 , #user_no }, #{board_picture }) 
 		]]>
 	</insert>
+	
+	<!-- 글삭제 -->
+	<delete id="detailDelete" parameterType="com.booknabada.dto.QnaDTO">
+		DELETE FROM board WHERE board_no = #{detail_no} 
+		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
+	</delete>
 	
 </mapper>

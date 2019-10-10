@@ -37,4 +37,9 @@ public class QnaServiceImpl implements QnaService{
 		qnaDAO.writeAction(dto);
 	}
 
+	@Override
+	public void detailDelete(QnaDTO dto) throws Exception {
+		qnaDAO.detailDelete(dto);
+	}
+
 }

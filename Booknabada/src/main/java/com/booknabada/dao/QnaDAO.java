@@ -29,4 +29,8 @@ public class QnaDAO extends AbstractDAO{
 		insert("qna.writeAction", dto);
 	}
 
+	public void detailDelete(QnaDTO dto) {
+		delete("qna.detailDelete", dto);
+	}
+
 }
