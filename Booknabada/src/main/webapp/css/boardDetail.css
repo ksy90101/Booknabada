@@ -1,0 +1,152 @@
+@charset "UTF-8";
+button{
+	cursor:pointer;
+}
+
+.header {
+	display: table;
+	width: 1100px;
+	height: 100px;
+}
+
+.top_navi {
+	margin: 100px auto 40px auto;
+	display: table;
+	width: auto;
+	height: 65px;
+}
+
+.top_navi_inner {
+	dispaly: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#box01 {
+	width: 183px;
+	height: 63px;
+	border: 1px solid #BCB0FE;
+	shape-rendering: auto;
+	border-radius: 20px;
+	Text-align: center;
+	line-height: 65px;
+	font-family: roboto;
+	font-weight: bold;
+	font-size: 18px;
+	float: left;
+}
+
+.top_content {
+  margin: auto;
+}
+#bin {
+  width: 20px;
+  height: 65px;
+  margin: auto;
+  float: left;
+}
+
+#bin2 {
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  float: left;
+}
+
+
+.boardDetailPart {
+  width: 958px;
+  height: auto;
+  margin: 0 auto;
+  background-color: #E7E2FF;
+  padding: 20px;
+  border: 1px solid #A797FE;
+}
+#title{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 10px;
+	padding: 0 10px;
+	
+}
+
+#list {
+	width: 960px;
+	margin: 10px auto;
+	font-size: 15px;
+	height:auto;
+}
+#listbox {
+  background-color: white;
+  text-align: center;
+  line-height: 60px;
+  float: left;
+  border-width: 1px;
+  border-block-color: black;
+}
+.commentPart{
+	width: 1000px;
+	height: 600px;
+	margin: 0 auto;
+	
+}
+#commentWriteFill{
+	width:1000px;
+	height:140px;
+	background-color: #E7E2FF;
+	margin: 20px auto 0;
+	border: 1px solid #A797FE;
+	box-sizing: border-box;
+}
+#commentBox{
+	font-size: 18px;
+	width: 1000px;
+  	height: 100px;
+	margin: auto;	
+	float: left;
+	padding: 10px 20px;
+}
+#commentTitle{
+	float: left;
+	color: #A797FE;
+	font-weight: bold;
+}
+
+#commentWritebox{
+	width: 800px;
+	height: 100px;
+	background-color: white;
+	margin: 20px auto auto 20px;
+	float: left;
+}
+#commentWritebutton{
+	width: 150px;
+	height: 100px;
+	background-color: #BCB0FE;	
+	float: left;
+	margin: 20px auto auto 10px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	border-style: none;
+	border: 1px solid #A797FE;
+}
+.buttonPart{
+	width:310px;
+	height: 35px;
+	margin: 20px auto;
+}
+#button{
+	width: 90px;
+	height: 32px;
+	border-radius: 5px;
+	Text-align: center;
+	line-height: 32px;
+	font-size: 14px;
+	font-family: roboto;
+	font-weight: bold;
+	float: left;
+	border: none;
+}

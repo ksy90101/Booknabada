@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <footer id="footer">
 	<div class="inner-wrap cf">
 		<div class="left">
@@ -7,7 +9,7 @@
 					<address>
 						02 856 4582<br><br>
 						contect@booknabad.com<br><br>
-						서울특별시 금천구 가산동<br><br>
+						서울특별시 금천구 가산동<br><br>
 						월드메르디앙 1차타워 707호
 					</address>		
 				</li>

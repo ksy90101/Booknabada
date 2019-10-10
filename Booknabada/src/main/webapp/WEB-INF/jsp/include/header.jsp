@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <header id="header">
 		<div class="inner-wrap">
 			<ul class="left cf">
@@ -6,7 +8,7 @@
 				</li>
 				<li class="search_box">
 					<img src="images/search.png" alt ="search">
-					<input type="text" name="search" placeholder="필요하신 책을 검색해보세요.">
+					<input type="text" name="search" placeholder="필요하신 책을 검색해보세요">
 				</li>
 			</ul>
 			<h1 class="logo">
