@@ -57,11 +57,15 @@
 	border: 2px solid #BCB0FE;
 	width: 224px;
 	height: 44px;
-	margin: 3px;
-	color: #B3B0FE;
-	display: inline-block;
+	margin: 3px; display : inline-block;
 	font-weight: bold;
 	cursor: pointer;
+	display: inline-block;
+}
+
+a {
+	color: #B3B0FE;
+	text-decoration: none;
 }
 
 .faqtext {
@@ -85,8 +89,9 @@
 	margin: auto;
 	text-align: left;
 }
-dl{
-    width: 600px;
+
+dl {
+	width: 600px;
 }
 /* dt */
 .question {

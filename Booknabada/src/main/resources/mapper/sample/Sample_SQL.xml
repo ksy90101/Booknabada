@@ -2,7 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sample">
-	<select id="board" resultType="com.booknabada.dto.FqaDTO">
-		SELECT fqa_answer, fqa_qustion, fqa_category FROM faq_board
-	</select>
+
 </mapper>
