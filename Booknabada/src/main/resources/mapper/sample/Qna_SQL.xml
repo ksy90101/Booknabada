@@ -9,7 +9,16 @@
 	</select>
 	
 	<!-- 해당 번호의 DB 가져오기 -->
-	<select id="detail" parameterType="Integer" resultType="com.poseidon.dto.QnaDTO">
+	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
 		SELECT * FROM board WHERE board_no = #{reBno}
 	</select>
+	
+	<!-- 해당 글의 카운트 올리기 -->
+	<update id="countUp" parameterType="Integer">
+	<![CDATA[
+		UPDATE board SET board_count = board_count + 1
+		WHERE board_no = #{reBno}
+		]]>
+	</update>
+	
 </mapper>

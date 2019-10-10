@@ -1,26 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <title>게시판 디테일</title>
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/header.css" rel="stylesheet">
-<link href="css/boardDetail.css" rel="stylesheet">
+<link href="../css/reset.css" rel="stylesheet">
+<link href="../css/header.css" rel="stylesheet">
+<link href="../css/boardDetail.css" rel="stylesheet">
 </head>
 <body>
 	
 	<div class="top_navi">
 		<div class="top_content">
-			<div id="box01" style="background: #BCB0FE; color: white;">공지사항</div>
+			<div id="box01" style="color: #BCB0FE;">공지사항</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">이벤트</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">QNA</div>
+			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
 		</div>
@@ -30,22 +33,29 @@
 
 	<div class="boardDetailPart">
 		<div id="list" style="height: 60px;">
-			<div id="listbox" style="width: 10%;">글번호</div>
-			<div id="listbox" style="width: 50%;">글쓴이</div>
-			<div id="listbox" style="width: 30%;">날짜</div>
-			<div id="listbox" style="width: 10%;">카운트</div>
+			<div id="listbox" style="width: 10%; font-weight: bold">글번호 : ${qnaDetail.board_no }</div>
+			<div id="listbox" style="width: 40%; font-weight: bold">글쓴이 : ${qnaDetail.user_name }</div>
+			<div id="listbox" style="width: 30%; font-weight: bold">날짜 : ${qnaDetail.board_date }</div>
+			<div id="listbox" style="width: 20%; font-weight: bold">카운트 : ${qnaDetail.board_count }</div>
 
 		</div>
 
 		<div id="list" style="height: 90px;">
-			<div id="title" style="">제목</div>
-			<div id="listbox" style="width: 100%">제목은 여기에 나타납니다</div>
+			<div id="title">제목</div>
+			<div id="listbox" style="width: 100%; font-weight: bold;">${qnaDetail.board_title }</div>
 		</div>
 		<div id="list" style="height: 60px;">
-			<div id="title" style="">내용</div>
-			<div id="listbox" style="width: 100%; height: 500px;">내용은 여기에
-				나타납니다</div>
+			<div id="title">내용</div>
+			<div id="listbox" style="width: 100%; height: 500px;">${qnaDetail.board_content }</div>
 		</div>
+	</div>
+
+	<div class="buttonPart">
+		<button id="button" style="background-color: #E8E8E8;">수정</button>
+		<div id="bin2"></div>
+		<button id="button" style="background-color: #E8E8E8;">삭제</button>
+		<div id="bin2"></div>
+		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>
 	</div>
 
 	<div class="commentPart">
@@ -66,14 +76,6 @@
 		</div>
 	</div>
 	
-	<div class="buttonPart">
-		<button id="button" style="background-color: #E8E8E8;">수정</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #E8E8E8;">삭제</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white">목록</button>
-	</div>
-	<style type="text/css"></style>
-	<script src="boardDetail_files/217acdb12f517958f1.js"></script>
+	
 </body>
 </html>

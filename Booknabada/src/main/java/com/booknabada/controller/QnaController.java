@@ -35,15 +35,18 @@ public class QnaController {
 	}
 	
 	//상세보기
-	@RequestMapping(value="/qna/qnaDetail.do")
+	@RequestMapping(value="qna/qnaDetail.do")
 	public ModelAndView qnaDetail(HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("qnaDetail");
+		ModelAndView mv = new ModelAndView("qna/qnaDetail");
 		
 		//보드 숫자 가져오기
 		String bno = request.getParameter("board_no");
 		
 		//숫자 체크
 			int reBno = Util.checkInt(bno);
+			
+		//게시글 카운트
+		qnaService.countUp(reBno);
 		
 		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		QnaDTO qnaDetail = qnaService.detail(reBno);

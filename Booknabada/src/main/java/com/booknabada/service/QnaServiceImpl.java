@@ -27,4 +27,9 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.detail(reBno);
 	}
 
+	@Override
+	public void countUp(int reBno) throws Exception {
+		qnaDAO.countUp(reBno);
+	}
+
 }

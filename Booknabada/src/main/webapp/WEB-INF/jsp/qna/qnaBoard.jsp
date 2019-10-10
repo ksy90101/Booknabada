@@ -37,7 +37,7 @@ tr:hover {
 }
 
 #t2 {
-	width: 50%;
+	width: 40%;
 	padding-left:10px;
 }
 #t3{
@@ -108,7 +108,7 @@ a:hover{
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">이벤트</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
 			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
 			<div id="bin"></div>
@@ -121,18 +121,18 @@ a:hover{
 			<tr>
 				<th id="t1">No</th>
 				<th id="t2">Title</th>
-				<th id="t1">Nickname</th>
+				<th id="t3">Nickname</th>
 				<th id="t3">Date</th>
 				<th id="t1">Count</th>
 			</tr>
 			<c:forEach items="${board }" var="i">
-				<tr onclick="location.href='detail.do?board_no=${i.board_no }'">
+				<tr onclick="location.href='qnaDetail.do?board_no=${i.board_no }'">
 					<td id="t1">${i.board_no }</td>
 					<td id="t2" >
 					${i.board_title }
 					<%-- <c:if test="${i.commentcount > 0}"><small>(${i.commentcount })</small> </c:if> --%>
 					</td>
-					<td id="t1">${i.user_name }</td>
+					<td id="t3">${i.user_name }</td>
 					<td id="t3">${i.board_date }</td>
 					<td id="t1">${i.board_count }</td>
 				</tr>

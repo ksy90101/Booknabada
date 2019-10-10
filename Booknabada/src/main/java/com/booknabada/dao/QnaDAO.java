@@ -17,9 +17,12 @@ public class QnaDAO extends AbstractDAO{
 		return selectList("qna.board");
 	}
 	
-	
 	public QnaDTO detail(int reBno) {
 		return (QnaDTO) selectOne("qna.detail", reBno);
+	}
+	
+	public void countUp(int reBno) {
+		update("qna.countUp", reBno);
 	}
 
 }
