@@ -5,12 +5,12 @@
 
 	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.QnaDTO">
-		SELECT * FROM board
+		SELECT * FROM qnaBoard_view ORDER BY board_no DESC
 	</select>
 	
 	<!-- 해당 번호의 DB 가져오기 -->
 	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
-		SELECT * FROM board WHERE board_no = #{reBno}
+		SELECT * FROM qnaBoard_view WHERE board_no = #{reBno}
 	</select>
 	
 	<!-- 해당 글의 카운트 올리기 -->
@@ -20,5 +20,15 @@
 		WHERE board_no = #{reBno}
 		]]>
 	</update>
+	
+	<!-- 새글쓰기 -->
+	<insert id="writeAction" parameterType="com.booknabada.dto.QnaDTO">
+		<![CDATA[
+			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
+			VALUES(
+			#{board_title}, #{board_content}, 1 , 1, #{board_picture }) 
+			
+		]]>
+	</insert>
 	
 </mapper>

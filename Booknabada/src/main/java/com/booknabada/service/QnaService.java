@@ -14,4 +14,6 @@ public interface QnaService {
 	//게시글 카운트
 	void countUp(int reBno) throws Exception;
 
+	void qnaWriteAction(QnaDTO dto) throws Exception;
+
 }

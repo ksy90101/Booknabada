@@ -15,6 +15,6 @@ index
 ㅎㅇ
 안녕하세요
 반갑습니다 여러분!
-
+<a href="http://localhost:8080/first/qna/qnaBoard.do">QNA보드로 이동</a>
 </body>
 </html>

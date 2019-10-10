@@ -2,23 +2,23 @@
 #writebox{
 	margin: 0 auto;
 	width: 1000px;
-	height: 720px;
+	height: 650px;
 	background-color: #E7E2FF;
-	margin-top: 230px;
 	border: 1px solid #BCB0FE;
 	font-family: 'Noto Sans KR', sans-serif;
 }
-input {
-	width: 960px;
+#title {
+	width: 940px;
 	height: 60px;
 	margin-left: 20px;
 	border: 1px solid #D0C8FF;
 }
-textarea {
-	width: 960px;
-	height: 517px;
+#content {
+	width: 940px;
+	height: 400px;
 	margin-left: 20px;
 	border: 1px solid #D0C8FF;
+	padding: 10px;
 }
 #button {
 	display: block;
@@ -51,4 +51,8 @@ h4{
 	margin-left: 20px;
 	margin-bottom: 10px;
 	font-weight: bold;
+}
+
+#imgUp{
+	margin: 10px 20px;
 }

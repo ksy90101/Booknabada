@@ -30,7 +30,6 @@
 	</div>
 
 
-
 	<div class="boardDetailPart">
 		<div id="list" style="height: 60px;">
 			<div id="listbox" style="width: 10%; font-weight: bold">글번호 : ${qnaDetail.board_no }</div>
@@ -46,16 +45,16 @@
 		</div>
 		<div id="list" style="height: 60px;">
 			<div id="title">내용</div>
-			<div id="listbox" style="width: 100%; height: 500px;">${qnaDetail.board_content }</div>
+			<div id="listbox" style="width: 100%; height: 400px;">${qnaDetail.board_content }</div>
 		</div>
 	</div>
-
-	<div class="buttonPart">
-		<button id="button" style="background-color: #E8E8E8;">수정</button>
+	
+	<div class="BoardbuttonPart">
+		<button id="Boardbutton" style="background-color: #E8E8E8;">수정</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #E8E8E8;">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;">삭제</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>
+		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>
 	</div>
 
 	<div class="commentPart">

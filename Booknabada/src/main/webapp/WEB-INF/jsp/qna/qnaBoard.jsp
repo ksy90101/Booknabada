@@ -48,9 +48,8 @@ tr:hover {
 #board {
 	margin: 0 auto;
 	width: 1000px;
-	height: 650px;
+	height: 600px;
 	background-color: ;
-	margin-top: 100px;
 }
 
 #search {
@@ -149,7 +148,7 @@ a:hover{
 		</select>&nbsp;&nbsp;
 		<input type="text" >&nbsp;&nbsp;
 		<button type="submit">검색</button>&nbsp;
-		<button type="submit">글쓰기</button>
+		<button type="submit" onclick="location.href='qnaWrite.do'">글쓰기</button>
 		</div>
 	</div>
 

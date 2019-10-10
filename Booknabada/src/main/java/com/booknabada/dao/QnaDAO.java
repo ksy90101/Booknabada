@@ -25,4 +25,8 @@ public class QnaDAO extends AbstractDAO{
 		update("qna.countUp", reBno);
 	}
 
+	public void writeAction(QnaDTO dto) {
+		insert("qna.writeAction", dto);
+	}
+
 }

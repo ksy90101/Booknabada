@@ -32,4 +32,9 @@ public class QnaServiceImpl implements QnaService{
 		qnaDAO.countUp(reBno);
 	}
 
+	@Override
+	public void qnaWriteAction(QnaDTO dto) throws Exception {
+		qnaDAO.writeAction(dto);
+	}
+
 }

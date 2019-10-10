@@ -48,7 +48,7 @@
 
 .boardDetailPart {
   width: 958px;
-  height: 718px;
+  height: 610px;
   margin: 0 auto;
   background-color: #E7E2FF;
   padding: 20px;
@@ -124,12 +124,12 @@
 	border-style: none;
 	border: 1px solid #A797FE;
 }
-.buttonPart{
-	width:310px;
+.BoardbuttonPart{
 	height: 35px;
 	margin: 40px auto;
+	display: table;
 }
-#button{
+#Boardbutton{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;
