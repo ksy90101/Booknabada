@@ -2,20 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="free">
+
+	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.FreeDTO">
-		SELECT * from freeBoard_view
+		SELECT * from freeBoard_view ORDER BY board_no DESC
 	</select>
 	
+	<!-- 해당 번호의 DB 가져오기 -->
 	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">
 		SELECT * from freeBoard_view where board_no=#{reBno}
 	</select>
 	
+	<!-- 해당 글의 카운트 올리기 -->
 	<update id="countUp" parameterType="Integer">
 		<![CDATA[
 				update board set board_count=board_count+1
-		where board_no =#{reBno}
+		 where board_no =#{reBno}
 		]]>
 	</update>
+	
+	<!-- 새글쓰기 -->
+	<insert id="writeAction" parameterType="com.booknabada.dto.FreeDTO">
+		<![CDATA[
+			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
+			VALUES(
+			#{board_title}, #{board_content}, 1 , #user_no }, #{board_picture }) 
+		]]>
+	</insert>
+	
+	<!-- 글삭제 -->
+	<delete id="detailDelete" parameterType="com.booknabada.dto.FreeDTO">
+		DELETE FROM board WHERE board_no = #{detail_no} 
+		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
+	</delete>
 	
 	
 </mapper>
