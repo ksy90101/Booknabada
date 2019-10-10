@@ -37,4 +37,16 @@ public class FreeServiceImpl implements FreeService{
 		freeDAO.countUp(reBno);
 	}
 
+
+	@Override
+	public void freeWriteAction(FreeDTO dto) throws Exception {
+		freeDAO.writeAction(dto);
+	}
+
+
+	@Override
+	public void detailDelete(FreeDTO dto) throws Exception {
+		freeDAO.detailDelete(dto);
+	}
+
 }

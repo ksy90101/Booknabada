@@ -9,23 +9,42 @@
 <meta charset="UTF-8">
 <title>글 작성</title>
 
-<link href="../css/boardWrite.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/boardWrite.css">
+<link rel="stylesheet" href="../css/boardDetail.css">
 <!-- <style type="text/css">
 </style> -->
 </head>
 <body>
 
+	<div class="top_navi">
+
+		<div class="top_content">
+			<div id="box01" style="color: #BCB0FE;">공지사항</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;">이벤트</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../qnaBoard.do'">QNA</div>
+			<div id="bin"></div>
+			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='../freeBoard.do'">자유게시판</div>
+		</div>
+	</div>
+	
+	<form action="freeWriteAction.do" method="post" enctype="multipart/form-data">
+		
 	<div id="writebox">
-		<form action="writeAction.do" method="post">
+		
 			<h3>제목</h3>
-			<input type="text" name="title">
+			<input type="text" name="title" id="title">
 			<h4>내용</h4>
-			<textarea name="content"></textarea>
-		</form>
+			<textarea name="content" id="content"></textarea>
+			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	<div id="button">
-		<button type="submit">취소</button>
+		<button type="button" onclick="location.href='freeBoard.do'">취소</button>
 		<button type="submit">완료</button>
 	</div>
+	</form>
 </body>
 </html>

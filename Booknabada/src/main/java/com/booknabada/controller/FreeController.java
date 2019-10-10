@@ -82,7 +82,7 @@ public class FreeController {
 		dto.setBoard_content(content);
 
 		// 데이터베이스 쓰기 실행
-	//	freeService.freeWriteAction(dto);
+		freeService.freeWriteAction(dto);
 
 		return mv;
 	}
@@ -109,7 +109,7 @@ public class FreeController {
 //				dto.setUser_name((String)session.getAttribute("id"));
 
 		// DB쪽으로 보내기
-	//	freeService.detailDelete(dto);
+		freeService.detailDelete(dto);
 
 //			} else {
 //				mv.setViewName("error?code=4");

@@ -49,9 +49,8 @@ tr:hover {
 #board {
 	margin: 0 auto;
 	width: 1000px;
-	height: 650px;
+	height: 600px;
 	background-color: ;
-	margin-top: 100px;
 }
 
 #search {
@@ -95,7 +94,7 @@ a:hover{
 
 #underBar{
 	margin: 0 auto;
-	width: 780px;
+	width: 750px;
 	line-height: 60px;
 }
 </style>
@@ -109,7 +108,7 @@ a:hover{
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">이벤트</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
+			<div id="box01" style="color: #BCB0FE;"  onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">QNA</div>
 			<div id="bin"></div>
@@ -150,7 +149,7 @@ a:hover{
 		</select>&nbsp;&nbsp;
 		<input type="text" >&nbsp;&nbsp;
 		<button type="submit">검색</button>&nbsp;
-		<button type="submit">글쓰기</button>
+		<button type="submit" onclick="location.href='freeWrite.do'">글쓰기</button>
 		
 		</div>
 	</div>
