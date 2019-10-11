@@ -14,8 +14,8 @@ public class QnaDAO extends AbstractDAO{
 	/* SQL에서 가져오기 */
 	
 	@SuppressWarnings("unchecked")
-	public List<QnaDTO> board() {
-		return selectList("qna.board");
+	public List<QnaDTO> board(int page) {
+		return selectList("qna.board", page);
 	}
 	
 	public QnaDTO detail(int reBno) {
@@ -42,10 +42,4 @@ public class QnaDAO extends AbstractDAO{
 //	public List<QnaDTO> coment(int reBno) {
 //		return selectList("qna.coment", reBno);
 //	}
-
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> total(Map<String, Object> map) {
-		return selectList("qna.total", map);
-	}
-
 }

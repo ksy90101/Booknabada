@@ -19,8 +19,8 @@ public class QnaServiceImpl implements QnaService{
 	private QnaDAO qnaDAO;
 
 	@Override
-	public List<QnaDTO> board() throws Exception {
-		return qnaDAO.board();
+	public List<QnaDTO> board(int page) throws Exception {
+		return qnaDAO.board(page);
 	}
 
 	@Override
