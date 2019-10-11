@@ -27,12 +27,14 @@ public class QnaController {
 	@Resource(name="qnaService")
 	private QnaService qnaService;
 	
-	//게시판 띄우기
+	//게시판 목록
 	@RequestMapping(value="qna/qnaBoard.do")
 	public ModelAndView qna() throws Exception{
 		ModelAndView mv = new ModelAndView("qna/qnaBoard");
 		
-		List<QnaDTO> board = qnaService.board();
+		int page = 1;
+		
+		List<QnaDTO> board = qnaService.board(((page - 1) * 10));
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
@@ -189,7 +191,7 @@ public class QnaController {
 	
 	//수정버튼 실행
 		@RequestMapping(value="qna/modifyAction.do")
-		public ModelAndView modifyAction(HttpServletRequest request) throws Exception{
+		public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
 //			HttpSession session = request.getSession();
 			String board_no = request.getParameter("board_no");
 			ModelAndView mv = new ModelAndView("redirect:qnaDetail.do?board_no=" + board_no);
@@ -201,11 +203,33 @@ public class QnaController {
 				String title = request.getParameter("title");
 				String content = request.getParameter("content");
 				
+				//엔터키 적용
+				content = content.replaceAll("\r\n", "\n");
+				content = content.replaceAll("\n", "<br>");
+				
 				QnaDTO dto = new QnaDTO();
 				dto.setBoard_title(title);
 				dto.setBoard_content(content);
 				dto.setBoard_no(Util.checkInt(board_no));
 //				dto.setUser_name((String) session.getAttribute("id"));
+				
+				//사진업로드
+				if (file.getOriginalFilename() != null) {
+					//지금 시간 가져오기
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+					String today = sdf.format(new Date());
+					//시간+파일이름 합치기
+					String upFileName = today + file.getOriginalFilename();
+					//파일 업로드 경로
+					String path = request.getSession().getServletContext().getRealPath("");
+					System.out.println("리얼경로 " + path);
+					File f = new File(path + "upimg/" + upFileName); //준비
+					file.transferTo(f); //실제 파일 전송
+					
+					dto.setBoard_picture(upFileName);
+				}
+				
+				//데이터베이스 쓰기 실행
 				qnaService.modifyAction(dto);
 				
 //			}	else {

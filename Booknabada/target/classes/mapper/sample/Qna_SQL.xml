@@ -40,7 +40,7 @@
 	
 	<!-- 글수정 -->
 	<update id="modifyAction" parameterType="com.booknabada.dto.QnaDTO">
-		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}
+		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}, board_picture = #{board_picture}
 		WHERE board_no = #{board_no}
 		
 		<!-- 세션일때 -->

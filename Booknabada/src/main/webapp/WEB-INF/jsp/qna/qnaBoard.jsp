@@ -99,9 +99,9 @@ a:hover{
 </style>
 </head>
 <body>
-
+	
+	<!-- 카테고리 -->
 	<div class="top_navi">
-
 		<div class="top_content">
 			<div id="box01" style="color: #BCB0FE;">공지사항</div>
 			<div id="bin"></div>
@@ -139,6 +139,40 @@ a:hover{
 		</table>
 	</div>
 
+	<!-- 페이징박스 -->
+	<div id=pagingbox>
+	<%@include file="../paging.jsp" %>
+		<!-- 이전페이지 이동  -->
+		<c:if test="${page gt 5 }">
+			<button onclick="location.href='board.do?page=${page - 5 }'">이전</button>
+		</c:if>
+		<c:if test="${page gt 1 }">
+			<button onclick="location.href='board.do?page=${page - 1 }'"> ◀ </button>
+		</c:if>
+		
+		<!-- 페이지 -->
+		<c:forEach var="i" begin="${startPage + 1}" end="${endPage }">
+			<c:choose>
+				<c:when test="${page == i }">
+					<button onclick="location.href='board.do?page=${i }'"
+						style="background-color: red; font-weight: bold; color: white;">${i }</button>
+				</c:when>
+				<c:otherwise>
+					<button onclick="location.href='board.do?page=${i }'">${i }</button>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<!-- 다음페이지 이동 -->
+		<c:if test="${page lt totalPage }">
+			<button onclick="location.href='board.do?page=${page + 1 }'"> ▶ </button>
+		</c:if>
+		<c:if test="${page lt totalPage - 5}">
+			<button onclick="location.href='board.do?page=${page + 5 }'">다음</button>
+		</c:if>
+	</div>
+	
+	<!-- 검색바 -->
 	<div id="search">
 		<div id="underBar">
 		<select name="search1">

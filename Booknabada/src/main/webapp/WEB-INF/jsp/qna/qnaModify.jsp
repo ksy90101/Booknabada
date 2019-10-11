@@ -33,7 +33,9 @@
 			<h3>제목</h3>
 			<input id="title" type="text" name="title" value="${modify.board_title }">
 			<h4>내용</h4>
-			<textarea id="content" name="content">${modify.board_content }</textarea>
+			<textarea id="content" name="content">
+			${modify.board_content }
+			</textarea>
 			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	
