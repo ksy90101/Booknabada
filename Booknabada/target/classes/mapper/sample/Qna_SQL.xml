@@ -54,5 +54,13 @@
 		FROM qnaBoard_view WHERE board_no = #{reBno}
 		]]>
 	</select> -->
+	
+		<select id="board2" resultType="HashMap" parameterType="hashmap">
+		<![CDATA[
+		SELECT board3_no, board3_title, board3_date, board3_count, user_name, coment_count,
+		(SELECT COUNT(*) FROM board3view) AS totalCount 
+		FROM board3view limit #{page }, 10
+		]]>
+	</select>
 		
 </mapper>

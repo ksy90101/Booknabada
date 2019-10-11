@@ -1,7 +1,7 @@
 package com.booknabada.dto;
 
 public class QnaDTO {
-	int board_no, cate_no, board_count, user_no;
+	int board_no, cate_no, board_count, user_no, totalCount;
 	String board_title, board_content, board_date, user_name, board_picture;
 	
 	int coment_no;
@@ -60,5 +60,11 @@ public class QnaDTO {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 }

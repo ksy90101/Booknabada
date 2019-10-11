@@ -1,6 +1,7 @@
 package com.booknabada.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -37,9 +38,14 @@ public class QnaDAO extends AbstractDAO{
 		update("qna.modifyAction", dto);
 	}
 
+//	@SuppressWarnings("unchecked")
+//	public List<QnaDTO> coment(int reBno) {
+//		return selectList("qna.coment", reBno);
+//	}
+
 	@SuppressWarnings("unchecked")
-	public List<QnaDTO> coment(int reBno) {
-		return selectList("qna.coment", reBno);
+	public List<Map<String, Object>> total(Map<String, Object> map) {
+		return selectList("qna.total", map);
 	}
 
 }

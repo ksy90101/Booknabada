@@ -5,9 +5,7 @@
 
 	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.QnaDTO">
-		SELECT board_no, board_title_board_date, board_count, user_name,
-		(SELECT COUNT(*) FROM qnaBoard_view) AS totalCount
-		FROM qnaBoard_view limit #{page }, 11 , ORDER BY board_no DESC
+		SELECT * FROM qnaBoard_view ORDER BY board_no DESC
 	</select>
 	
 	<!-- 해당 번호의 DB 가져오기 -->
@@ -56,5 +54,13 @@
 		FROM qnaBoard_view WHERE board_no = #{reBno}
 		]]>
 	</select> -->
+	
+		<select id="board2" resultType="HashMap" parameterType="hashmap">
+		<![CDATA[
+		SELECT board3_no, board3_title, board3_date, board3_count, user_name, coment_count,
+		(SELECT COUNT(*) FROM board3view) AS totalCount 
+		FROM board3view limit #{page }, 10
+		]]>
+	</select>
 		
 </mapper>

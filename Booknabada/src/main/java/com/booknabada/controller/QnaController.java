@@ -20,6 +20,8 @@ import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
 
+import com.common.common.CommandMap;
+
 @Controller
 public class QnaController {
 	Logger log = Logger.getLogger(this.getClass());
@@ -29,15 +31,21 @@ public class QnaController {
 	
 	//게시판 목록
 	@RequestMapping(value="qna/qnaBoard.do")
-	public ModelAndView qna() throws Exception{
+	public ModelAndView qna(HttpServletRequest request, CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("qna/qnaBoard");
 		
-		int page = 1;
 		
-		List<QnaDTO> board = qnaService.board(((page - 1) * 10));
+//		page = Util.checkInt(request.getParameter("page"));
+		
+		List<QnaDTO> board = qnaService.board();
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
+//		//페이지
+//		mv.addObject("page", page);
+//		//총글수
+//		mv.addObject("totalCount", board.get(0).getTotalCount());
+//		
 		return mv;
 		
 	}
