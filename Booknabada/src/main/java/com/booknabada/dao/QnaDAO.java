@@ -33,4 +33,13 @@ public class QnaDAO extends AbstractDAO{
 		delete("qna.detailDelete", dto);
 	}
 
+	public void modifyAction(QnaDTO dto) {
+		update("qna.modifyAction", dto);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<QnaDTO> coment(int reBno) {
+		return selectList("qna.coment", reBno);
+	}
+
 }

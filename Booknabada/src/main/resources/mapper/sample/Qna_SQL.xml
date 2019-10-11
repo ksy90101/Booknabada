@@ -26,14 +26,32 @@
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
 			VALUES(
-			#{board_title}, #{board_content}, 1 , #user_no }, #{board_picture }) 
+			#{board_title}, #{board_content}, 1 , 1 , #{board_picture }) 
 		]]>
 	</insert>
 	
 	<!-- 글삭제 -->
 	<delete id="detailDelete" parameterType="com.booknabada.dto.QnaDTO">
-		DELETE FROM board WHERE board_no = #{detail_no} 
+		DELETE FROM board WHERE board_no = #{board_no} 
+		
+		<!-- 세션일때 -->
 		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
 	</delete>
 	
+	<!-- 글수정 -->
+	<update id="modifyAction" parameterType="com.booknabada.dto.QnaDTO">
+		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}
+		WHERE board_no = #{board_no}
+		
+		<!-- 세션일때 -->
+		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
+	</update>
+	
+	<select id="coment" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
+		<![CDATA[
+		SELECT coment_no, board_no, coment_content, coment_date, user_name
+		FROM qnaBoard_view WHERE board_no = #{reBno}
+		]]>
+	</select>
+		
 </mapper>

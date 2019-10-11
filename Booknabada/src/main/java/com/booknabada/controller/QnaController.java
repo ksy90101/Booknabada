@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
+import com.poseidon.dto.ComentDTO;
 
 @Controller
 public class QnaController {
@@ -56,13 +57,15 @@ public class QnaController {
 		
 		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		QnaDTO qnaDetail = qnaService.detail(reBno);
+		List<QnaDTO> coment = qnaService.coment(reBno);
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("qnaDetail", qnaDetail);	
+		mv.addObject("coment", coment);
 		return mv;
 	}
 	
-	//글쓰기
+	//글쓰기보기
 	@RequestMapping(value="qna/qnaWrite.do")
 	public ModelAndView qnaWrite(HttpServletRequest request) throws Exception{
 		
@@ -126,8 +129,8 @@ public class QnaController {
 		return mv;
 	}
 	
-	//글삭제
-	@RequestMapping(value="qna/detailDelete.do")
+	//글삭제 실행
+	@RequestMapping(value="qna/qnaDelete.do")
 	public ModelAndView detailDetele(HttpServletRequest request) throws Exception {
 //		HttpSession session = request.getSession();
 			
@@ -141,7 +144,7 @@ public class QnaController {
 			String board_no = request.getParameter("board_no");
 				
 			//숫자를 체크
-			int detail_no = Util.checkInt("board_no");
+			int detail_no = Util.checkInt(board_no);
 				
 			QnaDTO dto = new QnaDTO();
 			dto.setBoard_no(detail_no);
@@ -157,4 +160,59 @@ public class QnaController {
 			return mv;
 		}
 	
+	//수정페이지 이동
+	@RequestMapping(value="qna/qnaModify.do")
+	public ModelAndView detailModify(HttpServletRequest request) throws Exception {
+//		HttpSession session = request.getSession();
+			
+		//수정버튼 누르면 수정페이지로 이동
+		ModelAndView mv = new ModelAndView("qna/qnaModify");
+		
+		String board_no = request.getParameter("board_no");
+			
+		//숫자체크 후 게시판번호 담기
+		int reBno = Util.checkInt(board_no);
+			
+		//자기글 불러와서 DTO에 담기
+		QnaDTO detail = qnaService.detail(reBno);
+			
+		mv.addObject("modify", detail);
+		
+		//세션
+//		if (detail.getUser_name().equals(session.getAttribute("name"))) {
+//			//modify ModelAndView에 DTO 보이게하기
+//		} else {
+//			mv.setViewName("error?code=3");
+//		}
+//					
+		return mv;
+	}
+	
+	//수정버튼 실행
+		@RequestMapping(value="qna/modifyAction.do")
+		public ModelAndView modifyAction(HttpServletRequest request) throws Exception{
+//			HttpSession session = request.getSession();
+			String board_no = request.getParameter("board_no");
+			ModelAndView mv = new ModelAndView("redirect:qnaDetail.do?board_no=" + board_no);
+			
+			//세션
+//			if (session.getAttribute("name") != null && session.getAttribute("id") != null && session.getAttribute("board3_no") != null ) {
+				mv.setViewName("redirect:qnaDetail.do?board_no=" + board_no);
+				
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				
+				QnaDTO dto = new QnaDTO();
+				dto.setBoard_title(title);
+				dto.setBoard_content(content);
+				dto.setBoard_no(Util.checkInt(board_no));
+//				dto.setUser_name((String) session.getAttribute("id"));
+				qnaService.modifyAction(dto);
+				
+//			}	else {
+//				mv.setViewName("error?code=5");
+//			}
+			
+			return mv;
+		}
 }

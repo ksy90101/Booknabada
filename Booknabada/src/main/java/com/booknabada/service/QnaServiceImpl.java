@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.QnaDAO;
 import com.booknabada.dto.QnaDTO;
+import com.poseidon.dto.ComentDTO;
 
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService{
@@ -42,4 +43,14 @@ public class QnaServiceImpl implements QnaService{
 		qnaDAO.detailDelete(dto);
 	}
 
+	@Override
+	public void modifyAction(QnaDTO dto) throws Exception {
+		qnaDAO.modifyAction(dto);
+	}
+	
+	@Override
+	public List<QnaDTO> coment(int reBno) throws Exception {
+		return qnaDAO.coment(reBno);
+	}
+	
 }

@@ -17,5 +17,9 @@ public interface QnaService {
 	void qnaWriteAction(QnaDTO dto) throws Exception;
 
 	void detailDelete(QnaDTO dto) throws Exception;
+	
+	void modifyAction(QnaDTO dto) throws Exception;
+
+	List<QnaDTO> coment(int reBno) throws Exception;
 
 }

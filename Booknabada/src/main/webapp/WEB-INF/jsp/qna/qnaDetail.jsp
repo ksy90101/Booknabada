@@ -15,19 +15,20 @@
 <script type="text/javascript">
 	function modify(num){
 		//alert("수정하기 숫자: " + num);
-		var check = confirm("수정하실꺼냐?");
+		var check = confirm("수정하시겠습니까?");
 		
 		if (check) {
-			location.href= 'detailModify.do?board_no='+num;
+			location.href= 'qnaModify.do?board_no='+num;
 		}
 	}
+	
 	function del(num){
-		alert("삭제하기 숫자: " + num);
-		/* var check = confirm("삭제를하려고?");
+		//alert("삭제하기 숫자: " + num);
+		var check = confirm("삭제하시겠습니까?");
 		
 		if (check) {
-			location.href= 'detailDelete.do?board_no='+num; 
-		} */
+			location.href= 'qnaDelete.do?board_no='+num; 
+		}
 	}
 /* 	function comentDel(num, bno){
 	//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
@@ -36,11 +37,12 @@
 			location.href= 'comentDelete.do?coment_no='+num+'&board3_no='+bno;
 		} */	
 			
-	}
+	
 </script>
 </head>
 <body>
 	
+	<!-- 카테고리 -->
 	<div class="top_navi">
 		<div class="top_content">
 			<div id="box01" style="color: #BCB0FE;">공지사항</div>
@@ -55,7 +57,7 @@
 		</div>
 	</div>
 
-
+	<!-- 글박스 -->
 	<div class="boardDetailPart">
 		<div id="list" style="height: 60px;">
 			<div id="listbox" style="width: 10%; font-weight: bold">글번호 : ${qnaDetail.board_no }</div>
@@ -67,26 +69,31 @@
 
 		<div id="list" style="height: 90px;">
 			<div id="title">제목</div>
-			<div id="listbox" style="width: 100%; font-weight: bold;">${qnaDetail.board_title }</div>
+			<div id="listbox" style="width: 100%; height: 60px; font-weight: bold; text-align: left;">
+			<p style="padding:0 20px;">${qnaDetail.board_title }</p>
+			</div>
 		</div>
 		<div id="list" style="height: 60px;">
 			<div id="title">내용</div>
-			<div id="listbox" style="width: 100%; height: 400px;">${qnaDetail.board_content }</div>
+			<div id="listbox" style="width: 100%; height: 400px; text-align: left;">
+			<p style="padding:0 20px;">${qnaDetail.board_content }</p>
+			</div>
 		</div>
 	</div>
 	
 	<div class="BoardbuttonPart">
-		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return modify(${detail.board_no})">수정</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${qnaDetail.board_no})">수정</button>
 		<div id="bin2"></div>
-		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return del(${detail.board_no})">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="del(${qnaDetail.board_no})">삭제</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>
 	</div>
-
+	
+	<!-- 댓글박스 -->
 	<div class="commentPart">
 		<div id="commentWriteFill">
 			<div id="commentWritebox">
-				<textarea style="width: 800px; height: 100px"></textarea>
+				<textarea style="width: 800px; height: 100px; border:1px solid #D0C8FF; box-sizing: border-box;"></textarea>
 			</div>
 			<button id="commentWritebutton">작성</button>
 

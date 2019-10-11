@@ -5,8 +5,7 @@
 
 	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.QnaDTO">
-		SELECT * FROM qnaBoard_view 
-		ORDER BY board_no DESC
+		SELECT * FROM qnaBoard_view ORDER BY board_no DESC
 	</select>
 	
 	<!-- 해당 번호의 DB 가져오기 -->
@@ -27,9 +26,26 @@
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
 			VALUES(
-			#{board_title}, #{board_content}, 1 , 1, #{board_picture }) 
-			
+			#{board_title}, #{board_content}, 1 , 1 , #{board_picture }) 
 		]]>
 	</insert>
+	
+	<!-- 글삭제 -->
+	<delete id="detailDelete" parameterType="com.booknabada.dto.QnaDTO">
+		DELETE FROM board WHERE board_no = #{board_no} 
+		
+		<!-- 세션일때 -->
+		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
+	</delete>
+	
+	<!-- 글수정 -->
+	<update id="modifyAction" parameterType="com.booknabada.dto.QnaDTO">
+		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}
+		WHERE board_no = #{board_no}
+		
+		<!-- 세션일때 -->
+		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
+		
+	</update>
 	
 </mapper>

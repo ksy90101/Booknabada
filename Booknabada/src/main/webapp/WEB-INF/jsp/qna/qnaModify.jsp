@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 작성</title>
+<title>글 수정하기</title>
 <link rel="stylesheet" href="../css/boardWrite.css">
 <link rel="stylesheet" href="../css/boardDetail.css">
 </head>
 <body>
-	
-	<!-- 카테고리 -->
+
 	<div class="top_navi">
+
 		<div class="top_content">
 			<div id="box01" style="color: #BCB0FE;">공지사항</div>
 			<div id="bin"></div>
@@ -21,27 +21,28 @@
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='../qnaBoard.do'">QNA</div>
+			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
 		</div>
 	</div>
 
-	<!-- 글박스 -->
-		<form action="qnaWriteAction.do" method="post" enctype="multipart/form-data">
+
+		<form action="modifyAction.do" method="post" enctype="multipart/form-data">
 	<div id="writebox">
 			<h3>제목</h3>
-			<input id="title" type="text" name="title">
+			<input id="title" type="text" name="title" value="${modify.board_title }">
 			<h4>내용</h4>
-			<textarea id="content" name="content"></textarea>
+			<textarea id="content" name="content">${modify.board_content }</textarea>
 			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	
 	<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
-		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="location.href='qnaBoard.do'">취소</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="location.href='${qnaDetail.board_no}'">취소</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" type="submit">완료</button>
+		<input type="hidden" name="board_no" value="${modify.board_no }">
 	</div>
 		</form>
 	

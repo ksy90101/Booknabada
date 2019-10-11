@@ -4,6 +4,9 @@ public class QnaDTO {
 	int board_no, cate_no, board_count, user_no;
 	String board_title, board_content, board_picture, board_date, user_name;
 	
+	int coment_no;
+	String coment_content, coment_date;
+	
 	public int getBoard_no() {
 		return board_no;
 	}
