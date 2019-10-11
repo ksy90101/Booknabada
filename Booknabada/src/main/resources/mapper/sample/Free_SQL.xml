@@ -49,7 +49,7 @@
 	<select id="coment" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">
 		<![CDATA[
 		SELECT coment_no, board_no, coment_content, coment_date, user_name
-		FROM qnaBoard_view WHERE board_no = #{reBno}
+		FROM freeBoard_view WHERE board_no = #{reBno}
 		]]>
 	</select>
 		
