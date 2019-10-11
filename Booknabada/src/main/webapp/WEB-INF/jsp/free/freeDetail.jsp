@@ -18,7 +18,7 @@ function modify(num){
 	var check = confirm("수정하시겠습니까?");
 	
 	if (check) {
-		location.href= 'qnaModify.do?board_no='+num;
+		location.href= 'freeModify.do?board_no='+num;
 	}
 }
 
@@ -27,7 +27,7 @@ function del(num){
 	var check = confirm("삭제하시겠습니까?");
 	
 	if (check) {
-		location.href= 'qnaDelete.do?board_no='+num; 
+		location.href= 'detailDelete.do?board_no='+num; 
 	}
 }
 	

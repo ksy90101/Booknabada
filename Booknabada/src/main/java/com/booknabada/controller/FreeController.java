@@ -1,8 +1,5 @@
 package com.booknabada.controller;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -127,7 +124,7 @@ public class FreeController {
 		String board_no = request.getParameter("board_no");
 
 		// 숫자를 체크
-		int detail_no = Util.checkInt("board_no");
+		int detail_no = Util.checkInt(board_no);
 
 		FreeDTO dto = new FreeDTO();
 		dto.setBoard_no(detail_no);

@@ -32,7 +32,7 @@
 	
 	<!-- 글삭제 -->
 	<delete id="detailDelete" parameterType="com.booknabada.dto.FreeDTO">
-		DELETE FROM board WHERE board_no = #{detail_no} 
+		DELETE FROM board WHERE board_no = #{board_no} 
 		<!-- 세션일때 -->
 		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
 	</delete>
