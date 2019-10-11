@@ -16,7 +16,7 @@ index
 ㅎㅇ
 <a href="./free/freeBoard.do">free</a>
 <a href="login.do">login</a>
-<a href="newuser.do">newuser</a>
+<a href="./free/newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
 
