@@ -2,7 +2,7 @@ package com.booknabada.dto;
 
 public class QnaDTO {
 	int board_no, cate_no, board_count, user_no;
-	String board_title, board_content, board_picture, board_date, user_name;
+	String board_title, board_content, board_date, user_name, board_picture;
 	
 	int coment_no;
 	String coment_content, coment_date;

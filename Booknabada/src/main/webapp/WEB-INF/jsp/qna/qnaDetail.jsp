@@ -76,6 +76,9 @@
 		<div id="list" style="height: 60px;">
 			<div id="title">내용</div>
 			<div id="listbox" style="width: 100%; height: 400px; text-align: left;">
+			<c:if test="${qnaDetail.board_picture ne null}">
+			<img alt="" src="./upimg/${qnaDetail.board_picture }"><br>
+			</c:if>
 			<p style="padding:0 20px;">${qnaDetail.board_content }</p>
 			</div>
 		</div>

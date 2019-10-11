@@ -56,11 +56,11 @@ public class QnaController {
 		
 		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		QnaDTO qnaDetail = qnaService.detail(reBno);
-		List<QnaDTO> coment = qnaService.coment(reBno);
+//		List<QnaDTO> coment = qnaService.coment(reBno);
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("qnaDetail", qnaDetail);	
-		mv.addObject("coment", coment);
+//		mv.addObject("coment", coment);
 		return mv;
 	}
 	
@@ -115,7 +115,7 @@ public class QnaController {
 			String upFileName = today + file.getOriginalFilename();
 			//파일 업로드 경로
 			String path = request.getSession().getServletContext().getRealPath("");
-			//System.out.println("리얼경로 " + path);
+			System.out.println("리얼경로 " + path);
 			File f = new File(path + "upimg/" + upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
 			

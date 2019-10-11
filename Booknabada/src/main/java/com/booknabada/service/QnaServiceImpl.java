@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.QnaDAO;
 import com.booknabada.dto.QnaDTO;
-import com.poseidon.dto.ComentDTO;
 
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService{

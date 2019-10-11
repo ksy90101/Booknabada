@@ -45,7 +45,14 @@
 		
 		<!-- 세션일때 -->
 		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
-		
 	</update>
 	
+	<!-- 코멘트 보기 -->
+	<!-- <select id="coment" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
+		<![CDATA[
+		SELECT coment_no, board_no, coment_content, coment_date, user_name
+		FROM qnaBoard_view WHERE board_no = #{reBno}
+		]]>
+	</select> -->
+		
 </mapper>
