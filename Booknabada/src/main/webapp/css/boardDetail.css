@@ -84,6 +84,9 @@ button{
   border-width: 1px;
   border-block-color: black;
 }
+#listbox.contentbox{
+	line-height: 24px;
+}
 .commentPart{
 	width: 1000px;
 	height: 600px;

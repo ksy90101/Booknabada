@@ -24,13 +24,27 @@ function cancel(){
 	}
 }
 
+function check(){
+	if(document.frm.title.value == ""){
+		alert("제목을 입력해주세요");
+		document.frm.title.focus();
+		return false;
+	}
+	if(document.frm.content.value == ""){
+		alert("내용을 입력해주세요");
+		document.frm.content.focus();
+		return false;
+	}
+	
+}
+
 
 </script>
 <body>
 	<jsp:include page="./include/header.jsp"></jsp:include>
 
 	<div id="writebox">
-		<form action="eventWriteAction.do" method="post" enctype="multipart/form-data">
+		<form action="eventWriteAction.do" name="frm" method="post" enctype="multipart/form-data">
 			<h3>제목</h3>
 			<input type="text" name="title" />
 			<h3>내용</h3>
@@ -39,7 +53,7 @@ function cancel(){
 			<input type="file" name="file" accept="image/*" />
 			<div id="button">
 				<button onclick="cancel()">취소</button>
-				<button type="submit">완료</button>
+				<button type="submit" onclick="return check()">완료</button>
 			</div>
 		</form>
 	</div>

@@ -31,5 +31,9 @@ public class EventDAO extends AbstractDAO{
 		delete("event.eventDelete",dto);		
 	}
 
+	public void eventModify(EventDTO detail) {
+		update("event.eventModify",detail);		
+	}
+
 
 }

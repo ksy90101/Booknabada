@@ -49,4 +49,11 @@ public class EventServiceImpl implements EventService{
 		
 	}
 
+
+	@Override
+	public void eventModify(EventDTO detail) throws Exception {
+		eventDAO.eventModify(detail);
+	}
+
+
 }

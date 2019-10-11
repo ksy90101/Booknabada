@@ -16,5 +16,7 @@ public interface EventService {
 
 	void eventDelete(EventDTO dto) throws Exception;
 
+	void eventModify(EventDTO detail) throws Exception;
+
 
 }

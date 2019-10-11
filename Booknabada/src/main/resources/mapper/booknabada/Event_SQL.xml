@@ -23,4 +23,9 @@
 		DELETE FROM event_board WHERE event_no=#{event_no } 
 	</delete>
 	
+	<update id="eventModify" parameterType="com.booknabada.dto.EventDTO">
+	 	UPDATE event_board SET event_title=#{event_title }, event_content=#{event_content } 
+	 	<if test="event_picture != null">, event_picture=#{event_picture } </if>
+	 	WHERE event_no=#{event_no }
+	</update>	
 </mapper>

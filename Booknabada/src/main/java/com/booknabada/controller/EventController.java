@@ -64,14 +64,14 @@ public class EventController {
 		if(file.getSize() != 0) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
 			String today = sdf.format(new Date());
-			String upFileName = today + file.getOriginalFilename();
+			String upFileName = today+"_"+file.getOriginalFilename();
 			
 			//파일 업로드 경로
 			String path = request.getSession().getServletContext().getRealPath("");
-			System.out.println("리얼경로 : "+path);
+			//System.out.println("리얼경로 : "+path);
 			File f = new File(path+"upimg/"+upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
-			System.out.println("저장경로 : "+f.getPath());	
+			//System.out.println("저장경로 : "+f.getPath());	
 
 			dto.setEvent_picture(upFileName);
 		}
@@ -125,6 +125,60 @@ public class EventController {
    	
     }	
 	
+	@RequestMapping(value="eventModify.do")
+    public ModelAndView eventModify(HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView("eventModify");
+    	int reBno = Util.checkInt(request.getParameter("bno"));
+		
+		EventDTO detail = eventService.detail(reBno);
+		
+		mv.addObject("detail",detail);
+		
+		return mv;
+   	
+    }	
+	
+	@RequestMapping(value="eventModifyAction.do")
+	public ModelAndView eventModifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
+		int reBno = Util.checkInt(request.getParameter("bno"));
+		ModelAndView mv = new ModelAndView("redirect:eventDetail.do?bno="+reBno);
+		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		EventDTO detail = new EventDTO();
+		detail.setEvent_no(reBno);
+		detail.setEvent_title(title);
+		detail.setEvent_content(content);
+		//System.out.println(file.getOriginalFilename());
+		
+		if(file.getOriginalFilename() != "") { //수정하려고 새로 올리는 파일이 잇다면!
+			String[] bFile =request.getParameter("bFile").split("_", 2);
+			//System.out.println(bFile[1]);
+			
+			if(!file.getOriginalFilename().equals(bFile[1])) {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+				String today = sdf.format(new Date());
+				String upFileName = today +"_"+ file.getOriginalFilename();
+				
+				//파일 업로드 경로
+				String path = request.getSession().getServletContext().getRealPath("");
+				//System.out.println("리얼경로 : "+path);
+				File f = new File(path+"upimg/"+upFileName); //준비
+				file.transferTo(f); //실제 파일 전송
+				//System.out.println("저장경로 : "+f.getPath());	
+
+				detail.setEvent_picture(upFileName);
+			}
+		}else {
+			detail.setEvent_picture(null);
+		}
+		
+		eventService.eventModify(detail);
+		
+		
+		return mv;
+	}
 	
 	
 	

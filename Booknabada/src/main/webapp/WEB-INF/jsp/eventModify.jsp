@@ -17,17 +17,9 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 </head>
 <script>
-function modify(num){
-	if(confirm("이 글을 수정하시겠습니까?")){
-		location.href='eventModify.do?bno='+num;
-	}else{
-		return false;
-	}
-}
-
-function del(num){
-	if(confirm("이 글을 삭제하시겠습니까?")){
-		location.href='eventDelete.do?bno='+num;
+function cancel(){
+	if(confirm("목록으로 돌아가시겠습니까?")){
+		location.href='event.do';	
 	}else{
 		return false;
 	}
@@ -52,42 +44,51 @@ function del(num){
 	</div>
 
 
-
+<form action="eventModifyAction.do" method="post" enctype="multipart/form-data">
+	
 	<div class="boardDetailPart">
 		<div id="list" class="cf" style="height: 60px;">
 			<div id="listbox" style="width: 10%;">${detail.event_no }</div>
+			<input type="hidden" name="bno" value="${detail.event_no }" />
 			<div id="listbox" style="width: 50%;">${detail.user_name }</div>
 			<div id="listbox" style="width: 30%;">${detail.event_date }</div>
 			<div id="listbox" style="width: 10%;">${detail.event_count }</div>
-
 		</div>
+		
 
 		<div id="list" class="cf" style="height: 90px;">
 			<div id="title" style="">제목</div>
-			<div id="listbox" style="width: 100%">${detail.event_title }</div>
+			<div id="listbox" style="width: 100%">
+				<input type="text" name="title" value="${detail.event_title }" />
+			</div>
 		</div>
 		
 		<c:if test="${detail.event_picture ne null }">	
 		<div id="list" class="cf">
 			<div id="title" style="">사진</div>
-			<div id="listbox" style="width: 100%"><img src="./upimg/${detail.event_picture }"></div>
+			<div id="listbox" style="width: 100%">
+			<img src="./upimg/${detail.event_picture }" >
+				<input type="hidden" name="bFile" value="${detail.event_picture }">
+				<input type="file" name="file" accept="image/*" value="./upimg/${detail.event_picture }" />
+			</div>
 		</div>
 								
 		</c:if>
 		<div id="list" class="cf">
 			<div id="title" style="">내용</div>
-			<div id="listbox" class="contentbox" style="width: 100%; height: 500px;"><pre>${detail.event_content }</pre></div>
+			<div id="listbox" style="width: 100%; height: 500px;">
+				<textarea name="content">${detail.event_content }</textarea>
+			</div>
 		</div>
-	</div>
 	
+	</div>
+		
 	<div class="buttonPart">
-		<button id="button" style="background-color: #E8E8E8;" onclick="modify(${detail.event_no })">수정</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #E8E8E8;" onclick="del(${detail.event_no })">삭제</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
+		<button id="button" type="button" style="background-color: #E8E8E8;" onclick="return cancel()">취소</button>
+		<button id="button" type="submit" style="background-color: #BCB0FE; color: white">완료</button>
+		
 	</div>
-	
+</form>
 	
 	<jsp:include page="./include/footer.jsp"></jsp:include>
 	

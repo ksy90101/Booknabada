@@ -123,11 +123,11 @@
 #eventWrap .event-board{width: 100%;}
 #eventWrap .event-board li{width: 33%; margin-right: 0.5%; margin-bottom:30px; box-sizing: border-box;float: left;}
 #eventWrap .event-board li:nth-child(3n+3){margin-right: 0;}
-#eventWrap .event-board li .img-wrap{width: 380px; height: 380px;background: yellow; overflow:hidden;}
+#eventWrap .event-board li .img-wrap{width: 380px; height: 380px; overflow:hidden; box-sizind:border-box; border:1px solid #333;}
 #eventWrap .event-board li .img-wrap img{width:100%}
 #eventWrap .event-board li dl{font-family: 'Roboto', 'Noto Sans KR', sans-serif; width: 96%; margin: 20px auto 0;}
-#eventWrap .event-board li dl dt{font-weight: 700; font-size: 16px;}
-#eventWrap .event-board li dl dd{margin-top: 10px;}
+#eventWrap .event-board li dl dt{font-weight: 700; font-size: 16px;text-overflow:ellipsis; height:20px; overflow:hidden;white-space:nowrap;}
+#eventWrap .event-board li dl dd{text-align: initial; margin-top: 10px; text-overflow:ellipsis; height:14px; overflow:hidden;white-space:nowrap;}
 #eventWrap button{
 	width: 100px;
 	height: 40px;
@@ -149,6 +149,7 @@
 #container.eventDetail .inner-wrap{width: 1160px; margin: 100px auto;}
 #eDetailWrap{}
 #eDetailWrap{}
+#listbox.contentbox pre{white-space:pre-wrap;}
 
 
 
@@ -158,6 +159,10 @@
 #eWriteWrap{}
 #eWriteWrap{}
 
+
+/* eventModify */
+input{width:90%; height:30px}
+textarea{width:100%; height:500px; box-sizing:border-box;}
 
 
 /* footer */

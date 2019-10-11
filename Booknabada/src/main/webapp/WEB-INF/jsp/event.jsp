@@ -12,12 +12,27 @@
 	<title>이벤트</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
   <link rel="stylesheet" href="./css/style.css" type="text/css"/>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-</head>
+  <link rel="stylesheet" href="./css/boardDetail.css" type="text/css"/>
+  </head>
 <body>
 	<jsp:include page="./include/header.jsp"></jsp:include>
+	<div class="top_navi">
+
+		<div class="top_content">
+			<div id="box01" style="color: #BCB0FE;">공지사항</div>
+			<div id="bin"></div>
+			<div id="box01" style="background: #BCB0FE; color: white;">이벤트</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;">FAQ</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;">QNA</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
+		</div>
+	</div>
 
 	<div id="container" class="event">
 		<div class="inner-wrap cf">
@@ -27,7 +42,10 @@
 					<li>
 						<div class="img-wrap">
 						<c:if test="${i.event_picture ne null }">	
-								<img src="./upimg/${i.event_picture }">
+								<img src="./upimg/${i.event_picture }" />
+						</c:if>
+						<c:if test="${i.event_picture eq null }">	
+								<img src="./images/noimage.png" />
 						</c:if>
 						</div>
 						<dl>
