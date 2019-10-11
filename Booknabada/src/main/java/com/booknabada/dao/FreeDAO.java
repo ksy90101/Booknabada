@@ -9,10 +9,11 @@ import com.common.dao.AbstractDAO;
 
 @Repository("freeDAO")
 public class FreeDAO extends AbstractDAO{
-
+	
+	/* SQL에서 가져오기 */
+	
 	@SuppressWarnings("unchecked")
 	public List<FreeDTO> board() {
-		
 		return selectList("free.board");
 	}
 	
@@ -33,4 +34,17 @@ public class FreeDAO extends AbstractDAO{
 		delete("free.detailDelete", dto);
 		
 	}
+	
+	public void modifyAction(FreeDTO dto) {
+		update("free.modifyAction", dto);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<FreeDTO> coment(int reBno) {
+		return selectList("free.coment", reBno);
+	}
+	
+	
+	
+	
 }

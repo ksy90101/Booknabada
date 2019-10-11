@@ -1,5 +1,8 @@
 package com.booknabada.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,29 +26,36 @@ public class FreeController {
 	@Resource(name = "freeService")
 	private FreeService freeService;
 
+	// 게시판 띄우기
 	@RequestMapping(value = "free/freeBoard.do")
 	public ModelAndView freeBoard() throws Exception {
 		ModelAndView mv = new ModelAndView("free/freeBoard");
 
 		List<FreeDTO> board = freeService.board();
-
+		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
 		return mv;
 
 	}
 
+	// 상세보기
 	@RequestMapping(value = "free/freeDetail.do")
 	public ModelAndView freeDetail(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("free/freeDetail");
-
+		// 보드 숫자 가져오기
 		String bno = request.getParameter("board_no");
+		// 숫자 체크
 		int reBno = Util.checkInt(bno);
-
+		// 게시글 카운트
 		freeService.countUp(reBno);
 
+		// 해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		FreeDTO freeDetail = freeService.detail(reBno);
+		List<FreeDTO> coment = freeService.coment(reBno);
 
+		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("freeDetail", freeDetail);
+		mv.addObject("coment", coment);
 		return mv;
 	}
 
@@ -55,8 +65,6 @@ public class FreeController {
 
 		// Write.do로 가기
 		return new ModelAndView("free/freeWrite");
-
-		
 
 	}
 
@@ -81,19 +89,35 @@ public class FreeController {
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
 
+		// 사진업로드
+		if (file.getOriginalFilename() != null) {
+			// 지금 시간 가져오기
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String today = sdf.format(new Date());
+			// 시간+파일이름 합치기
+			String upFileName = today + file.getOriginalFilename();
+			// 파일 업로드 경로
+			String path = request.getSession().getServletContext().getRealPath("");
+			// System.out.println("리얼경로 " + path);
+			File f = new File(path + "upimg/" + upFileName); // 준비
+			file.transferTo(f); // 실제 파일 전송
+
+			dto.setBoard_picture(upFileName);
+		}
+
 		// 데이터베이스 쓰기 실행
 		freeService.freeWriteAction(dto);
 
 		return mv;
 	}
 
-	// 글삭제
-	@RequestMapping(value = "qna/detailDelete.do")
+	// 글삭제 실행
+	@RequestMapping(value = "free/detailDelete.do")
 	public ModelAndView detailDetele(HttpServletRequest request) throws Exception {
 //			HttpSession session = request.getSession();
 
 		// 보드로 되돌아가기 1번
-		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
+		ModelAndView mv = new ModelAndView("redirect:freeBoard.do");
 
 		// 세션추가
 //			if (session.getAttribute("name") != null && 
@@ -114,6 +138,62 @@ public class FreeController {
 //			} else {
 //				mv.setViewName("error?code=4");
 //			}
+
+		return mv;
+	}
+
+	// 수정페이지 이동
+	@RequestMapping(value = "free/freeModify.do")
+	public ModelAndView detailModify(HttpServletRequest request) throws Exception {
+//			HttpSession session = request.getSession();
+
+		// 수정버튼 누르면 수정페이지로 이동
+		ModelAndView mv = new ModelAndView("free/freeModify");
+
+		String board_no = request.getParameter("board_no");
+
+		// 숫자체크 후 게시판번호 담기
+		int reBno = Util.checkInt(board_no);
+
+		// 자기글 불러와서 DTO에 담기
+		FreeDTO detail = freeService.detail(reBno);
+
+		mv.addObject("modify", detail);
+
+		// 세션
+//			if (detail.getUser_name().equals(session.getAttribute("name"))) {
+//				//modify ModelAndView에 DTO 보이게하기
+//			} else {
+//				mv.setViewName("error?code=3");
+//			}
+//						
+		return mv;
+	}
+
+	// 수정버튼 실행
+	@RequestMapping(value = "free/modifyAction.do")
+	public ModelAndView modifyAction(HttpServletRequest request) throws Exception {
+//				HttpSession session = request.getSession();
+		String board_no = request.getParameter("board_no");
+		ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+
+		// 세션
+//				if (session.getAttribute("name") != null && session.getAttribute("id") != null && session.getAttribute("board3_no") != null ) {
+		mv.setViewName("redirect:freeDetail.do?board_no=" + board_no);
+
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
+		FreeDTO dto = new FreeDTO();
+		dto.setBoard_title(title);
+		dto.setBoard_content(content);
+		dto.setBoard_no(Util.checkInt(board_no));
+//					dto.setUser_name((String) session.getAttribute("id"));
+		freeService.modifyAction(dto);
+
+//				}	else {
+//					mv.setViewName("error?code=5");
+//				}
 
 		return mv;
 	}

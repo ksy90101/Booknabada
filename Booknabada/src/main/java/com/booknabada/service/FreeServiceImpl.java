@@ -49,4 +49,17 @@ public class FreeServiceImpl implements FreeService{
 		freeDAO.detailDelete(dto);
 	}
 
+
+	@Override
+	public void modifyAction(FreeDTO dto) throws Exception {
+		freeDAO.modifyAction(dto);
+		
+	}
+
+
+	@Override
+	public List<FreeDTO> coment(int reBno) throws Exception {
+		return freeDAO.coment(reBno);
+	}
+
 }
