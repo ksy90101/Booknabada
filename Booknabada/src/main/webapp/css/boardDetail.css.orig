@@ -75,6 +75,12 @@
   float: left;
   border-width: 1px;
   border-block-color: black;
+  overflow: auto;
+}
+
+#listbox img{
+	display: table;
+	margin: 10px auto;
 }
 .commentPart{
 	width: 1000px;
@@ -295,5 +301,5 @@ button{
 	font-weight: bold;
 	float: left;
 	border: none;
->>>>>>> heeeeejin2
+>>>>>>> Yehee
 }

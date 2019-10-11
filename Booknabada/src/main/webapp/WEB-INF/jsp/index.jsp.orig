@@ -16,24 +16,20 @@
 index
 <<<<<<< HEAD
 ㅎㅇ
-ㅎㅇ
+안녕하세요
+반갑습니다 여러분!
+<a href="http://localhost:8080/first/qna/qnaBoard.do">QNA보드로 이동</a>
+=======
+<<<<<<< HEAD
+�ㅇ
 <a href="./free/freeBoard.do">free</a>
 <a href="login.do">login</a>
 <a href="newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
 
-=======
-<<<<<<< HEAD
-안뇽~~
-하이~
-방가!
-헤헤
-=======
-ㅎㅇ<br>
-<textarea style="width: 500px; height: 800px;" id="editor"></textarea>
 <script>CKEDITOR.replace('editor', {height:800});</script>
 >>>>>>> refs/heads/Seyun
->>>>>>> heeeeejin2
+>>>>>>> Yehee
 </body>
 </html>
