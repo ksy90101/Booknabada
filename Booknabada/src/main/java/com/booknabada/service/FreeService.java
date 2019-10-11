@@ -18,6 +18,7 @@ public interface FreeService {
 	
 	void modifyAction(FreeDTO dto) throws Exception;
 
-	List<FreeDTO> coment(int reBno) throws Exception;
-
+	/*
+	 * List<FreeDTO> coment(int reBno) throws Exception;
+	 */
 }

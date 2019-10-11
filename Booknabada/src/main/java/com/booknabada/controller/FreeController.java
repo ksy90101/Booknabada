@@ -51,11 +51,12 @@ public class FreeController {
 
 		// 해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		FreeDTO freeDetail = freeService.detail(reBno);
-		List<FreeDTO> coment = freeService.coment(reBno);
-
+		/*
+//		 * List<FreeDTO> coment = freeService.coment(reBno);
+		 */
 		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("freeDetail", freeDetail);
-		mv.addObject("coment", coment);
+//		/* mv.addObject("coment", coment); */
 		return mv;
 	}
 
@@ -90,20 +91,20 @@ public class FreeController {
 		dto.setBoard_content(content);
 
 		// 사진업로드
-		if (file.getOriginalFilename() != null) {
-			// 지금 시간 가져오기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String today = sdf.format(new Date());
-			// 시간+파일이름 합치기
-			String upFileName = today + file.getOriginalFilename();
-			// 파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
-			// System.out.println("리얼경로 " + path);
-			File f = new File(path + "upimg/" + upFileName); // 준비
-			file.transferTo(f); // 실제 파일 전송
-
-			dto.setBoard_picture(upFileName);
-		}
+//		if (file.getOriginalFilename() != null) {
+//			// 지금 시간 가져오기
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+//			String today = sdf.format(new Date());
+//			// 시간+파일이름 합치기
+//			String upFileName = today + file.getOriginalFilename();
+//			// 파일 업로드 경로
+//			String path = request.getSession().getServletContext().getRealPath("");
+//			// System.out.println("리얼경로 " + path);
+//			File f = new File(path + "upimg/" + upFileName); // 준비
+//			file.transferTo(f); // 실제 파일 전송
+//
+//			dto.setBoard_picture(upFileName);
+//		}
 
 		// 데이터베이스 쓰기 실행
 		freeService.freeWriteAction(dto);

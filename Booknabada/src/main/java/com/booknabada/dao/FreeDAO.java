@@ -39,12 +39,11 @@ public class FreeDAO extends AbstractDAO{
 		update("free.modifyAction", dto);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<FreeDTO> coment(int reBno) {
-		return selectList("free.coment", reBno);
-	}
-	
-	
+	/*
+	 * @SuppressWarnings("unchecked") public List<FreeDTO> coment(int reBno) {
+	 * return selectList("free.coment", reBno); }
+	 * 
+	 */
 	
 	
 }

@@ -46,11 +46,11 @@
 		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
 	</update>
 	
-	<select id="coment" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">
+	<!-- <select id="coment" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">
 		<![CDATA[
 		SELECT coment_no, board_no, coment_content, coment_date, user_name
 		FROM freeBoard_view WHERE board_no = #{reBno}
 		]]>
-	</select>
+	</select> -->
 		
 </mapper>
