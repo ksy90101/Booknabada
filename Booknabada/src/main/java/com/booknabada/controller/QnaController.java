@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
-import com.poseidon.dto.ComentDTO;
 
 @Controller
 public class QnaController {
@@ -108,20 +107,20 @@ public class QnaController {
 //		dto.setUser_name((String)session.getAttribute("이건영"));
 		
 		//사진업로드
-//		if (file.getOriginalFilename() != null) {
-//			//지금 시간 가져오기
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-//			String today = sdf.format(new Date());
-//			//시간+파일이름 합치기
-//			String upFileName = today + file.getOriginalFilename();
-//			//파일 업로드 경로
-//			String path = request.getSession().getServletContext().getRealPath("");
-//			//System.out.println("리얼경로 " + path);
-//			File f = new File(path + "upimg/" + upFileName); //준비
-//			file.transferTo(f); //실제 파일 전송
-//			
-//			dto.setBoard_picture(upFileName);
-//		}
+		if (file.getOriginalFilename() != null) {
+			//지금 시간 가져오기
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String today = sdf.format(new Date());
+			//시간+파일이름 합치기
+			String upFileName = today + file.getOriginalFilename();
+			//파일 업로드 경로
+			String path = request.getSession().getServletContext().getRealPath("");
+			//System.out.println("리얼경로 " + path);
+			File f = new File(path + "upimg/" + upFileName); //준비
+			file.transferTo(f); //실제 파일 전송
+			
+			dto.setBoard_picture(upFileName);
+		}
 		
 		//데이터베이스 쓰기 실행
 		qnaService.qnaWriteAction(dto);

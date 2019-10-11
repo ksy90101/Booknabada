@@ -39,7 +39,7 @@
 	
 	<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
-		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="location.href='qnaBoard.do'">취소</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" type="button" onclick="history.back(-1);">취소</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" type="submit">완료</button>
 	</div>
