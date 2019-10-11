@@ -31,7 +31,7 @@ body{
 
 input{
 	height:45px;
-	width:300px;
+	width:260px;
 	border:1px solid;
 	border-color:#FFFFFF;
 	padding-left: 20px;
@@ -44,7 +44,7 @@ input{
 }
 select{
 	height:50px;
-	
+	width:95px;
 	
 }
 

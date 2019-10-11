@@ -12,6 +12,22 @@
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/header.css" rel="stylesheet">
 <link href="../css/boardDetail.css" rel="stylesheet">
+<script type="text/javascript">
+	function modify(num){
+		//alert("수정하기 숫자: " + num);
+		var check = confirm("수정하실꺼냐?");
+		
+		if (check) {
+			location.href= 'detailModify.do?board_no='+num;
+		}
+	}
+	function del(num){
+		alert("삭제하기 숫자: " + num);
+	
+	}
+
+	
+</script>
 </head>
 <body>
 	
@@ -21,11 +37,11 @@
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">이벤트</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">QNA</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../qnaBoard.do'">QNA</div>
 			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">자유게시판</div>
+			<div id="box01" style="background: #BCB0FE; color: white;"  onclick="location.href='../freeBoard.do'">자유게시판</div>
 		</div>
 	</div>
 
@@ -45,16 +61,16 @@
 		</div>
 		<div id="list" style="height: 60px;">
 			<div id="title">내용</div>
-			<div id="listbox" style="width: 100%; height: 500px;">${freeDetail.board_content }</div>
+			<div id="listbox" style="width: 100%; height: 400px;">${freeDetail.board_content }</div>
 		</div>
 	</div>
 
-	<div class="buttonPart">
-		<button id="button" style="background-color: #E8E8E8;">수정</button>
+	<div class="BoardbuttonPart">
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return modify(${detail.board_no})">수정</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #E8E8E8;">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="return del(${detail.board_no})">삭제</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='freeBoard.do'">목록</button>
+		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='freeBoard.do'">목록</button>
 	</div>
 
 	<div class="commentPart">

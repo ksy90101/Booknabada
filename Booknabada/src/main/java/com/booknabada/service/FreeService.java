@@ -11,4 +11,8 @@ public interface FreeService {
 	FreeDTO detail(int reBno) throws Exception;
 	
 	void countUp(int reBno) throws Exception;
+
+	void freeWriteAction(FreeDTO dto) throws Exception;
+
+	void detailDelete(FreeDTO dto) throws Exception;
 }

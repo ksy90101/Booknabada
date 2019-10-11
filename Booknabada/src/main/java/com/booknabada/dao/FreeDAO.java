@@ -23,4 +23,14 @@ public class FreeDAO extends AbstractDAO{
 	public void countUp(int reBno) {
 		update("free.countUp",reBno);
 	}
+
+	public void writeAction(FreeDTO dto) {
+		insert("free.writeAction", dto);
+		
+	}
+
+	public void detailDelete(FreeDTO dto) {
+		delete("free.detailDelete", dto);
+		
+	}
 }
