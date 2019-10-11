@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.FaqDTO;
 import com.booknabada.service.FaqService;
+import com.common.common.CommandMap;
 
 @Controller
 public class FaqController {
@@ -19,6 +20,13 @@ public class FaqController {
 	@Resource(name = "faqService")
 	private FaqService faqService;
 
+	@RequestMapping(value="index.do")
+    public ModelAndView index(CommandMap commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("index");
+    	
+    	return mv;
+    }	
+	
 	@RequestMapping(value = "FAQ/FAQ_all.do")
 	public ModelAndView faq_all() throws Exception {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_all");
@@ -71,6 +79,14 @@ public class FaqController {
 
 		mv.addObject("faq_homepage", faq_homepage);
 		return mv;
+	}
+	
+	@RequestMapping(value = "FAQ/FAQ_write.do")
+	public ModelAndView faq_write() throws Exception{
+		ModelAndView mv = new ModelAndView("FAQ/FAQ_write");
+		
+		return mv;
+		
 	}
 
 }

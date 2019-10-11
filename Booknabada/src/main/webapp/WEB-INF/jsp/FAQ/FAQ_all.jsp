@@ -8,7 +8,7 @@
 <head>
 <title>자주하는질문</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="../css/fqa.css">
+<link rel="stylesheet" href="../css/faq.css">
 <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="faq_wrap">
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_all.do">전체보기</a></div>
+				<div class="faqtext_click faqtext"><a href="FAQ_all.do">전체보기</a></div>
 			</div>
 			<div class="faq_menu">
 				<div class="faqtext"><a href="FAQ_best.do">베스트</a></div>

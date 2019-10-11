@@ -2,7 +2,7 @@
             	
     
     
-    <wb-module deploy-name="first">
+    <wb-module deploy-name="booknabada">
                                 
         
         
@@ -23,7 +23,7 @@
         
         
         <property name="java-output-path" value="target/classes"/>
-        <property name="context-root" value="first"/>
+        <property name="context-root" value="booknabada"/>
                         	
     
     
