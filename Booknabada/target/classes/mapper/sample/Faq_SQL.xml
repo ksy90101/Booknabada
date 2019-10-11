@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+	<select id="faq_all" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion, faq_category FROM faq_board
+	</select>
+
+	<select id="faq_best" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion, faq_category FROM faq_board ORDER BY faq_count DESC;
+	</select>
+	
+	<select id="faq_delivery" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '2'
+	</select>
+
+	<select id="faq_order" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '1'
+	</select>
+	
+	<select id="faq_homepage" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '3'
+	</select>
+</mapper>

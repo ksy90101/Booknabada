@@ -1,4 +1,7 @@
 @charset "UTF-8";
+button{
+	cursor:pointer;
+}
 
 .header {
 	display: table;
@@ -13,6 +16,11 @@
 	height: 65px;
 }
 
+.top_navi_inner {
+	dispaly: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
 
 #box01 {
 	width: 183px;
@@ -48,7 +56,7 @@
 
 .boardDetailPart {
   width: 958px;
-  height: 610px;
+  height: auto;
   margin: 0 auto;
   background-color: #E7E2FF;
   padding: 20px;
@@ -66,6 +74,7 @@
 	width: 960px;
 	margin: 10px auto;
 	font-size: 15px;
+	height:auto;
 }
 #listbox {
   background-color: white;
@@ -74,6 +83,9 @@
   float: left;
   border-width: 1px;
   border-block-color: black;
+}
+#listbox.contentbox{
+	line-height: 24px;
 }
 .commentPart{
 	width: 1000px;
@@ -106,6 +118,7 @@
 #commentWritebox{
 	width: 800px;
 	height: 100px;
+	background-color: white;
 	margin: 20px auto auto 20px;
 	float: left;
 }
@@ -123,12 +136,12 @@
 	border-style: none;
 	border: 1px solid #A797FE;
 }
-.BoardbuttonPart{
+.buttonPart{
+	width:310px;
 	height: 35px;
-	margin: 40px auto;
-	display: table;
+	margin: 20px auto;
 }
-#Boardbutton{
+#button{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;

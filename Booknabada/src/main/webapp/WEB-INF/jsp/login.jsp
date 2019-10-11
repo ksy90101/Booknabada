@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="../css/reset.css">
 <style type="text/css">
 
 body{
@@ -79,11 +79,11 @@ button{
 		</div>
 		
 		<div class="form_wrap">
-			<form>
+			<form action="loginAction.do" method="POST">
 				<div class="inp">
 					<ul>
-						<li><input type="text" placeholder="아이디를 입력하세요"></li>
-						<li><input type="password" placeholder="*******"></li>
+						<li><input type="text" placeholder="아이디를 입력하세요" name = "id"></li>
+						<li><input type="password" placeholder="*******" name="pw"></li>
 					</ul>
 				</div>
 				<div class="check">
