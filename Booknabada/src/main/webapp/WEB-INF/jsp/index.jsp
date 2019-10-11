@@ -13,7 +13,5 @@
 <body>
 index
 ㅎㅇ
-${id }
-${name }
 </body>
 </html>
