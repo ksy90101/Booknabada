@@ -8,7 +8,7 @@
 <head>
 <title>자주하는질문</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="../css/fqa.css">
+<link rel="stylesheet" href="../css/faq.css">
 <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
@@ -41,7 +41,7 @@
 				<div class="faqtext"><a href="FAQ_order.do">주문/결제</a></div>
 			</div>
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_delivery.do">배송/반품</a></div>
+				<div class="faqtext_click faqtext"><a href="FAQ_delivery.do">배송/반품</a></div>
 			</div>
 			<div class="faq_menu">
 				<div class="faqtext"><a href="FAQ_homepage.do">홈페이지이용</a></div>

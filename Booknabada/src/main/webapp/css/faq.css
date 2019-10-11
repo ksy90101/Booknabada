@@ -68,13 +68,23 @@ a {
 	text-decoration: none;
 }
 
-.faqtext {
+.faqtext_click {
+	background-color: #B3B0FE;
+}
+
+.faqtext{
 	width: 224px;
 	height: 44px;
 	display: table-cell;
 	vertical-align: middle;
 }
+.faqtext_click a{
+	color : white;
+}
 
+h1 {
+	padding-left: 210px;
+}
 .faq_wrap:after {
 	display: block;
 	content: "";

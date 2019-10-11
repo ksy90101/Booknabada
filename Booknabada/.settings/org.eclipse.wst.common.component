@@ -3,9 +3,14 @@
     
     
     
+<<<<<<< HEAD
     <wb-module deploy-name="first">
                                         
         
+=======
+    <wb-module deploy-name="booknabada">
+                                
+>>>>>>> 74caf953646024edc53f1f6792b349190f73fe7b
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
@@ -30,10 +35,15 @@
         
         
         <property name="java-output-path" value="target/classes"/>
+<<<<<<< HEAD
                 
         <property name="context-root" value="first"/>
                                 	
     
+=======
+        <property name="context-root" value="booknabada"/>
+                        	
+>>>>>>> 74caf953646024edc53f1f6792b349190f73fe7b
     
     
     </wb-module>
