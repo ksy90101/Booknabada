@@ -6,7 +6,7 @@ import com.booknabada.dto.EventDTO;
 
 public interface EventService {
 
-	List<EventDTO> eboard() throws Exception;
+	List<EventDTO> eboard(int page) throws Exception;
 
 	void writeAction(EventDTO dto) throws Exception;
 

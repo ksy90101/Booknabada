@@ -1,7 +1,7 @@
 package com.booknabada.dto;
 
 public class EventDTO {
-	private int event_no,event_count;
+	private int event_no,event_count,totalCount;
 	private String event_title, event_content, event_picture, event_date, user_name;
 	
 	
@@ -46,6 +46,12 @@ public class EventDTO {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 
 

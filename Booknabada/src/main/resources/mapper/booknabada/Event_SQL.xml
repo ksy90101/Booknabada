@@ -3,7 +3,10 @@
 
 <mapper namespace="event">
 	<select id="eboard" resultType="com.booknabada.dto.EventDTO">
-		SELECT * FROM event_view ORDER BY event_no DESC
+		<![CDATA[
+		SELECT *, (SELECT COUNT(*) FROM event_view) AS totalCount 
+		FROM event_view LIMIT #{page },6
+		]]> 
 	</select>
 	<insert id="writeAction" parameterType="com.booknabada.dto.EventDTO">
 		<![CDATA[
