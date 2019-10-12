@@ -9,7 +9,7 @@ import com.common.dao.AbstractDAO;
 
 @Repository("eventDAO")
 public class EventDAO extends AbstractDAO{
-
+	
 	@SuppressWarnings("unchecked")
 	public List<EventDTO> eboard() {
 		return selectList("event.eboard");
