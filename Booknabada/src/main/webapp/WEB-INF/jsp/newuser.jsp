@@ -42,18 +42,6 @@ input[type='radio']{
 	width:14px;
 }
 
-.year{
-	width:190px;
-}
-
-.month{
-	width:70px;
-
-}
-
-.day{
-	width:40px;
-}
 
 select{
 	height:48px;
@@ -92,39 +80,19 @@ button{
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-function checkID(){
-	var id=$('#insertID').val()
-	
-	if( $('#insertID').val()==""){
-		alert("아이디를 입력하세요.");
-		 $('#insertID').focus();
-		 return false;
+
+function email3(userinput){
+	var email3=userinput.m_email3.value;
+	if(email3=="0"){
+		userinput.email2.value='';
+		userinput.email2.readOnly=false;
+	}else{
+		userinput.email2.value=email3;
+		userinput.email2.readOnly=true;
 	}
-	$.ajax({
-		type : 'post',
-		data : "id="+ id,
-		dataType : 'text',
-		url : 'checkID.do',
-		success : function(rData, textStatus, xhr){
-			var check = rData;
-			if(check == 1){
-				alert("이미 가입된 ID입니다.");
-				$('#resulttext').css('color', 'red');
-				$('#resulttext').text('이미 등록된 ID입니다.');
-				$('#checkit').prop('disabled', true);
-			}else{
-				alert("등록 가능한 ID입니다.\n계속 진행하세요.");
-				$('#checkit').prop('disabled', false);
-				$('#resulttext').css('color', 'blue');
-				$('#resulttext').text('등록가능합니다. 계속 진행하세요.');
-			}
-		},
-		error : function(xhr, status, e){
-			alert("error : " + e);
-		}
-	});
-	return false;
+	
 }
+
 
 function check(){
 	if(document.join.id.value == ""){
@@ -174,7 +142,7 @@ function check(){
 			<form name="join" action="joinAction.do" method="post">
 				<ul>
 					<li><input type="text" id="insertID" placeholder="아이디" name="id"></li>
-					<li><br><p id="resulttext">아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.</p></li>
+					<!-- <li><br><p id="resulttext">아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.</p></li> -->
 					<li><input type="password" name="pw1" placeholder="비밀번호"></li>
 					<li><input type="password" name="pw2" placeholder="비밀번호 확인"></li>
 				</ul>
@@ -183,7 +151,7 @@ function check(){
 					<li><input type="text" placeholder="이름" name="name"></li>
 					<li><input type="radio" name="gender" value="man">남자<input
 						type="radio" name="gender" value="woman">여자</li>
-					<li><input type="date" class="year" placeholder="생년(4자)" name = "birth">
+					<li><input type="date" class="birth" name = "birth">
 					<li><input class="email" type="text" name="email1" placeholder="이메일" >
 						@ <input class="email" type="text" name="email2" readonly="readonly">
 						<select class="sel" name="m_email3" onchange="email3(this.form)">
@@ -203,7 +171,7 @@ function check(){
 					<li><input type="text" placeholder="핸드폰 번호" name="tel"></li>
 				</ul>
 				<br>
-				<button type="submit" id="checkit" value="가입">가입하기</button>
+				<button type="submit" id="checkit"  onclick="return check();">가입하기</button>
 			</form>
 		</div>
 		<div class="link">
