@@ -11,15 +11,15 @@
 	<title>이벤트</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
-  <link rel="stylesheet" href="./css/style.css" type="text/css"/>
-  <link href="css/boardDetail.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+  <link href="../css/boardDetail.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 </head>
 <script>
 function modify(num){
 	if(confirm("이 글을 수정하시겠습니까?")){
-		location.href='eventModify.do?bno='+num;
+		location.href='event/eventModify.do?bno='+num;
 	}else{
 		return false;
 	}
@@ -27,7 +27,7 @@ function modify(num){
 
 function del(num){
 	if(confirm("이 글을 삭제하시겠습니까?")){
-		location.href='eventDelete.do?bno='+num;
+		location.href='event/eventDelete.do?bno='+num;
 	}else{
 		return false;
 	}
@@ -35,7 +35,7 @@ function del(num){
 
 </script>
 <body>
-	<jsp:include page="./include/header.jsp"></jsp:include>
+
 	<div class="top_navi">
 
 		<div class="top_content">
@@ -85,14 +85,11 @@ function del(num){
 		<div id="bin2"></div>
 		<button id="button" style="background-color: #E8E8E8;" onclick="del(${detail.event_no })">삭제</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
+		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event/event.do'">목록</button>
 	</div>
 	
 	
-	<jsp:include page="./include/footer.jsp"></jsp:include>
-	
-	
-	<script src="boardDetail_files/217acdb12f517958f1.js"></script>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.booknabada.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,8 +9,6 @@ import com.common.dao.AbstractDAO;
 
 @Repository("qnaDAO")
 public class QnaDAO extends AbstractDAO{
-	
-	/* SQL에서 가져오기 */
 	
 	@SuppressWarnings("unchecked")
 	public List<QnaDTO> board(int page) {
@@ -37,9 +34,4 @@ public class QnaDAO extends AbstractDAO{
 	public void modifyAction(QnaDTO dto) {
 		update("qna.modifyAction", dto);
 	}
-
-//	@SuppressWarnings("unchecked")
-//	public List<QnaDTO> coment(int reBno) {
-//		return selectList("qna.coment", reBno);
-//	}
 }

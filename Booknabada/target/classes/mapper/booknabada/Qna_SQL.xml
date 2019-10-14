@@ -1,60 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="qna">
 
-	<!-- 보드 전체 DB가져오기 -->
 	<select id="board" resultType="com.booknabada.dto.QnaDTO">
 		SELECT board_no, board_title, board_date, board_count, user_name,
 		(SELECT COUNT(*) FROM qnaBoard_view) AS totalCount
 		FROM qnaBoard_view limit #{page }, 11
 	</select>
 	
-	<!-- 해당 번호의 DB 가져오기 -->
 	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
 		SELECT * FROM qnaBoard_view WHERE board_no = #{reBno}
 	</select>
 	
-	<!-- 해당 글의 카운트 올리기 -->
 	<update id="countUp" parameterType="Integer">
 	<![CDATA[
-		UPDATE board SET board_count = board_count + 1
-		WHERE board_no = #{reBno}
+		UPDATE board SET board_count = board_count + 1 WHERE board_no = #{reBno}
 		]]>
 	</update>
 	
-	<!-- 새글쓰기 -->
 	<insert id="writeAction" parameterType="com.booknabada.dto.QnaDTO">
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
-			VALUES(
-			#{board_title}, #{board_content}, 1 , 1 , #{board_picture }) 
+			VALUES(#{board_title}, #{board_content}, 1 , 1 , #{board_picture }) 
 		]]>
 	</insert>
 	
-	<!-- 글삭제 -->
 	<delete id="detailDelete" parameterType="com.booknabada.dto.QnaDTO">
 		DELETE FROM board WHERE board_no = #{board_no} 
-		
-		<!-- 세션일때 -->
-		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
 	</delete>
 	
-	<!-- 글수정 -->
 	<update id="modifyAction" parameterType="com.booknabada.dto.QnaDTO">
+		<![CDATA[
 		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}, board_picture = #{board_picture}
 		WHERE board_no = #{board_no}
-		
-		<!-- 세션일때 -->
-		<!-- AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name}) -->
-	</update>
-	
-	<!-- 코멘트 보기 -->
-	<!-- <select id="coment" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
-		<![CDATA[
-		SELECT coment_no, board_no, coment_content, coment_date, user_name
-		FROM qnaBoard_view WHERE board_no = #{reBno}
 		]]>
-	</select> -->
+	</update>
+
 		
 </mapper>

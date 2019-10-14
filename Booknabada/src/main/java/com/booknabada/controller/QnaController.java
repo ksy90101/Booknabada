@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
-
 import com.common.common.CommandMap;
 
 @Controller
@@ -31,15 +29,10 @@ public class QnaController {
 	
 	//게시판 목록
 	@RequestMapping(value="qna/qnaBoard.do")
-<<<<<<< HEAD
-	public ModelAndView qna(http) throws Exception{
-		ModelAndView mv = new ModelAndView("qna/qnaBoard");
-=======
 	public ModelAndView qna(HttpServletRequest request, CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("qna/qnaBoard");
->>>>>>> refs/heads/gunyoung
-		
+
 		int page = 1;
 		if (request.getParameter("page") != null) {
 			page = Util.checkInt(request.getParameter("page"));
@@ -47,8 +40,6 @@ public class QnaController {
 		if (commandMap.get("page") != null) {
 			page = Util.checkInt((String)commandMap.get("page"));
 		}
-		
-		if (request)
 		
 		List<QnaDTO> board = qnaService.board(((page - 1) * 10));
 		

@@ -27,9 +27,9 @@ public class EventController {
 	@Resource(name="eventService")
 	private EventService eventService;
 	
-	@RequestMapping(value="event.do")
+	@RequestMapping(value="event/event.do")
     public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("event");
+    	ModelAndView mv = new ModelAndView("event/event");
     	int page =1;
     	
     	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
@@ -46,16 +46,16 @@ public class EventController {
     	return mv;
     }	
 	
-	@RequestMapping(value="eventWrite.do")
+	@RequestMapping(value="event/eventWrite.do")
     public ModelAndView eventWrite() throws Exception{
-    	ModelAndView mv = new ModelAndView("eventWrite");
+    	ModelAndView mv = new ModelAndView("event/eventWrite");
     	
     	return mv;
     }	
 	
-	@RequestMapping(value="eventWriteAction.do")
+	@RequestMapping(value="event/eventWriteAction.do")
     public ModelAndView eventWriteAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
-    	ModelAndView mv = new ModelAndView("redirect:event.do");
+    	ModelAndView mv = new ModelAndView("redirect:event/event.do");
     	String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
@@ -87,7 +87,7 @@ public class EventController {
    	
     }	
 	
-	@RequestMapping(value="eventDetail.do")
+	@RequestMapping(value="event/eventDetail.do")
 	public ModelAndView detail(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("eventDetail");
 		String bno = request.getParameter("bno");
@@ -115,9 +115,9 @@ public class EventController {
 	}
 	
 	
-	@RequestMapping(value="eventDelete.do")
+	@RequestMapping(value="event/eventDelete.do")
     public ModelAndView eventDelete(HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("redirect:event.do");
+    	ModelAndView mv = new ModelAndView("redirect:event/event.do");
     	
 		int reBno = Util.checkInt(request.getParameter("bno"));
 		
@@ -130,9 +130,9 @@ public class EventController {
    	
     }	
 	
-	@RequestMapping(value="eventModify.do")
+	@RequestMapping(value="event/eventModify.do")
     public ModelAndView eventModify(HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("eventModify");
+    	ModelAndView mv = new ModelAndView("event/eventModify");
     	int reBno = Util.checkInt(request.getParameter("bno"));
 		
 		EventDTO detail = eventService.detail(reBno);
@@ -143,10 +143,10 @@ public class EventController {
    	
     }	
 	
-	@RequestMapping(value="eventModifyAction.do")
+	@RequestMapping(value="event/eventModifyAction.do")
 	public ModelAndView eventModifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
 		int reBno = Util.checkInt(request.getParameter("bno"));
-		ModelAndView mv = new ModelAndView("redirect:eventDetail.do?bno="+reBno);
+		ModelAndView mv = new ModelAndView("redirect:event/eventDetail.do?bno="+reBno);
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");

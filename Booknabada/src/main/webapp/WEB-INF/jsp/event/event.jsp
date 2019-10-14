@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
-<html>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,12 +15,12 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean"
 	rel="stylesheet">
-<link rel="stylesheet" href="./css/reset.css" type="text/css" />
-<link rel="stylesheet" href="./css/style.css" type="text/css" />
-<link rel="stylesheet" href="./css/boardDetail.css" type="text/css" />
+<link rel="stylesheet" href="../css/reset.css" type="text/css" />
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+<link rel="stylesheet" href="../css/boardDetail.css" type="text/css" />
 </head>
 <body>
-	<jsp:include page="./include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<div class="top_navi">
 
 		<div class="top_content">
@@ -64,7 +63,7 @@
 
 			<div class="paging-wrap">
 				<div class="paging">
-					<%@include file="./include/paging.jsp"%>
+					<%@include file="../include/eventpaging.jsp"%>
 					<c:if test="${page gt 10 }">
 						<button onclick="location.href='event.do?page=${page-10 }'">이전</button>
 					</c:if>
@@ -99,7 +98,7 @@
 	<!-- //container -->
 
 
-	<jsp:include page="./include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 
 </body>

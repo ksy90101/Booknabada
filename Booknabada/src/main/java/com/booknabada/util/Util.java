@@ -1,34 +1,7 @@
 package com.booknabada.util;
 
 public class Util {
-<<<<<<< HEAD
 	
-	//ip�가�오�
-//	public static String getIp(HttpServletRequest request) {
-//		String ip = request.getHeader("X-FORWARDED-FOR");
-//		
-//		if (ip == null) {
-//			ip = request.getHeader("Proxy-Client-IP");
-//		}
-//		if (ip == null) {
-//			ip = request.getHeader("WL-Proxy-Client");
-//		}
-//		if (ip == null) {
-//			ip = request.getHeader("HTTP_CLIENT_IP");
-//		}
-//		if (ip == null) {
-//			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-//		}
-//		if (ip == null) {
-//			ip = request.getRemoteAddr();
-//		}
-//		return ip;
-//	}
-	
-	//id체크�기
-=======
-	
->>>>>>> refs/heads/gunyoung
 	public static int checkInt(String str) {
 		
 		StringBuilder sb = new StringBuilder();
@@ -40,7 +13,5 @@ public class Util {
 		return Integer.parseInt(sb.toString());
 		
 	}
-
-	
 	
 }

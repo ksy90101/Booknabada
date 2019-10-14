@@ -21,14 +21,14 @@ public class LoginController {
 	private LoginService loginService;
 
 
-	@RequestMapping(value = "login.do")
+	@RequestMapping(value = "login/login.do")
 	public ModelAndView login() throws Exception{
-		ModelAndView mv = new ModelAndView("login");
+		ModelAndView mv = new ModelAndView("login/login");
 		
 		return mv;
 	}
 
-	@RequestMapping(value = "loginAction.do")
+	@RequestMapping(value = "login/loginAction.do")
 	public ModelAndView loginAction(HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
 		String id = request.getParameter("id");
@@ -44,25 +44,25 @@ public class LoginController {
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
 			
-			mv = new ModelAndView("redirect:index.do");
+			mv = new ModelAndView("redirect:login/index.do");
 		}else {
-			mv = new ModelAndView("redirect:login.do");
+			mv = new ModelAndView("redirect:login/login.do");
 		}
 		return mv;
 	}
 
-	@RequestMapping(value = "newuser.do")
+	@RequestMapping(value = "login/newuser.do")
 	public ModelAndView newuser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("newuser");
+		ModelAndView mv = new ModelAndView("login/newuser");
 		//HttpSession session = request.getSession();
 		
 		return mv;
 	}
 	
 	// joinAction.do
-	@RequestMapping(value = "joinAction.do")
+	@RequestMapping(value = "login/joinAction.do")
 	public ModelAndView joinAction(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:index.do");
+		ModelAndView mv = new ModelAndView("redirect:login/index.do");
 		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 		
 		
