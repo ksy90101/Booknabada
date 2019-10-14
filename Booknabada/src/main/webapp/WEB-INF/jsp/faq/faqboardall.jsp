@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<div class="faq">
 		<div class="menu_wrap">
 			<div class="menu">
@@ -32,33 +33,37 @@
 		</div>
 		<div class="faq_wrap">
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_all.do">전체보기</a></div>
+				<div class="faqtext_click faqtext"><a href="faqboardall.do">전체보기</a></div>
 			</div>
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_best.do">베스트</a></div>
+				<div class="faqtext"><a href="faqboardbest.do">베스트</a></div>
 			</div>
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_order.do">주문/결제</a></div>
+				<div class="faqtext"><a href="faqboardorder.do">주문/결제</a></div>
 			</div>
 			<div class="faq_menu">
-				<div class="faqtext_click faqtext"><a href="FAQ_delivery.do">배송/반품</a></div>
+				<div class="faqtext"><a href="faqboarddelivery.do">배송/반품</a></div>
 			</div>
 			<div class="faq_menu">
-				<div class="faqtext"><a href="FAQ_homepage.do">홈페이지이용</a></div>
+				<div class="faqtext"><a href="faqboardhomepage.do">홈페이지이용</a></div>
 			</div>
 		</div>
-		<h1 style="margin-bottom: 50px;">
-			<br>주문 / 결제
+		<h1 id="faqtitle">
+			<br>전체보기
 		</h1>
 		<div class="dl_wrap">
-			<c:forEach items="${faq_delivery }" var="i">
+			<c:forEach items="${faqboardall }" var="i">
 			<dl>
-				<dt class="question">${i.faq_qustion }</dt> 
+				<dt class="question">${i.faq_no } ${i.faq_qustion }
+				<button onclick = "del(${i.faq_no })">삭제</button>
+				</dt> 
 				<dd class="answer">${i.faq_answer }</dd>
 			</dl>
 			</c:forEach>
 		</div>
 	</div>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 </body>
 <script type="text/javascript">
 	$(".question").on("click", function() {
@@ -69,5 +74,12 @@
 			$(this).addClass("on").next().slideDown();
 		}
 	})
+	function del(num){
+		var check = confirm("삭제하시겠습니까?");
+		
+		if(check){
+			location.href= 'faqDelete.do?faq_no='+num;
+		}
+	}
 </script>
 </html>

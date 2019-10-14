@@ -30,7 +30,8 @@
 	<!-- 글박스 -->
 		<form action="qnaWriteAction.do" method="post" enctype="multipart/form-data">
 	<div id="writebox">
-			<h3>제목</h3>
+			<h3>제목
+			</h3>
 			<input id="title" type="text" name="title">
 			<h4>내용</h4>
 			<textarea id="content" name="content"></textarea>

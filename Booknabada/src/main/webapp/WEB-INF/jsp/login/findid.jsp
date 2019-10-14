@@ -87,19 +87,9 @@ button{
 			<form action="" method="">
 				<div class="inp">
 					<ul>
-						<li><input type="text" placeholder="이름을 입력해주세요.">
-							<select>
-								<option value="성별" selected="selected" disabled="disabled">성별</option>
-							<option value="select1">여자</option>
-							<option value="select2">남자</option>
-							</select>
-						</li>
-						
-						<li><input type="text" class="birth" placeholder="생년(4자)">
-							<input type="text" class="birth" placeholder="월">
-							<input type="text" class="birth" placeholder="일">
-						
-						</li>
+						<li><input type="text" placeholder="이름을 입력해주세요." name ="name"></li>
+	
+						<li><input type="text" placeholder="이메일을 입력해주세요." name ="email"></li>
 					</ul>
 				</div>
 				<br>

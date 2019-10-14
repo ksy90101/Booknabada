@@ -11,28 +11,37 @@ import com.common.dao.AbstractDAO;
 public class FaqDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<FaqDTO> faq_all() {
-		return selectList("faq.faq_all");
+	public List<FaqDTO> faqboardall() {
+		return selectList("faq.faqboardall");
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FaqDTO> faq_best() {
-		return selectList("faq.faq_best");
+	public List<FaqDTO> faqboardbest() {
+		return selectList("faq.faqboardbest");
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FaqDTO> faq_delivery() {
-		return selectList("faq.faq_delivery");
+	public List<FaqDTO> faqboarddelivery() {
+		return selectList("faq.faqboarddelivery");
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FaqDTO> faq_homepage() {
-		return selectList("faq.faq_homepage");
+	public List<FaqDTO> faqboardhomepage() {
+		return selectList("faq.faqboardhomepage");
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FaqDTO> faq_order() {
-		return selectList("faq.faq_order");
+	public List<FaqDTO> faqboardorder() {
+		return selectList("faq.faqboardorder");
+	}
+
+	public void faqwriteAction(FaqDTO dto) {
+		insert("faq.faqWriteAction", dto);
+	}
+
+	public void faqDelete(FaqDTO dto) {
+		delete("faq.faqDelete", dto);
+		
 	}
 
 

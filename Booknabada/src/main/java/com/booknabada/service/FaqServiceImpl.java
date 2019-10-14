@@ -18,30 +18,42 @@ public class FaqServiceImpl implements FaqService{
 	private FaqDAO faqDAO;
 
 	@Override
-	public List<FaqDTO> faq_all() throws Exception {
-		return faqDAO.faq_all();
+	public List<FaqDTO> faqboardall() throws Exception {
+		return faqDAO.faqboardall();
 	}
 
 	@Override
-	public List<FaqDTO> faq_best() throws Exception {
-		return faqDAO.faq_best();
+	public List<FaqDTO> faqboardbest() throws Exception {
+		return faqDAO.faqboardbest();
 	}
 	
 	@Override
-	public List<FaqDTO> faq_delivery() throws Exception {
-		return faqDAO.faq_delivery();
+	public List<FaqDTO> faqboarddelivery() throws Exception {
+		return faqDAO.faqboarddelivery();
 	}
 
 	@Override
-	public List<FaqDTO> faq_homepage() throws Exception {
+	public List<FaqDTO> faqboardhomepage() throws Exception {
 		
-		return faqDAO.faq_homepage();
+		return faqDAO.faqboardhomepage();
 	}
 
 	@Override
-	public List<FaqDTO> faq_order() throws Exception {
+	public List<FaqDTO> faqboardorder() throws Exception {
 		
-		return faqDAO.faq_order();
+		return faqDAO.faqboardorder();
+	}
+
+	@Override
+	public void faqWriteAction(FaqDTO dto) throws Exception {
+		faqDAO.faqwriteAction(dto);
+		
+	}
+
+	@Override
+	public void faqDelete(FaqDTO dto) throws Exception {
+		faqDAO.faqDelete(dto);
+		
 	}
 
 }

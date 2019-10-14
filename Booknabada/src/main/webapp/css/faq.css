@@ -82,8 +82,11 @@ a {
 	color : white;
 }
 
-h1 {
+#faqtitle {
 	padding-left: 210px;
+	padding-bottom: 50px;
+	font-size: 30px;
+	color: #B3B0FE;
 }
 .faq_wrap:after {
 	display: block;

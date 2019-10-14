@@ -44,9 +44,9 @@ public class LoginController {
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
 			
-			mv = new ModelAndView("redirect:login/index.do");
+			mv = new ModelAndView("redirect:../index.do");
 		}else {
-			mv = new ModelAndView("redirect:login/login.do");
+			mv = new ModelAndView("redirect:login.do");
 		}
 		return mv;
 	}
