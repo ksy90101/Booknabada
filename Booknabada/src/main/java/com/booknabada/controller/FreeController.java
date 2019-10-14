@@ -30,6 +30,9 @@ public class FreeController {
 
 		List<FreeDTO> board = freeService.board();
 		// DB에서 온 데이터 jsp에 뿌리기
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("board", board);
 		return mv;
 
@@ -52,6 +55,10 @@ public class FreeController {
 //		 * List<FreeDTO> coment = freeService.coment(reBno);
 		 */
 		// DB에서 온 데이터 jsp에 뿌리기
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("freeDetail", freeDetail);
 //		/* mv.addObject("coment", coment); */
 		return mv;
@@ -60,9 +67,13 @@ public class FreeController {
 	// 글쓰기
 	@RequestMapping(value = "free/freeWrite.do")
 	public ModelAndView freeWrite(HttpServletRequest request) throws Exception {
-
+		ModelAndView mv = new ModelAndView("free/freeWrite");
 		// Write.do로 가기
-		return new ModelAndView("free/freeWrite");
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
+		return new ModelAndView("");
 
 	}
 
@@ -105,6 +116,10 @@ public class FreeController {
 
 		// 데이터베이스 쓰기 실행
 		freeService.freeWriteAction(dto);
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 
 		return mv;
 	}
@@ -136,6 +151,10 @@ public class FreeController {
 //			} else {
 //				mv.setViewName("error?code=4");
 //			}
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 
 		return mv;
 	}
@@ -164,7 +183,11 @@ public class FreeController {
 //			} else {
 //				mv.setViewName("error?code=3");
 //			}
-//						
+//			
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 
@@ -192,6 +215,10 @@ public class FreeController {
 //				}	else {
 //					mv.setViewName("error?code=5");
 //				}
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 
 		return mv;
 	}

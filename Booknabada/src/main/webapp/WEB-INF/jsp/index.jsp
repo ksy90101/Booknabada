@@ -14,10 +14,11 @@
 </head>
 <body>
 <a href="./free/freeBoard.do">free</a>
-<a href="login.do">login</a>
-<a href="newuser.do">newuser</a>
-<a href="findid.do">findid</a>
-<a href="findpw.do">findpw</a>
+<a href="login/login.do">login</a>
+<a href="login/newuser.do">newuser</a>
+<a href="login/findid.do">findid</a>
+<a href="login/findpw.do">findpw</a>
+<a href="event/event.do">event</a>
 
 <script>CKEDITOR.replace('editor', {height:800});</script>
 

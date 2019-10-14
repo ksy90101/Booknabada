@@ -13,5 +13,8 @@
 		VALUES(#{user_name}, #{user_id }, #{user_pw }, #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
 		]]>
 	</insert>
+	<select id="level" parameterType="String" resultType="int">
+		SELECT user_level FROM user_info WHERE user_id=#{id }
+	</select>
 
 </mapper>

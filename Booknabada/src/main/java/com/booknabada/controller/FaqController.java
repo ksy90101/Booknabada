@@ -32,7 +32,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_all");
 
 		List<FaqDTO> faq_all = faqService.faq_all();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_all", faq_all);
 		return mv;
 	}
@@ -42,7 +44,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_best");
 
 		List<FaqDTO> faq_best = faqService.faq_best();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_best", faq_best);
 		return mv;
 	}
@@ -54,7 +58,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_delivery");
 
 		List<FaqDTO> faq_delivery = faqService.faq_delivery();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_delivery", faq_delivery);
 		return mv;
 	}
@@ -65,7 +71,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_order");
 
 		List<FaqDTO> faq_order = faqService.faq_order();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_order", faq_order);
 		return mv;
 	}
@@ -76,7 +84,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_homepage");
 
 		List<FaqDTO> faq_homepage = faqService.faq_homepage();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_homepage", faq_homepage);
 		return mv;
 	}
@@ -84,7 +94,9 @@ public class FaqController {
 	@RequestMapping(value = "FAQ/FAQ_write.do")
 	public ModelAndView faq_write() throws Exception{
 		ModelAndView mv = new ModelAndView("FAQ/FAQ_write");
-		
+		String whatBoard = "faq";
+
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 		
 	}

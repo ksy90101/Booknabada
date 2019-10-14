@@ -106,20 +106,7 @@ a:hover{
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<!-- 카테고리 -->
-	<div class="top_navi">
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
-		</div>
-	</div>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
 	<div id="board">
 		<table>

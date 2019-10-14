@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="../css/boardDetail.css">
 </head>
 <body>
+	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+
 	
 	<!-- 카테고리 -->
 	<div class="top_navi">

@@ -10,26 +10,14 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="../css/faq.css">
 <link rel="stylesheet" href="../css/header.css">
+<link href="../css/boardDetail.css" rel="stylesheet">
 </head>
 <body>
+
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+	
 	<div class="faq">
-		<div class="menu_wrap">
-			<div class="menu">
-				<div class="menutext">공지사항</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">이벤트</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">Q&A</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">FAQ</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">자유게시판</div>
-			</div>
-		</div>
+		
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext_click faqtext"><a href="FAQ_all.do">전체보기</a></div>
@@ -59,6 +47,8 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	
 </body>
 <script type="text/javascript">
 	$(".question").on("click", function() {

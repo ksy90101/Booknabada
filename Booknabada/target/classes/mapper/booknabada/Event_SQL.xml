@@ -11,7 +11,8 @@
 	<insert id="writeAction" parameterType="com.booknabada.dto.EventDTO">
 		<![CDATA[
 			INSERT INTO event_board(event_title, event_content, user_no, event_picture)
-			VALUES(#{event_title }, #{event_content }, 3,#{event_picture })
+			VALUES(#{event_title }, #{event_content }, 
+			(SELECT user_no FROM user_info WHERE user_id=#{user_id }),#{event_picture })
 		]]> 
 	</insert>
 	<select id="detail" parameterType="int" resultType="com.booknabada.dto.EventDTO">
@@ -23,7 +24,10 @@
 	</update>
 	
 	<delete id="eventDelete" parameterType="com.booknabada.dto.EventDTO" >
+		<![CDATA[
 		DELETE FROM event_board WHERE event_no=#{event_no } 
+		AND user_no=(SELECT user_no FROM user_info WHERE user_id=#{user_id });
+		]]>
 	</delete>
 	
 	<update id="eventModify" parameterType="com.booknabada.dto.EventDTO">

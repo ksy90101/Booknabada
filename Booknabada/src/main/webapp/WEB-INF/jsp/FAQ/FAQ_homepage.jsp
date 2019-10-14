@@ -12,24 +12,8 @@
 <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	<div class="faq">
-		<div class="menu_wrap">
-			<div class="menu">
-				<div class="menutext">공지사항</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">이벤트</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">Q&A</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">FAQ</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">자유게시판</div>
-			</div>
-		</div>
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext"><a href="FAQ_all.do">전체보기</a></div>
@@ -59,6 +43,7 @@
 			</c:forEach>
 		</div>
 	</div>
+	
 </body>
 <script type="text/javascript">
 	$(".question").on("click", function() {

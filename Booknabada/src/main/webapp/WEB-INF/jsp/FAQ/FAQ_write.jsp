@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+
 	<div id="writebox">
 		<form action="writeAction.do" method="post">
 			<h3>제목</h3>
@@ -23,5 +25,6 @@
 		<button type="submit">취소</button>
 		<button type="submit">완료</button>
 	</div>
+	
 </body>
 </html>
