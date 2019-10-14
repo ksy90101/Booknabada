@@ -11,15 +11,15 @@
 	<title>이벤트</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
-  <link rel="stylesheet" href="./css/style.css" type="text/css"/>
-  <link href="css/boardDetail.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+  <link href="../css/boardDetail.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 </head>
 <script>
 function cancel(){
 	if(confirm("목록으로 돌아가시겠습니까?")){
-		location.href='event.do';	
+		location.href='event/event.do';	
 	}else{
 		return false;
 	}
@@ -27,7 +27,7 @@ function cancel(){
 
 </script>
 <body>
-	<jsp:include page="./include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<div class="top_navi">
 
 		<div class="top_content">
@@ -90,10 +90,9 @@ function cancel(){
 	</div>
 </form>
 	
-	<jsp:include page="./include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	
-	<script src="boardDetail_files/217acdb12f517958f1.js"></script>
 
 </body>
 </html>

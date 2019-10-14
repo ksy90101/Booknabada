@@ -55,7 +55,7 @@ public class EventController {
 	
 	@RequestMapping(value="event/eventWriteAction.do")
     public ModelAndView eventWriteAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
-    	ModelAndView mv = new ModelAndView("redirect:event/event.do");
+    	ModelAndView mv = new ModelAndView("redirect:event.do");
     	String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
@@ -73,7 +73,7 @@ public class EventController {
 			
 			//파일 업로드 경로
 			String path = request.getSession().getServletContext().getRealPath("");
-			//System.out.println("리얼경로 : "+path);
+			System.out.println("리얼경로 : "+path);
 			File f = new File(path+"upimg/"+upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
 			//System.out.println("저장경로 : "+f.getPath());	
@@ -89,7 +89,7 @@ public class EventController {
 	
 	@RequestMapping(value="event/eventDetail.do")
 	public ModelAndView detail(HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("eventDetail");
+		ModelAndView mv = new ModelAndView("event/eventDetail");
 		String bno = request.getParameter("bno");
 		int reBno = Util.checkInt(bno);
 		//System.out.println(reBno);
@@ -117,7 +117,7 @@ public class EventController {
 	
 	@RequestMapping(value="event/eventDelete.do")
     public ModelAndView eventDelete(HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("redirect:event/event.do");
+    	ModelAndView mv = new ModelAndView("redirect:event.do");
     	
 		int reBno = Util.checkInt(request.getParameter("bno"));
 		
@@ -146,7 +146,7 @@ public class EventController {
 	@RequestMapping(value="event/eventModifyAction.do")
 	public ModelAndView eventModifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
 		int reBno = Util.checkInt(request.getParameter("bno"));
-		ModelAndView mv = new ModelAndView("redirect:event/eventDetail.do?bno="+reBno);
+		ModelAndView mv = new ModelAndView("redirect:eventDetail.do?bno="+reBno);
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");

@@ -19,7 +19,7 @@
 <script>
 function modify(num){
 	if(confirm("이 글을 수정하시겠습니까?")){
-		location.href='event/eventModify.do?bno='+num;
+		location.href='eventModify.do?bno='+num;
 	}else{
 		return false;
 	}
@@ -35,6 +35,7 @@ function del(num){
 
 </script>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 	<div class="top_navi">
 
@@ -70,7 +71,7 @@ function del(num){
 		<c:if test="${detail.event_picture ne null }">	
 		<div id="list" class="cf">
 			<div id="title" style="">사진</div>
-			<div id="listbox" style="width: 100%"><img src="./upimg/${detail.event_picture }"></div>
+			<div id="listbox" style="width: 100%"><img src="../upimg/${detail.event_picture }"></div>
 		</div>
 								
 		</c:if>
@@ -85,7 +86,7 @@ function del(num){
 		<div id="bin2"></div>
 		<button id="button" style="background-color: #E8E8E8;" onclick="del(${detail.event_no })">삭제</button>
 		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event/event.do'">목록</button>
+		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
 	</div>
 	
 	

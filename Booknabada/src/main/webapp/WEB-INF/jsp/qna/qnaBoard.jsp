@@ -147,7 +147,7 @@ a:hover{
 
 	<!-- 페이징박스 -->
 	<div class=pagingbox>
-	<%@include file="../paging.jsp" %>
+	<%@include file="../include/boardpaging.jsp" %>
 		<!-- 이전페이지 이동  -->
 		<c:if test="${page gt 5 }">
 			<button onclick="location.href='qnaBoard.do?page=${page - 5 }'">이전</button>
