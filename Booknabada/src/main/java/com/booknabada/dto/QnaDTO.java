@@ -1,11 +1,11 @@
 package com.booknabada.dto;
 
 public class QnaDTO {
-	int board_no, cate_no, board_count, user_no;
-	String board_title, board_content, board_date, user_name, board_picture;
+	private int board_no, cate_no, board_count, user_no, totalCount;
+	private String board_title, board_content, board_date, user_name, board_picture;
 	
-	int coment_no;
-	String coment_content, coment_date;
+	private int coment_no;
+	private String coment_content, coment_date;
 	
 	public int getBoard_no() {
 		return board_no;
@@ -31,6 +31,12 @@ public class QnaDTO {
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	public String getBoard_title() {
 		return board_title;
 	}
@@ -42,12 +48,6 @@ public class QnaDTO {
 	}
 	public void setBoard_content(String board_content) {
 		this.board_content = board_content;
-	}
-	public String getBoard_picture() {
-		return board_picture;
-	}
-	public void setBoard_picture(String board_picture) {
-		this.board_picture = board_picture;
 	}
 	public String getBoard_date() {
 		return board_date;
@@ -61,4 +61,30 @@ public class QnaDTO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+	public String getBoard_picture() {
+		return board_picture;
+	}
+	public void setBoard_picture(String board_picture) {
+		this.board_picture = board_picture;
+	}
+	public int getComent_no() {
+		return coment_no;
+	}
+	public void setComent_no(int coment_no) {
+		this.coment_no = coment_no;
+	}
+	public String getComent_content() {
+		return coment_content;
+	}
+	public void setComent_content(String coment_content) {
+		this.coment_content = coment_content;
+	}
+	public String getComent_date() {
+		return coment_date;
+	}
+	public void setComent_date(String coment_date) {
+		this.coment_date = coment_date;
+	}
+	
+
 }

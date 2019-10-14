@@ -1,6 +1,7 @@
 package com.booknabada.util;
 
 public class Util {
+<<<<<<< HEAD
 	
 	//ip�가�오�
 //	public static String getIp(HttpServletRequest request) {
@@ -25,6 +26,9 @@ public class Util {
 //	}
 	
 	//id체크�기
+=======
+	
+>>>>>>> refs/heads/gunyoung
 	public static int checkInt(String str) {
 		
 		StringBuilder sb = new StringBuilder();

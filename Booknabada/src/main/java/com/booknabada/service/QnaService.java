@@ -1,11 +1,13 @@
 package com.booknabada.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.booknabada.dto.QnaDTO;
 
 public interface QnaService {
 
+	//게시판 보기
 	List<QnaDTO> board(int page) throws Exception;
 	
 	//디테일 번호 가져오기
@@ -20,6 +22,7 @@ public interface QnaService {
 	
 	void modifyAction(QnaDTO dto) throws Exception;
 
-	List<QnaDTO> coment(int reBno) throws Exception;
+//	List<QnaDTO> coment(int reBno) throws Exception;
+	
 
 }

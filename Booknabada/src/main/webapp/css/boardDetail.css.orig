@@ -142,12 +142,12 @@ button{
 	border-style: none;
 	border: 1px solid #A797FE;
 }
-.BoardbuttonPart{
+.buttonPart{
 	width:310px;
 	height: 35px;
 	margin: 20px auto;
 }
-#Boardbutton{
+#button{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;

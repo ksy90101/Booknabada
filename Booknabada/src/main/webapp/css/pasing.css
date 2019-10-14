@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.pagingbox{
+	display: table;
+	margin: 0 auto;
+}
+
+.paging button{
+	width: 20px;
+}

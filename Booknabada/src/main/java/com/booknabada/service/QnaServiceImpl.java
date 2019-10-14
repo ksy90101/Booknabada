@@ -1,6 +1,7 @@
 package com.booknabada.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -19,7 +20,7 @@ public class QnaServiceImpl implements QnaService{
 
 	@Override
 	public List<QnaDTO> board(int page) throws Exception {
-		return qnaDAO.board();
+		return qnaDAO.board(page);
 	}
 
 	@Override
@@ -46,10 +47,6 @@ public class QnaServiceImpl implements QnaService{
 	public void modifyAction(QnaDTO dto) throws Exception {
 		qnaDAO.modifyAction(dto);
 	}
-	
-	@Override
-	public List<QnaDTO> coment(int reBno) throws Exception {
-		return qnaDAO.coment(reBno);
-	}
+
 	
 }

@@ -8,7 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA 게시판</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
+<link rel="stylesheet" href="../css/pasing.css">
+
 <style type="text/css">
 table {
 	width: 1000px;
@@ -53,8 +59,7 @@ tr:hover {
 }
 
 #search {
-	margin: 0 auto;
-	margin-top: 50px;
+	margin: 50px auto 300px auto;
 	background-color: #D1C9FE;
 	width: 1000px;
 	height: 60px;
@@ -100,6 +105,7 @@ a:hover{
 </head>
 <body>
 	
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<!-- 카테고리 -->
 	<div class="top_navi">
 		<div class="top_content">
@@ -140,35 +146,35 @@ a:hover{
 	</div>
 
 	<!-- 페이징박스 -->
-	<div id=pagingbox>
+	<div class=pagingbox>
 	<%@include file="../paging.jsp" %>
 		<!-- 이전페이지 이동  -->
 		<c:if test="${page gt 5 }">
-			<button onclick="location.href='board.do?page=${page - 5 }'">이전</button>
+			<button onclick="location.href='qnaBoard.do?page=${page - 5 }'">이전</button>
 		</c:if>
 		<c:if test="${page gt 1 }">
-			<button onclick="location.href='board.do?page=${page - 1 }'"> ◀ </button>
+			<button onclick="location.href='qnaBoard.do?page=${page - 1 }'"> ◀ </button>
 		</c:if>
 		
 		<!-- 페이지 -->
 		<c:forEach var="i" begin="${startPage + 1}" end="${endPage }">
 			<c:choose>
 				<c:when test="${page == i }">
-					<button onclick="location.href='board.do?page=${i }'"
+					<button onclick="location.href='qnaBoard.do?page=${i }'"
 						style="background-color: red; font-weight: bold; color: white;">${i }</button>
 				</c:when>
 				<c:otherwise>
-					<button onclick="location.href='board.do?page=${i }'">${i }</button>
+					<button onclick="location.href='qnaBoard.do?page=${i }'">${i }</button>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<!-- 다음페이지 이동 -->
 		<c:if test="${page lt totalPage }">
-			<button onclick="location.href='board.do?page=${page + 1 }'"> ▶ </button>
+			<button onclick="location.href='qnaBoard.do?page=${page + 1 }'"> ▶ </button>
 		</c:if>
 		<c:if test="${page lt totalPage - 5}">
-			<button onclick="location.href='board.do?page=${page + 5 }'">다음</button>
+			<button onclick="location.href='qnaBoard.do?page=${page + 5 }'">다음</button>
 		</c:if>
 	</div>
 	
@@ -187,7 +193,7 @@ a:hover{
 	</div>
 
 
-
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 
 

@@ -20,6 +20,8 @@ import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
 
+import com.common.common.CommandMap;
+
 @Controller
 public class QnaController {
 	Logger log = Logger.getLogger(this.getClass());
@@ -29,10 +31,22 @@ public class QnaController {
 	
 	//게시판 목록
 	@RequestMapping(value="qna/qnaBoard.do")
+<<<<<<< HEAD
 	public ModelAndView qna(http) throws Exception{
 		ModelAndView mv = new ModelAndView("qna/qnaBoard");
+=======
+	public ModelAndView qna(HttpServletRequest request, CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("qna/qnaBoard");
+>>>>>>> refs/heads/gunyoung
 		
 		int page = 1;
+		if (request.getParameter("page") != null) {
+			page = Util.checkInt(request.getParameter("page"));
+		}
+		if (commandMap.get("page") != null) {
+			page = Util.checkInt((String)commandMap.get("page"));
+		}
 		
 		if (request)
 		
@@ -40,6 +54,11 @@ public class QnaController {
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
+		//페이지
+		mv.addObject("page", page);
+		//총글수
+		mv.addObject("totalCount", board.get(0).getTotalCount());
+//		
 		return mv;
 		
 	}
@@ -119,7 +138,7 @@ public class QnaController {
 			String upFileName = today + file.getOriginalFilename();
 			//파일 업로드 경로
 			String path = request.getSession().getServletContext().getRealPath("");
-			System.out.println("리얼경로 " + path);
+			//System.out.println("리얼경로 " + path);
 			File f = new File(path + "upimg/" + upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
 			
@@ -216,7 +235,7 @@ public class QnaController {
 //				dto.setUser_name((String) session.getAttribute("id"));
 				
 				//사진업로드
-				if (file.getOriginalFilename() != null) {
+				if (file.getOriginalFilename() == file.getOriginalFilename()) {
 					//지금 시간 가져오기
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 					String today = sdf.format(new Date());
@@ -224,7 +243,7 @@ public class QnaController {
 					String upFileName = today + file.getOriginalFilename();
 					//파일 업로드 경로
 					String path = request.getSession().getServletContext().getRealPath("");
-					System.out.println("리얼경로 " + path);
+					//System.out.println("리얼경로 " + path);
 					File f = new File(path + "upimg/" + upFileName); //준비
 					file.transferTo(f); //실제 파일 전송
 					
