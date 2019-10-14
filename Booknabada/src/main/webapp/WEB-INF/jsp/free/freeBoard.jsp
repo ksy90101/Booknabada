@@ -102,7 +102,6 @@ a:hover{
 <body>
 
 	<div class="top_navi">
-
 		<div class="top_content">
 			<div id="box01" style="color: #BCB0FE;">공지사항</div>
 			<div id="bin"></div>

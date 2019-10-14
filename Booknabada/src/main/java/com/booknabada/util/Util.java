@@ -1,10 +1,8 @@
 package com.booknabada.util;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class Util {
 	
-	//ip�가�오�
+	//ip�가�오�
 //	public static String getIp(HttpServletRequest request) {
 //		String ip = request.getHeader("X-FORWARDED-FOR");
 //		
@@ -26,7 +24,7 @@ public class Util {
 //		return ip;
 //	}
 	
-	//id체크�기
+	//id체크�기
 	public static int checkInt(String str) {
 		
 		StringBuilder sb = new StringBuilder();
