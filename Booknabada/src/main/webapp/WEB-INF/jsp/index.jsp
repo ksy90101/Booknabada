@@ -18,7 +18,7 @@
 <a href="newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
-
+<textarea name="editor"></textarea>
 <script>CKEDITOR.replace('editor', {height:800});</script>
 
 </body>
