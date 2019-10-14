@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디찾기</title>
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/header.css">
 <style type="text/css">
 
 body{

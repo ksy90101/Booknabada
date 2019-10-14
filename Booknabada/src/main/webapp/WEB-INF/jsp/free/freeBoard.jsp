@@ -100,6 +100,7 @@ a:hover{
 </style>
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 	<div class="top_navi">
 		<div class="top_content">
@@ -139,6 +140,8 @@ a:hover{
 		</table>
 	</div>
 
+
+<!-- 검색바 -->
 	<div id="search">
 		<div id="underBar">
 		<select name="search1">
@@ -157,6 +160,7 @@ a:hover{
 
 
 
+<jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 </html>

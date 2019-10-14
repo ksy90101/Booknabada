@@ -27,5 +27,10 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.login(dto);
 	}
 
+	@Override
+	public int checkID(String id) throws Exception {
+		return loginDAO.checkID(id);
+	}
+
 }
 

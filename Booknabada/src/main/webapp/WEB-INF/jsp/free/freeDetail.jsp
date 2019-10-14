@@ -34,6 +34,8 @@ function del(num){
 </script>
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
+
 	<!-- 카테고리 -->
 	<div class="top_navi">
 		<div class="top_content">
@@ -72,24 +74,23 @@ function del(num){
 			<p style="padding:0 20px;">${freeDetail.board_title }</p>
 			</div>
 		</div>
-		<div id="list" style="height: 60px;">
+		<div id="list" style="height: 420px;">
 			<div id="title">내용</div>
-			<div id="listbox" style="width: 100%; height: 400px; text-align: left;">
+			<div id="listbox" style="width: 100%; height: 360px; text-align: left; line-height: 20px; padding: 20px 0;">
+			<c:if test="${freeDetail.board_picture ne null}">
+			<img alt="" src="../upimg/${freeDetail.board_picture }"><br>
+			</c:if>
 			<p style="padding:0 20px;">${freeDetail.board_content }</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="BoardbuttonPart">
-		<button id="Boardbutton" style="background-color: #E8E8E8;"
-			onclick="modify(${freeDetail.board_no})">수정</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${freeDetail.board_no})">수정</button>
 		<div id="bin2"></div>
-		<button id="Boardbutton" style="background-color: #E8E8E8;"
-			onclick="del(${freeDetail.board_no})">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="del(${freeDetail.board_no})">삭제</button>
 		<div id="bin2"></div>
-		<button id="Boardbutton"
-			style="background-color: #BCB0FE; color: white"
-			onclick="location.href='freeBoard.do'">목록</button>
+		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='freeBoard.do'">목록</button>
 	</div>
 	
 <!-- 댓글박스 -->
@@ -112,6 +113,7 @@ function del(num){
 			<p style="width: 960px; height: 30px;">여기가 댓글 작성</p>
 		</div>
 	</div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 
 
 </body>

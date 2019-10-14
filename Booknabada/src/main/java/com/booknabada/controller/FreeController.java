@@ -1,5 +1,8 @@
 package com.booknabada.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -64,6 +67,7 @@ public class FreeController {
 		// Write.do로 가기
 		return new ModelAndView("free/freeWrite");
 
+		//
 	}
 
 	// 글쓰기 실행
@@ -88,20 +92,20 @@ public class FreeController {
 		dto.setBoard_content(content);
 
 		// 사진업로드
-//		if (file.getOriginalFilename() != null) {
-//			// 지금 시간 가져오기
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-//			String today = sdf.format(new Date());
-//			// 시간+파일이름 합치기
-//			String upFileName = today + file.getOriginalFilename();
-//			// 파일 업로드 경로
-//			String path = request.getSession().getServletContext().getRealPath("");
-//			// System.out.println("리얼경로 " + path);
-//			File f = new File(path + "upimg/" + upFileName); // 준비
-//			file.transferTo(f); // 실제 파일 전송
-//
-//			dto.setBoard_picture(upFileName);
-//		}
+		if (file.getOriginalFilename() != null) {
+			// 지금 시간 가져오기
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String today = sdf.format(new Date());
+			// 시간+파일이름 합치기
+			String upFileName = today + file.getOriginalFilename();
+			// 파일 업로드 경로
+			String path = request.getSession().getServletContext().getRealPath("");
+			System.out.println("리얼경로 " + path);
+			File f = new File(path + "upimg/" + upFileName); // 준비
+			file.transferTo(f); // 실제 파일 전송
+
+			dto.setBoard_picture(upFileName);
+		}
 
 		// 데이터베이스 쓰기 실행
 		freeService.freeWriteAction(dto);
@@ -170,7 +174,7 @@ public class FreeController {
 
 	// 수정버튼 실행
 	@RequestMapping(value = "free/modifyAction.do")
-	public ModelAndView modifyAction(HttpServletRequest request) throws Exception {
+	public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
 //				HttpSession session = request.getSession();
 		String board_no = request.getParameter("board_no");
 		ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
@@ -182,11 +186,36 @@ public class FreeController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
+		//엔터키 적용
+		
+		content = content.replaceAll("\r\n", "\n");
+		content = content.replaceAll("\n", "<br>");
+		
+		
 		FreeDTO dto = new FreeDTO();
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
 		dto.setBoard_no(Util.checkInt(board_no));
 //					dto.setUser_name((String) session.getAttribute("id"));
+		
+		
+		//사진업로드
+		if (file.getOriginalFilename() == file.getOriginalFilename()) {
+			//지금 시간 가져오기
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String today = sdf.format(new Date());
+			//시간+파일이름 합치기
+			String upFileName = today + file.getOriginalFilename();
+			//파일 업로드 경로
+			String path = request.getSession().getServletContext().getRealPath("");
+			//System.out.println("리얼경로 " + path);
+			File f = new File(path + "upimg/" + upFileName); //준비
+			file.transferTo(f); //실제 파일 전송
+			
+			dto.setBoard_picture(upFileName);
+		}
+		
+		//데이터베이스 쓰기 실행
 		freeService.modifyAction(dto);
 
 //				}	else {

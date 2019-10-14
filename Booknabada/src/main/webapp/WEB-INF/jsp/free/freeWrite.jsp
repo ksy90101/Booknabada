@@ -15,6 +15,8 @@
 </style> -->
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
+
 	<!-- 카테고리 -->
 	<div class="top_navi">
 
@@ -51,5 +53,7 @@
 	</div>
 	
 	</form>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 </body>
 </html>

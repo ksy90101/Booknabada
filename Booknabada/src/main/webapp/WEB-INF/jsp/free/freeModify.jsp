@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../css/boardDetail.css">
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 	<div class="top_navi">
 
@@ -45,6 +46,7 @@
 		<input type="hidden" name="board_no" value="${modify.board_no }">
 	</div>
 		</form>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>
 </html>

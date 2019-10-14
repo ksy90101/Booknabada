@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/header.css">
 <style type="text/css">
 
 body{
@@ -29,7 +29,7 @@ ul{
 	list-style-type: none;
 }
 li{
-	height:50px;
+	height:48px;
 }
 input{
 	height:45px;
@@ -42,29 +42,33 @@ input[type='radio']{
 	width:14px;
 }
 
+#insertID{
+	width:250px;
+}
 
 select{
-	height:48px;
-
+	height:46px;
+	width:111px;
 }
 button{
 	height:48px;
-	width:380px;
+	width:80px;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
 	border-radius:10px;
 	color: white;
 }
+#checkit{
+	
+	width:350px;
+	
+}
+
 
 .email{
-	width:85px;
+	width:84px;
 }
-
-.sel{
-	width:111px;
-}
-
 
 .link{
 	margin-top:30px;
@@ -93,6 +97,40 @@ function email3(userinput){
 	
 }
 
+function checkID(){
+	var id = $('#insertID').val();
+	//alert(id);
+	if( $('#insertID').val() == ""){
+		alert("아이디를 입력하세요.");
+		 $('#insertID').focus();
+		 return false;
+	}
+	$.ajax({
+		type : 'post',
+		data : "id="+ id,
+		dataType : 'text',
+		url : 'checkID.do',
+		success : function(rData, textStatus, xhr){
+			var check = rData;
+			if(check == 1){
+				alert("이미 가입된 ID입니다.");
+				$('#resulttext').css('color', 'red');
+				$('#resulttext').text('이미 등록된 ID입니다.');
+				$('#checkit').prop('disabled', true);
+			}else{
+				alert("등록 가능한 ID입니다.\n계속 진행하세요.");
+				$('#checkit').prop('disabled', false);
+				$('#resulttext').css('color', 'blue');
+				$('#resulttext').text('등록가능합니다. 계속 진행하세요.');
+			}
+		},
+		error : function(xhr, status, e){
+			alert("error : " + e);
+			
+		}
+	});
+	return false;
+}
 
 function check(){
 	if(document.join.id.value == ""){
@@ -120,11 +158,13 @@ function check(){
 	
 	if(document.join.pw1.value != document.join.pw2.value){
 		alert("암호가 일치 하지 않습니다.");
-		//document.getElementByName('pw1').value = "";
-		//document.getElementByName('pw2').value = "";
+		document.getElementByName('pw1').value = "";
+		document.getElementByName('pw2').value = "";
 		document.join.pw1.focus();
 		return false;
 	}
+	
+	document.join.submit();
 }
 
 </script>
@@ -141,8 +181,9 @@ function check(){
 		<div class="form_wrap">
 			<form name="join" action="joinAction.do" method="post">
 				<ul>
-					<li><input type="text" id="insertID" placeholder="아이디" name="id"></li>
-					<!-- <li><br><p id="resulttext">아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.</p></li> -->
+					<li><input type="text" id="insertID" placeholder="아이디" name="id">
+					<button type="button" onclick="return checkID();">ID확인</button></li>
+					<li><br><p id="resulttext">아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.</p></li>
 					<li><input type="password" name="pw1" placeholder="비밀번호"></li>
 					<li><input type="password" name="pw2" placeholder="비밀번호 확인"></li>
 				</ul>
@@ -151,7 +192,7 @@ function check(){
 					<li><input type="text" placeholder="이름" name="name"></li>
 					<li><input type="radio" name="gender" value="man">남자<input
 						type="radio" name="gender" value="woman">여자</li>
-					<li><input type="date" class="birth" name = "birth">
+					<li><input type="date" class="birth" name = "birth"></li>
 					<li><input class="email" type="text" name="email1" placeholder="이메일" >
 						@ <input class="email" type="text" name="email2" readonly="readonly">
 						<select class="sel" name="m_email3" onchange="email3(this.form)">
@@ -166,12 +207,13 @@ function check(){
 							<option value="empal.com">empal.com</option>
 							<option value="korea.com">korea.com</option>
 							<option value="paran.com">paran.com</option>
-							
-					</select></li>
+						</select></li>
 					<li><input type="text" placeholder="핸드폰 번호" name="tel"></li>
+					<br>
+					<li><button type="button" id="checkit"  onclick="return check();">가입하기</button></li>
 				</ul>
-				<br>
-				<button type="submit" id="checkit"  onclick="return check();">가입하기</button>
+				
+				
 			</form>
 		</div>
 		<div class="link">
