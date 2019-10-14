@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
 <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="./css/header.css">
 <style type="text/css">
 
 body{

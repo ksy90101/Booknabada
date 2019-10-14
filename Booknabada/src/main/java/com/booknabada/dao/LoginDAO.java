@@ -6,6 +6,7 @@ import com.booknabada.dto.LoginDTO;
 import com.common.dao.AbstractDAO;
 
 @Repository("loginDAO")
+<<<<<<< HEAD
 public class LoginDAO extends AbstractDAO{
 
 	public String login(LoginDTO dto) {
@@ -17,3 +18,13 @@ public class LoginDAO extends AbstractDAO{
 
 
 }
+=======
+public class LoginDAO extends AbstractDAO {
+
+	public int joinAction(LoginDTO dto) {
+		return (int) insert("login.joinAction", dto);
+	}
+
+
+}
+>>>>>>> refs/remotes/origin/Yehee2
