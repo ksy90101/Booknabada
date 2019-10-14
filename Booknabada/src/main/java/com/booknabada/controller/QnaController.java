@@ -29,10 +29,12 @@ public class QnaController {
 	
 	//게시판 목록
 	@RequestMapping(value="qna/qnaBoard.do")
-	public ModelAndView qna() throws Exception{
+	public ModelAndView qna(http) throws Exception{
 		ModelAndView mv = new ModelAndView("qna/qnaBoard");
 		
 		int page = 1;
+		
+		if (request)
 		
 		List<QnaDTO> board = qnaService.board(((page - 1) * 10));
 		

@@ -9,23 +9,6 @@ import com.booknabada.dao.LoginDAO;
 import com.booknabada.dto.LoginDTO;
 
 @Service("loginService")
-<<<<<<< HEAD
-public class LoginServiceImpl implements LoginService{
-	Logger log = Logger.getLogger(this.getClass());
-	
-	@Resource(name="loginDAO")
-	private LoginDAO loginDAO;
-
-	@Override
-	public String login(LoginDTO dto) throws Exception {
-		
-		return loginDAO.login(dto);
-	}
-
-
-
-}
-=======
 public class LoginServiceImpl implements LoginService {
 
 	Logger log = Logger.getLogger(this.getClass());
@@ -37,8 +20,12 @@ public class LoginServiceImpl implements LoginService {
 	public int joinAction(LoginDTO dto) throws Exception {
 		return loginDAO.joinAction(dto);
 	}
-
-
+	
+	@Override
+	public String login(LoginDTO dto) throws Exception {
+		
+		return loginDAO.login(dto);
+	}
 
 }
->>>>>>> refs/remotes/origin/Yehee2
+

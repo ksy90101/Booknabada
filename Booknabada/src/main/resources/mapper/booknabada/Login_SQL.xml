@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
 
 <mapper namespace="login">
 
 	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
 		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
 	</select>
-=======
-<mapper namespace="login">
 
 	<insert id="joinAction" parameterType="com.booknabada.dto.LoginDTO">
 		<![CDATA[		
@@ -16,8 +13,5 @@
 		VALUES(#{user_name}, #{user_id }, #{user_pw }, #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
 		]]>
 	</insert>
-	
-	
 
->>>>>>> refs/remotes/origin/Yehee2
 </mapper>

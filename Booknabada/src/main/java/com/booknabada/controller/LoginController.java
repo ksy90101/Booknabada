@@ -2,10 +2,8 @@ package com.booknabada.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
+
 import javax.servlet.http.HttpSession;
-=======
->>>>>>> refs/remotes/origin/Yehee2
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -21,7 +19,7 @@ public class LoginController {
 
 	@Resource(name = "loginService")
 	private LoginService loginService;
-<<<<<<< HEAD
+
 
 	@RequestMapping(value = "login.do")
 	public ModelAndView login() throws Exception{
@@ -29,10 +27,7 @@ public class LoginController {
 		
 		return mv;
 	}
-=======
->>>>>>> refs/remotes/origin/Yehee2
-	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "loginAction.do")
 	public ModelAndView loginAction(HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
@@ -53,18 +48,17 @@ public class LoginController {
 		}else {
 			mv = new ModelAndView("redirect:login.do");
 		}
-=======
+		return mv;
+	}
+
 	@RequestMapping(value = "newuser.do")
 	public ModelAndView newuser(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("newuser");
 		//HttpSession session = request.getSession();
->>>>>>> refs/remotes/origin/Yehee2
 		
 		return mv;
 	}
-<<<<<<< HEAD
-=======
-
+	
 	// joinAction.do
 	@RequestMapping(value = "joinAction.do")
 	public ModelAndView joinAction(HttpServletRequest request) throws Exception {
@@ -88,8 +82,5 @@ public class LoginController {
 		
 		return mv;
 	}
-	
-	
-	
->>>>>>> refs/remotes/origin/Yehee2
+
 }

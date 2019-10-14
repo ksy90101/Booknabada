@@ -13,9 +13,6 @@
 <script src="./ckeditor/ckeditor.js"></script>
 </head>
 <body>
-index
-<<<<<<< HEAD
-Žã…‡
 <a href="./free/freeBoard.do">free</a>
 <a href="login.do">login</a>
 <a href="newuser.do">newuser</a>
@@ -23,6 +20,6 @@ index
 <a href="findpw.do">findpw</a>
 
 <script>CKEDITOR.replace('editor', {height:800});</script>
->>>>>>> refs/heads/Seyun
+
 </body>
 </html>
