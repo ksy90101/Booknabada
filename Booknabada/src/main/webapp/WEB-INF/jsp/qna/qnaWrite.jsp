@@ -9,8 +9,11 @@
 <title>글 작성</title>
 <link rel="stylesheet" href="../css/boardWrite.css">
 <link rel="stylesheet" href="../css/boardDetail.css">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
+	
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	
 	<!-- 카테고리 -->
 	<div class="top_navi">
@@ -21,7 +24,7 @@
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='../qnaBoard.do'">QNA</div>
+			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='../qna/qnaBoard.do'">QNA</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
 		</div>
@@ -30,10 +33,13 @@
 	<!-- 글박스 -->
 		<form action="qnaWriteAction.do" method="post" enctype="multipart/form-data">
 	<div id="writebox">
-			<h3>제목</h3>
+			<h3 id=writetitle>제목</h3>
 			<input id="title" type="text" name="title">
-			<h4>내용</h4>
+			<h3 id=writetitle>내용</h3>
 			<textarea id="content" name="content"></textarea>
+			<script type="text/javascript">
+			CKEDITOR.replace('content',{width:980, height:340})
+			</script>
 			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	
@@ -44,6 +50,8 @@
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" type="submit">완료</button>
 	</div>
 		</form>
+		
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>
 </html>

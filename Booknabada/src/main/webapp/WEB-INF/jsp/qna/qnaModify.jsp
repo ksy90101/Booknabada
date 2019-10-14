@@ -37,6 +37,7 @@
 			${modify.board_content }
 			</textarea>
 			<input id="imgUp" type="file" accept="image/*" name="file">
+			<c:if test="${modify.board_picture ne null}"> ${modify.board_picture } </c:if>
 	</div>
 	
 	<!-- 버튼박스 -->

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -70,6 +71,7 @@ public class QnaController {
 		
 		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		QnaDTO qnaDetail = qnaService.detail(reBno);
+		
 //		List<QnaDTO> coment = qnaService.coment(reBno);
 		
 		//DB에서 온 데이터 jsp에 뿌리기
@@ -82,25 +84,21 @@ public class QnaController {
 	@RequestMapping(value="qna/qnaWrite.do")
 	public ModelAndView qnaWrite(HttpServletRequest request) throws Exception{
 		
-		
-		//Write.do로 가기
-		return new ModelAndView("qna/qnaWrite");
+		HttpSession session = request.getSession();
 		
 		//로그인 한 사람만 보이게...
-//		HttpSession session = request.getSession();
-//				
-//		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
-//			return new ModelAndView("write");
-//		} else {
-//			return new ModelAndView("redirect:index.do");
-//		}
-				
+		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			//Write.do로 가기
+			return new ModelAndView("qna/qnaWrite");
+		} else {
+			return new ModelAndView("redirect:index.do");
+		}
 	}
-	
+		
 	//글쓰기 실행
 	@RequestMapping(value="qna/qnaWriteAction.do")
 	public ModelAndView writeAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{		
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		
 		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
 
@@ -117,11 +115,10 @@ public class QnaController {
 		dto.setCate_no(1);
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
-//		dto.setUser_name("이건영");
-//		dto.setUser_name((String)session.getAttribute("이건영"));
+		dto.setUser_name((String)session.getAttribute("id"));
 		
 		//사진업로드
-		if (file.getOriginalFilename() != null) {
+		if (!file.isEmpty()) {
 			//지금 시간 가져오기
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String today = sdf.format(new Date());
@@ -129,7 +126,7 @@ public class QnaController {
 			String upFileName = today + file.getOriginalFilename();
 			//파일 업로드 경로
 			String path = request.getSession().getServletContext().getRealPath("");
-			System.out.println("리얼경로 " + path);
+			//System.out.println("리얼경로 " + path);
 			File f = new File(path + "upimg/" + upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
 			
@@ -145,30 +142,32 @@ public class QnaController {
 	//글삭제 실행
 	@RequestMapping(value="qna/qnaDelete.do")
 	public ModelAndView detailDetele(HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 			
 		//보드로 되돌아가기 1번
 		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
 
 		//세션추가
-//		if (session.getAttribute("name") != null && 
-//			session.getAttribute("id") != null && 
-//			session.getAttribute("board3_no") != null) {
+		
+		if (session.getAttribute("name") != null && 
+			session.getAttribute("id") != null ) {
+			
 			String board_no = request.getParameter("board_no");
 				
 			//숫자를 체크
 			int detail_no = Util.checkInt(board_no);
-				
+			
 			QnaDTO dto = new QnaDTO();
 			dto.setBoard_no(detail_no);
-//			dto.setUser_name((String)session.getAttribute("id"));
+			dto.setUser_name((String)session.getAttribute("name"));
 				
 			//DB쪽으로 보내기
 			qnaService.detailDelete(dto);
 			
-//		} else {
-//			mv.setViewName("error?code=4");
-//		}
+		} 
+		else {
+			mv.setViewName("error?code=4");
+		}
 			
 			return mv;
 		}
@@ -176,40 +175,42 @@ public class QnaController {
 	//수정페이지 이동
 	@RequestMapping(value="qna/qnaModify.do")
 	public ModelAndView detailModify(HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 			
 		//수정버튼 누르면 수정페이지로 이동
 		ModelAndView mv = new ModelAndView("qna/qnaModify");
 		
+		//보드넘버가져오기
 		String board_no = request.getParameter("board_no");
-			
-		//숫자체크 후 게시판번호 담기
+		
+		//게시판번호가 숫자인지 체크
 		int reBno = Util.checkInt(board_no);
-			
+		
 		//자기글 불러와서 DTO에 담기
 		QnaDTO detail = qnaService.detail(reBno);
-			
-		mv.addObject("modify", detail);
 		
 		//세션
-//		if (detail.getUser_name().equals(session.getAttribute("name"))) {
-//			//modify ModelAndView에 DTO 보이게하기
-//		} else {
-//			mv.setViewName("error?code=3");
-//		}
-//					
+		if (detail.getUser_name().equals(session.getAttribute("name"))) {
+			mv.addObject("modify", detail);
+			
+		} else {
+			mv.setViewName("error?code=3");
+		}
+					
 		return mv;
 	}
 	
 	//수정버튼 실행
 		@RequestMapping(value="qna/modifyAction.do")
 		public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
-//			HttpSession session = request.getSession();
+			HttpSession session = request.getSession();
 			String board_no = request.getParameter("board_no");
 			ModelAndView mv = new ModelAndView("redirect:qnaDetail.do?board_no=" + board_no);
 			
 			//세션
-//			if (session.getAttribute("name") != null && session.getAttribute("id") != null && session.getAttribute("board3_no") != null ) {
+			if (session.getAttribute("name") != null && 
+				session.getAttribute("id") != null ) {
+				
 				mv.setViewName("redirect:qnaDetail.do?board_no=" + board_no);
 				
 				String title = request.getParameter("title");
@@ -223,10 +224,10 @@ public class QnaController {
 				dto.setBoard_title(title);
 				dto.setBoard_content(content);
 				dto.setBoard_no(Util.checkInt(board_no));
-//				dto.setUser_name((String) session.getAttribute("id"));
+				dto.setUser_name((String) session.getAttribute("id"));
 				
 				//사진업로드
-				if (file.getOriginalFilename() == file.getOriginalFilename()) {
+				if (!file.isEmpty()) {
 					//지금 시간 가져오기
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 					String today = sdf.format(new Date());
@@ -240,13 +241,14 @@ public class QnaController {
 					
 					dto.setBoard_picture(upFileName);
 				}
+			
 				
 				//데이터베이스 쓰기 실행
 				qnaService.modifyAction(dto);
 				
-//			}	else {
-//				mv.setViewName("error?code=5");
-//			}
+			}	else {
+				mv.setViewName("error?code=5");
+			}
 			
 			return mv;
 		}

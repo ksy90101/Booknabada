@@ -143,9 +143,9 @@ button{
 	border: 1px solid #A797FE;
 }
 .BoardbuttonPart{
-	width:310px;
+	display: table;
 	height: 35px;
-	margin: 20px auto;
+	margin: 30px auto;
 }
 #Boardbutton{
 	width: 90px;
