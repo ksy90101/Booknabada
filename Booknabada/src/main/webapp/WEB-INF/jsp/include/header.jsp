@@ -14,7 +14,7 @@
 				</li>
 			</ul>
 			<h1 class="logo">
-				<a href="index.jsp">
+				<a href="../index.do">
 					<img src="../images/logo.png" alt="BOOKNABADA">
 				</a>
 			</h1>

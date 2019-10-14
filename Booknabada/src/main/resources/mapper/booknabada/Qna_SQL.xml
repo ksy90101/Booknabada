@@ -27,8 +27,8 @@
 	<insert id="writeAction" parameterType="com.booknabada.dto.QnaDTO">
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
-			VALUES(
-			#{board_title}, #{board_content}, 1 , 1 , #{board_picture }) 
+			VALUES(#{board_title}, #{board_content}, 1, 
+			(SELECT user_no FROM user_info WHERE user_id=#{user_name}), #{board_picture })
 		]]>
 	</insert>
 	

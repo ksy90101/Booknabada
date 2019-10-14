@@ -102,6 +102,9 @@ public class QnaController {
 		
 		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
 
+		if (session.getAttribute("name") != null && 
+			session.getAttribute("id") != null ) {
+			
 		//작성된값 가져가기
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -135,6 +138,10 @@ public class QnaController {
 		
 		//데이터베이스 쓰기 실행
 		qnaService.qnaWriteAction(dto);
+		} 
+		else {
+			mv.setViewName("caution");
+		}
 		
 		return mv;
 	}
@@ -148,7 +155,6 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView("redirect:qnaBoard.do");
 
 		//세션추가
-		
 		if (session.getAttribute("name") != null && 
 			session.getAttribute("id") != null ) {
 			
@@ -159,14 +165,14 @@ public class QnaController {
 			
 			QnaDTO dto = new QnaDTO();
 			dto.setBoard_no(detail_no);
-			dto.setUser_name((String)session.getAttribute("name"));
-				
+			dto.setUser_name((String)session.getAttribute("id"));
+			
 			//DB쪽으로 보내기
 			qnaService.detailDelete(dto);
 			
 		} 
 		else {
-			mv.setViewName("error?code=4");
+			mv.setViewName("caution");
 		}
 			
 			return mv;
@@ -194,7 +200,7 @@ public class QnaController {
 			mv.addObject("modify", detail);
 			
 		} else {
-			mv.setViewName("error?code=3");
+			mv.setViewName("caution");
 		}
 					
 		return mv;
@@ -247,7 +253,7 @@ public class QnaController {
 				qnaService.modifyAction(dto);
 				
 			}	else {
-				mv.setViewName("error?code=5");
+				mv.setViewName("caution");
 			}
 			
 			return mv;
