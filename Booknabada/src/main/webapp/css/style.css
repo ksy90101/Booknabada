@@ -142,6 +142,9 @@
 	background:#BCB0FE;
 	color:#fff;
 }
+#eventWrap .paging-wrap{width:100%; text-align:center}
+#eventWrap .paging{display:inline-block; }
+#eventWrap .paging button{width:60px; display:inline-block; margin:auto;}
 
 
 /* eventDetail */

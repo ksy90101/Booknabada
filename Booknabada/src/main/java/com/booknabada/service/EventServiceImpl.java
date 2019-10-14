@@ -20,8 +20,8 @@ public class EventServiceImpl implements EventService{
 
 
 	@Override
-	public List<EventDTO> eboard() throws Exception {
-		return eventDAO.eboard();
+	public List<EventDTO> eboard(int page) throws Exception {
+		return eventDAO.eboard(page);
 	}
 
 

@@ -11,8 +11,8 @@ import com.common.dao.AbstractDAO;
 public class EventDAO extends AbstractDAO{
 	
 	@SuppressWarnings("unchecked")
-	public List<EventDTO> eboard() {
-		return selectList("event.eboard");
+	public List<EventDTO> eboard(int page) {
+		return selectList("event.eboard", page);
 	}
 
 	public void writeAction(EventDTO dto) {

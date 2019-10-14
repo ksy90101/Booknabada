@@ -28,13 +28,20 @@ public class EventController {
 	private EventService eventService;
 	
 	@RequestMapping(value="event.do")
-    public ModelAndView event(CommandMap commandMap) throws Exception{
+    public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("event");
     	int page =1;
     	
-    	List<EventDTO> eboard = eventService.eboard();
+    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+		}
+    	
+    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
     	
     	mv.addObject("eboard",eboard);
+    	mv.addObject("page", page);
+    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+    	//System.out.println(eboard.get(0).getTotalCount());
     	
     	return mv;
     }	
