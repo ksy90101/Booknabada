@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="event">
+	<select id="eboard" resultType="com.booknabada.dto.EventDTO">
+		SELECT * FROM event_view ORDER BY event_no DESC
+	</select>
+	<insert id="writeAction" parameterType="com.booknabada.dto.EventDTO">
+		<![CDATA[
+			INSERT INTO event_board(event_title, event_content, user_no, event_picture)
+			VALUES(#{event_title }, #{event_content }, 3,#{event_picture })
+		]]> 
+	</insert>
+	<select id="detail" parameterType="int" resultType="com.booknabada.dto.EventDTO">
+		SELECT * FROM event_view WHERE event_no=#{reBno }
+	</select>
+	
+	<update id="countUp" parameterType="int">
+		UPDATE event_board SET event_count = event_count+1 WHERE event_no=#{reBno }
+	</update>
+	
+	<delete id="eventDelete" parameterType="com.booknabada.dto.EventDTO" >
+		DELETE FROM event_board WHERE event_no=#{event_no } 
+	</delete>
+	
+	<update id="eventModify" parameterType="com.booknabada.dto.EventDTO">
+	 	UPDATE event_board SET event_title=#{event_title }, event_content=#{event_content } 
+	 	<if test="event_picture != null">, event_picture=#{event_picture } </if>
+	 	WHERE event_no=#{event_no }
+	</update>	
+</mapper>

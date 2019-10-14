@@ -73,7 +73,7 @@
 			<p style="padding:0 20px;">${qnaDetail.board_title }</p>
 			</div>
 		</div>
-		<div id="list" style="height: 60px;">
+		<div id="list" style="height: 420px;">
 			<div id="title">내용</div>
 			<div id="listbox" style="width: 100%; height: 360px; text-align: left; line-height: 20px; padding: 20px 0;">
 			<c:if test="${qnaDetail.board_picture ne null}">
@@ -84,6 +84,7 @@
 		</div>
 	</div>
 	
+	<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
 		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${qnaDetail.board_no})">수정</button>
 		<div id="bin2"></div>

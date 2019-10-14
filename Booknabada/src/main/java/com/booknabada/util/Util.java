@@ -1,10 +1,7 @@
 package com.booknabada.util;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class Util {
 	
-	//id체크하기
 	public static int checkInt(String str) {
 		
 		StringBuilder sb = new StringBuilder();
