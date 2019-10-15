@@ -19,6 +19,7 @@
 <a href="login/findid.do">findid</a>
 <a href="login/findpw.do">findpw</a>
 <a href="event/event.do">event</a>
+<a href="book/bookadd.do">bookadd</a>
 
 <script>CKEDITOR.replace('editor', {height:800});</script>
 
