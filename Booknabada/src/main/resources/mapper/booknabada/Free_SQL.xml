@@ -38,15 +38,11 @@
 
 <!-- 글수정 -->
 	<update id="modifyAction" parameterType="com.booknabada.dto.FreeDTO">
-		<![CDATA[
 		UPDATE board SET board_title = #{board_title}, board_content = #{board_content}
-		 <if test="board_picture != null">, board_picture = #{board_picture }</if>
+		<if test="board_picture != null"> ,board_picture = #{board_picture } </if>
         WHERE board_no=#{board_no } 
 		AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name})
-		]]>
 	</update>
-	
-	
 	<!-- UPDATE board SET board_title = #{board_title}, board_content = #{board_content}, board_picture = #{board_picture}
 		WHERE board_no = #{board_no} -->
 	<!-- 코멘트 보기 -->

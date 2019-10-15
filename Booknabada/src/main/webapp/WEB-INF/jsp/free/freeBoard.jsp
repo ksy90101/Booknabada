@@ -56,10 +56,10 @@
 			</c:forEach>
 		</table>
 	</div>
-	
+
 	<!-- 페이징박스 -->
-	<div class="pagingbox">
-				<div class="paging">
+	<div >
+				<div >
 					<%@include file="../include/boardpaging.jsp"%>
 					<c:if test="${page gt 10 }">
 						<button onclick="location.href='freeBoard.do?page=${page-10 }'">이전</button>
@@ -70,7 +70,7 @@
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:if test="${i eq page }">
 							<button onclick="location.href='freeBoard.do?page=${i }'"
-								style="background-color: pink; border: none">${i }</button>
+								style="background-color: #A797FE; border: none; color:white; font-weight: bold;">${i }</button>
 						</c:if>
 						<c:if test="${i ne page }">
 							<button onclick="location.href='freeBoard.do?page=${i }'">${i }</button>
@@ -99,7 +99,7 @@
 		<button id=boardButton type="submit" onclick="location.href='freeWrite.do'">글쓰기</button></c:if>
 		</div>
 	</div>
-
+	
 
 
 

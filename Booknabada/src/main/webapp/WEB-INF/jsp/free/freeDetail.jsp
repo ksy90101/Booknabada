@@ -87,7 +87,7 @@ function del(num){
 
 <!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
-	<c:if test="${sessionScope.name eq qnaDetail.user_name }">
+	<c:if test="${sessionScope.name eq freeDetail.user_name }">
 		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${freeDetail.board_no})">수정</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="del(${freeDetail.board_no})">삭제</button>
