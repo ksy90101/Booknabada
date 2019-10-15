@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 import com.common.dao.AbstractDAO;
 
@@ -13,8 +14,8 @@ public class FreeDAO extends AbstractDAO{
 	/* SQL에서 가져오기 */
 	
 	@SuppressWarnings("unchecked")
-	public List<FreeDTO> board() {
-		return selectList("free.board");
+	public List<FreeDTO> board(int page) {
+		return selectList("free.board",page);
 	}
 	
 	public FreeDTO detail(int reBno) {
@@ -38,12 +39,20 @@ public class FreeDAO extends AbstractDAO{
 	public void modifyAction(FreeDTO dto) {
 		update("free.modifyAction", dto);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ComentDTO> coment(int reBno) {
+		return selectList("free.coment", reBno);
+	}
+	
+	public void comentAction(ComentDTO dto) {
+		insert("free.comentAction", dto);
+	}
 
-	/*
-	 * @SuppressWarnings("unchecked") public List<FreeDTO> coment(int reBno) {
-	 * return selectList("free.coment", reBno); }
-	 * 
-	 */
+	public void comentDelete(ComentDTO dto) {
+		delete("free.comentDelete", dto);
+	}
+	
 	
 	
 }

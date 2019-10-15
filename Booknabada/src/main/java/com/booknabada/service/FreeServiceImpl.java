@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.FreeDAO;
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 
 @Service("freeService")
@@ -20,9 +21,9 @@ public class FreeServiceImpl implements FreeService{
 
 
 	@Override
-	public List<FreeDTO> board() throws Exception {
+	public List<FreeDTO> board(int page) throws Exception {
 		
-		return freeDAO.board();
+		return freeDAO.board(page);
 	}
 
 
@@ -57,8 +58,29 @@ public class FreeServiceImpl implements FreeService{
 	}
 
 
-	/*
-	 * @Override public List<FreeDTO> coment(int reBno) throws Exception { return
-	 * freeDAO.coment(reBno); }
-	 */
+	@Override
+	public List<ComentDTO> coment(int reBno) throws Exception {
+		return freeDAO.coment(reBno);
+	}
+
+
+	@Override
+	public void comentAction(ComentDTO dto) throws Exception {
+		freeDAO.comentAction(dto);	
+	}
+
+
+	@Override
+	public void comentDelete(ComentDTO dto) throws Exception {
+		freeDAO.comentDelete(dto);
+	}
+
+
+	
+
+
+
+
+
+	
 }

@@ -32,5 +32,15 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.level(id);
 	}
 
+	@Override
+	public int checkID(String id) throws Exception {
+		return loginDAO.checkID(id);
+	}
+
+	@Override
+	public String finidAction(LoginDTO dto) throws Exception {
+		return loginDAO.findidAction(dto);
+	}
+
 }
 

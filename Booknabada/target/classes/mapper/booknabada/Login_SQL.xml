@@ -7,6 +7,10 @@
 		SELECT user_id FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
 	</select>
 
+	<select id="checkID" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM user_info WHERE user_id = #{user_id }
+	</select>
+
 	<insert id="joinAction" parameterType="com.booknabada.dto.LoginDTO">
 		<![CDATA[		
 		INSERT INTO user_info (user_name, user_id, user_pw, user_email, user_gender, user_birth, user_tel) 
@@ -16,5 +20,8 @@
 	<select id="level" parameterType="String" resultType="int">
 		SELECT user_level FROM user_info WHERE user_id=#{id }
 	</select>
-
+	
+	<select id="findidAction" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
+		SELECT user_id from user_info where user_name=#{user_name} and user_email=#{user_email}
+	</select>
 </mapper>

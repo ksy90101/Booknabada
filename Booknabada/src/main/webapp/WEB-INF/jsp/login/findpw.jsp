@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/header.css">
 <style type="text/css">
 
 body{
@@ -74,7 +74,7 @@ button{
 
 		<div class="image">
 			<h2>
-				<img src="icon/logo.png" align="middle">
+				<img src="../images/logo.png" align="middle">
 			</h2>
 		</div>
 

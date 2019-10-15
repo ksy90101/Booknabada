@@ -30,8 +30,6 @@
 <a href="event/event.do">event</a>
 <a href="book/bookadd.do">bookadd</a>
 
-<script>CKEDITOR.replace('editor', {height:800});</script>
->>>>>>> refs/heads/hejin
 
 </body>
 </html>

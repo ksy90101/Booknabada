@@ -212,7 +212,7 @@ public class EventController {
 				
 				//파일 업로드 경로
 				String path = request.getSession().getServletContext().getRealPath("");
-				//System.out.println("리얼경로 : "+path);
+				System.out.println("리얼경로 : "+path);
 				File f = new File(path+"upimg/"+upFileName); //준비
 				file.transferTo(f); //실제 파일 전송
 				//System.out.println("저장경로 : "+f.getPath());	
