@@ -1,9 +1,13 @@
 package com.booknabada.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -12,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 import com.booknabada.service.FreeService;
 import com.booknabada.util.Util;
+import com.common.common.CommandMap;
 
 @Controller
 public class FreeController {
@@ -81,26 +87,22 @@ public class FreeController {
 	// 글쓰기보기
 	@RequestMapping(value = "free/freeWrite.do")
 	public ModelAndView freeWrite(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("free/freeWrite");
+		ModelAndView mv = new ModelAndView();
 		// Write.do로 가기
-
 		String whatBoard = "free";
-
 		mv.addObject("whatBoard", whatBoard);
-		return new ModelAndView("");
 
 		HttpSession session = request.getSession();
-
+		
 		// 로그인 한 사람만 보이게...
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			// Write.do로 가기
-			return new ModelAndView("free/freeWrite");
+			mv.setViewName("free/freeWrite");
 		} else {
-			return new ModelAndView("redirect:index.do");
+			mv.setViewName("redirect:index.do");
 		}
-		//
-		mv.addObject("whatBoard", whatBoard);
-		return new ModelAndView("");
+
+		return mv;
 
 	}
 
@@ -152,7 +154,7 @@ public class FreeController {
 		} else {
 			mv.setViewName("caution");
 		}
-
+		String whatBoard = "free";
 		mv.addObject("whatBoard", whatBoard);
 
 		return mv;
@@ -165,33 +167,6 @@ public class FreeController {
 
 		// 보드로 되돌아가기 1번
 		ModelAndView mv = new ModelAndView("redirect:freeBoard.do");
-
-		// 세션추가
-//			if (session.getAttribute("name") != null && 
-//				session.getAttribute("id") != null && 
-//				session.getAttribute("board3_no") != null) {
-		String board_no = request.getParameter("board_no");
-
-		// 숫자를 체크
-		int detail_no = Util.checkInt(board_no);
-
-		FreeDTO dto = new FreeDTO();
-		dto.setBoard_no(detail_no);
-//				dto.setUser_name((String)session.getAttribute("id"));
-
-		// DB쪽으로 보내기
-		freeService.detailDelete(dto);
-
-//			} else {
-//				mv.setViewName("error?code=4");
-//			}
-		
-		String whatBoard = "free";
-
-		mv.addObject("whatBoard", whatBoard);
-
-		return mv;
-	}
 
 	// 세션추가
 	if(session.getAttribute("name")!=null&&session.getAttribute("id")!=null)
@@ -257,8 +232,6 @@ public class FreeController {
 				mv.setViewName("caution");
 				//mv.setViewName("error?code=3");
 			}
-		String whatBoard = "free";
-
 		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}

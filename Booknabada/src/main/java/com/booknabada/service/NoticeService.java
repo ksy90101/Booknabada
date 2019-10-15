@@ -2,9 +2,8 @@ package com.booknabada.service;
 
 import java.util.List;
 
-import com.booknabada.dto.NoticeDTO;
 import com.booknabada.dto.ComentDTO;
-import com.booknabada.dto.FreeDTO;
+import com.booknabada.dto.NoticeDTO;
 
 
 public interface NoticeService {

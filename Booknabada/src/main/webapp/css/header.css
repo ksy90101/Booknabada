@@ -18,9 +18,11 @@
 }
 #header .logo{position: absolute; left: 50%; margin-left:-80px;width: 160px}
 #header .logo img{width: 160px}
-#header .right{float: right;width:70px;}
+#header .right{float: right;width:100px;}
 #header .right li{float: left;}
 #header .right li.mypage{margin-left: 20px}
+#header .right li.login{margin-left: 20px}
+#header .right li.logout{margin-left: 20px}
 #header .right li img{height:20px;}
 
 

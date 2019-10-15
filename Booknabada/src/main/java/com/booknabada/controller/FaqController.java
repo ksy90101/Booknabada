@@ -46,7 +46,7 @@ public class FaqController {
 		
 
 		mv.addObject("whatBoard", whatBoard);
-		mv.addObject("faq_all", faq_all);
+		mv.addObject("faq_all", faqboardall);
 		return mv;
 	}
 
@@ -58,7 +58,7 @@ public class FaqController {
 		String whatBoard = "faq";
 
 		mv.addObject("whatBoard", whatBoard);
-		mv.addObject("faq_best", faq_best);
+		mv.addObject("faq_best", faqboardbest);
 		return mv;
 	}
 	
@@ -105,15 +105,16 @@ public class FaqController {
 	
 	@RequestMapping(value = "faq/faqwrite.do")
 	public ModelAndView faqboardwrite(HttpServletRequest requset) throws Exception{
-		String whatBoard = "faq";
-		
+		ModelAndView mv = null;
 		HttpSession session = requset.getSession();
+		String whatBoard = "faq";
+		mv.addObject("whatBoard", whatBoard);
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
-			mv.addObject("whatBoard", whatBoard);
-			return new ModelAndView("faq/faqwrite");
+			mv.setViewName("faq/faqwrite");
+			return mv;
 		}else {
-					mv.addObject("whatBoard", whatBoard);
-			return new ModelAndView("redirect:../index.do");
+			mv.setViewName("redirect:../index.do");
+			return mv;
 		}
 		
 	}

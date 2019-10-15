@@ -88,7 +88,7 @@ public class QnaController {
 	//글쓰기보기
 	@RequestMapping(value="qna/qnaWrite.do")
 	public ModelAndView qnaWrite(HttpServletRequest request) throws Exception{
-		
+		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String whatBoard = "qna";
 		//로그인 한 사람만 보이게...

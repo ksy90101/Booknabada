@@ -43,11 +43,25 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
-			session.setAttribute("level",level);
+//			session.setAttribute("level",level);
 			
-			mv = new ModelAndView("redirect:login/index.do");
+			mv = new ModelAndView("redirect:../index.do");
 		}else {
 			mv = new ModelAndView("redirect:login/login.do");
+		}
+		return mv;
+	}
+
+	@RequestMapping(value = "login/logout.do")
+	public ModelAndView logout(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:../index.do");
+		HttpSession session = requset.getSession();
+		
+		if(session.getAttribute("name") != null ) {
+			session.removeAttribute("name");
+		}
+		if(session.getAttribute("id") != null) {
+			session.removeAttribute("id");
 		}
 		return mv;
 	}
@@ -77,7 +91,6 @@ public class LoginController {
 	@RequestMapping(value = "login/joinAction.do")
 	public ModelAndView joinAction(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:../index.do");
-		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 		if(request.getParameter("id") != null && request.getParameter("pw1") != null && request.getParameter("pw2") != null) {
 			String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 			LoginDTO dto = new LoginDTO();
@@ -92,45 +105,8 @@ public class LoginController {
 			int num = loginService.joinAction(dto);
 		} else {
 			
-		}
-		
-		ModelAndView mv = new ModelAndView("redirect:../index.do");						
-			
-		return mv;
-	}
-	@RequestMapping(value = "login/checkID.do")
-	public @ResponseBody int checkID(HttpServletRequest request) throws Exception {
-		String id = request.getParameter("id");
-		System.out.println(id);
-		int num = loginService.checkID(id); 
-		System.out.println(num);
-		return num;
-	}
-	
+		}			
 
-	@RequestMapping(value = "login/findidAction.do")
-	public ModelAndView findidAction(HttpServletRequest request) throws Exception {
-		ModelAndView mv = null;
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		if(request.getParameter("id") != null && request.getParameter("pw1") != null && request.getParameter("pw2") != null) {
-			String email = request.getParameter("email1") + "@" + request.getParameter("email2");
-			LoginDTO dto = new LoginDTO();
-			
-			dto.setUser_name(request.getParameter("name"));
-			dto.setUser_id(request.getParameter("id"));
-			dto.setUser_pw(request.getParameter("pw1"));
-			dto.setUser_tel(request.getParameter("tel"));
-			dto.setUser_email(email);
-			dto.setUser_birth(request.getParameter("birth"));
-			dto.setUser_gender(request.getParameter("gender"));
-			int num = loginService.joinAction(dto);
-		} else {
-			
-		}
-		
-		ModelAndView mv = new ModelAndView("redirect:../index.do");						
-			
 		return mv;
 	}
 	@RequestMapping(value = "login/checkID.do")
@@ -141,42 +117,6 @@ public class LoginController {
 		System.out.println(num);
 		return num;
 	}
-	
-
-	@RequestMapping(value = "login/findidAction.do")
-	public ModelAndView findidAction(HttpServletRequest request) throws Exception {
-		ModelAndView mv = null;
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		if(request.getParameter("id") != null && request.getParameter("pw1") != null && request.getParameter("pw2") != null) {
-			String email = request.getParameter("email1") + "@" + request.getParameter("email2");
-			LoginDTO dto = new LoginDTO();
-			
-			dto.setUser_name(request.getParameter("name"));
-			dto.setUser_id(request.getParameter("id"));
-			dto.setUser_pw(request.getParameter("pw1"));
-			dto.setUser_tel(request.getParameter("tel"));
-			dto.setUser_email(email);
-			dto.setUser_birth(request.getParameter("birth"));
-			dto.setUser_gender(request.getParameter("gender"));
-			int num = loginService.joinAction(dto);
-		} else {
-			
-		}
-		
-		ModelAndView mv = new ModelAndView("redirect:../index.do");						
-			
-		return mv;
-	}
-	@RequestMapping(value = "login/checkID.do")
-	public @ResponseBody int checkID(HttpServletRequest request) throws Exception {
-		String id = request.getParameter("id");
-		System.out.println(id);
-		int num = loginService.checkID(id); 
-		System.out.println(num);
-		return num;
-	}
-	
 
 	@RequestMapping(value = "login/findidAction.do")
 	public ModelAndView findidAction(HttpServletRequest request) throws Exception {
@@ -204,18 +144,5 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "login/logout.do")
-	public ModelAndView logout(HttpServletRequest requset) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:../index.do");
-		HttpSession session = requset.getSession();
-		
-		if(session.getAttribute("name") != null ) {
-			session.removeAttribute("name");
-		}
-		if(session.getAttribute("id") != null) {
-			session.removeAttribute("id");
-		}
-		return mv;
-	}
 
 }

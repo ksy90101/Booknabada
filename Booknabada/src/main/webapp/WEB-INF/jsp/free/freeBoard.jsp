@@ -18,9 +18,8 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
-
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-	
+
 	<div id="board">
 		<table>
 			<tr>

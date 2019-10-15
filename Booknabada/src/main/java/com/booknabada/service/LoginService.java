@@ -10,7 +10,7 @@ public interface LoginService {
 
 	int checkID(String id) throws Exception;
 
-	String finidAction(LoginDTO dto) throws Exception
+	String finidAction(LoginDTO dto) throws Exception;
 	
 	int level(String id) throws Exception;
 	

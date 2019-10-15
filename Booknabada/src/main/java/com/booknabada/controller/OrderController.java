@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.OrderDTO;
 import com.booknabada.service.OrderService;
-import com.booknabada.service.QnaService;
-import com.booknabada.util.Util;
 
 @Controller
 public class OrderController {

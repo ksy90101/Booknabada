@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.booknabada.dto.OrderDTO;
-import com.booknabada.dto.QnaDTO;
 import com.common.dao.AbstractDAO;
 
 @Repository("orderDAO")

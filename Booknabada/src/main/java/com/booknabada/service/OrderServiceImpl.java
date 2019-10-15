@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.OrderDAO;
 import com.booknabada.dto.OrderDTO;
-import com.booknabada.dto.QnaDTO;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService{

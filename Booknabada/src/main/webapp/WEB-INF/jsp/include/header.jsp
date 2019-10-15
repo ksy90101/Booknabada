@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/reset.css">
 <header id="header">
@@ -27,6 +27,21 @@
 						<img src="../images/mypage.png" alt="마이페이지">	
 					</a>
 				</li>
+				<c:choose>
+					<c:when test="${sessionScope.id eq null }">
+						<li class="login">
+							<a href="../login/login.do">
+							<img src="../images/login.png" alt="로그인">
+							</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class= "logout">
+							<a href="../login/logout.do">
+								<img src="../images/logout.png" alt="로그아웃">
+							</a>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div><!-- inner-wrap -->
 	</header>
