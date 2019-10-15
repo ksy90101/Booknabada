@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../css/boardDetail.css">
 <!-- <style type="text/css">
 </style> -->
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -42,6 +43,9 @@
 			<input  id="title" type="text" name="title">
 			<h4>내용</h4>
 			<textarea name="content" id="content"></textarea>
+			<script type="text/javascript">
+			CKEDITOR.replace('content',{width:980, height:340})
+			</script>
 			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	
