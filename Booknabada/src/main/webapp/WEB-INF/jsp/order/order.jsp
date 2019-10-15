@@ -11,11 +11,12 @@
 <title>주문/배송확인</title>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet">
-<link href="../css/header.css" rel="stylesheet">
 <link href="../css/order.css" rel="stylesheet">
 </head>
 <body>
-
+	
+	<jsp:include page="../include/header.jsp"></jsp:include>
+	
 	<!-- 상단 네비게이션 -->
 	<div class="top_navi">
 		<div class="top_content">
@@ -222,7 +223,7 @@
 			style="background-color: #876EFD; color: white;">다음</button>
 	</div>
 
-
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 

@@ -10,7 +10,6 @@
 <meta charset="UTF-8">
 <title>게시판 디테일</title>
 <link href="../css/reset.css" rel="stylesheet">
-<link href="../css/header.css" rel="stylesheet">
 <link href="../css/boardDetail.css" rel="stylesheet">
 <script type="text/javascript">
 	function modify(num){
@@ -30,12 +29,14 @@
 			location.href= 'qnaDelete.do?board_no='+num; 
 		}
 	}
-/* 	function comentDel(num, bno){
-	//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
-		var check = confirm("삭제할꺼냐?");
+	function comentDel(num, bno){
+		//alert("삭제하기 숫자: " + num + bno);
+		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
+		var check = confirm("삭제하시겠습니까?");
 		if (check) {
-			location.href= 'comentDelete.do?coment_no='+num+'&board3_no='+bno;
-		} */	
+			location.href= 'comentDelete.do?coment_no='+num+'&board_no='+bno;
+		} 	
+	}
 			
 	
 </script>
@@ -77,11 +78,13 @@
 		</div>
 		<div id="list" style="height: 420px;">
 			<div id="title">내용</div>
-			<div id="listbox" style="width: 100%; height: 360px; text-align: left; line-height: 20px; padding: 20px 0;">
+			<div id="listbox" style="width: 100%; height: 400px; text-align: left; line-height: 20px;">
+			<div style="padding: 20px 20px;">
 			<c:if test="${qnaDetail.board_picture ne null}">
 			<img alt="" src="../upimg/${qnaDetail.board_picture }"><br>
 			</c:if>
 			<p style="padding:0 20px;">${qnaDetail.board_content }</p>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -99,21 +102,42 @@
 	
 	<!-- 댓글박스 -->
 	<div class="commentPart">
+	<!-- 작성박스 -->
+	<c:if test="${sessionScope.id != null }">
+	<form action="comentAction.do" method="post">
 		<div id="commentWriteFill">
 			<div id="commentWritebox">
-				<textarea style="width: 800px; height: 100px; border:1px solid #D0C8FF; box-sizing: border-box;"></textarea>
+			<textarea name="coment_content" style="width: 800px; height: auto; border:1px solid #D0C8FF; box-sizing: border-box;"></textarea>
 			</div>
 			<button id="commentWritebutton">작성</button>
-
+			<input type="hidden" name="board_no" value="${qnaDetail.board_no }">
 		</div>
+	</form>
+	</c:if>		
+		<!-- 댓글리스트 -->
+		<c:choose>
+		<c:when test="${fn:length(coment) > 0 }">
+		<c:forEach items="${coment }" var="c">
 		<div id="commentBox" style="border: 1px solid #E7E2FF; box-sizing: border-box;">
 			<div style="height: 35px; border-bottom: 2px solid #E7E2FF; margin-bottom:10px">
-				<p id="commentTitle" style="width: 20%; ">글번호</p>
-				<p id="commentTitle" style="width: 50%; ">글쓴이</p>
-				<p id="commentTitle" style="width: 30%; ">날짜</p>
+				<div style="width: 190px; height: 30px; float:left;">
+				<p id="commentTitle">글번호</p> <p id="commentConent">${c.coment_no }</p></div>
+				<div style="width: 480px; height: 30px; float:left;">
+				<p id="commentTitle">글쓴이</p> <p id="commentConent">${c.user_name }</p></div>
+				<div style="width: 288px; height: 30px; float:left;">
+				<p id="commentTitle">날짜</p><p id="commentConent">${c.coment_date }</p></div>
 			</div>
-				<p style="width: 960px; height: 30px;">여기가 댓글 작성</p>
+				<p style="auto; height: 30px; float: left;">${c.coment_content }</p>
+				<c:if test="${sessionScope.name eq c.user_name }">
+				<img alt="삭제" src="../images/coment_delete.png" name="delete" style="float: right; margin-right:20px;" onclick="comentDel(${c.coment_no}, ${c.board_no })"></img>
+				</c:if>
 		</div>
+		</c:forEach>
+		</c:when>
+		<c:otherwise>
+		<div id="commentBox" style="border: 1px solid #E7E2FF; box-sizing: border-box;">
+		<p style="line-height: 80px;">댓글이 1개도 없습니다</p></div></c:otherwise>
+		</c:choose>
 	</div>
 	
 		<jsp:include page="../include/footer.jsp"></jsp:include>

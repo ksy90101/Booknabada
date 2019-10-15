@@ -89,12 +89,11 @@ a:hover{
 	margin:30px auto;
 }
 
-.paging Button{
+.paging button{
 	height:30px;
-	width:80px;
-	background-color: #BCB0FE;
+	width:30px;
 	border-color: #D1C9FE;
 	border-radius:5px;
-	color: white;
+	color: #535353;
 	border-style: none;
 }

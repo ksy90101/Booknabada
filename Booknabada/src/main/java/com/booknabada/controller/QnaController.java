@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.QnaService;
 import com.booknabada.util.Util;
@@ -72,11 +74,12 @@ public class QnaController {
 		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		QnaDTO qnaDetail = qnaService.detail(reBno);
 		
-//		List<QnaDTO> coment = qnaService.coment(reBno);
+		//코멘트 가져오기
+		List<ComentDTO> coment = qnaService.coment(reBno);
 		
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("qnaDetail", qnaDetail);	
-//		mv.addObject("coment", coment);
+		mv.addObject("coment", coment);
 		return mv;
 	}
 	
@@ -255,6 +258,48 @@ public class QnaController {
 			}	else {
 				mv.setViewName("caution");
 			}
+			
+			return mv;
+		}
+		
+		//댓글 작성
+		@RequestMapping(value="qna/comentAction.do")
+		public ModelAndView comentAction(HttpServletRequest request) throws Exception {
+			//새션가져오기
+			HttpSession session = request.getSession();
+			
+			String board_no = request.getParameter("board_no");
+			ModelAndView mv = new ModelAndView("redirect:qnaDetail.do?board_no=" + board_no);
+			String content = request.getParameter("coment_content");
+			
+			ComentDTO dto = new ComentDTO();
+			dto.setBoard_no(Util.checkInt(board_no));
+			dto.setComent_content(content);
+			dto.setUser_name((String)session.getAttribute("id"));
+			
+			qnaService.comentAction(dto);
+			
+			return mv;
+		}
+		
+		//댓글 삭제
+		@RequestMapping(value="qna/comentDelete.do")
+		public ModelAndView comentDelete(HttpServletRequest request) throws Exception {
+			
+			HttpSession session = request.getSession();
+			
+			String board_no = request.getParameter("board_no");
+			ModelAndView mv = new ModelAndView("redirect:qnaDetail.do?board_no=" + board_no);
+			
+			//숫자인지 체크
+			int coment_no = Util.checkInt(request.getParameter("coment_no"));
+			
+			
+			ComentDTO dto = new ComentDTO();
+			dto.setComent_no(coment_no);
+			dto.setUser_name((String)session.getAttribute("id"));
+			
+			qnaService.comentDelete(dto);
 			
 			return mv;
 		}

@@ -73,7 +73,7 @@
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:if test="${i eq page }">
 							<button onclick="location.href='qnaBoard.do?page=${i }'"
-								style="background-color: pink; border: none">${i }</button>
+								style="background-color: #A797FE; border: none; color:white; font-weight: bold;">${i }</button>
 						</c:if>
 						<c:if test="${i ne page }">
 							<button onclick="location.href='qnaBoard.do?page=${i }'">${i }</button>

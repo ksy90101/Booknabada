@@ -47,11 +47,26 @@
 	</update>
 	
 	<!-- 코멘트 보기 -->
-	<!-- <select id="coment" parameterType="Integer" resultType="com.booknabada.dto.QnaDTO">
+	<select id="coment" parameterType="Integer" resultType="com.booknabada.dto.ComentDTO">
 		<![CDATA[
-		SELECT coment_no, board_no, coment_content, coment_date, user_name
-		FROM qnaBoard_view WHERE board_no = #{reBno}
+		SELECT coment_no, board_no, coment_content, user_name, coment_date 
+		FROM coment_view WHERE board_no = #{reBno}
 		]]>
-	</select> -->
+	</select>
+	
+	<!-- 코멘트 실행 -->
+	<insert id="comentAction" parameterType="com.booknabada.dto.ComentDTO">
+		<![CDATA[
+		INSERT INTO coment (board_no, coment_content, user_no)
+		VALUES (#{board_no}, #{coment_content},
+		(SELECT user_no FROM user_info WHERE user_id = #{user_name}))
+		]]>
+	</insert>
+	
+	<!-- 코멘트 삭제 -->
+	<delete id="comentDelete" parameterType="com.booknabada.dto.ComentDTO">
+		DELETE FROM coment WHERE coment_no = #{coment_no}
+		AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name})
+	</delete>
 		
 </mapper>
