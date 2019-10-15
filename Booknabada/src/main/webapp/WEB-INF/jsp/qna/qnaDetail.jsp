@@ -30,12 +30,14 @@
 			location.href= 'qnaDelete.do?board_no='+num; 
 		}
 	}
-/* 	function comentDel(num, bno){
-	//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
-		var check = confirm("삭제할꺼냐?");
+ 	function comentDel(num, bno){
+ 		//alert("삭제하기 숫자: " + num + bno);
+		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
+			var check = confirm("삭제하시겠습니까?");
 		if (check) {
-			location.href= 'comentDelete.do?coment_no='+num+'&board3_no='+bno;
-		} */	
+			location.href= 'comentDelete.do?coment_no='+num+'&board_no='+bno;
+		} 	
+	}
 			
 	
 </script>
@@ -45,9 +47,9 @@
 	<!-- 카테고리 -->
 	<div class="top_navi">
 		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;">공지사항</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
 			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">이벤트</div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
