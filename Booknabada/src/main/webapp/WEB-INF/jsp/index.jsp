@@ -18,8 +18,13 @@
 <a href="newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
+<<<<<<< HEAD
 <button onclick="location.href='login/logout.do'">로그아웃</button>
 <script>CKEDIT	OR.replace('editor', {height:800});</script>
+=======
+<textarea name="editor"></textarea>
+<script>CKEDITOR.replace('editor', {height:800});</script>
+>>>>>>> branch 'Seyun' of https://github.com/ksy90101/Booknabada.git
 
 </body>
 </html>
