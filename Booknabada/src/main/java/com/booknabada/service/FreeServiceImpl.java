@@ -57,11 +57,26 @@ public class FreeServiceImpl implements FreeService{
 	}
 
 
+	@Override
+	public List<ComentDTO> coment(int reBno) throws Exception {
+		return freeDAO.coment(reBno);
+	}
+
+
+	@Override
+	public void comentAction(ComentDTO dto) throws Exception {
+		freeDAO.comentAction(dto);	
+	}
+
+
+	@Override
+	public void comentDelete(ComentDTO dto) throws Exception {
+		freeDAO.comentDelete(dto);
+	}
 
 
 
-	/*
-	 * @Override public List<FreeDTO> coment(int reBno) throws Exception { return
-	 * freeDAO.coment(reBno); }
-	 */
+
+
+	
 }

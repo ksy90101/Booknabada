@@ -68,12 +68,12 @@ public class FreeController {
 
 		// 해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		FreeDTO freeDetail = freeService.detail(reBno);
-		/*
-//		 * List<FreeDTO> coment = freeService.coment(reBno);
-		 */
+		//코멘트 가져오기
+		List<FreeDTO> coment = freeService.coment(reBno);
+		
 		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("freeDetail", freeDetail);
-//		/* mv.addObject("coment", coment); */
+		mv.addObject("coment", coment);
 		return mv;
 	}
 
@@ -118,7 +118,6 @@ public class FreeController {
 		dto.setCate_no(1);
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
-
 		dto.setUser_name((String)session.getAttribute("id"));
 
 		// 사진업로드
@@ -196,7 +195,7 @@ public class FreeController {
 		// 자기글 불러와서 DTO에 담기
 		FreeDTO detail = freeService.detail(reBno);
 
-		mv.addObject("modify", detail);
+//		mv.addObject("modify", detail);
 
 		// 세션
 			if (detail.getUser_name().equals(session.getAttribute("name"))) {
@@ -262,4 +261,46 @@ public class FreeController {
 
 		return mv;
 	}
+	
+	//댓글 작성
+			@RequestMapping(value="free/comentAction.do")
+			public ModelAndView comentAction(HttpServletRequest request) throws Exception {
+				//세션가져오기
+				HttpSession session = request.getSession();
+				
+				String board_no = request.getParameter("board_no");
+				ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+				String content = request.getParameter("coment_content");
+				
+				ComentDTO dto = new ComentDTO();
+				dto.setBoard_no(Util.checkInt(board_no));
+				dto.setComent_content(content);
+				dto.setUser_name((String)session.getAttribute("id"));
+				
+				freeService.comentAction(dto);
+				
+				return mv;
+			}
+			
+			//댓글 삭제
+			@RequestMapping(value="free/comentDelete.do")
+			public ModelAndView comentDelete(HttpServletRequest request) throws Exception {
+				
+				HttpSession session = request.getSession();
+				
+				String board_no = request.getParameter("board_no");
+				ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+				
+				//숫자인지 체크
+				int coment_no = Util.checkInt(request.getParameter("coment_no"));
+				
+				
+				ComentDTO dto = new ComentDTO();
+				dto.setComent_no(coment_no);
+				dto.setUser_name((String)session.getAttribute("id"));
+				
+				freeService.comentDelete(dto);
+				
+				return mv;
+			}
 }

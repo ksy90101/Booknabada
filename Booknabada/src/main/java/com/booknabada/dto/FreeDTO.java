@@ -94,11 +94,30 @@ public class FreeDTO {
 	}
 
 
-	public Object getTotalCount() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getBoard_picture() {
+		return board_picture;
 	}
-
+	public void setBoard_picture(String board_picture) {
+		this.board_picture = board_picture;
+	}
+	public int getComent_no() {
+		return coment_no;
+	}
+	public void setComent_no(int coment_no) {
+		this.coment_no = coment_no;
+	}
+	public String getComent_content() {
+		return coment_content;
+	}
+	public void setComent_content(String coment_content) {
+		this.coment_content = coment_content;
+	}
+	public String getComent_date() {
+		return coment_date;
+	}
+	public void setComent_date(String coment_date) {
+		this.coment_date = coment_date;
+	}
 
 	
 

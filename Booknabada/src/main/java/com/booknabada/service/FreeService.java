@@ -17,8 +17,11 @@ public interface FreeService {
 	void detailDelete(FreeDTO dto) throws Exception;
 	
 	void modifyAction(FreeDTO dto) throws Exception;
+	
+	List<ComentDTO> coment(int reBno) throws Exception;
+	
+	void comentAction(ComentDTO dto) throws Exception;
 
-	/*
-	 * List<FreeDTO> coment(int reBno) throws Exception;
-	 */
+	void comentDelete(ComentDTO dto) throws Exception;
+	
 }
