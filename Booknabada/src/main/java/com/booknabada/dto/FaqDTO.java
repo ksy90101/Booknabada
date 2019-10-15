@@ -2,16 +2,15 @@ package com.booknabada.dto;
 
 public class FaqDTO {
 	int faq_category, faq_no;
+	String faq_answer, faq_qustion;
+
 	public int getFaq_no() {
 		return faq_no;
 	}
-
+	
 	public void setFaq_no(int faq_no) {
 		this.faq_no = faq_no;
 	}
-
-	String faq_answer, faq_qustion;
-
 	public int getFaq_category() {
 		return faq_category;
 	}

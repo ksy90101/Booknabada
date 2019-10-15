@@ -56,4 +56,15 @@ public class FaqServiceImpl implements FaqService{
 		
 	}
 
+	@Override
+	public FaqDTO detail(int faq_no) throws Exception {
+		return faqDAO.detail(faq_no);
+	}
+
+	@Override
+	public void faqModifyAction(FaqDTO dto) throws Exception {
+		faqDAO.faqModifyAction(dto);
+		
+	}
+
 }

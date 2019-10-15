@@ -14,12 +14,12 @@
 </head>
 <body>
 <a href="./free/freeBoard.do">free</a>
-<a href="login.do">login</a>
+<a href="login/login.do">login</a>
 <a href="newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
-
-<script>CKEDITOR.replace('editor', {height:800});</script>
+<button onclick="location.href='login/logout.do'">로그아웃</button>
+<script>CKEDIT	OR.replace('editor', {height:800});</script>
 
 </body>
 </html>

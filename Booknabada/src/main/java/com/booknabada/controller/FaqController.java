@@ -129,17 +129,36 @@ public class FaqController {
 		return mv;
 	}
 	
-//	@RequestMapping(value = "faq/faqModify.do")
-//	public ModelAndView faqModify(HttpServletRequest request) throws Exception{
-//		ModelAndView mv = new ModelAndView("faq/faqModify");
-//		HttpSession session = request.getSession();
-//		String faq_no = Util.checkInt(request.getParameter("faq_no"));
-//		
-//		
-//		if(session.getAttribute("id").equals("admin")) {
-//			FaqDTO dto = faqService.faqModify(faq_no);
-//			mv.addObject("modify", dto);
-//		}
-//		return mv;
-//	}
+	@RequestMapping(value = "faq/faqModify.do")
+	public ModelAndView faqModify(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("faq/faqModify");
+		
+		int faq_no = Util.checkInt(requset.getParameter("faq_no"));
+		
+		FaqDTO detail = faqService.detail(faq_no);
+
+		mv.addObject("modify", detail);
+		return mv;
+	}
+	
+	@RequestMapping(value = "faq/faqModifyAction.do")
+	public ModelAndView faqModifyAction(HttpServletRequest request) throws Exception{
+		String faq_no = request.getParameter("faq_no");
+		ModelAndView mv = new ModelAndView("redirect:faq/faqboardall.do");
+		
+		String qustion= request.getParameter("title");
+		String answer = request.getParameter("content");
+		
+		answer = answer.replace("\r\n", "\r");
+		answer = answer.replace("\n", "<br>");
+		
+		FaqDTO dto = new FaqDTO();
+		dto.setFaq_qustion(qustion);
+		dto.setFaq_answer(answer);
+		dto.setFaq_no(Util.checkInt(faq_no));
+		
+		faqService.faqModifyAction(dto);
+		
+		return mv;
+	}
 }

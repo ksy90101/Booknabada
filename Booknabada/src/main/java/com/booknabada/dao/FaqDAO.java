@@ -44,5 +44,14 @@ public class FaqDAO extends AbstractDAO{
 		
 	}
 
+	public FaqDTO detail(int faq_no) {
+		return (FaqDTO) selectOne("faq.detail", faq_no);
+}
+
+	public void faqModifyAction(FaqDTO dto) {
+		update("faq.faqModifyAction", dto);
+		
+	}
+
 
 }

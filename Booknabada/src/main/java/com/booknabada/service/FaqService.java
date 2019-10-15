@@ -20,4 +20,9 @@ public interface FaqService {
 
 	void faqDelete(FaqDTO dto) throws Exception;
 
+	FaqDTO detail(int faq_no) throws Exception;
+
+	void faqModifyAction(FaqDTO dto) throws Exception;
+
+
 }

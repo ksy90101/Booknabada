@@ -29,4 +29,12 @@
 	<delete id="faqDelete" parameterType="com.booknabada.dto.FaqDTO">
 		DELETE FROM faq_board WHERE faq_no = #{faq_no }
 	</delete>
+	
+	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.FaqDTO">
+		SELECT * FROM faq_board WHERE faq_no = #{faq_no }
+	</select>
+	
+	<update id="faqModifyAction" parameterType="com.booknabada.dto.FaqDTO">
+		UPDATE faq_board SET faq_qustion = #{faq_qustion }, faq_answer = #{faq_answer } WHERE faq_no = #{faq_no }
+	</update>
 </mapper>

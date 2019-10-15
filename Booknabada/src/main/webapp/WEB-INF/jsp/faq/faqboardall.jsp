@@ -55,6 +55,7 @@
 			<c:forEach items="${faqboardall }" var="i">
 			<dl>
 				<dt class="question">${i.faq_no } ${i.faq_qustion }
+				<button onclick = "modify(${i.faq_no })">수정</button>
 				<button onclick = "del(${i.faq_no })">삭제</button>
 				</dt> 
 				<dd class="answer">${i.faq_answer }</dd>
@@ -79,6 +80,13 @@
 		
 		if(check){
 			location.href= 'faqDelete.do?faq_no='+num;
+		}
+	}
+	function modify(num){
+		var check = confirm("수정하시겠습니까?");
+		
+		if(check){
+			location.href = 'faqModify.do?faq_no=' + num;
 		}
 	}
 </script>

@@ -1,5 +1,8 @@
 package com.booknabada.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -80,6 +83,20 @@ public class LoginController {
 		
 		System.out.println(num);
 		
+		return mv;
+	}
+	
+	@RequestMapping(value = "login/logout.do")
+	public ModelAndView logout(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:../index.do");
+		HttpSession session = requset.getSession();
+		
+		if(session.getAttribute("name") != null ) {
+			session.removeAttribute("name");
+		}
+		if(session.getAttribute("id") != null) {
+			session.removeAttribute("id");
+		}
 		return mv;
 	}
 
