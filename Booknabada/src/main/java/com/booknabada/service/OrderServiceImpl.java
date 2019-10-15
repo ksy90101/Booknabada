@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.OrderDAO;
 import com.booknabada.dto.OrderDTO;
+import com.booknabada.dto.QnaDTO;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService{
@@ -18,10 +19,10 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDAO orderDAO;
 
 	@Override
-	public List<OrderDTO> detail(int reBno) throws Exception {
-		return orderDAO.detail(reBno);
-		
+	public List<OrderDTO> orderbook(int page) throws Exception {
+		return orderDAO.board(page);
 	}
+
 	
 	
 

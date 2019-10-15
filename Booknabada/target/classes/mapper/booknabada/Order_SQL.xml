@@ -4,8 +4,8 @@
 <mapper namespace="order">
 
 	<!-- 보드 전체 DB가져오기 -->
-	<select id="orderStart" resultType="com.booknabada.dto.OrderDTO">
-		SELECT * FROM order_view WHERE book_no = #{reBno}
+	<select id="booklist" resultType="com.booknabada.dto.OrderDTO">
+		SELECT * FROM order_view
 	</select>
 
 </mapper>

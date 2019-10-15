@@ -42,29 +42,31 @@
 			<div id="list_head" style="width: 24%">파북이명</div>
 			<div id="list_head" style="width: 17%">가격</div>
 		</div>
+		<c:forEach items="${order }" var="i">
 		<div id="list">
 			<div id="list_book" style="width: 60%;">
 				<div style="width: auto; height: 120px; margin-top: 20px;">
 					<div id="list_book_img"></div>
 					<div id="list_book_txt" style="padding-top: 30px;">
-						<p id="book_txt_n" style="font-size: 23px;">책제목 :</p>
-						<p id="book_txt_n" style="font-size: 15px;">작가 이름 작성영역</p>
+						<p id="book_txt_n" style="font-size: 23px;">${i.book_title }</p>
+						<p id="book_txt_n" style="font-size: 15px;">${i.book_author }</p>
 					</div>
 				</div>
 			</div>
 			<div id="list_book" style="width: 25%;">
 				<div style="height: 120px; margin-top: 20px;">
 					<div id="user_img"></div>
-					<p id="user_txt_n">사랑받는 파북이</p>
+					<p id="user_txt_n">${i.user_name }</p>
 				</div>
 			</div>
 			<div id="list_book" style="width: 15%">
 				<div style="height: 120px; margin: 20px; line-height: 100px">
-					<p id="price" style="font-size: 30px;">99,000</p>
+					<p id="price" style="font-size: 30px;">${i.book_price }</p>
 					<p id="price" style="font-size: 20px;">원</p>
 				</div>
 			</div>
 		</div>
+		</c:forEach>
 	</div>
 	
 	<!-- 배송지입력 -->
