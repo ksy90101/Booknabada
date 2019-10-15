@@ -94,6 +94,12 @@ public class FreeDTO {
 	}
 
 
+	public Object getTotalCount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 
 }
