@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.booknabada.dto.FreeDTO;
 import com.booknabada.service.FreeService;
 import com.booknabada.util.Util;
+import com.common.common.CommandMap;
 
 @Controller
 public class FreeController {
@@ -28,10 +29,19 @@ public class FreeController {
 
 	// 게시판 띄우기
 	@RequestMapping(value = "free/freeBoard.do")
-	public ModelAndView freeBoard() throws Exception {
+	public ModelAndView freeBoard(HttpServletRequest request, CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("free/freeBoard");
-
-		List<FreeDTO> board = freeService.board();
+		
+		int page = 1;
+		if (request.getParameter("page") != null) {
+			page = Util.checkInt(request.getParameter("page"));
+		}
+		if (commandMap.get("page") != null) {
+			page = Util.checkInt((String)commandMap.get("page"));
+		}
+		
+		
+		List<FreeDTO> board = freeService.board(((page - 1) * 10));
 		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
 		return mv;

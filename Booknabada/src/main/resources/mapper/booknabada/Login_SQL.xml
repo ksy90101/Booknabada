@@ -17,5 +17,8 @@
 		VALUES(#{user_name}, #{user_id }, #{user_pw }, #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
 		]]>
 	</insert>
-
+	
+	<select id="findidAction" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
+		SELECT user_id from user_info where user_name=#{user_name} and user_email=#{user_email}
+	</select>
 </mapper>

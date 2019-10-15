@@ -6,7 +6,7 @@ import com.booknabada.dto.FreeDTO;
 
 public interface FreeService {
 
-	List<FreeDTO> board() throws Exception;
+	List<FreeDTO> board(int page) throws Exception;
 	//디테일 번호 가져오기
 	FreeDTO detail(int reBno) throws Exception;
 	//게시글 카운트

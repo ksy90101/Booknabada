@@ -5,7 +5,9 @@
 
 
 	<select id="board" resultType="com.booknabada.dto.FreeDTO">
-		SELECT * from freeBoard_view ORDER BY board_no DESC
+		SELECT board_no, board_title, board_date, board_count, user_name,
+		(SELECT COUNT(*) FROM freeBoard_view) AS totalCount
+		FROM freeBoard_view limit #{page }, 11
 	</select>
 
 	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.FreeDTO">

@@ -9,5 +9,7 @@ public interface LoginService {
 	int joinAction(LoginDTO dto) throws Exception;
 
 	int checkID(String id) throws Exception;
+
+	String finidAction(LoginDTO dto) throws Exception;
 	
 }

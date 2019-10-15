@@ -13,8 +13,8 @@ public class FreeDAO extends AbstractDAO{
 	/* SQL에서 가져오기 */
 	
 	@SuppressWarnings("unchecked")
-	public List<FreeDTO> board() {
-		return selectList("free.board");
+	public List<FreeDTO> board(int page) {
+		return selectList("free.board",page);
 	}
 	
 	public FreeDTO detail(int reBno) {

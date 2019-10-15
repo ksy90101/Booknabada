@@ -20,9 +20,9 @@ public class FreeServiceImpl implements FreeService{
 
 
 	@Override
-	public List<FreeDTO> board() throws Exception {
+	public List<FreeDTO> board(int page) throws Exception {
 		
-		return freeDAO.board();
+		return freeDAO.board(page);
 	}
 
 
@@ -55,6 +55,9 @@ public class FreeServiceImpl implements FreeService{
 		freeDAO.modifyAction(dto);
 		
 	}
+
+
+
 
 
 	/*

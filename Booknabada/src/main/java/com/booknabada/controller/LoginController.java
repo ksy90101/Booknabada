@@ -105,5 +105,32 @@ public class LoginController {
 		return num;
 	}
 	
+
+	@RequestMapping(value = "login/findidAction.do")
+	public ModelAndView findidAction(HttpServletRequest request) throws Exception {
+		ModelAndView mv = null;
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		System.out.println(name);
+		System.out.println(email);
+		
+		LoginDTO dto = new LoginDTO();
+		dto.setUser_name(name);
+		dto.setUser_email(email);
+
+		String id = loginService.finidAction(dto);
+		if(name != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
+			
+			mv = new ModelAndView("redirect:login/findid.do");
+		}else {
+			mv = new ModelAndView("redirect:login/findid.do");
+		}
+		System.out.println(id);
+		return mv;
+	}
+	
 	
 }
