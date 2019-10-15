@@ -23,9 +23,11 @@
 	
 	function del(num){
 		//alert("삭제하기 숫자: " + num);
-		var check = confirm("삭제하시겠습니까?");
-		
-		if (check) {
+		if({fn:length(coment) > 0 }){
+			alert("댓글이 있는 게시물은 삭제할 수 없습니다")
+			return;
+		}
+		if (confirm("삭제하시겠습니까?")) {
 			location.href= 'qnaDelete.do?board_no='+num; 
 		}
 	}

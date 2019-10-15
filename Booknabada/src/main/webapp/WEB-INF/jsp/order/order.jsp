@@ -47,7 +47,7 @@
 				<div style="width: auto; height: 120px; margin-top: 20px;">
 					<div id="list_book_img"></div>
 					<div id="list_book_txt" style="padding-top: 30px;">
-						<p id="book_txt_n" style="font-size: 23px;">책 제목을 입력하세요</p>
+						<p id="book_txt_n" style="font-size: 23px;">책제목 :</p>
 						<p id="book_txt_n" style="font-size: 15px;">작가 이름 작성영역</p>
 					</div>
 				</div>

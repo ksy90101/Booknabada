@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -66,7 +65,7 @@ public class QnaController {
 		String bno = request.getParameter("board_no");
 		
 		//숫자 체크
-			int reBno = Util.checkInt(bno);
+		int reBno = Util.checkInt(bno);
 			
 		//게시글 카운트
 		qnaService.countUp(reBno);
