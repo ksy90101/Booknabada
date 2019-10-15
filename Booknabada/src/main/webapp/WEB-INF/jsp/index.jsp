@@ -15,6 +15,7 @@
 <body>
 <a href="./free/freeBoard.do">free</a>
 <a href="login/login.do">login</a>
+<<<<<<< HEAD
 <a href="./qna/qnaBoard.do">qna</a>
 <a href="./login/login.do">login</a>
 <a href="newuser.do">newuser</a>
@@ -22,6 +23,15 @@
 <a href="findpw.do">findpw</a>
 <a href="./order/order.do">order</a>
 <button onclick="location.href='login/logout.do'">로그아웃</button>
+=======
+<a href="login/newuser.do">newuser</a>
+<a href="login/findid.do">findid</a>
+<a href="login/findpw.do">findpw</a>
+<a href="event/event.do">event</a>
+<a href="book/bookadd.do">bookadd</a>
+
+<script>CKEDITOR.replace('editor', {height:800});</script>
+>>>>>>> refs/heads/hejin
 
 </body>
 </html>

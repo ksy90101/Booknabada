@@ -19,6 +19,8 @@ public class BookDAO extends AbstractDAO{
 		return (BookDTO) selectOne("book.bookdetail", book_no);
 	}
 
-
+	public void bookAddAction(BookDTO dto) {
+		insert("book.bookAddAction", dto);		
+	}
 
 }

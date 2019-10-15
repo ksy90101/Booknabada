@@ -28,5 +28,8 @@ public class BookServiceImpl implements BookService{
 		return bookDAO.bookDetail(book_no);
 	}
 
-
+	@Override
+	public void bookAddAction(BookDTO dto) throws Exception {
+		bookDAO.bookAddAction(dto);
+	}
 }

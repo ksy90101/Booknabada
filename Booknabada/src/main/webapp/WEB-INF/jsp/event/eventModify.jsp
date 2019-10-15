@@ -28,20 +28,7 @@ function cancel(){
 </script>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<div class="top_navi">
-
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
-		</div>
-	</div>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 
 <form action="eventModifyAction.do" method="post" enctype="multipart/form-data">
@@ -67,7 +54,7 @@ function cancel(){
 		<div id="list" class="cf">
 			<div id="title" style="">사진</div>
 			<div id="listbox" style="width: 100%">
-			<img src="./upimg/${detail.event_picture }" >
+			<img src="../upimg/${detail.event_picture }" >
 				<input type="hidden" name="bFile" value="${detail.event_picture }">
 				<input type="file" name="file" accept="image/*" value="./upimg/${detail.event_picture }" />
 			</div>
@@ -92,7 +79,7 @@ function cancel(){
 	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
-	
+
 
 </body>
 </html>

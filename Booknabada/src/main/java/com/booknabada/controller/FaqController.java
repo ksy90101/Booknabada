@@ -42,8 +42,11 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("faq/faqboardall");
 
 		List<FaqDTO> faqboardall = faqService.faqboardall();
+		String whatBoard = "faq";
+		
 
-		mv.addObject("faqboardall", faqboardall);
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faq_all", faq_all);
 		return mv;
 	}
 
@@ -52,8 +55,10 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("faq/faqboardbest");
 
 		List<FaqDTO> faqboardbest = faqService.faqboardbest();
+		String whatBoard = "faq";
 
-		mv.addObject("faqboardbest", faqboardbest);
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faq_best", faq_best);
 		return mv;
 	}
 	
@@ -64,7 +69,9 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("faq/faqboarddelivery");
 
 		List<FaqDTO> faqboarddelivery = faqService.faqboarddelivery();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faqboarddelivery", faqboarddelivery);
 		return mv;
 	}
@@ -75,8 +82,11 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("faq/faqboardorder");
 
 		List<FaqDTO> faqboardorder = faqService.faqboardorder();
+		String whatBoard = "faq";
 
 		mv.addObject("faqboardorder", faqboardorder);
+		mv.addObject("whatBoard", whatBoard);
+		
 		return mv;
 	}
 
@@ -86,18 +96,23 @@ public class FaqController {
 		ModelAndView mv = new ModelAndView("faq/faqboardhomepage");
 
 		List<FaqDTO> faqboardhomepage = faqService.faqboardhomepage();
+		String whatBoard = "faq";
 
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faqboardhomepage", faqboardhomepage);
 		return mv;
 	}
 	
 	@RequestMapping(value = "faq/faqwrite.do")
 	public ModelAndView faqboardwrite(HttpServletRequest requset) throws Exception{
+		String whatBoard = "faq";
 		
 		HttpSession session = requset.getSession();
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			mv.addObject("whatBoard", whatBoard);
 			return new ModelAndView("faq/faqwrite");
 		}else {
+					mv.addObject("whatBoard", whatBoard);
 			return new ModelAndView("redirect:../index.do");
 		}
 		

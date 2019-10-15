@@ -41,11 +41,14 @@ public class LoginController {
 		dto.setUser_id(id);
 		dto.setUser_pw(pw);
 		
+		int level = loginService.level(id);
+		
 		String name = loginService.login(dto);
 		if(name != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
+			session.setAttribute("level",level);
 			
 			mv = new ModelAndView("redirect:../index.do");
 		}else {
@@ -65,7 +68,7 @@ public class LoginController {
 	// joinAction.do
 	@RequestMapping(value = "login/joinAction.do")
 	public ModelAndView joinAction(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:login/index.do");
+		ModelAndView mv = new ModelAndView("redirect:../index.do");
 		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 		
 		

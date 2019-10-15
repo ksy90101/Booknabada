@@ -9,4 +9,14 @@
 	<select id="bookdetail" resultType="com.booknabada.dto.BookDTO">
 		SELECT * FROM bookdetail_view WHERE book_no = #{book_no }
 	</select>
+	
+		<insert id="bookAddAction" parameterType="com.booknabada.dto.BookDTO">
+		<![CDATA[
+			INSERT INTO book(book_title, book_author, book_date, book_page, book_publisher, 
+			book_cate, price_select, book_price, book_content, user_no, book_picture)
+			VALUES(#{book_title }, #{book_author }, #{book_date }, #{book_page }, #{book_publisher }, 
+			#{book_cate }, #{price_select }, #{book_price }, #{book_content }, 
+			(SELECT user_no FROM user_info WHERE user_id=#{user_id }),#{book_picture })
+		]]> 
+	</insert>
 </mapper>

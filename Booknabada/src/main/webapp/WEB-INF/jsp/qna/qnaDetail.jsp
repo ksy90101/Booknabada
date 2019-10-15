@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>게시판 디테일</title>
 <link href="../css/reset.css" rel="stylesheet">
+<link href="../css/header.css" rel="stylesheet">
 <link href="../css/boardDetail.css" rel="stylesheet">
 <script type="text/javascript">
 	function modify(num){
@@ -46,21 +47,7 @@
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	
-	<!-- 카테고리 -->
-	<div class="top_navi">
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../free/freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 	<!-- 글박스 -->
 	<div class="boardDetailPart">

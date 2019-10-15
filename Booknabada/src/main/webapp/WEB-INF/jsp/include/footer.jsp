@@ -39,9 +39,9 @@
 		</div>
 		<div class="right">
 			<ul class="sns cf">
-				<li><img src="images/insta.png" alt="인스타그램"></li>
-				<li><img src="images/twitter.png" alt="트위터"></li>
-				<li><img src="images/facebook.png" alt="페이스북"></li>
+				<li><img src="../images/insta.png" alt="인스타그램"></li>
+				<li><img src="../images/twitter.png" alt="트위터"></li>
+				<li><img src="../images/facebook.png" alt="페이스북"></li>
 			</ul>
 			<p>© Booknabada</p>
 		</div>

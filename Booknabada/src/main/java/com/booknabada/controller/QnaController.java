@@ -79,6 +79,9 @@ public class QnaController {
 		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("qnaDetail", qnaDetail);	
 		mv.addObject("coment", coment);
+		String whatBoard = "qna";
+
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 	
@@ -87,12 +90,15 @@ public class QnaController {
 	public ModelAndView qnaWrite(HttpServletRequest request) throws Exception{
 		
 		HttpSession session = request.getSession();
-		
+		String whatBoard = "qna";
 		//로그인 한 사람만 보이게...
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			//Write.do로 가기
+			
+			mv.addObject("whatBoard", whatBoard);
 			return new ModelAndView("qna/qnaWrite");
 		} else {
+			mv.addObject("whatBoard", whatBoard);
 			return new ModelAndView("redirect:index.do");
 		}
 	}
@@ -144,7 +150,9 @@ public class QnaController {
 		else {
 			mv.setViewName("caution");
 		}
-		
+		String whatBoard = "qna";
+
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 	
@@ -176,7 +184,8 @@ public class QnaController {
 		else {
 			mv.setViewName("caution");
 		}
-			
+			String whatBoard = "qna";
+			mv.addObject("whatBoard", whatBoard);
 			return mv;
 		}
 	
@@ -204,7 +213,8 @@ public class QnaController {
 		} else {
 			mv.setViewName("caution");
 		}
-					
+		String whatBoard = "qna";
+		mv.addObject("whatBoard", whatBoard);			
 		return mv;
 	}
 	
