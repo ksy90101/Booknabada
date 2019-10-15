@@ -55,10 +55,10 @@ function comentDel(num, bno){
 				onclick="location.href='../fqa.do'">FAQ</div>
 			<div id="bin"></div>
 			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../qnaBoard.do'">QNA</div>
+				onclick="location.href='../qna/qnaBoard.do'">QNA</div>
 			<div id="bin"></div>
 			<div id="box01" style="background: #BCB0FE; color: white;"
-				onclick="location.href='../free/freeBoard.do'">자유게시판</div>
+				onclick="location.href='freeBoard.do'">자유게시판</div>
 		</div>
 	</div>
 
@@ -114,7 +114,7 @@ function comentDel(num, bno){
 			<textarea name="coment_content" style="width: 800px; height: auto; border:1px solid #D0C8FF; box-sizing: border-box;"></textarea>
 			</div>
 			<button id="commentWritebutton">작성</button>
-			<input type="hidden" name="board_no" value="${qnaDetail.board_no }">
+			<input type="hidden" name="board_no" value="${freeDetail.board_no }">
 		</div>
 	</form>
 	</c:if>		

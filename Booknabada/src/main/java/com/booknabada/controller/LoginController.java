@@ -2,7 +2,6 @@ package com.booknabada.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -131,6 +130,5 @@ public class LoginController {
 		System.out.println(id);
 		return mv;
 	}
-	
 	
 }

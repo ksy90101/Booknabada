@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.booknabada.dao.FreeDAO;
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 
 @Service("freeService")
@@ -73,6 +74,9 @@ public class FreeServiceImpl implements FreeService{
 	public void comentDelete(ComentDTO dto) throws Exception {
 		freeDAO.comentDelete(dto);
 	}
+
+
+	
 
 
 

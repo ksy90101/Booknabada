@@ -1,7 +1,6 @@
 package com.booknabada.dto;
 
-public class FreeDTO {
-	
+public class NoticeDTO {
 	private int board_no, cate_no, board_count, user_no, totalCount;
 	private String board_title, board_content, board_date, user_name, board_picture;
 	

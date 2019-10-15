@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 import com.common.dao.AbstractDAO;
 

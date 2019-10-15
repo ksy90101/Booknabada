@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 import com.booknabada.service.FreeService;
 import com.booknabada.util.Util;
@@ -69,7 +70,7 @@ public class FreeController {
 		// 해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		FreeDTO freeDetail = freeService.detail(reBno);
 		//코멘트 가져오기
-		List<FreeDTO> coment = freeService.coment(reBno);
+		List<ComentDTO> coment = freeService.coment(reBno);
 		
 		// DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("freeDetail", freeDetail);
