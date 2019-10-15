@@ -28,7 +28,14 @@ public class FaqController {
     	ModelAndView mv = new ModelAndView("index");
     	
     	return mv;
-    }	
+    }
+	
+	@RequestMapping(value="caution.do")
+    public ModelAndView caution() throws Exception{
+    	ModelAndView mv = new ModelAndView("caution");
+    	
+    	return mv;
+    }
 	
 	@RequestMapping(value = "faq/faqboardall.do")
 	public ModelAndView faqboardall() throws Exception {

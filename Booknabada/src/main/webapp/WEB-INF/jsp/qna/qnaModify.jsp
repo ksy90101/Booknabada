@@ -7,10 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>글 수정하기</title>
+<link href="../css/reset.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/boardWrite.css">
 <link rel="stylesheet" href="../css/boardDetail.css">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
+
+	<jsp:include page="../include/header.jsp"></jsp:include>
 
 	<div class="top_navi">
 
@@ -30,13 +34,16 @@
 
 		<form action="modifyAction.do" method="post" enctype="multipart/form-data">
 	<div id="writebox">
-			<h3>제목</h3>
+			<h3 id=writetitle>제목</h3>
 			<input id="title" type="text" name="title" value="${modify.board_title }">
-			<h4>내용</h4>
-			<textarea id="content" name="content">
-			${modify.board_content }
+			<h4 id=writetitle>내용</h4>
+			<textarea id="content" name="content">${modify.board_content }
 			</textarea>
+			<script type="text/javascript">
+			CKEDITOR.replace('content',{width:980, height:340})
+			</script>
 			<input id="imgUp" type="file" accept="image/*" name="file">
+			<c:if test="${modify.board_picture ne null}"> ${modify.board_picture } </c:if>
 	</div>
 	
 	<!-- 버튼박스 -->
@@ -47,6 +54,8 @@
 		<input type="hidden" name="board_no" value="${modify.board_no }">
 	</div>
 		</form>
+		
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>
 </html>

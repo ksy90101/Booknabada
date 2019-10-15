@@ -95,13 +95,13 @@ button{
 }
 .commentPart{
 	width: 1000px;
-	height: 600px;
-	margin: 0 auto;
+	display: table;
+	margin: 0 auto 100px;
 	
 }
 #commentWriteFill{
 	width:1000px;
-	height:140px;
+	height:90px;
 	background-color: #E7E2FF;
 	margin: 20px auto 0;
 	border: 1px solid #A797FE;
@@ -120,22 +120,26 @@ button{
 	color: #A797FE;
 	font-weight: bold;
 }
+#commentConent{
+	float: left;
+	margin-left:20px;
+}
 
 #commentWritebox{
 	width: 800px;
-	height: 100px;
+	height: 50px;
 	background-color: white;
 	margin: 20px auto auto 20px;
 	float: left;
 }
 #commentWritebutton{
-	width: 150px;
-	height: 100px;
+	width: 145px;
+	height: 50px;
 	background-color: #BCB0FE;	
 	float: left;
 	margin: 20px auto auto 10px;
 	text-align: center;
-	line-height: 100px;
+	line-height: 50px;
 	font-size: 18px;
 	font-weight: bold;
 	color: white;
@@ -143,9 +147,9 @@ button{
 	border: 1px solid #A797FE;
 }
 .BoardbuttonPart{
-	width:310px;
+	display: table;
 	height: 35px;
-	margin: 20px auto;
+	margin: 30px auto;
 }
 #Boardbutton{
 	width: 90px;

@@ -14,6 +14,12 @@
 	border: 1px solid #D0C8FF;
 	background-color: white;
 }
+#writetitle{
+	font-weight: bold;
+	font-size: 18px;
+	margin: 20px 0 0 20px;
+	
+}
 #content {
 	width: 940px;
 	height: 400px;

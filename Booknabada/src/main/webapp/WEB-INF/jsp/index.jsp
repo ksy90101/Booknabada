@@ -15,16 +15,13 @@
 <body>
 <a href="./free/freeBoard.do">free</a>
 <a href="login/login.do">login</a>
+<a href="./qna/qnaBoard.do">qna</a>
+<a href="./login/login.do">login</a>
 <a href="newuser.do">newuser</a>
 <a href="findid.do">findid</a>
 <a href="findpw.do">findpw</a>
-<<<<<<< HEAD
+<a href="./order/order.do">order</a>
 <button onclick="location.href='login/logout.do'">로그아웃</button>
-<script>CKEDIT	OR.replace('editor', {height:800});</script>
-=======
-<textarea name="editor"></textarea>
-<script>CKEDITOR.replace('editor', {height:800});</script>
->>>>>>> branch 'Seyun' of https://github.com/ksy90101/Booknabada.git
 
 </body>
 </html>
