@@ -15,6 +15,10 @@ public class BookDAO extends AbstractDAO{
 		return selectList("book.booklist");
 	}
 
+	public BookDTO bookDetail(int book_no) {
+		return (BookDTO) selectOne("book.bookdetail", book_no);
+	}
+
 
 
 }

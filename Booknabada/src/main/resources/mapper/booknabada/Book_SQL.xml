@@ -5,4 +5,8 @@
 	<select id="booklist" resultType="com.booknabada.dto.BookDTO">
 		SELECT * FROM booklist_view
 	</select>
+	
+	<select id="bookdetail" resultType="com.booknabada.dto.BookDTO">
+		SELECT * FROM bookdetail_view WHERE book_no = #{book_no }
+	</select>
 </mapper>

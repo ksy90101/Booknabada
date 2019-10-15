@@ -1,6 +1,11 @@
 * {
     font-family: 'Noto Sans KR', sans-serif;
 }
+.booklist_wrap{
+	margin: 100px auto 0;
+    width: 1500px;
+    height: 1500px;
+}
 .nevi{
     display: inline-block;
     width: 300px;
@@ -14,30 +19,36 @@ li{
     width: 130px;
     height: 203px;
 }
-.booklist_wrap{
-	margin: 100px auto 0;
-    width: 1500px;
-    height: 1500px;
-}
 .book{
-    width: 250px;
+	width:450px;
+    max-width: 450px;
     height: 220px;
     margin: 10px;
     float:left;
 }
+.bookinfo{
+	max-width:160px;     
+	float:left;	
+}
+.bookinfo li {
+	margin-bottom: 10px;
+}
 .bookimg{
-    display: inline-block;
-    width:130px;
+    width:150px;
     height: 203px;
-    margin:0px;
-    padding:0px;
+    float:left;
 }
 .bookinfo{
-    float: right;
+    float: left;
     padding:0px;
     margin-left: 10px;
 }
 .booktitle{
+	text-overflow:ellipsis; /* 책 제목이 넓이보다 많이 입력한다면 생략 */
+	overflow:hidden; /* 최대 넓이 이상 넘어가면 감추기 */
+	white-space: nowrap; /* 공백문자가 있는 경우 줄바꿈하지 않고 한줄로 나오게 함 */
+	width:280px;
+	max-height:30px;
     font-size: 30px;
     font-weight: bold;
 }

@@ -30,6 +30,7 @@
 
 		<ul class="booklist">
 			<c:forEach items="${booklist }" var="i">
+			<a href="bookDetail.do?book_no=${i.book_no }">
 			<li class="book">
 				<div class="bookimg">
 					<img src="book.jpg" class="bookimage">
@@ -43,6 +44,7 @@
 					<li>${i.user_name }</li>
 				</ul>
 			</li>
+			</a>
 			</c:forEach>
 		</ul>
 
