@@ -1,0 +1,46 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.nevi{
+    display: inline-block;
+    width: 300px;
+    height: 1080px;
+    float: left;
+}
+li{
+    list-style-type: none;
+}
+.bookimage{
+    width: 130px;
+    height: 203px;
+}
+.booklist_wrap{
+	margin: 100px auto 0;
+    width: 1500px;
+    height: 1500px;
+}
+.book{
+    width: 250px;
+    height: 220px;
+    margin: 10px;
+    float:left;
+}
+.bookimg{
+    display: inline-block;
+    width:130px;
+    height: 203px;
+    margin:0px;
+    padding:0px;
+}
+.bookinfo{
+    float: right;
+    padding:0px;
+    margin-left: 10px;
+}
+.booktitle{
+    font-size: 30px;
+    font-weight: bold;
+}
+.bookwriter{
+    font-size: 20px;
+}
