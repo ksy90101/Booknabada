@@ -16,6 +16,7 @@ li{
     float: left;
 }
 .bookimage{
+<<<<<<< HEAD
     width:250px;
     height: 400px;
     background-color: purple;
@@ -84,6 +85,56 @@ li{
     font-size:20px;
 }
 .book_info2 table{
+=======
+    width:275.6px;
+    height: 400px;
+    background-color: purple;
+    float: left;
+}
+.bookinfo{
+    float: left;
+    width:200px;
+    height: 400px;
+}
+.star{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.count{
+    margin-top: 50px;
+}
+
+.booktop_right{
+    width: 220px;
+    height: 410px;
+    float:left;
+}
+.pabongimage{
+    width: 60px;
+    height: 20px;
+    background-color: orange;
+}
+.price{
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+.pricetext{
+    color : #F1B40B;
+    font-size : 30px;
+    padding : 0px;
+    margin: 0px;
+}
+.book_info2{
+    height: 150px;
+    margin:0px;
+    padding:0px;
+    clear: both;
+    font-size:20px;
+}
+.book_info table{
+>>>>>>> refs/heads/Yehee
     width: 1000px;
 }
 .book_info2 .name{

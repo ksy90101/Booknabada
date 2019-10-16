@@ -14,25 +14,13 @@
 <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="../css/header.css">
 
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
-	<div class="top_navi">
-	
-		<div class="top_content">
-			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../qna/qnaBoard.do'">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../free/freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
 	
 	<div class="board">
 		<table>

@@ -11,6 +11,11 @@ public interface LoginService {
 	int checkID(String id) throws Exception;
 
 	String finidAction(LoginDTO dto) throws Exception;
+
+	LoginDTO detail(int reBno) throws Exception;
+
+	
+	int level(String id) throws Exception;
 	
 	int level(String id) throws Exception;
 	

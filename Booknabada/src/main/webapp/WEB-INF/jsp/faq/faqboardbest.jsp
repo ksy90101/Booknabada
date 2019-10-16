@@ -7,18 +7,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>자주하는질문 - 베스트</title>
+<title>자주하는질문</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="../css/faq.css">
 <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
-	<!-- 헤더 -->
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<!-- 게시판 메뉴 -->
-	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-	
-	<!-- FAQ 메뉴바 -->
+	<div class="faq">
+		<div class="menu_wrap">
+			<div class="menu">
+				<div class="menutext">공지사항</div>
+			</div>
+			<div class="menu">
+				<div class="menutext">이벤트</div>
+			</div>
+			<div class="menu">
+				<div class="menutext">Q&A</div>
+			</div>
+			<div class="menu">
+				<div class="menutext">FAQ</div>
+			</div>
+			<div class="menu">
+				<div class="menutext">자유게시판</div>
+			</div>
+		</div>
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext"><a href="faqboardall.do">전체보기</a></div>
@@ -36,11 +49,9 @@
 				<div class="faqtext"><a href="faqboardhomepage.do">홈페이지이용</a></div>
 			</div>
 		</div>
-		
-		<!-- DB 값 입력 -->
 		<h1 id="faqtitle">
 			<br>베스트
-		<c:if test="${sessionScope.level eq 1 }">
+		<c:if test="#{sessionScope.id eq 'admin' }">
 			<button onclick="location.href='faqwrite.do'">글쓰기</button>
 		</c:if>
 		</h1>
@@ -52,8 +63,7 @@
 			</dl>
 			</c:forEach>
 		</div>
-
-		<!-- footer -->
+	</div>
 		<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>

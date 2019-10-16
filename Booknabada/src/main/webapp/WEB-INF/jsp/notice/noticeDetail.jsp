@@ -42,27 +42,8 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
-	<!-- 카테고리 -->
-	<div class="top_navi">
-
-		<div class="top_content">
-			<div id="box01" style="background: #BCB0FE; color: white;"
-				onclick="location.href='noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../qna/qnaBoard.do'">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../free/freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
 
 	<!-- 글박스 -->
 	<div class="boardDetailPart">
@@ -115,6 +96,7 @@
 
 	<!-- 댓글박스 -->
 	<div class="commentPart">
+	
 		<c:if test="${sessionScope.id != null }">
 			<form action="commentAction.do" method="post">
 
@@ -136,8 +118,7 @@
 				<c:forEach items="${coment }" var="c">
 					<div id="commentBox"
 						style="border: 1px solid #E7E2FF; box-sizing: border-box;">
-						<div
-							style="height: 35px; border-bottom: 2px solid #E7E2FF; margin-bottom: 10px">
+						<div style="height: 35px; border-bottom: 2px solid #E7E2FF; margin-bottom: 10px">
 							<div style="width: 190px; height: 30px; float: left;">
 								<p id="commentTitle">글번호</p>
 								<p id="commentConent">${c.coment_no }</p>

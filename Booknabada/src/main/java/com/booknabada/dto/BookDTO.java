@@ -3,7 +3,6 @@ package com.booknabada.dto;
 public class BookDTO {
 	int book_no, book_count, book_recommend, book_page, book_price, totalCount;
 	String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select;
-	private int book_no, book_count, book_recommend, book_page, book_price, user_no;
 	private String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select, user_id;
 	
 	

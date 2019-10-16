@@ -42,5 +42,11 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.findidAction(dto);
 	}
 
+	@Override
+	public LoginDTO detail(int reBno) throws Exception {
+		return loginDAO.detail(reBno);
+	}
+
+
 }
 

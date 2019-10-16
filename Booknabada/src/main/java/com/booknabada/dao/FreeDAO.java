@@ -52,6 +52,11 @@ public class FreeDAO extends AbstractDAO{
 	public void comentDelete(ComentDTO dto) {
 		delete("free.comentDelete", dto);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<FreeDTO> searchAction(String search_title) {
+		return selectList("free.searchAction",search_title);
+	}
 	
 	
 	

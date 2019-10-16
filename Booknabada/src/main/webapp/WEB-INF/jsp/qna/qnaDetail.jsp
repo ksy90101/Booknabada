@@ -23,7 +23,12 @@
 	}
 	
 	function del(num){
+<<<<<<< HEAD
 		if(${fn:length(coment) > 0 }){
+=======
+		//alert("삭제하기 숫자: " + num);
+		if({fn:length(coment) > 0 }){
+>>>>>>> refs/heads/Yehee
 			alert("댓글이 있는 게시물은 삭제할 수 없습니다")
 			return;
 		}
@@ -31,10 +36,26 @@
 			location.href= 'qnaDelete.do?board_no='+num; 
 		}
 	}
+<<<<<<< HEAD
+	function comentDel(num, bno){
+		//alert("삭제하기 숫자: " + num + bno);
+=======
+<<<<<<< HEAD
 	function comentDel(num, bno){
 		//alert("삭제하기 숫자: " + num + bno);
 		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
 		var check = confirm("삭제하시겠습니까?");
+=======
+ 	function comentDel(num, bno){
+ 		//alert("삭제하기 숫자: " + num + bno);
+>>>>>>> refs/heads/Yehee
+		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
+<<<<<<< HEAD
+		var check = confirm("삭제하시겠습니까?");
+=======
+			var check = confirm("삭제하시겠습니까?");
+>>>>>>> refs/heads/yehee
+>>>>>>> refs/heads/Yehee
 		if (check) {
 			location.href= 'comentDelete.do?coment_no='+num+'&board_no='+bno;
 		} 	
@@ -43,9 +64,32 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+=======
+	
+<<<<<<< HEAD
+	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+=======
+	<!-- 카테고리 -->
+	<div class="top_navi">
+		<div class="top_content">
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
+			<div id="bin"></div>
+			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../freeBoard.do'">자유게시판</div>
+		</div>
+	</div>
+>>>>>>> refs/heads/yehee
+>>>>>>> refs/heads/Yehee
 
 	<!-- 글박스 -->
 	<div class="boardDetailPart">

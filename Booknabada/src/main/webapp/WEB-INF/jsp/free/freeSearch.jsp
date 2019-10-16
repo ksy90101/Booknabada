@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-<link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="./css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
 <link rel="stylesheet" href="../css/header.css">
@@ -21,16 +21,16 @@
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
-	<div class="board">
+	<div id="board">
 		<table>
-			<tr id=board_tr>
+			<tr>
 				<th id="t1" style="font-weight: bold">No</th>
 				<th id="t2" style="font-weight: bold">Title</th>
 				<th id="t3" style="font-weight: bold">Nickname</th>
 				<th id="t3" style="font-weight: bold">Date</th>
 				<th id="t1" style="font-weight: bold">Count</th>
 			</tr>
-			<c:forEach items="${board }" var="i">
+			<c:forEach items="${searchAction }" var="i">
 				<tr id=board_tr onclick="location.href='freeDetail.do?board_no=${i.board_no }'">
 					<td id="t1">${i.board_no }</td>
 					<td id="t2" >
@@ -46,8 +46,8 @@
 	</div>
 
 	<!-- 페이징박스 -->
-	<div class="pagingbox">
-				<div class="paging">
+	<div >
+				<div >
 					<%@include file="../include/boardpaging.jsp"%>
 					<c:if test="${page gt 10 }">
 						<button onclick="location.href='freeBoard.do?page=${page-10 }'">이전</button>
@@ -76,13 +76,16 @@
 	<!-- 검색바 -->
 	<div id="search">
 		<div id="underBar">
+		<form name="search" action="searchAction.do" method="post">
 		<select name="search1">
 			<option value="s1">제목</option>
 			<option value="s2">내용</option>
 			<option value="s3">아이디</option>
 		</select>&nbsp; 
-		<input type="text">&nbsp; 
-		<button id=boardButton type="submit">검색</button>&nbsp;
+		
+		<input type="text" name="searchtitle">&nbsp; 
+		<button id=boardButton type="submit" >검색</button>&nbsp;
+		</form>
 		<c:if test="${sessionScope.name != null }">
 		<button id=boardButton type="submit" onclick="location.href='freeWrite.do'">글쓰기</button></c:if>
 		</div>

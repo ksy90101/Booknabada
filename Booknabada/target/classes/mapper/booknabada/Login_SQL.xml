@@ -4,7 +4,11 @@
 <mapper namespace="login">
 
 	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
-		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
+<<<<<<< HEAD
+		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = AES_DECRYPT(UNHEX(#{user_pw }),'new')
+=======
+		SELECT user_id FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
+>>>>>>> refs/heads/master
 	</select>
 
 	<select id="checkID" parameterType="String" resultType="Integer">
@@ -14,7 +18,7 @@
 	<insert id="joinAction" parameterType="com.booknabada.dto.LoginDTO">
 		<![CDATA[		
 		INSERT INTO user_info (user_name, user_id, user_pw, user_email, user_gender, user_birth, user_tel) 
-		VALUES(#{user_name}, #{user_id }, #{user_pw }, #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
+		VALUES(#{user_name}, #{user_id }, (SELECT HEX(AES_ENCRYPT(#{user_pw},'new'))), #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
 		]]>
 	</insert>
 	<select id="level" parameterType="String" resultType="int">
@@ -23,5 +27,9 @@
 	
 	<select id="findidAction" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
 		SELECT user_id from user_info where user_name=#{user_name} and user_email=#{user_email}
+	</select>
+	
+	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.LoginDTO">
+		SELECT * from user_info where user_no=#{reBno}
 	</select>
 </mapper>

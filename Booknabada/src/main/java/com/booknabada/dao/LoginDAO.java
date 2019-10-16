@@ -2,6 +2,7 @@ package com.booknabada.dao;
 
 import org.springframework.stereotype.Repository;
 
+import com.booknabada.dto.FreeDTO;
 import com.booknabada.dto.LoginDTO;
 import com.common.dao.AbstractDAO;
 
@@ -27,6 +28,10 @@ public class LoginDAO extends AbstractDAO {
 
 	public String findidAction(LoginDTO dto) {
 		return (String) selectOne("login.findidAction", dto);
+	}
+
+	public LoginDTO detail(int reBno) {
+		return(LoginDTO) selectOne("login.detail",reBno);
 	}
 
 }

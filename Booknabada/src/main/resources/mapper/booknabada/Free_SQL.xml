@@ -31,6 +31,18 @@
 		]]>
 	</insert>
 
+
+
+	<select id="searchAction" parameterType="String" resultType="com.booknabada.dto.FreeDTO">
+		SELECT * FROM freeBoard_view WHERE board_title LIKE #{search_title }
+			
+	</select>
+
+
+
+
+
+
 <!-- 글삭제 -->
 	<delete id="detailDelete" parameterType="com.booknabada.dto.FreeDTO">
 		DELETE FROM board WHERE board_no = #{board_no}

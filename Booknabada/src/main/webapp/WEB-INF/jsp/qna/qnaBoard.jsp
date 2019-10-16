@@ -22,7 +22,10 @@
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
+<<<<<<< HEAD
 	<div class="board">
+=======
+>>>>>>> refs/heads/Yehee
 		<table>
 			<tr id=board_tr>
 				<th id="t1" style="font-weight: bold">No</th>

@@ -18,8 +18,13 @@ public class BookServiceImpl implements BookService{
 	private BookDAO bookDAO;
 
 	@Override
+<<<<<<< HEAD
 	public List<BookDTO> booklist(int page) throws Exception {
 		return bookDAO.booklist(page);
+=======
+	public List<BookDTO> booklist() throws Exception {
+		return bookDAO.booklist();
+>>>>>>> refs/heads/Yehee
 	}
 
 	@Override

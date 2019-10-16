@@ -5,11 +5,19 @@ import java.util.List;
 import com.booknabada.dto.BookDTO;
 
 public interface BookService {
+<<<<<<< HEAD
 	// 책 목록 보기
 	List<BookDTO> booklist(int page) throws Exception;
 	// 책 상세 보기
 	BookDTO bookDetail(int book_no) throws Exception;
 	// 책 추가
+=======
+
+	List<BookDTO> booklist() throws Exception;
+
+	BookDTO bookDetail(int book_no) throws Exception;
+	
+>>>>>>> refs/heads/Yehee
 	void bookAddAction(BookDTO dto) throws Exception;
 
 

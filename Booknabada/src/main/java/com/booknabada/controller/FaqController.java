@@ -29,12 +29,15 @@ public class FaqController {
     	
     	return mv;
     }
+<<<<<<< HEAD
 	@RequestMapping(value="index/index.do")
     public ModelAndView index2(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("index/index");
     	
     	return mv;
     }
+=======
+>>>>>>> refs/heads/Yehee
 	
 	@RequestMapping(value="caution.do")
     public ModelAndView caution() throws Exception{
@@ -51,7 +54,11 @@ public class FaqController {
 		String whatBoard = "faq";
 		
 		mv.addObject("whatBoard", whatBoard);
+<<<<<<< HEAD
 		mv.addObject("faqboardall", faqboardall);
+=======
+		mv.addObject("faq_all", faqboardall);
+>>>>>>> refs/heads/Yehee
 		return mv;
 	}
 
@@ -63,7 +70,11 @@ public class FaqController {
 		String whatBoard = "faq";
 
 		mv.addObject("whatBoard", whatBoard);
+<<<<<<< HEAD
 		mv.addObject("faqboardbest", faqboardbest);
+=======
+		mv.addObject("faq_best", faqboardbest);
+>>>>>>> refs/heads/Yehee
 		return mv;
 	}
 	
