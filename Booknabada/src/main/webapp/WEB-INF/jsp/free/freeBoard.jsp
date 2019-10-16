@@ -18,24 +18,12 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
-	<div class="top_navi">
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../qna/qnaBoard.do'">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
+<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+	
 	
 	<div id="board">
 		<table>
-			<tr>
+			<tr id=board_tr>
 				<th id="t1" style="font-weight: bold">No</th>
 				<th id="t2" style="font-weight: bold">Title</th>
 				<th id="t3" style="font-weight: bold">Nickname</th>
@@ -58,8 +46,8 @@
 	</div>
 
 	<!-- 페이징박스 -->
-	<div >
-				<div >
+	<div class="pagingbox">
+				<div class="paging">
 					<%@include file="../include/boardpaging.jsp"%>
 					<c:if test="${page gt 10 }">
 						<button onclick="location.href='freeBoard.do?page=${page-10 }'">이전</button>

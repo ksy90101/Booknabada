@@ -18,6 +18,7 @@
 <a href="./login/newuser.do">newuser</a>
 <a href="./login/findid.do">findid</a>
 <a href="./login/findpw.do">findpw</a>
+<a href="./login/modifyuser.do">수정하기</a>
 <script>CKEDITOR.replace('editor', {height:800});</script>
 
 </body>

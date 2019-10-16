@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.FreeDTO;
 import com.booknabada.dto.LoginDTO;
 import com.booknabada.service.LoginService;
+import com.booknabada.util.Util;
 
 @Controller
 public class LoginController {
@@ -58,6 +60,25 @@ public class LoginController {
 		
 		return mv;
 	}
+	@RequestMapping(value = "login/modifyuser.do")
+	public ModelAndView modifyuser(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("login/modifyuser");
+		
+		String user_no = request.getParameter("user_no");
+
+		// 숫자체크 후 게시판번호 담기
+		int reBno = Util.checkInt(user_no);
+
+		// 자기글 불러와서 DTO에 담기
+		LoginDTO detail = loginService.detail(reBno);
+		
+		mv.addObject("modify", detail);
+		
+		return mv;
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "login/findid.do")
 	public ModelAndView findid(HttpServletRequest request) throws Exception {
@@ -95,6 +116,7 @@ public class LoginController {
 			
 		return mv;
 	}
+	
 	@RequestMapping(value = "login/checkID.do")
 	public @ResponseBody int checkID(HttpServletRequest request) throws Exception {
 		String id = request.getParameter("id");
