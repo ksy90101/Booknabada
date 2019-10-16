@@ -51,7 +51,11 @@ public class QnaController {
 		mv.addObject("page", page);
 		//총글수
 		mv.addObject("totalCount", board.get(0).getTotalCount());
-//		
+//		 
+		String whatBoard = "qna";
+
+		mv.addObject("whatBoard", whatBoard);
+	
 		return mv;
 		
 	}
@@ -91,14 +95,13 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String whatBoard = "qna";
+		mv.addObject("whatBoard", whatBoard);
 		//로그인 한 사람만 보이게...
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			//Write.do로 가기
-			
-			mv.addObject("whatBoard", whatBoard);
 			return new ModelAndView("qna/qnaWrite");
 		} else {
-			mv.addObject("whatBoard", whatBoard);
+			
 			return new ModelAndView("redirect:index.do");
 		}
 	}
