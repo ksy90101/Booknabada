@@ -17,5 +17,17 @@ public class LoginDAO extends AbstractDAO {
 		return (String) selectOne("login.login", dto);
 	}
 
+	public int level(String id) {
+		return (int) selectOne("login.level", id);
+	}
+
+	public int checkID(String id) {
+		return (int) selectOne("login.checkID", id);
+	}
+
+	public String findidAction(LoginDTO dto) {
+		return (String) selectOne("login.findidAction", dto);
+	}
+
 }
 

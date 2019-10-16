@@ -6,13 +6,23 @@ import com.booknabada.dto.FaqDTO;
 
 public interface FaqService {
 
-	List<FaqDTO> faq_all() throws Exception;
+	List<FaqDTO> faqboardall() throws Exception;
 
-	List<FaqDTO> faq_best() throws Exception;
+	List<FaqDTO> faqboardbest() throws Exception;
 
-	List<FaqDTO> faq_delivery() throws Exception;
+	List<FaqDTO> faqboarddelivery() throws Exception;
 
-	List<FaqDTO> faq_homepage() throws Exception;
+	List<FaqDTO> faqboardhomepage() throws Exception;
 
-	List<FaqDTO> faq_order() throws Exception;
+	List<FaqDTO> faqboardorder() throws Exception;
+
+	void faqWriteAction(FaqDTO dto) throws Exception;
+
+	void faqDelete(FaqDTO dto) throws Exception;
+
+	FaqDTO detail(int faq_no) throws Exception;
+
+	void faqModifyAction(FaqDTO dto) throws Exception;
+
+
 }

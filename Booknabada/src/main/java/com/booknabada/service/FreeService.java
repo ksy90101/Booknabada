@@ -2,11 +2,12 @@ package com.booknabada.service;
 
 import java.util.List;
 
+import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 
 public interface FreeService {
 
-	List<FreeDTO> board() throws Exception;
+	List<FreeDTO> board(int page) throws Exception;
 	//디테일 번호 가져오기
 	FreeDTO detail(int reBno) throws Exception;
 	//게시글 카운트
@@ -17,8 +18,11 @@ public interface FreeService {
 	void detailDelete(FreeDTO dto) throws Exception;
 	
 	void modifyAction(FreeDTO dto) throws Exception;
+	
+	List<ComentDTO> coment(int reBno) throws Exception;
+	
+	void comentAction(ComentDTO dto) throws Exception;
 
-	/*
-	 * List<FreeDTO> coment(int reBno) throws Exception;
-	 */
+	void comentDelete(ComentDTO dto) throws Exception;
+	
 }

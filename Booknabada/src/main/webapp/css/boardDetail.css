@@ -2,7 +2,9 @@
 button{
 	cursor:pointer;
 }
-
+li{
+	list-style: none;
+}
 .header {
 	display: table;
 	width: 1100px;
@@ -22,7 +24,7 @@ button{
 	vertical-align: middle;
 }
 
-#box01 {
+.box01 {
 	width: 183px;
 	height: 63px;
 	border: 1px solid #BCB0FE;
@@ -34,6 +36,30 @@ button{
 	font-weight: bold;
 	font-size: 18px;
 	float: left;
+	margin-right:20px;
+}
+.box01 a:visited, .box01 a:hover, .box01 a:active, .box01 a:focus{
+	color: #BCB0FE;
+}
+
+.box01.on{
+	background: #BCB0FE; 
+}
+.box01.on a{
+	color: white !important;	
+}
+
+
+.top_content li:last:child{
+	margin-right:0
+}
+
+
+.box01 a{
+	color: #BCB0FE;
+	font-family: roboto;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 .top_content {
@@ -95,6 +121,7 @@ button{
 }
 .commentPart{
 	width: 1000px;
+	display: table;
 	height: 600px;
 	margin: 0 auto;
 	
@@ -120,6 +147,10 @@ button{
 	color: #A797FE;
 	font-weight: bold;
 }
+#commentConent{
+	float: left;
+	margin-left:20px;
+}
 
 #commentWritebox{
 	width: 800px;
@@ -142,12 +173,17 @@ button{
 	border-style: none;
 	border: 1px solid #A797FE;
 }
-.BoardbuttonPart{
+.eventbuttonPart{
 	width:310px;
 	height: 35px;
 	margin: 20px auto;
 }
-#Boardbutton{
+.BoardbuttonPart{
+	display: table;
+	height: 35px;
+	margin: 30px auto;
+}
+#Boardbutton #eventbutton{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;

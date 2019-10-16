@@ -20,21 +20,9 @@
 <link rel="stylesheet" href="../css/boardDetail.css" type="text/css" />
 </head>
 <body>
-	<jsp:include page="../include/header.jsp"></jsp:include>
-	<div class="top_navi">
 
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
-		</div>
-	</div>
+	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 	<div id="container" class="event">
 		<div class="inner-wrap cf">
@@ -44,10 +32,10 @@
 						<li>
 							<div class="img-wrap">
 								<c:if test="${i.event_picture ne null }">
-									<img src="./upimg/${i.event_picture }" />
+									<img src="../upimg/${i.event_picture }" />
 								</c:if>
 								<c:if test="${i.event_picture eq null }">
-									<img src="./images/noimage.png" />
+									<img src="../images/noimage.png" />
 								</c:if>
 							</div>
 							<dl>
@@ -89,8 +77,9 @@
 				</div>
 			</div>
 				
-
+			<c:if test="${sessionScope.level == 1 }">			
 				<button onclick="location.href='eventWrite.do'">글쓰기</button>
+			</c:if>
 			</section>
 			<!-- //eventWrap -->
 		</div>
@@ -99,6 +88,7 @@
 
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+
 
 
 </body>

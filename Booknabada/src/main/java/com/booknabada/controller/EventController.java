@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -30,11 +31,14 @@ public class EventController {
 	@RequestMapping(value="event/event.do")
     public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("event/event");
+    	
     	int page =1;
+    	String whatBoard = "event";
     	
     	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
     		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
 		}
+    	
     	
     	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
     	
@@ -43,12 +47,24 @@ public class EventController {
     	mv.addObject("totalCount", eboard.get(0).getTotalCount());
     	//System.out.println(eboard.get(0).getTotalCount());
     	
+    	mv.addObject("whatBoard", whatBoard);
     	return mv;
     }	
 	
 	@RequestMapping(value="event/eventWrite.do")
-    public ModelAndView eventWrite() throws Exception{
-    	ModelAndView mv = new ModelAndView("event/eventWrite");
+    public ModelAndView eventWrite(HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView();
+    	HttpSession session = request.getSession();
+    	int level = (int) session.getAttribute("level");
+
+    	String whatBoard = "event";
+    	mv.addObject("whatBoard", whatBoard);
+    	
+    	if(level != 1) {
+    		mv.setViewName("redirect:event.do");
+    	}else {
+    		mv.setViewName("event/eventWrite");
+    	}
     	
     	return mv;
     }	
@@ -59,10 +75,13 @@ public class EventController {
     	String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		//HttpSession session = request.getSession();
-		//String name = (String) session.getAttribute("id"); //session은 object로 받아오게됨!!
-
+		HttpSession session = request.getSession();
+		String name = (String) session.getAttribute("name");
+		String id = (String) session.getAttribute("id");
+		
 		EventDTO dto = new EventDTO();
+		dto.setUser_name(name);
+		dto.setUser_id(id);
 		dto.setEvent_title(title);
 		dto.setEvent_content(content); //데이터 셋팅
 		
@@ -93,6 +112,8 @@ public class EventController {
 		String bno = request.getParameter("bno");
 		int reBno = Util.checkInt(bno);
 		//System.out.println(reBno);
+		String whatBoard = "event";
+
 		
 		//count up을 어디서 하냐~!
 		eventService.countUp(reBno);
@@ -110,7 +131,7 @@ public class EventController {
 		//}		
 		//jsp로 넘기기
 		mv.addObject("detail",detail);
-		
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 	
@@ -118,27 +139,49 @@ public class EventController {
 	@RequestMapping(value="event/eventDelete.do")
     public ModelAndView eventDelete(HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("redirect:event.do");
+    	HttpSession session = request.getSession();
     	
-		int reBno = Util.checkInt(request.getParameter("bno"));
-		
-		EventDTO dto = new EventDTO();
-		dto.setEvent_no(reBno);
-		eventService.eventDelete(dto);
-		
-		
+    	if(session.getAttribute("name") != null && 
+				session.getAttribute("id") != null && 
+				request.getParameter("bno") != null) {
+    		int reBno = Util.checkInt(request.getParameter("bno"));
+        	
+    		EventDTO dto = new EventDTO();
+    		dto.setEvent_no(reBno);
+    		dto.setUser_id((String) session.getAttribute("id"));
+    		eventService.eventDelete(dto);
+    		
+    		String whatBoard = "event";
+    		mv.addObject("whatBoard", whatBoard);
+    	}else {
+    		mv.setViewName("error?code=4");
+    	}
+		    	
 		return mv;
    	
     }	
 	
 	@RequestMapping(value="event/eventModify.do")
     public ModelAndView eventModify(HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("event/eventModify");
-    	int reBno = Util.checkInt(request.getParameter("bno"));
+    	ModelAndView mv = new ModelAndView();
+    	HttpSession session = request.getSession();
+    	String id = (String) session.getAttribute("id");
+    	System.out.println(id);
+    			
+		int reBno = Util.checkInt(request.getParameter("bno"));
 		
 		EventDTO detail = eventService.detail(reBno);
+		//System.out.println(detail.getUser_id());
 		
-		mv.addObject("detail",detail);
-		
+		if(detail.getUser_id().equals(id)) {
+			mv.setViewName("event/eventModify");
+			mv.addObject("detail",detail);
+			String whatBoard = "event";
+			mv.addObject("whatBoard", whatBoard);
+		}else {
+			mv.setViewName("error?code=3");
+		}
+    			
 		return mv;
    	
     }	
@@ -168,7 +211,7 @@ public class EventController {
 				
 				//파일 업로드 경로
 				String path = request.getSession().getServletContext().getRealPath("");
-				//System.out.println("리얼경로 : "+path);
+				System.out.println("리얼경로 : "+path);
 				File f = new File(path+"upimg/"+upFileName); //준비
 				file.transferTo(f); //실제 파일 전송
 				//System.out.println("저장경로 : "+f.getPath());	

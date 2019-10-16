@@ -1,9 +1,13 @@
 package com.booknabada.dto;
 
 public class FreeDTO {
-	int board_no, cate_no, user_no, board_count;
-	String board_title, board_content, board_picture, board_date, user_name;
-
+	
+	private int board_no, cate_no, board_count, user_no, totalCount;
+	private String board_title, board_content, board_date, user_name, board_picture;
+	
+	private int coment_no;
+	private String coment_content, coment_date;
+	
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -43,7 +47,13 @@ public class FreeDTO {
 		this.board_count = board_count;
 	}
 
-
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+	
 	public String getBoard_title() {
 		return board_title;
 	}
@@ -93,6 +103,25 @@ public class FreeDTO {
 		this.user_name = user_name;
 	}
 
+
+	public int getComent_no() {
+		return coment_no;
+	}
+	public void setComent_no(int coment_no) {
+		this.coment_no = coment_no;
+	}
+	public String getComent_content() {
+		return coment_content;
+	}
+	public void setComent_content(String coment_content) {
+		this.coment_content = coment_content;
+	}
+	public String getComent_date() {
+		return coment_date;
+	}
+	public void setComent_date(String coment_date) {
+		this.coment_date = coment_date;
+	}
 
 	
 

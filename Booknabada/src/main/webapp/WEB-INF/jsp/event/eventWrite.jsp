@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
   <link rel="stylesheet" href="../css/style.css" type="text/css"/>
   <link href="../css/eventWrite.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/boardDetail.css">
 </head>
 <script>
 
@@ -41,7 +43,8 @@ function check(){
 
 </script>
 <body>
-	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>	
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 	<div id="writebox">
 		<form action="eventWriteAction.do" name="frm" method="post" enctype="multipart/form-data">
@@ -52,7 +55,7 @@ function check(){
 			<h3>사진</h3>
 			<input type="file" name="file" accept="image/*" />
 			<div id="button">
-				<button onclick="cancel()">취소</button>
+				<button type="button" onclick="cancel()">취소</button>
 				<button type="submit" onclick="return check()">완료</button>
 			</div>
 		</form>
@@ -60,5 +63,7 @@ function check(){
 	
 	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
+
 </body>
 </html>

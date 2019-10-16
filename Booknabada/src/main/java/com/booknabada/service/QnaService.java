@@ -3,6 +3,7 @@ package com.booknabada.service;
 import java.util.List;
 
 import com.booknabada.dto.QnaDTO;
+import com.booknabada.dto.ComentDTO;
 
 public interface QnaService {
 
@@ -21,7 +22,10 @@ public interface QnaService {
 	
 	void modifyAction(QnaDTO dto) throws Exception;
 
-//	List<QnaDTO> coment(int reBno) throws Exception;
+	List<ComentDTO> coment(int reBno) throws Exception;
 	
+	void comentAction(ComentDTO dto) throws Exception;
+
+	void comentDelete(ComentDTO dto) throws Exception;
 
 }
