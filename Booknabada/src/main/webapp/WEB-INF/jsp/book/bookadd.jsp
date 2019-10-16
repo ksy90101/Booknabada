@@ -23,9 +23,6 @@ function cancel(){
 		return false;
 	}
 }
-
-
-
 </script>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
@@ -47,11 +44,7 @@ function cancel(){
 						<table>
 							<tr>
 								<th>출간일</th>
-<<<<<<< HEAD
 								<td><input type="date" name="book_pubdate" placeholder="2019-10-15"></td>
-=======
-								<td><input type="date" name="book_date" placeholder="2019-10-15"></td>
->>>>>>> refs/heads/Yehee
 							</tr>
 							<tr>
 								<th>쪽수</th>

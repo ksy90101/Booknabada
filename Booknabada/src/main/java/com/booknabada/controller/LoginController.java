@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.booknabada.dto.FreeDTO;
 import com.booknabada.dto.LoginDTO;
 import com.booknabada.service.LoginService;
-import com.booknabada.util.Util;
 
 @Controller
 public class LoginController {
@@ -22,7 +20,7 @@ public class LoginController {
 	@Resource(name = "loginService")
 	private LoginService loginService;
 
-
+	// 로그인 화면 
 	@RequestMapping(value = "login/login.do")
 	public ModelAndView login() throws Exception{
 		ModelAndView mv = new ModelAndView("login/login");
@@ -30,6 +28,7 @@ public class LoginController {
 		return mv;
 	}
 
+	// 로그인 구현
 	@RequestMapping(value = "login/loginAction.do")
 	public ModelAndView loginAction(HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
@@ -76,24 +75,6 @@ public class LoginController {
 	public ModelAndView newuser(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("login/newuser");
 		//HttpSession session = request.getSession();
-		ModelAndView mv = new ModelAndView("login/newuser");
-		//HttpSession session = request.getSession();
-		
-		return mv;
-	}
-	@RequestMapping(value = "login/modifyuser.do")
-	public ModelAndView modifyuser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("login/modifyuser");
-		
-		String user_no = request.getParameter("user_no");
-
-		// 숫자체크 후 게시판번호 담기
-		int reBno = Util.checkInt(user_no);
-
-		// 자기글 불러와서 DTO에 담기
-		LoginDTO detail = loginService.detail(reBno);
-		
-		mv.addObject("modify", detail);
 		
 		return mv;
 	}

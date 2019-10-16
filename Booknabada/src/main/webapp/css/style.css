@@ -1,4 +1,3 @@
-
 /* myhome1 */
 #container{width:100%;height: 100%;margin-top: 60px}
 #container .inner-wrap{width: 90%; margin :auto;height: 100%}
@@ -136,5 +135,3 @@
 /* eventModify */
 input{width:90%; height:30px}
 textarea{width:100%; height:500px; box-sizing:border-box;}
-
-

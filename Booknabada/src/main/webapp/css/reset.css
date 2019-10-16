@@ -39,13 +39,8 @@ hr{display:none;}
 
 /* base */
 html{width:100%;}
-<<<<<<< HEAD
 body{width:100%; height:100%; font-size:14px;color:#333;line-height:1.5; font-family: 'Roboto', 'Noto Sans KR', sans-serif}
 a{color:#333;text-decoration:none;text-decoration:none; font-family: 'Roboto', 'Noto Sans KR', sans-serif; font-size:14px; line-height:1.5; color:#333; width:100%; height:100%}
-=======
-body{width:100%; height:100%; font-size:14px;color:#333;line-height:1.5; font-family: 'nanum', '나눔 고딕', '맑은 고딕','malgunGothic', 'dotum' ,'돋움';}
-a{color:#333;text-decoration:none;text-decoration:none; font-family:"nanum"; font-size:14px; line-height:1.5; color:#333; width:100%; height:100%}
->>>>>>> refs/heads/Yehee
 a:visited,a:hover,a:active,a:focus{color:#333;}
 caption,legend{width:0;height:0;font-size:0;text-indent:-9999px;overflow:hidden;}
 

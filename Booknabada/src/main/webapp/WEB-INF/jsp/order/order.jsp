@@ -64,8 +64,6 @@ function check(){
 	} 
 	
 }
-
-
 </script>
 
 </head>

@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-<link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
 
@@ -20,12 +20,23 @@
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
-<<<<<<< HEAD
+	<!-- 카테고리 -->
+	<div class="top_navi">
+		<div class="top_content">
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
+			<div id="bin"></div>
+			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
+			<div id="bin"></div>
+			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../free/freeBoard.do'">자유게시판</div>
+		</div>
+	</div>
+	
 	<div class="board">
-=======
->>>>>>> refs/heads/Yehee
 		<table>
 			<tr id=board_tr>
 				<th id="t1" style="font-weight: bold">No</th>

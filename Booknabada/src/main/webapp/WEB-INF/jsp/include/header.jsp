@@ -14,11 +14,7 @@
 				</li>
 			</ul>
 			<h1 class="logo">
-<<<<<<< HEAD
 				<a href="../index/index.do">
-=======
-				<a href="../index.do">
->>>>>>> refs/heads/Yehee
 					<img src="../images/logo.png" alt="BOOKNABADA">
 				</a>
 			</h1>

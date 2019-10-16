@@ -1,40 +1,8 @@
 package com.booknabada.dto;
 
 public class BookDTO {
-	int book_no, book_count, book_recommend, book_page, book_price, totalCount;
-	String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select;
+	private int book_no, book_count, book_recommend, book_page, book_price, user_no, totalCount;
 	private String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select, user_id;
-	
-	
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	private int book_no, book_count, book_recommend, book_page, book_price, user_no;
-	private String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select, user_id;
-	
-	
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	private int book_no, book_count, book_recommend, book_page, book_price, user_no;
-	private String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select, user_id;
-	
-	
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	private int book_no, book_count, book_recommend, book_page, book_price, user_no;
-	private String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select, user_id;
-	
 	
 	public String getUser_id() {
 		return user_id;
@@ -137,5 +105,11 @@ public class BookDTO {
 	}
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 }

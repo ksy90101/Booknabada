@@ -4,11 +4,7 @@
 <mapper namespace="login">
 
 	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
-<<<<<<< HEAD
-		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = AES_DECRYPT(UNHEX(#{user_pw }),'new')
-=======
-		SELECT user_id FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
->>>>>>> refs/heads/master
+		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
 	</select>
 
 	<select id="checkID" parameterType="String" resultType="Integer">
@@ -18,9 +14,10 @@
 	<insert id="joinAction" parameterType="com.booknabada.dto.LoginDTO">
 		<![CDATA[		
 		INSERT INTO user_info (user_name, user_id, user_pw, user_email, user_gender, user_birth, user_tel) 
-		VALUES(#{user_name}, #{user_id }, (SELECT HEX(AES_ENCRYPT(#{user_pw},'new'))), #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
+		VALUES(#{user_name}, #{user_id }, #{user_pw}, #{user_email }, #{user_gender }, #{user_birth }, #{user_tel })
 		]]>
 	</insert>
+	
 	<select id="level" parameterType="String" resultType="int">
 		SELECT user_level FROM user_info WHERE user_id=#{id }
 	</select>

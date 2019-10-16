@@ -252,7 +252,7 @@ public class NoticeController {
 			HttpSession session = request.getSession();
 			
 			String board_no = request.getParameter("board_no");
-			ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+			ModelAndView mv = new ModelAndView("redirect:noticeDetail.do?board_no=" + board_no);
 			String content = request.getParameter("coment_content");
 			
 			ComentDTO dto = new ComentDTO();
@@ -272,8 +272,7 @@ public class NoticeController {
 			HttpSession session = request.getSession();
 			
 			String board_no = request.getParameter("board_no");
-			ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
-			
+			ModelAndView mv = new ModelAndView("redirect:noticeDetail.do?board_no=" + board_no);
 			//숫자인지 체크
 			int coment_no = Util.checkInt(request.getParameter("coment_no"));
 			

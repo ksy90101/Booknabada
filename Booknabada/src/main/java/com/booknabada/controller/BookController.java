@@ -21,8 +21,6 @@ import com.booknabada.service.BookService;
 import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
-
 @Controller
 public class BookController {
 	Logger log = Logger.getLogger(this.getClass());
@@ -50,12 +48,12 @@ public class BookController {
     	return mv;
     }	
 	
+	// 책 상세 보기
 	@RequestMapping(value = "book/bookDetail.do")
 	public ModelAndView bookDetail(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("book/bookDetail");
 		
 		int book_no = Util.checkInt(request.getParameter("book_no")); // 책 번호 가져오기 -> 책 번호는 String으로 들어오기때문에 int형으로 변경
-
 		System.out.println(book_no);
 
 		BookDTO dto = bookService.bookDetail(book_no);
@@ -63,6 +61,7 @@ public class BookController {
 		return mv;
 	}
 	
+	// 책 추가 페이지
 	@RequestMapping(value="book/bookadd.do")
     public ModelAndView bookadd(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView();
@@ -73,18 +72,15 @@ public class BookController {
     		mv.setViewName("redirect:../login/login.do");
     	}
     	
-    	   	
-    	
     	return mv;
     }	
 	
-	
+	// 책 추가
 	@RequestMapping(value="book/bookAddAction.do")
     public ModelAndView bookAddAction(CommandMap commandMap, HttpServletRequest request, @RequestParam("book_picture") MultipartFile file) throws Exception{
     	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
 		
-    	
     	if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
     		
     		String id = (String) session.getAttribute("id");
@@ -117,8 +113,7 @@ public class BookController {
         	if(file.getSize() != 0) {
     			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
     			String today = sdf.format(new Date());
-    			String upFileName = today+"_"+file.getOriginalFilename();
-    			
+    			String upFileName = today+"_"+file.getOriginalFilename();	
     			//파일 업로드 경로
     			String path = request.getSession().getServletContext().getRealPath("");
     			System.out.println("리얼경로 : "+path);
@@ -130,20 +125,14 @@ public class BookController {
     		}else {
     			dto.setBook_picture(null);
     		}
-        	
         	bookService.bookAddAction(dto);
         	
         	//mv.addObject("book",dto);    	
-    		
     		mv.setViewName("book/bookaddaction");
     	}else {
     		mv.setViewName("redirect:../login/login.do");
     	}
-    	
-    	
-    	
-    	
-    	
+
     	return mv;
     }	
 		

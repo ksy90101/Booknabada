@@ -28,8 +28,11 @@
 #visualWrap .v-arrow li img{width: 100px; cursor: pointer;}
 #container.main .inner-wrap{margin:50px auto; width:90%; }
 #bookList{width: 73%;float: left;}
-#bookList .list{width: 100%;}
-#bookList .list li{width: 33%; background: #bcb0fe; height: 200px; float: left;}
+#bookList .currentbookimg{width: 200px; height:150px; background-color: #bcb0fe; float:left; }
+#bookList .list{width: 100%; margin-bottom: 20px}
+#bookList .list li{width: 33%; background: #bcb0fe; float: left;}
+
+
 
 #loveBook{width: 25%;float: right;}
 #loveBook .list li{width: 215px; height: 60px; background: skyblue;}

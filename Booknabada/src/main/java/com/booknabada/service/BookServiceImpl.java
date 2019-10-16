@@ -17,22 +17,20 @@ public class BookServiceImpl implements BookService{
 	@Resource(name="bookDAO")
 	private BookDAO bookDAO;
 
+	// 도서 목록
 	@Override
-<<<<<<< HEAD
 	public List<BookDTO> booklist(int page) throws Exception {
 		return bookDAO.booklist(page);
-=======
-	public List<BookDTO> booklist() throws Exception {
-		return bookDAO.booklist();
->>>>>>> refs/heads/Yehee
 	}
 
+	// 도서 상세 정보
 	@Override
 	public BookDTO bookDetail(int book_no) throws Exception {
 
 		return bookDAO.bookDetail(book_no);
 	}
 
+	// 도서 추가
 	@Override
 	public void bookAddAction(BookDTO dto) throws Exception {
 		bookDAO.bookAddAction(dto);

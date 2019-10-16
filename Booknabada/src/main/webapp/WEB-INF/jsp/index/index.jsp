@@ -20,60 +20,31 @@
 <script src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
-
+<!-- 헤더 -->
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-
+<!-- 본문내용 -->
 <div id="container" class="main">
 		<section id="visualWrap">
 			<h3>가장 사랑받는 책</h3>
 			<div class="v-mask">
 				<ul class="v-banner cf" id="mainBook">
+					<c:forEach items="${lovebook }" var = "i">
 					<li class="one">
-						<div class="pic"></div>
+						<a href="../book/bookDetail.do?book_no=${i.book_no }">
+						<input type="hidden" name="book_no" value="${i.book_no }">
+						<div class="pic"><img alt="책이미지" src="../upimg/${i.book_picture }"></div>
 						<div class="txt">
-							<h5>이곳은 책의 제목을 작성하는 영역</h5>
-							<p class="book_author">작가이름 작성영역</p>
-							<p class="star">★★★☆☆</p>
-							<p class="read"><span id="cnt">10,000</span>명이 읽었음</p>
+							<h5>${i.book_title }</h5>
+							<p class="book_author">${i.book_author } / ${i.book_publisher }</p>
+							<p class="star">${i.book_recommend }</p>
+							<p class="read"><span id="cnt">
+							<fmt:formatNumber value="${i.book_count }" groupingUsed="true"/>
+							</span>명이 읽었음</p>
 						</div>
+						</a>
 					</li>
-					<li class="two">
-						<div class="pic"></div>
-						<div class="txt">
-							<h5>이곳은 책의 제목을 작성하는 영역이곳은 책의 제목을 작성하는 영역이곳은 책의 제목을 작성하는 영역</h5>
-							<p class="book_author">작가이름 작성영역</p>
-							<p class="star">★★★☆☆</p>
-							<p class="read"><span id="cnt">10,000</span>명이 읽었음</p>
-						</div>
-					</li>
-					<li class="three">
-						<div class="pic"></div>
-						<div class="txt">
-							<h5>이곳은 책의 제목을 작성하는 영역</h5>
-							<p class="book_author">작가이름 작성영역</p>
-							<p class="star">★★★☆☆</p>
-							<p class="read"><span id="cnt">10,000</span>명이 읽었음</p>
-						</div>
-					</li>
-					<li class="four">
-						<div class="pic"></div>
-						<div class="txt">
-							<h5>이곳은 책의 제목을 작성하는 영역</h5>
-							<p class="book_author">작가이름 작성영역</p>
-							<p class="star">★★★☆☆</p>
-							<p class="read"><span id="cnt">10,000</span>명이 읽었음</p>
-						</div>
-					</li>
-					<li class="five">
-						<div class="pic"></div>
-						<div class="txt">
-							<h5>이곳은 책의 제목을 작성하는 영역</h5>
-							<p class="book_author">작가이름 작성영역</p>
-							<p class="star">★★★☆☆</p>
-							<p class="read"><span id="cnt">10,000</span>명이 읽었음</p>
-						</div>
-					</li>
+					</c:forEach>
 				</ul>
 			</div>
 			<ul class="v-arrow">
@@ -86,20 +57,26 @@
 		<div class="inner-wrap cf">
 			<section id="bookList">
 				<h3>최근 등록된 책</h3>
+				<c:forEach items="${currentbook }" var="i">
+				<div class="currentbookimg"><img alt="최근 등록한 책" src="../upimg/${i.book_picture }"></div>
 				<ul class="list cf">
-					<li></li>
-					<li></li>
-					<li></li>
-
+					<li>${i.book_title }</li>
+					<li>${i.book_author } / ${i.book_publisher }</li>
+					<li>
+					<span><fmt:formatNumber value="${i.book_count }" groupingUsed="true"></fmt:formatNumber></span>
+					명이 읽었음</li>
 				</ul>
+				</c:forEach>
 				<a href="#"> 전체 책 둘러보기</a>
 			</section> <!-- //bookList -->
 			<aside id="loveBook">
 				<article class="pabook">
 					<h3>사랑받는 파북이</h3>
+					<c:forEach items="${loveuser }" var="i">
 					<ul class="list">
-						<li></li>
+						<li>${i.ranknum}. ${i.user_name }</li>
 					</ul>
+					</c:forEach>
 				</article>				
 			</aside><!-- //loveBook -->
 		</div>

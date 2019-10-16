@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.LoginDTO;
 import com.booknabada.service.MyService;
+import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
 @Controller
@@ -36,6 +38,24 @@ public class MyController {
     	
     	return mv;
     }	
+	
+	// 회원정보변경
+	@RequestMapping(value = "login/modifyuser.do")
+	public ModelAndView modifyuser(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("login/modifyuser");
+		
+		String user_no = request.getParameter("user_no");
+
+		// 숫자체크 후 게시판번호 담기
+		int reBno = Util.checkInt(user_no);
+
+		// 자기글 불러와서 DTO에 담기
+		LoginDTO detail = myService.detail(reBno);
+		
+		mv.addObject("modify", detail);
+		
+		return mv;
+	}
 	
 	
 }

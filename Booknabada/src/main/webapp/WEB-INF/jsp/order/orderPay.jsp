@@ -18,7 +18,6 @@ function check(){
 		//alert("약관");
 	} 
 }
-
 </script>
 </head>
 <body>
