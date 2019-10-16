@@ -76,6 +76,15 @@ public class FreeServiceImpl implements FreeService{
 	}
 
 
+	@Override
+	public List<FreeDTO> searchAction(String search_title) throws Exception {
+	
+		return freeDAO.searchAction(search_title);
+	}
+
+
+
+
 	
 
 

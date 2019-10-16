@@ -89,8 +89,8 @@
 #container.bookadd form .top .picture-wrap p{margin-top: 20px;font-size: 18px;}
 #container.bookadd form .top .info-wrap{border: 1px solid  #BCB0FE; margin-left: 20px; width: 900px;position: relative;	padding: 20px;	}
 #container.bookadd form .top .info-wrap input[type="text"]{border: none; margin: 10px 0; outline: none}
-#bookTitle{font-size: 30px; font-weight: bold;	}
-#bookWriter{font-size: 18px; }
+#book_name{font-size: 30px; font-weight: bold;	}
+#book_author{font-size: 18px; }
 #container.bookadd form .top .info-wrap>p{font-size: 28px;font-weight: bold;margin-top: 20px;	}
 #container.bookadd .info-wrap table{width: 350px; margin-top: 10px;	}
 #container.bookadd .info-wrap table tr{}
@@ -98,14 +98,17 @@
 #container.bookadd .info-wrap table td{border:1px solid #BCB0FE}
 #container.bookadd .info-wrap table td input{margin-left: 10px; outline: none}
 #container.bookadd .info-wrap table td input[type="date"]{ border:none;}
-#container.bookadd .info-wrap .price{position: absolute;right: 200px;top:40px;	}
-#container.bookadd .info-wrap .price h4{font-size: 30px;	font-weight: bold; margin-bottom: 15px;	}
-#container.bookadd .info-wrap .price p{}
-#container.bookadd .info-wrap .price label{font-size: 16px;	}
-#container.bookadd .info-wrap .price input{margin-top: 0;}
-#container.bookadd .info-wrap .price input[type="text"]{outline: none; color:#F1B40B;height: 45px;font-size: 36px;font-weight: bold;width: 120px;}
-#container.bookadd .info-wrap .price input::placeholder{color:#F1B40B; font-size: 40px;	font-weight: 900; opacity: 0.5}
-#container.bookadd .info-wrap .price span{color:#F1B40B;font-size: 24px; font-weight: bold;display: block;float: right; margin-top: 18px;}
+#container.bookadd  .price{position: absolute;right: 200px;top:40px;	}
+#container.bookadd  .price h4{font-size: 30px;	font-weight: bold; margin-bottom: 15px;	}
+#container.bookadd  .price .select{display:flex}
+#container.bookadd  .price .select .btn{margin: 0 20px 0 10px; display:inline-block;width:30px; height:30px; background-image:url(../images/chk_off.png);background-size:30px}
+#container.bookadd  .price .select .btn.on{background-image:url(../images/chk_on.png);}
+#container.bookadd  .price .select input{display:none}
+#container.bookadd  .price p{font-size: 16px;}
+#container.bookadd  .price input{margin-top: 0;}
+#container.bookadd  .price input[type="text"]{outline: none; color:#F1B40B;height: 45px;font-size: 36px;font-weight: bold;width: 120px;}
+#container.bookadd  .price input::placeholder{color:#F1B40B; font-size: 40px;	font-weight: 900; opacity: 0.5}
+#container.bookadd  .price span{color:#F1B40B;font-size: 24px; font-weight: bold;display: block;float: right; margin-top: 18px;}
 #container.bookadd .bottom{}
 #container.bookadd .bottom h3{margin: 40px 0 20px;			font-size: 30px; font-weight: bold;	}
 #container.bookadd .bottom textarea{width: 1220px;height: 300px; box-sizing: border-box;}

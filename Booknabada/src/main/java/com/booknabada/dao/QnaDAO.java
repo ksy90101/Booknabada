@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.booknabada.dto.QnaDTO;
 import com.common.dao.AbstractDAO;
+import com.booknabada.dto.QnaDTO;
+import com.booknabada.dto.ComentDTO;
 
 @Repository("qnaDAO")
 public class QnaDAO extends AbstractDAO{
@@ -33,5 +34,18 @@ public class QnaDAO extends AbstractDAO{
 
 	public void modifyAction(QnaDTO dto) {
 		update("qna.modifyAction", dto);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ComentDTO> coment(int reBno) {
+		return selectList("qna.coment", reBno);
+	}
+	
+	public void comentAction(ComentDTO dto) {
+		insert("qna.comentAction", dto);
+	}
+
+	public void comentDelete(ComentDTO dto) {
+		delete("qna.comentDelete", dto);
 	}
 }

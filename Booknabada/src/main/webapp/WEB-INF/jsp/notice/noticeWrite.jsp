@@ -16,21 +16,8 @@
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
-	<div class="top_navi">
+<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
-		<div class="top_content">
-			<div id="box01" style="background: #BCB0FE; color: white;" onclick="location.href='noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../qnaBoard.do'">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
 	
 	<form action="noticeWriteAction.do" method="post" enctype="multipart/form-data">
 		

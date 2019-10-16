@@ -5,12 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<<<<<<< HEAD
 <link rel="stylesheet" href="../css/reset.css">
-=======
-<link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="./css/header.css">
->>>>>>> refs/remotes/origin/Yehee2
 <style type="text/css">
 
 body{
@@ -79,7 +75,7 @@ button{
 	
 		<div class="image">
 			<h2>
-				<img src="icon/logo.png" align="middle">
+				<img src="../images/logo.png" align="middle">
 			</h2>
 		</div>
 		
@@ -102,9 +98,9 @@ button{
 			</form>
 		</div>
 		<div class="link">
-			<a id="link_" href="findid.jsp">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;
-			<a id="link_" href="findpw.jsp">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;
-			<a id="link_" href="newuser.jsp">회원가입</a>
+			<a id="link_" href="findid.do">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;
+			<a id="link_" href="findpw.do">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;
+			<a id="link_" href="newuser.do">회원가입</a>
 		</div>
 	</div>
 

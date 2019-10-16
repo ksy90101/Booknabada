@@ -42,25 +42,9 @@ function comentDel(num, bno){
 </script>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
-
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<!-- 카테고리 -->
-	<div class="top_navi">
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;"
-				onclick="location.href='../qna/qnaBoard.do'">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;"
-				onclick="location.href='freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 	<!-- 글박스 -->
 	<div class="boardDetailPart">
@@ -93,7 +77,6 @@ function comentDel(num, bno){
 		</div>
 	</div>
 
-<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
 	<c:if test="${sessionScope.name eq freeDetail.user_name }">
 		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${freeDetail.board_no})">수정</button>
@@ -145,6 +128,7 @@ function comentDel(num, bno){
 	</div>
 	
 <jsp:include page="../include/footer.jsp"></jsp:include>
+
 
 
 </body>

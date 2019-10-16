@@ -40,16 +40,18 @@ public class FreeController {
 			page = Util.checkInt(request.getParameter("page"));
 		}
 		if (commandMap.get("page") != null) {
-			page = Util.checkInt((String)commandMap.get("page"));
+			page = Util.checkInt((String) commandMap.get("page"));
 		}
-		
-		
+
 		List<FreeDTO> board = freeService.board(((page - 1) * 10));
 		// DB에서 온 데이터 jsp에 뿌리기
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("board", board);
-		//페이지
+		// 페이지
 		mv.addObject("page", page);
-				//총글수
+		// 총글수
 		mv.addObject("totalCount", board.get(0).getTotalCount());
 //				
 		return mv;
@@ -69,10 +71,14 @@ public class FreeController {
 
 		// 해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
 		FreeDTO freeDetail = freeService.detail(reBno);
-		//코멘트 가져오기
+		// 코멘트 가져오기
 		List<ComentDTO> coment = freeService.coment(reBno);
-		
+
 		// DB에서 온 데이터 jsp에 뿌리기
+
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("freeDetail", freeDetail);
 		mv.addObject("coment", coment);
 		return mv;
@@ -81,16 +87,23 @@ public class FreeController {
 	// 글쓰기보기
 	@RequestMapping(value = "free/freeWrite.do")
 	public ModelAndView freeWrite(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		// Write.do로 가기
+		String whatBoard = "free";
+		mv.addObject("whatBoard", whatBoard);
+
 		HttpSession session = request.getSession();
 		
-		//로그인 한 사람만 보이게...
-				if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
-					//Write.do로 가기
-					return new ModelAndView("free/freeWrite");
-				} else {
-					return new ModelAndView("redirect:index.do");
-				}
-		//
+		// 로그인 한 사람만 보이게...
+		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			// Write.do로 가기
+			mv.setViewName("free/freeWrite");
+		} else {
+			mv.setViewName("redirect:index.do");
+		}
+
+		return mv;
+
 	}
 
 	// 글쓰기 실행
@@ -98,53 +111,52 @@ public class FreeController {
 	public ModelAndView writeAction(HttpServletRequest request, @RequestParam("file") MultipartFile file)
 			throws Exception {
 		HttpSession session = request.getSession();
-		
-		
+
 		ModelAndView mv = new ModelAndView("redirect:freeBoard.do");
-		
-		
-		if (session.getAttribute("name") != null && session.getAttribute("id") != null ) {
-				
-		
-		// 작성된값 가져가기
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 
-		// 엔터키 적용
-		content = content.replaceAll("\r\n", "\n");
-		content = content.replaceAll("\n", "<br>");
+		if (session.getAttribute("name") != null && session.getAttribute("id") != null) {
 
-		// 데이터베이스로 위 데이터 보내기
-		FreeDTO dto = new FreeDTO();
-		dto.setCate_no(1);
-		dto.setBoard_title(title);
-		dto.setBoard_content(content);
-		dto.setUser_name((String)session.getAttribute("id"));
+			// 작성된값 가져가기
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 
-		// 사진업로드
-		if (file.getOriginalFilename() != null) {
-			// 지금 시간 가져오기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String today = sdf.format(new Date());
-			// 시간+파일이름 합치기
-			String upFileName = today + file.getOriginalFilename();
-			// 파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
-		//	System.out.println("리얼경로 " + path);
-			File f = new File(path + "upimg/" + upFileName); // 준비
-			file.transferTo(f); // 실제 파일 전송
+			// 엔터키 적용
+			content = content.replaceAll("\r\n", "\n");
+			content = content.replaceAll("\n", "<br>");
 
-			dto.setBoard_picture(upFileName);
-		}
+			// 데이터베이스로 위 데이터 보내기
+			FreeDTO dto = new FreeDTO();
+			dto.setCate_no(1);
+			dto.setBoard_title(title);
+			dto.setBoard_content(content);
+			dto.setUser_name((String) session.getAttribute("id"));
 
-		// 데이터베이스 쓰기 실행
-		freeService.freeWriteAction(dto);
-		} 
-		else {
+			// 사진업로드
+			if (file.getOriginalFilename() != null) {
+				// 지금 시간 가져오기
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+				String today = sdf.format(new Date());
+				// 시간+파일이름 합치기
+				String upFileName = today + file.getOriginalFilename();
+				// 파일 업로드 경로
+				String path = request.getSession().getServletContext().getRealPath("");
+				// System.out.println("리얼경로 " + path);
+				File f = new File(path + "upimg/" + upFileName); // 준비
+				file.transferTo(f); // 실제 파일 전송
+
+				dto.setBoard_picture(upFileName);
+			}
+
+			// 데이터베이스 쓰기 실행
+			freeService.freeWriteAction(dto);
+
+			String whatBoard = "free";
+		} else {
 			mv.setViewName("caution");
 		}
-		
-		
+		String whatBoard = "free";
+		mv.addObject("whatBoard", whatBoard);
+
 		return mv;
 	}
 
@@ -156,30 +168,34 @@ public class FreeController {
 		// 보드로 되돌아가기 1번
 		ModelAndView mv = new ModelAndView("redirect:freeBoard.do");
 
-		//세션추가
-				if (session.getAttribute("name") != null && 
-					session.getAttribute("id") != null ) {
-					
-					String board_no = request.getParameter("board_no");
-						
-					//숫자를 체크
-					int detail_no = Util.checkInt(board_no);
-					
-					FreeDTO dto = new FreeDTO();
-					dto.setBoard_no(detail_no);
-					dto.setUser_name((String)session.getAttribute("id"));
-					
-					//DB쪽으로 보내기
-					freeService.detailDelete(dto);
-					
-				} 
-				else {
-					mv.setViewName("caution");
-				}
-					
-					return mv;
-				}
-			
+	// 세션추가
+	if(session.getAttribute("name")!=null&&session.getAttribute("id")!=null)
+
+	{
+
+		String board_no = request.getParameter("board_no");
+
+		// 숫자를 체크
+		int detail_no = Util.checkInt(board_no);
+
+		FreeDTO dto = new FreeDTO();
+		dto.setBoard_no(detail_no);
+		dto.setUser_name((String) session.getAttribute("id"));
+
+		// DB쪽으로 보내기
+		freeService.detailDelete(dto);
+
+	}else
+	{
+		mv.setViewName("caution");
+	}
+	String whatBoard = "free";
+
+	mv.addObject("whatBoard",whatBoard);
+
+	return mv;
+	}
+
 	// 수정페이지 이동
 	@RequestMapping(value = "free/freeModify.do")
 	public ModelAndView detailModify(HttpServletRequest request) throws Exception {
@@ -196,9 +212,19 @@ public class FreeController {
 		// 자기글 불러와서 DTO에 담기
 		FreeDTO detail = freeService.detail(reBno);
 
-//		mv.addObject("modify", detail);
+		mv.addObject("modify", detail);
 
 		// 세션
+//			if (detail.getUser_name().equals(session.getAttribute("name"))) {
+//				//modify ModelAndView에 DTO 보이게하기
+//			} else {
+//				mv.setViewName("error?code=3");
+//			}
+//			
+		
+		String whatBoard = "free";
+
+		mv.addObject("whatBoard", whatBoard);
 			if (detail.getUser_name().equals(session.getAttribute("name"))) {
 				mv.addObject("modify", detail);
 				//modify ModelAndView에 DTO 보이게하기
@@ -206,7 +232,7 @@ public class FreeController {
 				mv.setViewName("caution");
 				//mv.setViewName("error?code=3");
 			}
-						
+		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 
@@ -260,6 +286,8 @@ public class FreeController {
 					mv.setViewName("error?code=5");
 				}
 
+
+		
 		return mv;
 	}
 	

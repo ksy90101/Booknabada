@@ -3,6 +3,8 @@ package com.booknabada.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.FaqDTO;
 import com.booknabada.service.FaqService;
+import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
 @Controller
@@ -25,68 +28,159 @@ public class FaqController {
     	ModelAndView mv = new ModelAndView("index");
     	
     	return mv;
-    }	
+    }
 	
-	@RequestMapping(value = "FAQ/FAQ_all.do")
-	public ModelAndView faq_all() throws Exception {
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_all");
+	@RequestMapping(value="caution.do")
+    public ModelAndView caution() throws Exception{
+    	ModelAndView mv = new ModelAndView("caution");
+    	
+    	return mv;
+    }
+	
+	@RequestMapping(value = "faq/faqboardall.do")
+	public ModelAndView faqboardall() throws Exception {
+		ModelAndView mv = new ModelAndView("faq/faqboardall");
 
-		List<FaqDTO> faq_all = faqService.faq_all();
-
-		mv.addObject("faq_all", faq_all);
+		List<FaqDTO> faqboardall = faqService.faqboardall();
+		String whatBoard = "faq";
+		
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faq_all", faqboardall);
 		return mv;
 	}
 
-	@RequestMapping(value = "FAQ/FAQ_best.do")
-	public ModelAndView faq_best() throws Exception {
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_best");
+	@RequestMapping(value = "faq/faqboardbest.do")
+	public ModelAndView faqboardbest() throws Exception {
+		ModelAndView mv = new ModelAndView("faq/faqboardbest");
 
-		List<FaqDTO> faq_best = faqService.faq_best();
+		List<FaqDTO> faqboardbest = faqService.faqboardbest();
+		String whatBoard = "faq";
 
-		mv.addObject("faq_best", faq_best);
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faq_best", faqboardbest);
 		return mv;
 	}
 	
 	
-	@RequestMapping(value = "FAQ/FAQ_delivery.do")
-	public ModelAndView faq_delivery() throws Exception {
+	@RequestMapping(value = "faq/faqboarddelivery.do")
+	public ModelAndView faqboarddelivery() throws Exception {
 		//categroy : 2
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_delivery");
+		ModelAndView mv = new ModelAndView("faq/faqboarddelivery");
 
-		List<FaqDTO> faq_delivery = faqService.faq_delivery();
+		List<FaqDTO> faqboarddelivery = faqService.faqboarddelivery();
+		String whatBoard = "faq";
 
-		mv.addObject("faq_delivery", faq_delivery);
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faqboarddelivery", faqboarddelivery);
 		return mv;
 	}
 	
-	@RequestMapping(value = "FAQ/FAQ_order.do")
-	public ModelAndView faq_order() throws Exception {
+	@RequestMapping(value = "faq/faqboardorder.do")
+	public ModelAndView faqboardorder() throws Exception {
 		// category : 1
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_order");
+		ModelAndView mv = new ModelAndView("faq/faqboardorder");
 
-		List<FaqDTO> faq_order = faqService.faq_order();
+		List<FaqDTO> faqboardorder = faqService.faqboardorder();
+		String whatBoard = "faq";
 
-		mv.addObject("faq_order", faq_order);
+		mv.addObject("faqboardorder", faqboardorder);
+		mv.addObject("whatBoard", whatBoard);
+		
 		return mv;
 	}
 
-	@RequestMapping(value = "FAQ/FAQ_homepage.do")
-	public ModelAndView faq_homepage() throws Exception {
+	@RequestMapping(value = "faq/faqboardhomepage.do")
+	public ModelAndView faqboardhomepage() throws Exception {
 		// categroy : 3
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_homepage");
+		ModelAndView mv = new ModelAndView("faq/faqboardhomepage");
 
-		List<FaqDTO> faq_homepage = faqService.faq_homepage();
+		List<FaqDTO> faqboardhomepage = faqService.faqboardhomepage();
+		String whatBoard = "faq";
 
-		mv.addObject("faq_homepage", faq_homepage);
+		mv.addObject("whatBoard", whatBoard);
+		mv.addObject("faqboardhomepage", faqboardhomepage);
 		return mv;
 	}
 	
-	@RequestMapping(value = "FAQ/FAQ_write.do")
-	public ModelAndView faq_write() throws Exception{
-		ModelAndView mv = new ModelAndView("FAQ/FAQ_write");
-		
-		return mv;
+	@RequestMapping(value = "faq/faqwrite.do")
+	public ModelAndView faqboardwrite(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = null;
+		HttpSession session = requset.getSession();
+		//String whatBoard = "faq";
+		//mv.addObject("whatBoard", whatBoard);
+		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			mv.setViewName("faq/faqwrite");
+			return mv;
+		}else {
+			mv.setViewName("redirect:../cation.do");
+			return mv;
+		}
 		
 	}
+	
+	@RequestMapping(value = "faq/faqWriteAction.do")
+	public ModelAndView faqWriteAction(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:faqboardall.do");
+		
+		String qustion = requset.getParameter("title");
+		String answer = requset.getParameter("content");
+		
+		answer = answer.replace("\r\n", "\n");
+		answer = answer.replace("\n", "<br>");
+		
+		FaqDTO dto = new FaqDTO();
+		dto.setFaq_category(Integer.parseInt(requset.getParameter("cate")));
+		dto.setFaq_answer(answer);
+		dto.setFaq_qustion(qustion);
+		faqService.faqWriteAction(dto);
+		
+		return mv;
+	}
 
+	@RequestMapping(value = "faq/faqDelete.do")
+	public ModelAndView faqDelete(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:faqboardall.do");
+		
+		int faq_no = Util.checkInt(request.getParameter("faq_no"));
+		
+		FaqDTO dto = new FaqDTO();
+		dto.setFaq_no(faq_no);
+		
+		faqService.faqDelete(dto);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "faq/faqModify.do")
+	public ModelAndView faqModify(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("faq/faqModify");
+		
+		int faq_no = Util.checkInt(requset.getParameter("faq_no"));
+		
+		FaqDTO detail = faqService.detail(faq_no);
+
+		mv.addObject("modify", detail);
+		return mv;
+	}
+	
+	@RequestMapping(value = "faq/faqModifyAction.do")
+	public ModelAndView faqModifyAction(HttpServletRequest request) throws Exception{
+		String faq_no = request.getParameter("faq_no");
+		ModelAndView mv = new ModelAndView("redirect:faq/faqboardall.do");
+		
+		String qustion= request.getParameter("title");
+		String answer = request.getParameter("content");
+		
+		answer = answer.replace("\r\n", "\r");
+		answer = answer.replace("\n", "<br>");
+		
+		FaqDTO dto = new FaqDTO();
+		dto.setFaq_qustion(qustion);
+		dto.setFaq_answer(answer);
+		dto.setFaq_no(Util.checkInt(faq_no));
+		
+		faqService.faqModifyAction(dto);
+		
+		return mv;
+	}
 }

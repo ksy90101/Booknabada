@@ -2,7 +2,7 @@ package com.booknabada.dto;
 
 public class LoginDTO {
 
-	String user_name, user_id, user_pw, user_addr, user_tel, user_email, user_gender, user_birth;
+	String user_name, user_id, user_pw, user_addr, user_tel, user_email, user_gender, user_birth, user_level;
 
 	public String getUser_name() {
 		return user_name;

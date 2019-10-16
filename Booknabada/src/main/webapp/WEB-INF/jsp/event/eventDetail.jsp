@@ -27,7 +27,7 @@ function modify(num){
 
 function del(num){
 	if(confirm("이 글을 삭제하시겠습니까?")){
-		location.href='event/eventDelete.do?bno='+num;
+		location.href='eventDelete.do?bno='+num;
 	}else{
 		return false;
 	}
@@ -36,21 +36,7 @@ function del(num){
 </script>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
-	<div class="top_navi">
-
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;">자유게시판</div>
-		</div>
-	</div>
+<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 
 
 
@@ -81,16 +67,16 @@ function del(num){
 		</div>
 	</div>
 	
-	<div class="buttonPart">
-		<button id="button" style="background-color: #E8E8E8;" onclick="modify(${detail.event_no })">수정</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #E8E8E8;" onclick="del(${detail.event_no })">삭제</button>
-		<div id="bin2"></div>
-		<button id="button" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
+	<div class="eventbuttonPart">
+		<c:if test="${sessionScope.id eq detail.user_id }">		
+			<button id="eventbutton" style="background-color: #E8E8E8;" onclick="modify(${detail.event_no })">수정</button>
+			<div id="bin2"></div>
+			<button id="eventbutton" style="background-color: #E8E8E8;" onclick="del(${detail.event_no })">삭제</button>
+			<div id="bin2"></div>
+		</c:if>
+		<button id="eventbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
 	</div>
 	
 	
-	<jsp:include page="../include/footer.jsp"></jsp:include>
-
 </body>
 </html>

@@ -15,4 +15,6 @@ public interface LoginService {
 	LoginDTO detail(int reBno) throws Exception;
 
 	
+	int level(String id) throws Exception;
+	
 }

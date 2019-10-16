@@ -28,6 +28,11 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
+	public int level(String id) throws Exception {
+		return loginDAO.level(id);
+	}
+
+	@Override
 	public int checkID(String id) throws Exception {
 		return loginDAO.checkID(id);
 	}

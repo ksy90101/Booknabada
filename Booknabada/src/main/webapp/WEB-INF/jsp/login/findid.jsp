@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,10 +68,9 @@ button {
 </head>
 <body>
 	<div class="findid_wrap">
-		<label class="control-label">EMAIL</label>
 		<div class="image">
 			<h2>
-				<img src="icon/logo.png" align="middle">
+				<img src="../images/logo.png" align="middle">
 			</h2>
 		</div>
 
@@ -79,6 +78,9 @@ button {
 			<form action="findidAction.do" method="post">
 				<div class="inp">
 					<ul>
+						<li><input type="text" placeholder="이름을 입력해주세요." name ="name"></li>
+	
+						<li><input type="text" placeholder="이메일을 입력해주세요." name ="email"></li>
 						<li><input type="text" id="name" name="name"
 							placeholder="이름을 입력해주세요."></li>
 
@@ -97,8 +99,8 @@ button {
 		</div>
 
 		<div class="link">
-			<a id="link_" href="findpw.jsp">비밀번호 변경</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a id="link_" href="newuser.jsp">회원가입</a>
+			<a id="link_" href="findpw.do">비밀번호 변경</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a id="link_" href="newuser.do">회원가입</a>
 		</div>
 	</div>
 	<input type="hidden" path="random" id="random" value="${random }" />

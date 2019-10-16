@@ -1,0 +1,92 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+li{
+    list-style-type: none;
+}
+
+.bookdetail{
+    margin: auto;
+	margin-top: 100px;
+    width: 1080px;
+}
+.booktop_left{
+    width: 650px;
+    height: 410px;
+    float: left;
+}
+.bookimage{
+    width:275.6px;
+    height: 400px;
+    background-color: purple;
+    float: left;
+}
+.bookinfo{
+    float: left;
+    width:200px;
+    height: 400px;
+}
+.star{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.count{
+    margin-top: 50px;
+}
+
+.booktop_right{
+    width: 220px;
+    height: 410px;
+    float:left;
+}
+.pabongimage{
+    width: 60px;
+    height: 20px;
+    background-color: orange;
+}
+.price{
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+.pricetext{
+    color : #F1B40B;
+    font-size : 30px;
+    padding : 0px;
+    margin: 0px;
+}
+.book_info2{
+    height: 150px;
+    margin:0px;
+    padding:0px;
+    clear: both;
+    font-size:20px;
+}
+.book_info table{
+    width: 1000px;
+}
+.book_info2 .name{
+    width: 270px;
+    background-color: #BCB0FE;
+}
+.bnt1, .bnt2{
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+    margin: 10px;
+    border: none;
+    font-weight: bold;
+}
+.bnt1{
+    background-color:#E8E8E8;
+}
+.bnt2{
+    background-color:#BCB0FE;
+}
+hr{
+    border-color: #BCB0FE;
+}
+.book_intro{
+	height: 500px;
+}

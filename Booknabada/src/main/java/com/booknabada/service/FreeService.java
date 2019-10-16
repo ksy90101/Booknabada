@@ -25,4 +25,7 @@ public interface FreeService {
 
 	void comentDelete(ComentDTO dto) throws Exception;
 	
+	List<FreeDTO> searchAction(String search_title) throws Exception;
+	
+	
 }

@@ -2,7 +2,7 @@ package com.booknabada.dto;
 
 public class EventDTO {
 	private int event_no,event_count,totalCount;
-	private String event_title, event_content, event_picture, event_date, user_name;
+	private String event_title, event_content, event_picture, event_date, user_name,user_id;
 	
 	
 	public int getEvent_no() {
@@ -52,6 +52,12 @@ public class EventDTO {
 	}
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 
