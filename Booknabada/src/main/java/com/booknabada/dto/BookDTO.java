@@ -1,18 +1,18 @@
 package com.booknabada.dto;
 
 public class BookDTO {
-	int book_no, book_count, book_recommend, book_page;
-	String book_price, book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select;
+	int book_no, book_count, book_recommend, book_page, book_price;
+	String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select;
 	public int getBook_no() {
 		return book_no;
 	}
 	public void setBook_no(int book_no) {
 		this.book_no = book_no;
 	}
-	public String getBook_price() {
+	public int getBook_price() {
 		return book_price;
 	}
-	public void setBook_price(String book_price) {
+	public void setBook_price(int book_price) {
 		this.book_price = book_price;
 	}
 	public int getBook_count() {

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -50,9 +51,9 @@
 		</div>
 		<h1 id="faqtitle">
 			<br>베스트
-			<c:if test="#{sessionScope.id eq 'admin' }">
+		<c:if test="#{sessionScope.id eq 'admin' }">
 			<button onclick="location.href='faqwrite.do'">글쓰기</button>
-			</c:if>
+		</c:if>
 		</h1>
 		<div class="dl_wrap">
 			<c:forEach items="${faqboardbest }" var="i">

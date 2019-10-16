@@ -44,7 +44,6 @@ public class FaqController {
 		List<FaqDTO> faqboardall = faqService.faqboardall();
 		String whatBoard = "faq";
 		
-
 		mv.addObject("whatBoard", whatBoard);
 		mv.addObject("faq_all", faqboardall);
 		return mv;
@@ -107,13 +106,13 @@ public class FaqController {
 	public ModelAndView faqboardwrite(HttpServletRequest requset) throws Exception{
 		ModelAndView mv = null;
 		HttpSession session = requset.getSession();
-		String whatBoard = "faq";
-		mv.addObject("whatBoard", whatBoard);
+		//String whatBoard = "faq";
+		//mv.addObject("whatBoard", whatBoard);
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			mv.setViewName("faq/faqwrite");
 			return mv;
 		}else {
-			mv.setViewName("redirect:../index.do");
+			mv.setViewName("redirect:../cation.do");
 			return mv;
 		}
 		

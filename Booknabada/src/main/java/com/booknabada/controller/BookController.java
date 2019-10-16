@@ -87,7 +87,7 @@ public class BookController {
     	dto.setBook_publisher(book_publisher);
     	dto.setBook_cate(book_cate);
     	dto.setPrice_select(price_select);
-//   	dto.setBook_price(book_price);
+    	dto.setBook_price(book_price);
     	dto.setBook_content(book_content);
     	dto.setUser_name(id);
     	

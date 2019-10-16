@@ -68,10 +68,9 @@ button {
 </head>
 <body>
 	<div class="findid_wrap">
-		<label class="control-label">EMAIL</label>
 		<div class="image">
 			<h2>
-				<img src="icon/logo.png" align="middle">
+				<img src="../images/logo.png" align="middle">
 			</h2>
 		</div>
 
@@ -100,8 +99,8 @@ button {
 		</div>
 
 		<div class="link">
-			<a id="link_" href="findpw.jsp">비밀번호 변경</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a id="link_" href="newuser.jsp">회원가입</a>
+			<a id="link_" href="findpw.do">비밀번호 변경</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a id="link_" href="newuser.do">회원가입</a>
 		</div>
 	</div>
 	<input type="hidden" path="random" id="random" value="${random }" />

@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +9,12 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="../css/faq.css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/board.css">
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	<div class="faq">
-		<div class="menu_wrap">
-			<div class="menu">
-				<div class="menutext">공지사항</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">이벤트</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">Q&A</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">FAQ</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">자유게시판</div>
-			</div>
-		</div>
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext_click faqtext"><a href="faqboardall.do">전체보기</a></div>
