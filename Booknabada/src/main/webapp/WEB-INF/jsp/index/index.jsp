@@ -100,14 +100,7 @@
 					<ul class="list">
 						<li></li>
 					</ul>
-				</article>
-				<article class="sabook">
-					<h3>사랑받는 사북이</h3>
-					<ul class="list">
-						<li></li>
-					</ul>
-				</article>
-				
+				</article>				
 			</aside><!-- //loveBook -->
 		</div>
 	</div><!-- //container -->

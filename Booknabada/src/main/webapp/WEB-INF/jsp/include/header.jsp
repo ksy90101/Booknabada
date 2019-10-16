@@ -14,7 +14,7 @@
 				</li>
 			</ul>
 			<h1 class="logo">
-				<a href="../index.do">
+				<a href="../index/index.do">
 					<img src="../images/logo.png" alt="BOOKNABADA">
 				</a>
 			</h1>
@@ -23,7 +23,7 @@
 					<img src="../images/alert.png"	alt="알림">			
 				</li>
 				<li class="mypage">
-					<a href="myhome.jsp">
+					<a href="../my/myhome.do">
 						<img src="../images/mypage.png" alt="마이페이지">	
 					</a>
 				</li>
@@ -48,11 +48,14 @@
 
 	<nav id="nav">
 		<ul id="gnb">
-			<li>국내도서</li>
-			<li>외국도서</li>
-			<li>마이페이지</li>
-			<li>고객센터</li>
-			<li>회사소개</li>
+			<li><a href="../book/booklist.do">도서목록</a></li>
+			<li><a href="../my/myhome.do">마이페이지</a></li>
+			<li><a href="../notice/noticeBoard.do">공지사항</a></li>
+			<li><a href="../event/event.do">이벤트</a></li>
+			<li><a href="../free/freeBoard.do">자유게시판</a></li>
+			<li><a href="../faq/faqboardall.do">FAQ</a></li>
+			<li><a href="../qna/qnaBoard.do">QNA</a></li>
+			<li><a href="#">회사소개</a></li>
 		</ul>
 	</nav>
 	

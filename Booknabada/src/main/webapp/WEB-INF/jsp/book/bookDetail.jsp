@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
+<title>책 상세보기</title>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="../css/bookdetail.css">
 
 </head>
@@ -35,7 +35,7 @@
 			<h2>파북이</h2>
 			<img alt="파북이 이미지" class="pabongimage"> ${bookdetail.user_name }
 			<div class="price">
-				<h4>가격정보</h4>
+				<h3>가격정보</h3>
 				<p>
 					<label>판매가 <input type="radio" name="priceSelect"
 						id="priceSelect" value="sell"></label> <label>대여가 <input
@@ -47,6 +47,7 @@
 				<button class="bnt2">바로구매</button>
 			</form>
 		</div>
+		<h3></h3>
 		<div class="book_info2">
 			<table border="1">
 				<tr>

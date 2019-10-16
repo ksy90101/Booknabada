@@ -16,22 +16,36 @@ li{
     float: left;
 }
 .bookimage{
-    width:275.6px;
+    width:250px;
     height: 400px;
     background-color: purple;
     float: left;
 }
 .bookinfo{
     float: left;
-    width:200px;
+    width:	400px;
     height: 400px;
+    padding-left:50px;
+    box-sizing:border-box;
 }
+.bookinfo li{
+	font-size:20px;
+}
+.bookinfo h1{
+	width:80%;
+	height:80px;
+	font-size:30px;
+	margin:45px 0 30px;
+	line-height:36px;
+	font-weight:600;
+}
+
 .star{
+	font-size:26px;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 .count{
-    margin-top: 50px;
 }
 
 .booktop_right{
@@ -39,6 +53,12 @@ li{
     height: 410px;
     float:left;
 }
+
+.booktop_right h2{
+	font-size:26px;
+	font-weight:500
+}
+
 .pabongimage{
     width: 60px;
     height: 20px;
@@ -63,7 +83,7 @@ li{
     clear: both;
     font-size:20px;
 }
-.book_info table{
+.book_info2 table{
     width: 1000px;
 }
 .book_info2 .name{
