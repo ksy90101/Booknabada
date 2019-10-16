@@ -65,8 +65,13 @@ public class BookController {
 	
 	@RequestMapping(value="book/bookadd.do")
     public ModelAndView bookadd(CommandMap commandMap, HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("book/bookadd");
+    	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
+    	if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+    		mv.setViewName("book/bookadd");
+    	}else {
+    		mv.setViewName("redirect:../login/login.do");
+    	}
     	
     	   	
     	
@@ -76,52 +81,68 @@ public class BookController {
 	
 	@RequestMapping(value="book/bookAddAction.do")
     public ModelAndView bookAddAction(CommandMap commandMap, HttpServletRequest request, @RequestParam("book_picture") MultipartFile file) throws Exception{
-    	ModelAndView mv = new ModelAndView("book/bookaddaction");
+    	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		
+    	
+    	if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+    		
+    		String id = (String) session.getAttribute("id");
 
-    	String book_title = request.getParameter("book_title");
-    	String book_author = request.getParameter("book_author");
-    	String book_date = request.getParameter("book_date"); 
-    	int book_page = Util.checkInt(request.getParameter("book_page")); 
-    	String book_publisher = request.getParameter("book_publisher"); 
-    	String book_cate = request.getParameter("book_cate"); 
-    	String price_select = request.getParameter("price_select"); 
-    	int book_price = Util.checkInt(request.getParameter("book_price")); 
-    	String book_content = request.getParameter("book_content"); 
-    	
-    	BookDTO dto = new BookDTO();
-    	dto.setBook_title(book_title);
-    	dto.setBook_author(book_author);
-    	dto.setBook_date(book_date);
-    	dto.setBook_page(book_page);
-    	dto.setBook_publisher(book_publisher);
-    	dto.setBook_cate(book_cate);
-    	dto.setPrice_select(price_select);
-    	dto.setBook_price(book_price);
-    	dto.setBook_content(book_content);
-    	dto.setUser_name(id);
-    	
-    	if(file.getSize() != 0) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
-			String today = sdf.format(new Date());
-			String upFileName = today+"_"+file.getOriginalFilename();
-			
-			//파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
-			System.out.println("리얼경로 : "+path);
-			File f = new File(path+"upimg/"+upFileName); //준비
-			file.transferTo(f); //실제 파일 전송
-			//System.out.println("저장경로 : "+f.getPath());	
+    		//System.out.println(name);
 
-			dto.setBook_picture(upFileName);
-		}else {
-			dto.setBook_picture(null);
-		}
+        	String book_title = request.getParameter("book_title");
+        	String book_author = request.getParameter("book_author");
+        	String book_pubdate = request.getParameter("book_pubdate"); 
+        	int book_page = Util.checkInt(request.getParameter("book_page")); 
+        	String book_publisher = request.getParameter("book_publisher"); 
+        	String book_cate = request.getParameter("book_cate"); 
+        	String price_select = request.getParameter("price_select"); 
+        	int book_price = Util.checkInt(request.getParameter("book_price")); 
+        	String book_content = request.getParameter("book_content"); 
+        	System.out.println(id);
+        	
+        	BookDTO dto = new BookDTO();
+        	dto.setBook_title(book_title);
+        	dto.setBook_author(book_author);
+        	dto.setBook_pubdate(book_pubdate);
+        	dto.setBook_page(book_page);
+        	dto.setBook_publisher(book_publisher);
+        	dto.setBook_cate(book_cate);
+        	dto.setPrice_select(price_select);
+        	dto.setBook_price(book_price);
+        	dto.setBook_content(book_content);
+        	dto.setUser_id(id);
+        	
+        	if(file.getSize() != 0) {
+    			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+    			String today = sdf.format(new Date());
+    			String upFileName = today+"_"+file.getOriginalFilename();
+    			
+    			//파일 업로드 경로
+    			String path = request.getSession().getServletContext().getRealPath("");
+    			System.out.println("리얼경로 : "+path);
+    			File f = new File(path+"upimg/"+upFileName); //준비
+    			file.transferTo(f); //실제 파일 전송
+    			//System.out.println("저장경로 : "+f.getPath());	
+
+    			dto.setBook_picture(upFileName);
+    		}else {
+    			dto.setBook_picture(null);
+    		}
+        	
+        	bookService.bookAddAction(dto);
+        	
+        	//mv.addObject("book",dto);    	
+    		
+    		mv.setViewName("book/bookaddaction");
+    	}else {
+    		mv.setViewName("redirect:../login/login.do");
+    	}
     	
-    	bookService.bookAddAction(dto);
     	
-    	//mv.addObject("book",dto);    	
+    	
+    	
     	
     	return mv;
     }	

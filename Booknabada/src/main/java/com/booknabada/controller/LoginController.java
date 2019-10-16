@@ -49,9 +49,9 @@ public class LoginController {
 			System.out.println(name);
 			System.out.println(id);
 			System.out.println(level);
-			mv = new ModelAndView("redirect:../index.do");
+			mv = new ModelAndView("redirect:../index/index.do");
 		}else {
-			mv = new ModelAndView("redirect:login/login.do");
+			mv = new ModelAndView("redirect:login.do");
 		}
 		return mv;
 	}

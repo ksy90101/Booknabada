@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #header{height: 60px; width: 100%; box-shadow: 0px 0px 10px #bbb; position: fixed;left: 0; top:0; z-index: 10; background: #fff}
 #header .inner-wrap{width: 90%; margin : auto;position: relative;padding-top: 20px}
 
@@ -26,6 +27,8 @@
 #header .right li img{height:20px;}
 
 
-#nav{width: 260px; height: 630px; background: #BCB0FE; opacity: 0.8;position: fixed; left: -100%; top: 60px;}
-#gnb li{color:#fff; border-bottom: 1px solid #fff; height: 90px; line-height: 100px; text-indent: 50px; font-size: 18px;}
+#nav{width: 260px; height: 800px; background: #BCB0FE; z-index:10; opacity: 1;position: fixed; left: -100%; top: 60px;}
+#gnb li{border-bottom: 1px solid #fff; height: 90px; line-height: 100px; text-indent: 50px; font-size: 18px;}
 #gnb li:last-child{border:none;}
+#gnb li a{color:#fff;}
+
