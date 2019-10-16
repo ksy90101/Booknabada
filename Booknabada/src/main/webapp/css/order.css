@@ -45,13 +45,19 @@
 .order {
 	margin: 0 auto;
 	width: 1200px;
-	height: 826.5px;
-	/* background-color: #bebdbf; */
+	height: 946.5px;
 	margin-bottom: 20px;
 }
 
-#list {
+.list {
 	width: 1200px;
+	overflow: scroll;
+	overflow-x: hidden;
+	height: 810px;
+}
+
+#list {
+	width: auto;
 }
 
 #list_head {
@@ -126,8 +132,7 @@
 	margin: 0 auto;
 	width: 1200px;
 	height: 600px;
-	/* background-color: #bebdbf; */
-	margin-bottom: 20px;
+	display: table;
 }
 
 #list {
@@ -174,6 +179,8 @@
 }
 
 #book_count1 {
+	width: 200px;
+	border: none;
 	font-size: 36px;
 	font-weight: bold;
 	line-height: 50px;
@@ -182,11 +189,24 @@
 	float: left;
 }
 
-#book_count2 {
-	font-size: 20px;
+#totalBook {
+	width: 200px;
+	border: none;
+	font-size: 36px;
 	font-weight: bold;
+	line-height: 50px;
 	color: #876efd;
+	margin: 5px 0 0 20px;
 	float: left;
+}
+
+#totalPrice {
+	width: 260px;
+	font-weight: bold;
+	color: #F1B40B;
+	float: left;
+	margin: 5px 5px 0 0px;
+	border: none;
 }
 
 #searchButton{

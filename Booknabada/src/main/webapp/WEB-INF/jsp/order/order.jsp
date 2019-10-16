@@ -12,6 +12,62 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/order.css" rel="stylesheet">
+<script type="text/javascript">
+function checkloc(){
+	alert("주소찾기기능");
+	return;
+}
+function check(){
+	//alert("작동합니다");
+	/* if (document.frm.name.value == "") {
+		alert("이름을 입력하세요");
+		document.frm.name.focus();
+		return false;
+	}	
+	if (document.frm.loc1.value == "") {
+		alert("주소를 입력하세요");
+		document.frm.loc1.focus();
+		return false;
+	}
+	if (document.frm.loc2.value == "") {
+		alert("주소를 입력하세요");
+		document.frm.loc2.focus();
+		return false;
+	}
+	if (document.frm.loc3.value == "") {
+		alert("상세주소를 입력하세요");
+		document.frm.loc3.focus();
+		return false;
+	}
+	if (document.frm.phone1.value == "") {
+		alert("핸드폰 번호를 정확히 입력하세요1");
+		document.frm.phone1.focus();
+		return false;
+	}
+	if (document.frm.phone2.value == "") {
+		alert("핸드폰 번호를 정확히 입력하세요2");
+		document.frm.phone2.focus();
+		return false;
+	}
+	if (document.frm.phone3.value == "") {
+		alert("핸드폰 번호를 정확히 입력하세요3");
+		document.frm.phone3.focus();
+		return false;
+	} */
+	//console.log(document.frm.checkagree.value);
+	
+	if (document.frm.checkagree.checked == false) {
+		alert("약관에 동의해주세요");
+		return false;
+	} else{
+		//alert("약관");
+	} 
+	
+}
+
+
+</script>
+
 </head>
 <body>
 	
@@ -42,6 +98,7 @@
 			<div id="list_head" style="width: 24%">파북이명</div>
 			<div id="list_head" style="width: 17%">가격</div>
 		</div>
+		<div class="list">
 		<c:forEach items="${order }" var="i">
 		<div id="list">
 			<div id="list_book" style="width: 60%;">
@@ -60,21 +117,23 @@
 				</div>
 			</div>
 			<div id="list_book" style="width: 15%">
-				<div style="height: 120px; margin: 20px; line-height: 100px">
+				<div style="height: 120px; margin: 20px 40px 20px auto; line-height: 100px; float: right;">
 					<p id="price" style="font-size: 30px;">${i.book_price }</p>
 					<p id="price" style="font-size: 20px;">원</p>
 				</div>
 			</div>
 		</div>
 		</c:forEach>
+		</div>
 	</div>
 	
-	<!-- 배송지입력 -->
+	<!-- 입력창전체 -->
+		<form action="orderPay.do" method="post" name="frm">
 	<div class="location">
 		<div id="title">
 			<span>배송지정보</span>
 		</div>
-
+		<div style="display: table">
 		<div id=cate>
 			<div id="loc_cate" style="height: 75px; line-height: 75px;">
 				<p>배송방법</p>
@@ -92,140 +151,156 @@
 				<p>요구사항</p>
 			</div>
 		</div>
-
-		<form>
+			<!-- 정보입력 -->
 			<div class=locationInfo>
-
+				<!-- 배송,지점찾기 -->
 				<div id="loc_box2"
 					style="height: 75px; line-height: 75px; border-bottom: 1px solid #BCB0FE; box-sizing: border-box;">
-					<input type="radio">일반택배 <input type="radio"> 북나바다
-					제휴 서점픽업 <select style="margin-left: 5px">
+					<input type="radio" name="loc_check" value="0" checked>일반택배 
+					<input type="radio" name="loc_check" value="1"> 북나바다
+					제휴 서점픽업 <select style="margin-left: 5px" name="store">
 						<option selected="">선택</option>
 						<option>교보문고 강남점</option>
-						<option>알라딘 강북점</option>
-						<option>예스24 홍대점</option>
-						<option>알라딘 대전사거리점</option>
 						<option>교보문고 부산해운대점</option>
+						<option>알라딘 강북점</option>
+						<option>알라딘 대전사거리점</option>
+						<option>예스24 강남점</option>
+						<option>예스24 홍대점</option>
 					</select>
 				</div>
 
-
+				<!-- 이름입력 -->
 				<div id="loc_box2" style="height: 70px; line-height: 40px;">
-					<input type="text"
+					<input type="text" name="name"
 						style="width: 200px; height: 25px; transform: translate(0, 14px);">
 				</div>
-
+				<!-- 주소입력 -->
 				<div id="loc_box2" style="height: 230px;">
 					<div style="width: 100%; height: 50px;">
-						<input type="text" style="width: 200px; height: 25px; float: left">
-						<button id=searchButton onclick="location.href='pay.jsp'">주소찾기</button>
+					
+						<input type="text" name="locaA" style="width: 200px; height: 25px; float: left">
+						<button id=searchButton onclick="return checkloc();">주소찾기</button>
 					</div>
 
 					<div>
 						<div style="height: 50px;">
-							<div
-								style="width: 80px; height: 50px; line-height: 50px; float: left;">
+							<div style="width: 80px; height: 50px; line-height: 50px; float: left;">
 								<span id=post>주소</span>
 							</div>
-							<input type="text"
+							<input type="text" name="locaB"
 								style="width: 420px; height: 25px; transform: translate(0, 20%);">
 						</div>
 						<div style="height: 50px;">
-							<div
-								style="width: 80px; height: 50px; line-height: 50px; float: left;">
+							<div style="width: 80px; height: 50px; line-height: 50px; float: left;">
 								<span id=post>상세주소</span>
 							</div>
-							<input type="text"
+							<input type="text" name="locaC"
 								style="width: 420px; height: 25px; transform: translate(0, 20%);">
 						</div>
 					</div>
 
 					<div style="height: 50px;">
-						<p
-							style="width: 25px; height: 50px; font-size: 22px; font-weight: bold; color: #876efd; text-align: center; line-height: 55px; float: left;">!</p>
-						<p
-							style="font-size: 12px; color: #876efd; float: left; line-height: 20px; margin-top: 7px">
+						<p style="width: 25px; height: 50px; font-size: 22px; font-weight: bold; color: #876efd; text-align: center; line-height: 55px; float: left;">!</p>
+						<p style="font-size: 12px; color: #876efd; float: left; line-height: 20px; margin-top: 7px">
 							주소/우편번호 체계가 새롭게 변경되었습니다.<br> 정확하고 빠른 배송을 위해 입력된 주소를 확인하시고
-							업데이트 해주시기 바랍니다.
-						</p>
-
+							업데이트 해주시기 바랍니다. </p>
 					</div>
 				</div>
+				<!-- 폰번호 입력 -->
 				<div id="loc_box2" style="height: 60px; line-height: 60px">
-					<input type="text" style="width: 80px; height: 25px">
-					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text"
-						style="width: 80px; height: 25px">
-					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text"
-						style="width: 80px; height: 25px">
+					<input type="text" name="phoneA" style="width: 80px; height: 25px">
+					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneB" style="width: 80px; height: 25px">
+					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneC" style="width: 80px; height: 25px">
 				</div>
 				<div id="loc_box2" style="height: 80px; line-height: 60px">
-					<input type="text" style="width: 500px; height: 25px">
+					<input type="text" name="note" style="width: 500px; height: 25px" placeholder="아무도 모르게 가져다 주세요">
 				</div>
 			</div>
 
+			<!-- 사용자정보 -->
 			<div class=userInfo>
 				<div id=loc_user>
-
-					<p
-						style="font-size: 18px; font-weight: bold; margin: 20px 0 0 20px;">주문자
-						정보</p>
+					<p style="font-size: 18px; font-weight: bold; margin: 20px 0 0 20px;">주문자 정보</p>
 					<div>
 						<div id="user_img"></div>
-						<div id="list_book_txt">
-							<p id="user_txt_n">사랑받는 파북이</p>
+						<div id="list_book_txt"> <p id="user_txt_n">사랑받는 파북이</p>
 						</div>
 					</div>
 				</div>
 				<div id=loc_info>
 					<div id="loc_box3" style="height: 100px; padding-top: 20px">
-						<p style="font-size: 18px; font-weight: bold; margin-left: 20px">
-							총 수량</p>
+						<p style="font-size: 18px; font-weight: bold; margin-left: 20px">총 수량</p>
 						<div style="width: auto; height: auto;">
-							<p id="book_count1">12 권</p>
-
-
+							<!-- 총 책수 -->
+							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(order) } 권">
+							
 						</div>
 					</div>
 					<div id="loc_box3" style="height: 100px">
-
 						<p style="font-size: 18px; font-weight: bold; margin-left: 20px;">결제금액</p>
-						<p id="price" style="font-size: 40px; margin-left: 20px;">99,000</p>
-						<p id="price" style="font-size: 30px; line-height: 2.2">원</p>
-
+						<!-- 총 결제금액 -->
+						<c:set var = "totalPrice" value = "0" />
+						<c:forEach items="${order }" var="i" >     
+						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
+						</c:forEach>
+						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="${totalPrice} 원">
 					</div>
+					<!-- 동의 체크박스 -->
 					<div id="loc_box3" style="height: 100px; margin-top: 18px">
 						<div style="width: auto; height: 50px;">
-							<p
-								style="font-size: 22px; font-weight: bold; color: #876efd; float: left; margin: 0 10px 0 20px;">!</p>
+							<p style="font-size: 22px; font-weight: bold; color: #876efd; float: left; margin: 0 10px 0 20px;">!</p>
 							<p style="font-size: 12px; color: #876efd;">
-								주문하실 상품, 가격, 배송정보, 할인정보 등을<br> 확인하였으며, 구매에 동의하시겠습니까?
-							</p>
-
-							<div
-								style="margin: 20px 15px; float: left; width: 260px; line-height: 20px;">
-								<input type="checkbox" style="float: left; margin-right: 10px">
-								<p
-									style="font-size: 20px; font-weight: bold; color: #876efd; float: left;">동의합니다.</p>
-								<p style="font-size: 10px; padding-left: 125px">(전자상거래법 제 8조
-									제2항)</p>
+								주문하실 상품, 가격, 배송정보, 할인정보 등을<br> 확인하였으며, 구매에 동의하시겠습니까? </p>
+							<div style="margin: 20px 15px; float: left; width: 260px; line-height: 20px;">
+								<input type="checkbox" name="checkagree" style="float: left; margin-right: 10px"/>
+								<p style="font-size: 20px; font-weight: bold; color: #876efd; float: left;">동의합니다.</p>
+								<p style="font-size: 10px; padding-left: 125px">(전자상거래법 제 8조 제2항)</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</form>
-	</div>
-
+			</div>
 	<!-- 버튼박스 -->
 	<div class=buttonBox>
 		<button class=button onclick="location.href='../index.do'"
 			style="background-color: rgba(232, 232, 232, 1);">취소</button>
 		<div style="width: 15px; height: 30px; float: left;"></div>
-		<button class=button onclick="location.href='orderPay.do'"
+		<button class=button type="submit" onclick="return check();"
 			style="background-color: #876EFD; color: white;">다음</button>
 	</div>
+	</div>
+		</form>
+
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
+	<script>
+	
+	$("input:radio[name=loc_check]").on("change", function(){
+	        if($("input:radio[name=loc_check]:checked").val() == "0"){
+	            $("input:text[name=locaA]").attr("disabled",false);
+	            $("input:text[name=locaB]").attr("disabled",false);
+	            $("input:text[name=locaC]").attr("disabled",false);
+	            $("input:text[name=locaA]").css("color","black");
+	            $("input:text[name=locaB]").css("color","black");
+	            $("input:text[name=locaC]").css("color","black");
+	            // radio 버튼의 value 값이 1이라면 활성화
+	            
+	 
+	        }else {
+	            $("input:text[name=locaA]").attr("disabled",true);
+	            $("input:text[name=locaB]").attr("disabled",true);
+	            $("input:text[name=locaC]").attr("disabled",true);
+	            $("input:text[name=locaA]").css("color","#b5b5b5");
+	            $("input:text[name=locaB]").css("color","#b5b5b5");
+	            $("input:text[name=locaC]").css("color","#b5b5b5");
+	            // radio 버튼의 value 값이 0이라면 비활성화
+	        }
+	    })
+	
+	</script>
 
 </body>
 

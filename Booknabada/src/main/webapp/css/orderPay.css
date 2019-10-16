@@ -211,11 +211,24 @@
 	float: left;
 }
 
-#price {
+#totalBook {
+	width: 200px;
+	border: none;
+	font-size: 36px;
+	font-weight: bold;
+	line-height: 50px;
+	color: #876efd;
+	margin: 5px 0 0 20px;
+	float: left;
+}
+
+#totalPrice {
+	width: 260px;
 	font-weight: bold;
 	color: #F1B40B;
 	float: left;
 	margin: 5px 5px 0 0px;
+	border: none;
 }
 
 
