@@ -21,6 +21,8 @@ import com.booknabada.service.BookService;
 import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 @Controller
 public class BookController {
 	Logger log = Logger.getLogger(this.getClass());
@@ -29,13 +31,22 @@ public class BookController {
 	private BookService bookService;
 	
 	@RequestMapping(value="book/booklist.do")
-    public ModelAndView booklist(CommandMap commandMap) throws Exception{
+    public ModelAndView booklist(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("book/booklist");
     	
-    	List<BookDTO> booklist = bookService.booklist();
+    	int page = 1;
     	
+    	if(request.getParameter("page") != null) {
+    		page = Util.checkInt(request.getParameter("page"));
+    	}
+    	if(commandMap.get("page") != null) {
+    		page = Util.checkInt((String) commandMap.get("page"));
+    	}
+    	List<BookDTO> booklist = bookService.booklist(((page-1) * 15));
+   
     	mv.addObject("booklist", booklist);
-    	
+    	mv.addObject("page", page);
+    	mv.addObject("totalCount", booklist.get(0).getTotalCount());
     	return mv;
     }	
 	

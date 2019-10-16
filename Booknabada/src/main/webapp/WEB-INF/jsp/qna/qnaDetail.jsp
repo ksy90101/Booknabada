@@ -23,8 +23,7 @@
 	}
 	
 	function del(num){
-		//alert("삭제하기 숫자: " + num);
-		if({fn:length(coment) > 0 }){
+		if(${fn:length(coment) > 0 }){
 			alert("댓글이 있는 게시물은 삭제할 수 없습니다")
 			return;
 		}
@@ -32,46 +31,21 @@
 			location.href= 'qnaDelete.do?board_no='+num; 
 		}
 	}
-<<<<<<< HEAD
 	function comentDel(num, bno){
 		//alert("삭제하기 숫자: " + num + bno);
 		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
 		var check = confirm("삭제하시겠습니까?");
-=======
- 	function comentDel(num, bno){
- 		//alert("삭제하기 숫자: " + num + bno);
-		//location.href='comentDelete.do?coment_no=${c.coment_no}&board3_no=${c.board3_no }'	
-			var check = confirm("삭제하시겠습니까?");
->>>>>>> refs/heads/yehee
 		if (check) {
 			location.href= 'comentDelete.do?coment_no='+num+'&board_no='+bno;
 		} 	
 	}
 			
-	
 </script>
 </head>
 <body>
-	
-<<<<<<< HEAD
+
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-=======
-	<!-- 카테고리 -->
-	<div class="top_navi">
-		<div class="top_content">
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../notice/noticeBoard.do'">공지사항</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../event/event.do'">이벤트</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../fqa.do'">FAQ</div>
-			<div id="bin"></div>
-			<div id="box01" style="background: #BCB0FE; color: white;">QNA</div>
-			<div id="bin"></div>
-			<div id="box01" style="color: #BCB0FE;" onclick="location.href='../freeBoard.do'">자유게시판</div>
-		</div>
-	</div>
->>>>>>> refs/heads/yehee
 
 	<!-- 글박스 -->
 	<div class="boardDetailPart">
@@ -101,13 +75,12 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
 		<c:if test="${sessionScope.name eq qnaDetail.user_name }">
 		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="modify(${qnaDetail.board_no})">수정</button>
 		<div id="bin2"></div>
-		<button id="Boardbutton" style="background-color: #E8E8E8;" onclick="del(${qnaDetail.board_no})">삭제</button>
+		<button id="Boardbutton" style="background-color: #E8E8E8" onclick="del(${qnaDetail.board_no})">삭제</button>
 		<div id="bin2"></div>
 		</c:if>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='qnaBoard.do'">목록</button>

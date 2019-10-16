@@ -11,8 +11,8 @@ import com.common.dao.AbstractDAO;
 public class BookDAO extends AbstractDAO{
 
 	@SuppressWarnings("unchecked")
-	public List<BookDTO> booklist() {
-		return selectList("book.booklist");
+	public List<BookDTO> booklist(int page) {
+		return selectList("book.booklist", page);
 	}
 
 	public BookDTO bookDetail(int book_no) {

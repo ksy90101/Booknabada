@@ -45,7 +45,7 @@ public class FaqController {
 		String whatBoard = "faq";
 		
 		mv.addObject("whatBoard", whatBoard);
-		mv.addObject("faq_all", faqboardall);
+		mv.addObject("faqboardall", faqboardall);
 		return mv;
 	}
 
@@ -57,7 +57,7 @@ public class FaqController {
 		String whatBoard = "faq";
 
 		mv.addObject("whatBoard", whatBoard);
-		mv.addObject("faq_best", faqboardbest);
+		mv.addObject("faqboardbest", faqboardbest);
 		return mv;
 	}
 	

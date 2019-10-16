@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="../css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
 
@@ -22,6 +22,7 @@
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
+	<div class="board">
 		<table>
 			<tr id=board_tr>
 				<th id="t1" style="font-weight: bold">No</th>

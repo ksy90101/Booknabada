@@ -1,8 +1,14 @@
 package com.booknabada.dto;
 
 public class BookDTO {
-	int book_no, book_count, book_recommend, book_page, book_price;
+	int book_no, book_count, book_recommend, book_page, book_price, totalCount;
 	String book_title, book_author, book_picture, book_publisher, user_name, book_content, book_date, book_pubdate, book_cate, price_select;
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 	public int getBook_no() {
 		return book_no;
 	}

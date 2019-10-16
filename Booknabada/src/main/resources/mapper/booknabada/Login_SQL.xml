@@ -4,7 +4,7 @@
 <mapper namespace="login">
 
 	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
-		SELECT user_id FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
+		SELECT user_name FROM user_info WHERE user_id = #{user_id } AND user_pw = #{user_pw }
 	</select>
 
 	<select id="checkID" parameterType="String" resultType="Integer">

@@ -2,8 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="book">
+	
+	<!-- 책 목록 가져오기 -->
 	<select id="booklist" resultType="com.booknabada.dto.BookDTO">
-		SELECT * FROM booklist_view
+		SELECT *, (SELECT COUNT(*) FROM booklist_view) AS totalCount FROM booklist_view limit #{page }, 15 
 	</select>
 	
 	<select id="bookdetail" resultType="com.booknabada.dto.BookDTO">

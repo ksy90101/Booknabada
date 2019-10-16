@@ -9,101 +9,12 @@
 <meta charset="UTF-8">
 <title>공지사항</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
+<link rel="stylesheet" href="../css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
 
-<style type="text/css">
-table {
-	width: 1000px;
-	height: auto;
-	border-collapse: collapse;
-}
-
-th {
-	background-color: #D0C8FF;
-	color: white;
-}
-
-tr {
-	border-bottom: 1px gray dotted;
-	height: 50px;
-}
-
-tr:hover {
-	background-color: #E7E2FF;
-	color:white;
-}
-
-#t1 {
-	width: 10%;
-	text-align: center;
-}
-
-#t2 {
-	width: 40%;
-	padding-left:10px;
-}
-#t3{
-	width: 20%;
-	text-align: center;
-}
-
-#board {
-	margin: 0 auto;
-	width: 1000px;
-	height: 650px;
-	margin-top: 100px;
-}
-
-#search {
-	margin: 0 auto;
-	margin-top: 50px;
-	background-color: #D1C9FE;
-	width: 1000px;
-	height: 60px;
-}
-
-select{
-	border-style: none;
-	height:20px;
-	border-radius: 3px;
-}
-
-input{
-	width:500px;
-	height:20px;
-	border-style: none;
-	border-radius: 3px;
-}
-
-button{
-	height:30px;
-	width:80px;
-	background-color: #BCB0FE;
-	border-color: #D1C9FE;
-	border-radius:5px;
-	color: white;
-	border-style: none;
-	
-}
-a{
-	text-decoration:none;
-	color: black;
-}
-a:hover{
-	color:white;
-}
-
-#underBar{
-	margin: 0 auto;
-	width: 780px;
-	line-height: 60px;
-}
-</style>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -123,7 +34,7 @@ a:hover{
 		</div>
 	</div>
 	
-	<div id="board">
+	<div class="board">
 		<table>
 			<tr>
 				<th id="t1" style="font-weight: bold">No</th>

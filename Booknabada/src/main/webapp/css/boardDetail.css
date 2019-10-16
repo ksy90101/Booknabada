@@ -183,7 +183,7 @@ li{
 	height: 35px;
 	margin: 30px auto;
 }
-#Boardbutton #eventbutton{
+#Boardbutton, #eventbutton{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;

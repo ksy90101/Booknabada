@@ -63,14 +63,16 @@
 	display: inline-block;
 }
 
-a {
-	color: #B3B0FE;
+.faqtext a {
+	color: #B3B0FE !important;
 	text-decoration: none;
 }
 
 .faqtext_click {
 	background-color: #B3B0FE;
+	color:white;
 }
+
 
 .faqtext{
 	width: 224px;
@@ -79,7 +81,7 @@ a {
 	vertical-align: middle;
 }
 .faqtext_click a{
-	color : white;
+	color : white !important;
 }
 
 #faqtitle {
@@ -95,15 +97,15 @@ a {
 }
 
 .dl_wrap {
-	width: 1500px;
+	width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
-	margin: auto;
+	margin: 0 auto; 
 	text-align: left;
 }
 
-dl {
+.dl_wrap dl {
 	width: 600px;
 }
 /* dt */
@@ -112,7 +114,7 @@ dl {
 	float: left;
 	padding: 10px;
 	margin-bottom: 5px;
-	width: 500px;
+	width: 100%;
 	font-weight: bold;
 	color: #B3B0FE;
 	border-bottom: 1px solid #B3B0FE;

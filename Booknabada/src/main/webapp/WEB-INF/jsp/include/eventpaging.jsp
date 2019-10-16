@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <fmt:parseNumber integerOnly="true" value="${totalCount/6 }"
 	var="totalPage" />
+
 <c:if test="${(totalCount%6) > 0 }">
 	<c:set value="${totalPage+1 }" var="totalPage" />
 </c:if>
+
 <c:if test="${page%10 !=0 }">
 	<fmt:parseNumber integerOnly="true" value="${(page/10) }"
 		var="startPage" />
