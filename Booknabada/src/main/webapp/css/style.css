@@ -1,36 +1,3 @@
-/* header */
-#header{height: 60px; width: 100%; box-shadow: 0px 0px 10px #bbb; position: fixed;left: 0; top:0; z-index: 10; background: #fff}
-#header .inner-wrap{width: 90%; margin : auto;position: relative;padding-top: 20px}
-
-#header .left{float: left; width: 500px; }
-#header .left li{float: left; margin-right: 30px}
-#header .left li img{height:20px;}
-#header .left .hamberger_btn{cursor: pointer;}
-#header .left .search_box input{border: none; color:#BCB0FE;outline: 0; margin-left: 5px; width: 200px}
-#header .left .search_box input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #BCB0FE;
-  opacity: 1; /* Firefox */
-}
-#header .left .search_box input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #BCB0FE;
-}
-#header .left .search_box input::-ms-input-placeholder { /* Microsoft Edge */
-  color: #BCB0FE;
-}
-#header .logo{position: absolute; left: 50%; margin-left:-80px;width: 160px}
-#header .logo img{width: 160px}
-#header .right{float: right;width:70px;}
-#header .right li{float: left;}
-#header .right li.mypage{margin-left: 20px}
-#header .right li img{height:20px;}
-
-
-
-/* hamberger-menu */
-#nav{width: 260px; height: 630px; background: #BCB0FE; opacity: 0.8;position: fixed; left: -100%; top: 60px;}
-#gnb li{color:#fff; border-bottom: 1px solid #fff; height: 90px; line-height: 100px; text-indent: 50px; font-size: 18px;}
-#gnb li:last-child{border:none;}
-
 
 /* myhome1 */
 #container{width:100%;height: 100%;margin-top: 60px}
@@ -169,20 +136,5 @@
 /* eventModify */
 input{width:90%; height:30px}
 textarea{width:100%; height:500px; box-sizing:border-box;}
-
-
-/* footer */
-#footer{width: 100%; height: 200px; background: #BCB0FE;font-family: 'Roboto', 'Noto Sans KR', sans-serif;}
-#footer .inner-wrap{width: 90%; margin: auto; color:#fff;}
-#footer .left{float: left; margin-top: 30px;}
-#footer .left .content{}
-#footer .left .content>li{float: left;display: flex; margin-right: 80px;}
-#footer .left .content li h4{font-size: 16px; color:#fff; font-weight: bold;margin-right: 40px;}
-#footer .left .content li ul li{margin-bottom: 10px;}
-#footer .right{float: right; margin-top: 50px;}
-#footer .sns{display: flex;width: 200px;}
-#footer .sns li{width: 33.3%;text-align: center;}
-#footer .sns li img{width: 25px;}
-#footer .right p{margin-top: 30px;text-align: center;font-size: 16px;}
 
 

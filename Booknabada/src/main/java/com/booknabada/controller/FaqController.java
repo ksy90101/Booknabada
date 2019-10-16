@@ -29,6 +29,12 @@ public class FaqController {
     	
     	return mv;
     }
+	@RequestMapping(value="index/index.do")
+    public ModelAndView index2(CommandMap commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("index/index");
+    	
+    	return mv;
+    }
 	
 	@RequestMapping(value="caution.do")
     public ModelAndView caution() throws Exception{

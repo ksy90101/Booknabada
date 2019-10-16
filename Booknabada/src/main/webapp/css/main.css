@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* main */
+#container.main{margin-bottom: 100px;}
+#container.main h3{font-size: 30px; margin: 40px auto 20px;}
+#visualWrap{position: relative;left: 0; top: 45px; width: 100%; overflow: hidden;height: 545px;}
+#visualWrap .v-mask{width: 100%; position: absolute; left: -8%;	top: 105px;}
+#visualWrap .v-banner{width: 5000px;position: relative	; left: 50%;top: 0;margin-left:0px;}
+#visualWrap>h3{width: 90%;}
+#visualWrap .v-banner li{width: 710px; height: 440px; background: #bcb0fe; border-radius: 15px; float: left; margin-right: 50px;}
+#mainBook{}
+#mainBook li:after{display: block; clear: both; content:"";}
+#mainBook li .pic{width: 220px;height: 340px; float: left; background: rgba(0,0,0,0.5); margin-left: 45px; margin-top: 50px;}
+#mainBook li .txt{width: 400px; float: right;  color:#fff;}
+#mainBook li h5{margin-top: 80px; font-size: 30px;width: 280px; line-height: 36px; margin-bottom: 30px;color:#fff;display: -webkit-box; display: -ms-flexbox; display: box;max-height:76px; overflow:hidden; vertical-align:top; text-overflow: ellipsis; word-break:break-all; -webkit-box-or
+	ient:vertical; -webkit-line-clamp:2}
+#mainBook li .book_author{margin-bottom: 50px;font-size: 20px;}
+#mainBook li .star{margin-bottom: 50px;font-size: 24px;}
+#mainBook li .read{font-size: 20px;}
+#visualWrap .v-banner li.one{background: skyblue;}
+#visualWrap .v-banner li.three{background: yellow;}
+#visualWrap .v-banner li.four{background: pink;}
+#visualWrap .v-banner li.five{background: gray;}
+#visualWrap .v-arrow{}
+#visualWrap .v-arrow li{position: absolute;}
+#visualWrap .v-arrow li:nth-child(1){left: 0;top: 280px;}
+#visualWrap .v-arrow li:nth-child(2){right: 0;top: 280px;}
+#visualWrap .v-arrow li img{width: 100px; cursor: pointer;}
+#container.main .inner-wrap{margin:50px auto; width:90%; }
+#bookList{width: 73%;float: left;}
+#bookList .list{width: 100%;}
+#bookList .list li{width: 33%; background: #bcb0fe; height: 200px; float: left;}
+
+#loveBook{width: 25%;float: right;}
+#loveBook .list li{width: 215px; height: 60px; background: skyblue;}
+#loveBook .pabook{margin-top:100px}
+#loveBook .pabook .list{}
+#loveBook .pabook .list li{}
+#loveBook .sabook{}
+#loveBook .sabook .list{}
+#loveBook .sabook .list li{}
