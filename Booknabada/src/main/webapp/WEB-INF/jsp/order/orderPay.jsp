@@ -8,6 +8,18 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/orderPay.css" rel="stylesheet">
+<script type="text/javascript">
+function check(){
+	
+	if (document.frm.checkagree.checked == false) {
+		alert("약관에 동의해주세요");
+		return false;
+	} else{
+		//alert("약관");
+	} 
+}
+
+</script>
 </head>
 <body>
 
@@ -29,6 +41,7 @@
 	</div>
 
 	<!-- 장바구니목록 -->
+	<form action="orderFinish.do" method="post" name="frm">
 	<div class="order">
 		<div id="title">
 			<span>주문확인</span>
@@ -40,7 +53,7 @@
 			</div>
 			<div id="content">
 				<div class=point style="height: 25%;">
-					<div id style="float: left; width: 100%; height: 40px; margin-left:20px">
+					<div style="float: left; width: 100%; height: 40px; margin-left:20px">
 						<p id=pointTxt style="width: 106px;">보유 포인트</p>
 						<p id=pointTxt style="width: 120px; text-align: right;">199,000</p>
 						<p id=pointTxt style="width: 40px; margin-left:14px">P</p>
@@ -56,11 +69,11 @@
 				</div>
 				<div class=pay style="height: 75%">
 					<div id=payselect>
-						<button id="choice">신용카드</button>
+						<button id="choice"><img src="../images/card_true.png"/></button>
 						<div id=bin style="width:15px"></div>
-						<button id="choice" style="background-color: white;">계좌이체</button>
+						<button id="choice" style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/bank_false.png"/></button>
 						<div id=bin style="width:15px"></div>
-						<button id="choice" style="background-color: white;">휴대폰결제</button>
+						<button id="choice" style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/phone_false.png"/></button>
 					</div>
 					<div id=card>
 					<p style="color:#917EFD">카드정보입력</p>
@@ -108,14 +121,14 @@
 						<p id=user_title style="margin-left: 20px">
 							총 수량</p>
 						<div style="width: auto; height: auto;">
-							<p id="book_count1">12 권</p>
+							<input id="totalBook" readonly="readonly" name="totalBook" value="${totalBook }">
 						</div>
 					</div>
 					<div id="loc_box3" style="height: 100px">
 
 						<p id=user_title style="margin-left: 20px;">결제금액</p>
-						<p id="price" style="font-size: 40px; margin-left: 20px;">99,000</p>
-						<p id="price" style="font-size: 30px; line-height: 2.2">원</p>
+						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="${totalPrice}">
 
 					</div>
 					<div id="loc_box3" style="height: 100px; margin-top: 18px">
@@ -126,7 +139,7 @@
 							</p>
 
 							<div style="margin: 20px 15px; float: left; width: 260px; line-height: 20px;">
-								<input type="checkbox" style="float: left; margin-right: 10px">
+								<input type="checkbox" name="checkagree" style="float: left; margin-right: 10px">
 								<p style="font-size: 20px; font-weight: bold; color: #876efd; float: left;">동의합니다.</p>
 								<p style="font-size: 10px; padding-left: 125px">(전자상거래법 제 8조 제2항)</p>
 							</div>
@@ -140,12 +153,13 @@
 	
 	<!-- 버튼박스 -->
 	<div class=buttonBox>
-		<button class=button onclick="location.href='order.do'"
+		<button class=button type="button" onclick="history.back(-1);"
 			style="background-color: rgba(232, 232, 232, 1);">뒤로</button>
 		<div style="width: 15px; height: 30px; float: left;"></div>
-		<button class=button onclick="location.href='orderFinish.do'"
+		<button class=button type="submit" onclick="return check();"
 			style="background-color: #876EFD; color: white;">결제</button>
 	</div>
+	</form>
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 

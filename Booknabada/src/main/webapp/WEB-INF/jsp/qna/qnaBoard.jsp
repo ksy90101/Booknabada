@@ -54,7 +54,7 @@
 				<div class="paging">
 					<%@include file="../include/boardpaging.jsp"%>
 					<c:if test="${page gt 10 }">
-						<button onclick="location.href='qnaBoard.do?page=${page-10 }'">이전</button>
+						<button style="width:50px;" onclick="location.href='qnaBoard.do?page=${page-10 }'">이전</button>
 					</c:if>
 					<c:if test="${page gt 1 }">
 						<button onclick="location.href='qnaBoard.do?page=${page-1 }'">◀</button>
@@ -72,7 +72,7 @@
 						<button onclick="location.href='qnaBoard.do?page=${page+1 }'">▶</button>
 					</c:if>
 					<c:if test="${page lt totalPage-9 }">
-						<button onclick="location.href='qnaBoard.do?page=${page+10 }'">다음</button>
+						<button style="width:50px;" onclick="location.href='qnaBoard.do?page=${page+10 }'">다음</button>
 					</c:if>
 				</div>
 			</div>

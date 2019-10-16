@@ -1,6 +1,10 @@
 package com.booknabada.controller;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +41,39 @@ public class OrderController {
 	
 	//결제페이지
 	@RequestMapping(value="order/orderPay.do")
-	public ModelAndView orderPay() throws Exception{
+	public ModelAndView orderPay(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/orderPay");
-	
+		
+		
+		//이전페이지 태그값
+		Map<Object, String> orderData = new HashMap<Object, String>();
+		orderData.put("name", request.getParameter("name"));
+		
+		orderData.put("locaDetail", request.getParameter("locaA")+ request.getParameter("locaB") + request.getParameter("locaC"));
+		orderData.put("phone", request.getParameter("phoneA") + request.getParameter("phoneB") + request.getParameter("phoneC"));
+		
+		if (request.getParameter("store") != "선택") {
+			orderData.put("store", request.getParameter("store"));
+		}
+		
+		orderData.put("note", request.getParameter("note"));
+		
+		
+		String totalPrice = request.getParameter("totalPrice");
+		String totalBook = request.getParameter("totalBook");
+		
+		Iterator<Map.Entry<Object, String>> entries = orderData.entrySet().iterator();
+		while (entries.hasNext()) {
+		    Map.Entry<Object, String> entry = entries.next();
+		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+		}
+		
+		
+		//추가하기
+		mv.addObject("totalBook",totalBook);
+		mv.addObject("totalPrice", totalPrice);
+		mv.addObject(orderData);
+		
 		return mv;
 	}
 	

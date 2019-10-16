@@ -27,7 +27,7 @@
 		if(${fn:length(coment) > 0 }){
 =======
 		//alert("삭제하기 숫자: " + num);
-		if({fn:length(coment) > 0 }){
+		if(${fn:length(coment) > 0 }){
 >>>>>>> refs/heads/Yehee
 			alert("댓글이 있는 게시물은 삭제할 수 없습니다")
 			return;
