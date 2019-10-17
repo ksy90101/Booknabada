@@ -14,20 +14,14 @@
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-
 	
-	<jsp:include page="../include/header.jsp"></jsp:include>
-	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	<!-- 글박스 -->
 		<form action="qnaWriteAction.do" method="post" enctype="multipart/form-data">
 	<div id="writebox">
 			<h3 id=writetitle>제목</h3>
 			<input id="title" type="text" name="title">
 			<h3 id=writetitle>내용</h3>
-<<<<<<< HEAD
 			<textarea id="content" name="content"></textarea>
-=======
->>>>>>> refs/heads/Yehee
 			<script type="text/javascript">
 			CKEDITOR.replace('content',{width:980, height:340})
 			</script>

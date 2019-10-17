@@ -14,24 +14,8 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<div class="faq">
-		<div class="menu_wrap">
-			<div class="menu">
-				<div class="menutext">공지사항</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">이벤트</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">Q&A</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">FAQ</div>
-			</div>
-			<div class="menu">
-				<div class="menutext">자유게시판</div>
-			</div>
-		</div>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+	
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext"><a href="faqboardall.do">전체보기</a></div>
@@ -51,7 +35,7 @@
 		</div>
 		<h1 id="faqtitle">
 			<br>베스트
-		<c:if test="#{sessionScope.id eq 'admin' }">
+		<c:if test="${sessionScope.level eq 1 }">
 			<button onclick="location.href='faqwrite.do'">글쓰기</button>
 		</c:if>
 		</h1>

@@ -14,7 +14,8 @@
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-	<div class="faq">
+	
+	<!-- FAQ 메뉴 -->
 		<div class="faq_wrap">
 			<div class="faq_menu">
 				<div class="faqtext_click faqtext"><a href="faqboardall.do">전체보기</a></div>
@@ -32,6 +33,8 @@
 				<div class="faqtext"><a href="faqboardhomepage.do">홈페이지이용</a></div>
 			</div>
 		</div>
+			
+		<!-- FAQ 내용 보기 -->
 		<h1 id="faqtitle">
 			<br>전체보기
 		</h1>

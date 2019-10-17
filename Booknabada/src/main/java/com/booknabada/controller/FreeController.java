@@ -213,14 +213,6 @@ public class FreeController {
 		FreeDTO detail = freeService.detail(reBno);
 
 		mv.addObject("modify", detail);
-
-		// 세션
-//			if (detail.getUser_name().equals(session.getAttribute("name"))) {
-//				//modify ModelAndView에 DTO 보이게하기
-//			} else {
-//				mv.setViewName("error?code=3");
-//			}
-//			
 		
 		String whatBoard = "free";
 
@@ -230,7 +222,6 @@ public class FreeController {
 				//modify ModelAndView에 DTO 보이게하기
 			} else {
 				mv.setViewName("caution");
-				//mv.setViewName("error?code=3");
 			}
 		mv.addObject("whatBoard", whatBoard);
 		return mv;
@@ -251,17 +242,14 @@ public class FreeController {
 		String content = request.getParameter("content");
 
 		//엔터키 적용
-		
 		content = content.replaceAll("\r\n", "\n");
 		content = content.replaceAll("\n", "<br>");
-		
 		
 		FreeDTO dto = new FreeDTO();
 		dto.setBoard_title(title);
 		dto.setBoard_content(content);
 		dto.setBoard_no(Util.checkInt(board_no));
 			dto.setUser_name((String) session.getAttribute("id"));
-		
 		
 		//사진업로드
 			if (!file.isEmpty()) {
@@ -285,8 +273,6 @@ public class FreeController {
 				}	else {
 					mv.setViewName("error?code=5");
 				}
-
-
 		
 		return mv;
 	}
@@ -322,8 +308,7 @@ public class FreeController {
 				
 				//숫자인지 체크
 				int coment_no = Util.checkInt(request.getParameter("coment_no"));
-				
-				
+			
 				ComentDTO dto = new ComentDTO();
 				dto.setComent_no(coment_no);
 				dto.setUser_name((String)session.getAttribute("id"));

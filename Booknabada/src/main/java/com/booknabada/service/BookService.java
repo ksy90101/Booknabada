@@ -15,4 +15,6 @@ public interface BookService {
 	// 책 추가
 	void bookAddAction(BookDTO dto) throws Exception;
 
+	void countUp(int book_no) throws Exception;
+
 }

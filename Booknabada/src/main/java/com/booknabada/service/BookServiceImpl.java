@@ -35,4 +35,10 @@ public class BookServiceImpl implements BookService{
 	public void bookAddAction(BookDTO dto) throws Exception {
 		bookDAO.bookAddAction(dto);
 	}
+
+	@Override
+	public void countUp(int book_no) throws Exception {
+		bookDAO.countUp(book_no);
+		
+	}
 }

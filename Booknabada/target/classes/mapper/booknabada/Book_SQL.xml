@@ -25,4 +25,8 @@
 		(SELECT user_no FROM user_info WHERE user_id=#{user_id }),#{book_picture })
 	]]> 
 	</insert>
+	
+	<update id="countUp" parameterType="Integer">
+		UPDATE book SET book_count = book_count + 1 WHERE book_no = #{book_no }
+	</update>
 </mapper>

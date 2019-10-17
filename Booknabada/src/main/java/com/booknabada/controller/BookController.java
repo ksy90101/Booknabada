@@ -56,6 +56,8 @@ public class BookController {
 		int book_no = Util.checkInt(request.getParameter("book_no")); // 책 번호 가져오기 -> 책 번호는 String으로 들어오기때문에 int형으로 변경
 		System.out.println(book_no);
 
+		bookService.countUp(book_no);
+		
 		BookDTO dto = bookService.bookDetail(book_no);
 		mv.addObject("bookdetail", dto);
 		return mv;

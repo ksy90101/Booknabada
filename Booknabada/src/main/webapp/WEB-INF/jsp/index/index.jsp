@@ -31,9 +31,13 @@
 				<ul class="v-banner cf" id="mainBook">
 					<c:forEach items="${lovebook }" var = "i">
 					<li class="one">
-						<a href="../book/bookDetail.do?book_no=${i.book_no }">
 						<input type="hidden" name="book_no" value="${i.book_no }">
-						<div class="pic"><img alt="책이미지" src="../upimg/${i.book_picture }"></div>
+						<div class="pic">
+						<a href="../book/bookDetail.do?book_no=${i.book_no }">	
+						<img alt="책이미지" src="../upimg/${i.book_picture }">
+						</a>
+						</div>
+						<a href="../book/bookDetail.do?book_no=${i.book_no }">	
 						<div class="txt">
 							<h5>${i.book_title }</h5>
 							<p class="book_author">${i.book_author } / ${i.book_publisher }</p>

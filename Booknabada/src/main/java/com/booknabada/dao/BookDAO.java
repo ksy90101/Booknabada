@@ -27,4 +27,8 @@ public class BookDAO extends AbstractDAO{
 		insert("book.bookAddAction", dto);		
 	}
 
+	public void countUp(int book_no) {
+		update("book.countUp", book_no);
+	}
+
 }
