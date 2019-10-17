@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.OrderDTO;
 import com.booknabada.service.OrderService;
+import com.booknabada.util.Util;
 
 @Controller
 public class OrderController {
@@ -29,10 +30,10 @@ public class OrderController {
 	public ModelAndView order(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/order");
 		
-		int page = 1;
-		
-		//해당 bno -> DB로 보내서 해당 글 가져오기(DTO)
-		List<OrderDTO> board = orderService.orderbook(((page - 1) * 10));
+		int book_no = Util.checkInt(request.getParameter("book_no"));
+		System.out.println(book_no);
+		//해당 book_no -> DB로 보내서 해당 글 가져오기(DTO)
+		List<OrderDTO> board = orderService.orderbook(book_no);
 
 		mv.addObject("order", board);	
 		

@@ -18,8 +18,8 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDAO orderDAO;
 
 	@Override
-	public List<OrderDTO> orderbook(int page) throws Exception {
-		return orderDAO.board(page);
+	public List<OrderDTO> orderbook(int book_no) throws Exception {
+		return orderDAO.board(book_no);
 	}
 
 	

@@ -30,9 +30,9 @@
 				<c:choose>
 					<c:when test="${sessionScope.id eq null }">
 						<li class="login">
-							<a href="../login/login.do">
-							<img src="../images/login.png" alt="로그인">
-							</a>
+							<!-- <a href="../login/login.do"> -->
+							<img src="../images/login.png" alt="로그인" onclick="popuplogin()">
+							<!--  							</a>-->
 						</li>
 					</c:when>
 					<c:otherwise>
@@ -70,5 +70,9 @@
 			}
 			isMenu = !isMenu;
 		})
-
+	</script>
+	<script>
+		function popuplogin(){
+			window.open("../login/login.do", "loginpopup", "width=500, height=500, toolbar=no, location=no, status=no , menubar=no , scrollbars=auto");
+		}
 	</script>

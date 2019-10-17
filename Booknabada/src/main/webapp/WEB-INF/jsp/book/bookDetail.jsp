@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>책 상세보기 - ${bookdetail.book_title }</title>
+<title>책 상세보기 - ${bookdetail.book_title }</title> <!-- 책 상세보기 브라우저 제목 : 상세보기 하고 있는 책 제목 나오기 -->
 <link rel="stylesheet" href="../css/bookdetail.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
 		<p>책 카테고리 경로</p>
 		<div class="booktop_left">
 			<div class="bookimage">
-				<img alt="이미지를 올려주세요">
+				<img alt="이미지를 올려주세요" src="../upimg/${bookdetail.book_title }">
 			</div>
 			<div class="bookinfo">
 				<ul class="book_info">
@@ -33,20 +33,23 @@
 			</div>
 		</div>
 		<div class="booktop_right">
-			<h2>파북이</h2>
-			<img alt="파북이 이미지" class="pabongimage"> ${bookdetail.user_name }
+			<p class="pabook">파북이</p>
+			<img alt="파북이 이미지" class="pabongimage"><span class="pabookname"> ${bookdetail.user_name }</span>
 			<div class="price">
-				<h4>가격정보</h4>
-				<p>
-					<label>판매가 <input type="radio" name="priceSelect"
-						id="priceSelect" value="sell"></label> <label>대여가 <input
-						type="radio" name="priceSelect" id="priceSelect" value="rent"></label>
-				<p class="pricetext">${bookdetail.book_price }</p>
+				<p class="price_info">가격정보<p>
+					<p>
+					<input type="radio" name="priceSelect" id="priceSelect" value="sell">
+					<label for ="priceSelect" class="lb"><span></span>판매가</label> 
+					<input type="radio" name="priceSelect" id="priceSelect2" value="rent">
+					<label for="priceSelect2" class="lb"><span></span>대여가</label>
+				<p class="pricetext">
+				<fmt:formatNumber value="${bookdetail.book_price }" groupingUsed="true"></fmt:formatNumber>원
+				</p>
 			</div>
-			<form action="">
+			<div class="orderbnt">
 				<button class="bnt1">장바구니</button>
-				<button class="bnt2">바로구매</button>
-			</form>
+				<button class="bnt2" onclick="location.href='../order/order.do?book_no=${bookdetail.book_no}'">바로구매</button>
+			</div>
 		</div>
 		<h3></h3>
 		<div class="book_info2">

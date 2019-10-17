@@ -1,5 +1,7 @@
 package com.booknabada.controller;
 
+import java.util.Random;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,7 +36,6 @@ public class LoginController {
 		ModelAndView mv = null;
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
 		LoginDTO dto = new LoginDTO();
 		dto.setUser_id(id);
 		dto.setUser_pw(pw);
@@ -50,13 +51,17 @@ public class LoginController {
 			System.out.println(name);
 			System.out.println(id);
 			System.out.println(level);
-			mv = new ModelAndView("redirect:../index/index.do");
+			mv = new ModelAndView("redirect:loginComplete.do");
 		}else {
 			mv = new ModelAndView("redirect:login.do");
 		}
 		return mv;
 	}
-
+	
+	@RequestMapping(value = "login/loginComplete")
+	public ModelAndView loginComplete() throws Exception{
+		return new ModelAndView("login/loginComplete");
+	}
 	@RequestMapping(value = "login/logout.do")
 	public ModelAndView logout(HttpServletRequest requset) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:../index.do");
@@ -76,6 +81,9 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("login/newuser");
 		//HttpSession session = request.getSession();
 		
+		int ran = new Random().nextInt(900000) + 100000; // 랜덤값 생성
+
+		mv.addObject("random", ran); // 난수를 view에 전송
 		return mv;
 	}
 	
