@@ -184,11 +184,10 @@ li{
 	height: 35px;
 	margin: 30px auto;
 }
-<<<<<<< HEAD
-#Boardbutton, #eventbutton{
-=======
-#Boardbutton #eventbutton{
->>>>>>> refs/heads/Yehee
+
+
+#Boardbutton{
+
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;

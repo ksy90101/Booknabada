@@ -8,5 +8,7 @@ public interface OrderService {
 
 	List<OrderDTO> orderbook(int page) throws Exception;
 
+	List<OrderDTO> storeList(int store) throws Exception;
+
 
 }

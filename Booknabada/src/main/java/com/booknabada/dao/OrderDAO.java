@@ -12,8 +12,13 @@ public class OrderDAO extends AbstractDAO{
 	
 
 	@SuppressWarnings("unchecked")
-	public List<OrderDTO> board(int page) {
+	public List<OrderDTO> orderBook(int page) {
 		return selectList("order.booklist", page);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<OrderDTO> storeList(int store) {
+		return selectList("order.storelist", store);
 	}
 	
 	

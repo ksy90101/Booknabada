@@ -12,6 +12,8 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/orderFinish.css" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -32,7 +34,7 @@
 	</div>
 
 
-	<div id="title">
+	<div class="title">
 		<p style="color: #7C64FD">감사합니다</p>
 		<p style="color: #7C64FD; float:left">주문이 정상적으로 완료</p><p>되었습니다</p>
 	</div>
@@ -50,35 +52,100 @@
 				<p>20191025101058</p>
 			</div>
 			<div id=box style="height: 15%;">
-				<div style="width: 180px; float: left; font-weight: bold; line-height: 25px;">북나바다 제휴 서점픽업</div>
-				<div style="width: auto; float: left; color: #7C64fd; font-weight: bold; font-size: 16px;">영풍문고
-					홍대</div>
-				<div style="width: 20px; float: left; font-weight: bold; line-height: 25px; margin: 0 10px 0 10px;">점
+				
+				<c:choose>
+				<c:when test="${orderData.loca_check eq '1'}">
+					<div style="width: 180px; float: left; font-weight: bold; line-height: 25px;">북나바다 제휴 서점픽업</div>
+					<div style="width: 200px; float: left; color: #7C64fd; font-weight: bold; font-size: 16px;">${orderData.store }</div>
+				</c:when>
+				<c:otherwise>
+					<p style="float: left; color: #7C64fd; font-weight: bold; font-size: 16px;">${orderData.locaA }</p>
+					<p style="float: left; color: #7C64fd; font-weight: bold; font-size: 16px; margin:auto 10px;" >${orderData.locaB }</p>
+					<p style="float: left; color: #7C64fd; font-weight: bold; font-size: 16px;">${orderData.locaC }</p>
+				</c:otherwise>
+				</c:choose>
+				
+				<div style="width: 200px; float: left; font-weight: bold; line-height: 25px; margin: 0 10px 0 10px;">
 				</div>
-				<p style="font-size: 14px; font-weight: inherit; float: left; line-height: 25px;">(담당자 02-385-2304)</p>
 			</div>
+			
+			<c:if test="${payData.payChoice eq 'card'}">
 			<div id=box style="height: 30%;">
 				<p>카드 결제</p>
 				<br>
-				<p style="float: left;">3개월 할부 국민(4687-28**-****-****)</p>
-				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:2019.10.20 17:20</p>
+				<p style="float: left;">${payData.cardUser }(${payData.cardNo })</p>
+				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
+				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
 			</div>
+			</c:if>
+			
+			<c:if test="${payData.payChoice eq 'bank'}">
+			<div id=box style="height: 30%;">
+				<p>계좌이체</p>
+				<br>
+				<p style="float: left;">${payData.bankName } ${payData.bankNo }</p>
+				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
+				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
+			</div>
+			</c:if>
+			
+			<c:if test="${payData.payChoice eq 'phone'}">
+			<div id=box style="height: 30%;">
+				<p>핸드폰 결제</p>
+				<br>
+				<p style="float: left;">${payData.phoneUser} ${payData.phoneNo }</p>
+				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
+				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
+			</div>
+			</c:if>
+			
+			
 			<div id=box style="height: 25%;">
 				<div style="float: left; font-size: 32px; font-weight: bold; line-height: 2.0; color: #7c64fd; margin-right: 50px;">
-				12 권</div>
+				${totalBook }</div>
 				<div style="line-height: 2.0; font-size: 32px; font-weight: bold; float: left; color: #F1B40B;">
-					29,900 원</div>
+					${totalPrice }</div>
 			</div>
 			<div id=box style="height: 15%; font-weight: bold; color: #7c64fd; font-size: 18px; line-height: 1.5;">
-				250 &nbsp; p</div>
+				${totalBook1 * 100 } &nbsp; p</div>
 		</div>
 	</div>
 	
 	<div style="display: table; margin:0 auto 60px auto;">
-	<button id="button" onclick="location.href='../index.do'">마이 페이지</button>
+	<button id="button" type="button" onclick="location.href='../my/myhome.do'">마이 페이지</button>
 	</div>
 	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
+	<script type="text/javascript">
+
+	$(function() {
+	    getTimeStamp();
+	});
+
+	function getTimeStamp() {
+	    var d = new Date();
+
+	    var date = leadingZeros(d.getFullYear(), 4) + '-' +
+	        leadingZeros(d.getMonth() + 1, 2) + '-' +
+	        leadingZeros(d.getDate(), 2) + ' ';
+	    var time = leadingZeros(d.getHours(), 2) + ':' +
+	        leadingZeros(d.getMinutes(), 2) + ':' +
+	        leadingZeros(d.getSeconds(), 2);
+	        
+	    $('#date').val(date + time);
+		}
+
+		function leadingZeros(n, digits) {
+			var zero = '';
+			n = n.toString();
+			if (n.length < digits) {
+				for (i = 0; i < digits - n.length; i++)
+					zero += '0';
+			}
+			return zero + n;
+		}
+	</script>
 	
 </body>
 </html>

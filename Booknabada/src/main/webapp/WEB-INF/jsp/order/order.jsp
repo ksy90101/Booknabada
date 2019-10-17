@@ -12,48 +12,62 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/order.css" rel="stylesheet">
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-function checkloc(){
-	alert("주소찾기기능");
-	return;
+
+function locaCheck(){
+	
+new daum.Postcode({
+    oncomplete: function(data) {
+    	
+    	var zonecode = data.zonecode
+    	var roadAddress = data.roadAddress
+    	
+    	document.getElementById('locaA').value = zonecode;
+    	document.getElementById('locaB').value = roadAddress;
+        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+    }
+}).open();
 }
+
 function check(){
 	//alert("작동합니다");
-	/* if (document.frm.name.value == "") {
+	if (document.frm.name.value == "") {
 		alert("이름을 입력하세요");
 		document.frm.name.focus();
 		return false;
 	}	
-	if (document.frm.loc1.value == "") {
+	if (document.frm.locaA.value == "") {
 		alert("주소를 입력하세요");
-		document.frm.loc1.focus();
+		document.frm.locaA.focus();
 		return false;
 	}
-	if (document.frm.loc2.value == "") {
+	if (document.frm.locaB.value == "") {
 		alert("주소를 입력하세요");
-		document.frm.loc2.focus();
+		document.frm.locaB.focus();
 		return false;
 	}
-	if (document.frm.loc3.value == "") {
+	if (document.frm.locaC.value == "") {
 		alert("상세주소를 입력하세요");
-		document.frm.loc3.focus();
+		document.frm.locaC.focus();
 		return false;
 	}
-	if (document.frm.phone1.value == "") {
+	if (document.frm.phoneA.value == "") {
 		alert("핸드폰 번호를 정확히 입력하세요1");
-		document.frm.phone1.focus();
+		document.frm.phoneA.focus();
 		return false;
 	}
-	if (document.frm.phone2.value == "") {
-		alert("핸드폰 번호를 정확히 입력하세요2");
-		document.frm.phone2.focus();
+	if (document.frm.phoneB.value == "") {
+		alert("핸드폰 번호를 정확히 입력하세요");
+		document.frm.phoneB.focus();
 		return false;
 	}
-	if (document.frm.phone3.value == "") {
-		alert("핸드폰 번호를 정확히 입력하세요3");
-		document.frm.phone3.focus();
+	if (document.frm.phoneC.value == "") {
+		alert("핸드폰 번호를 정확히 입력하세요");
+		document.frm.phoneC.focus();
 		return false;
-	} */
+	}
 	//console.log(document.frm.checkagree.value);
 	
 	if (document.frm.checkagree.checked == false) {
@@ -61,6 +75,12 @@ function check(){
 		return false;
 	} else{
 		//alert("약관");
+	} 
+	
+	if (document.frm.store.option == "선택") {
+		alert("1에 동의해주세요");
+		return false;
+	} else{
 	} 
 	
 }
@@ -97,7 +117,7 @@ function check(){
 			<div id="list_head" style="width: 17%">가격</div>
 		</div>
 		<div class="list">
-		<c:forEach items="${order }" var="i">
+		<c:forEach items="${orderBook }" var="i">
 		<div id="list">
 			<div id="list_book" style="width: 60%;">
 				<div style="width: auto; height: 120px; margin-top: 20px;">
@@ -116,7 +136,9 @@ function check(){
 			</div>
 			<div id="list_book" style="width: 15%">
 				<div style="height: 120px; margin: 20px 40px 20px auto; line-height: 100px; float: right;">
-					<p id="price" style="font-size: 30px;">${i.book_price }</p>
+					<p id="price" style="font-size: 30px;">
+					<fmt:formatNumber value="${i.book_price }" groupingUsed="true" />
+					</p>
 					<p id="price" style="font-size: 20px;">원</p>
 				</div>
 			</div>
@@ -155,15 +177,12 @@ function check(){
 				<div id="loc_box2"
 					style="height: 75px; line-height: 75px; border-bottom: 1px solid #BCB0FE; box-sizing: border-box;">
 					<input type="radio" name="loc_check" value="0" checked>일반택배 
-					<input type="radio" name="loc_check" value="1"> 북나바다
-					제휴 서점픽업 <select style="margin-left: 5px" name="store">
+					<input type="radio" name="loc_check" value="1"> 북나바다 제휴 서점픽업 
+					<select id="select" style="margin-left: 5px" name="store">
 						<option selected="">선택</option>
-						<option>교보문고 강남점</option>
-						<option>교보문고 부산해운대점</option>
-						<option>알라딘 강북점</option>
-						<option>알라딘 대전사거리점</option>
-						<option>예스24 강남점</option>
-						<option>예스24 홍대점</option>
+						<c:forEach items="${storelist }" var="i">
+						<option>${i.store_name }</option>
+						</c:forEach>
 					</select>
 				</div>
 
@@ -176,8 +195,8 @@ function check(){
 				<div id="loc_box2" style="height: 230px;">
 					<div style="width: 100%; height: 50px;">
 					
-						<input type="text" name="locaA" style="width: 200px; height: 25px; float: left">
-						<button id=searchButton onclick="return checkloc();">주소찾기</button>
+						<input type="text" id="locaA" name="locaA" style="width: 200px; height: 25px; float: left">
+						<input type="button" id=searchButton name="locaS" value="주소찾기" onclick="locaCheck();">
 					</div>
 
 					<div>
@@ -185,7 +204,7 @@ function check(){
 							<div style="width: 80px; height: 50px; line-height: 50px; float: left;">
 								<span id=post>주소</span>
 							</div>
-							<input type="text" name="locaB"
+							<input type="text" id="locaB" name="locaB"
 								style="width: 420px; height: 25px; transform: translate(0, 20%);">
 						</div>
 						<div style="height: 50px;">
@@ -206,9 +225,9 @@ function check(){
 				</div>
 				<!-- 폰번호 입력 -->
 				<div id="loc_box2" style="height: 60px; line-height: 60px">
-					<input type="text" name="phoneA" style="width: 80px; height: 25px">
-					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneB" style="width: 80px; height: 25px">
-					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneC" style="width: 80px; height: 25px">
+					<input type="text" name="phoneA" style="width: 80px; height: 25px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneB" style="width: 80px; height: 25px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+					&nbsp;&nbsp;-&nbsp;&nbsp; <input type="text" name="phoneC" style="width: 80px; height: 25px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				</div>
 				<div id="loc_box2" style="height: 80px; line-height: 60px">
 					<input type="text" name="note" style="width: 500px; height: 25px" placeholder="아무도 모르게 가져다 주세요">
@@ -230,7 +249,8 @@ function check(){
 						<p style="font-size: 18px; font-weight: bold; margin-left: 20px">총 수량</p>
 						<div style="width: auto; height: auto;">
 							<!-- 총 책수 -->
-							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(order) } 권">
+							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(orderBook) } 권">
+							<input type="hidden" name="totalBook1" value="${fn:length(orderBook) }">
 							
 						</div>
 					</div>
@@ -238,11 +258,13 @@ function check(){
 						<p style="font-size: 18px; font-weight: bold; margin-left: 20px;">결제금액</p>
 						<!-- 총 결제금액 -->
 						<c:set var = "totalPrice" value = "0" />
-						<c:forEach items="${order }" var="i" >     
+						<c:forEach items="${orderBook }" var="i" >     
 						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
 						</c:forEach>
+
 						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
-						readonly="readonly" name="totalPrice" value="${totalPrice} 원">
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" /> 원">
+						
 					</div>
 					<!-- 동의 체크박스 -->
 					<div id="loc_box3" style="height: 100px; margin-top: 18px">
@@ -262,7 +284,7 @@ function check(){
 			</div>
 	<!-- 버튼박스 -->
 	<div class=buttonBox>
-		<button class=button onclick="location.href='../index.do'"
+		<button class=button type="button" onclick="location.href='../index/index.do'"
 			style="background-color: rgba(232, 232, 232, 1);">취소</button>
 		<div style="width: 15px; height: 30px; float: left;"></div>
 		<button class=button type="submit" onclick="return check();"
@@ -276,8 +298,14 @@ function check(){
 	
 	<script>
 	
+	$(document).ready(function(){
+		$("#select").hide();
+	})
+	
 	$("input:radio[name=loc_check]").on("change", function(){
 	        if($("input:radio[name=loc_check]:checked").val() == "0"){
+	            $("#select").hide();
+	            $("input:submit[name=locaS]").show();
 	            $("input:text[name=locaA]").attr("disabled",false);
 	            $("input:text[name=locaB]").attr("disabled",false);
 	            $("input:text[name=locaC]").attr("disabled",false);
@@ -288,6 +316,8 @@ function check(){
 	            
 	 
 	        }else {
+	            $("#select").show();
+	            $("input:submit[name=locaS]").hide();
 	            $("input:text[name=locaA]").attr("disabled",true);
 	            $("input:text[name=locaB]").attr("disabled",true);
 	            $("input:text[name=locaC]").attr("disabled",true);

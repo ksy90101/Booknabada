@@ -6,6 +6,7 @@
 
 <title>결제정보</title>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/orderPay.css" rel="stylesheet">
 <script type="text/javascript">
@@ -18,6 +19,20 @@ function check(){
 		//alert("약관");
 	} 
 }
+
+function showSection(section){
+	var item = document.querySelectorAll('.section');
+	
+	//버튼값을 hidden에 쏘기
+	frm.what.value = (section);
+	
+	item.forEach(function (item){
+		item.style.display = "none";
+	});
+	document.getElementById(section).style.display = "block";
+}
+
+
 </script>
 </head>
 <body>
@@ -60,46 +75,102 @@ function check(){
 					</div>
 					<div style="float: left; width: 100%; height: 40px; margin-top:10px; margin-left:20px">
 						<p id=pointTxt style="width: 106px">사용 포인트</p>
-						<input id=pointInput>
+						<input id=pointInput name="usePoint" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
 						<p id=pointTxt style="width: 40px; margin-left:12px">P</p>
-						<button id=pointButton>모두사용</button>
+						<button type="button" id=pointButton>모두사용</button>
 					</div>
 				
 				</div>
 				<div class=pay style="height: 75%">
 					<div id=payselect>
-						<button id="choice"><img src="../images/card_true.png"/></button>
+						<button id="choice" value="card" type="button" onclick="showSection(this.value)"><img src="../images/card_true.png"/></button>
 						<div id=bin style="width:15px"></div>
-						<button id="choice" style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/bank_false.png"/></button>
+						<button id="choice" value="bank" type="button" onclick="showSection(this.value)"style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/bank_false.png"/></button>
 						<div id=bin style="width:15px"></div>
-						<button id="choice" style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/phone_false.png"/></button>
+						<button id="choice" value="phone" type="button" onclick="showSection(this.value)"style="border:1px solid #e5e5e5; background-color:#f6f6f6;"><img src="../images/phone_false.png"/></button>
 					</div>
-					<div id=card>
-					<p style="color:#917EFD">카드정보입력</p>
+					
+					<input type='hidden' name='what' value="card"/> 
+					
+					<div class="section" id=card style="display:block">
+					<p style="color:#917EFD">카드결제 정보입력</p>
 					<div id=inputBox>
 					<p style="margin-bottom:5px;">카드번호</p>
-					<input id=cardInput></input></div>
+					<input id=cardInput name="cardNo" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></input></div>
 					<div id=bin style="width:15px"></div>
 					
 					<div id=inputBox>
 					<p style="margin-bottom:5px;">카드 유효날짜</p>
-					<input id=cardInput style="width:80px; float:left;"></input>
+					<input id=cardInput name="cardYear" style="width:80px; float:left;"onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></input>
 					<div id=bin style="width:10px; height: 10px; padding:10px 10px; font-size: 18px;">/</div>
-					<input id=cardInput style="width:80px; float:left;"></input>
+					<input id=cardInput name="cardMonth" style="width:80px; float:left;"onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></input>
 					</div>
 					
 					<div id=bin style="width:100%; height: 10px"></div>
 					
 					<div id=inputBox>
 					<p style="margin-bottom:5px;">카드 성명</p>
-					<input id=cardInput></input></div>
+					<input id=cardInput name="cardUser"></input></div>
 					<div id=bin style="width:15px"></div>
 					
 					<div id=inputBox>
 					<p style="margin-bottom:5px;">CVV</p>
-					<input id=cardInput style="width:130px;"></input></div>
+					<input id=cardInput name="cardCvv" style="width:130px;" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></input></div>
+					</div>
+					
+					
+					<div class="section" id=bank>
+					<p style="color:#917EFD">계좌이체 정보입력</p>
+					<div id=inputBox>
+					<p style="margin-bottom:5px;">예금주 성명</p>
+					<input id=cardInput name="bankUser" style="width:200px"/></div>
+					<div id=bin style="width:15px"></div>
+					
+					<div id=bin style="width:100%; height: 10px"></div>
+					
+					<div id=inputBox>
+					<p style="margin-bottom:5px;">계좌정보 입력</p>
+					<select id="select" name="bankName">
+						<option selected="">선택</option>
+						<option>국민은행</option>
+						<option>신한은행</option>
+						<option>우리은행</option>
+						<option>하나은행</option>
+						<option>카카오뱅크</option>
+					</select>
+					</div>
+					<div id=bin style="width:15px"></div>
+					
+					<div id=inputBox>
+					<p style="margin-bottom:5px;">&nbsp;</p>
+					<input id=cardInput name="bankNo" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"></input></div>
+					</div>
+					
+					
+					<div class="section" id=phone>
+					<p style="color:#917EFD">핸드폰결제 정보입력</p>
+					<div id=inputBox>
+					<p style="margin-bottom:5px;">성명</p>
+					<input id=cardInput name="phoneUser" style="width:200px"/></div>
+					<div id=bin style="width:15px"></div>
+					
+					
+					<div id=bin style="width:100%; height: 10px"></div>
+					
+					<div id=inputBox>
+					<p style="margin-bottom:5px;">핸드폰 번호</p>
+					<input id=cardInput name="payPhoneA" style="width:100px;" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+					&nbsp;&nbsp;-&nbsp;&nbsp;
+					<input id=cardInput name="payPhoneB" style="width:100px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+					&nbsp;&nbsp;-&nbsp;&nbsp;
+					<input id=cardInput name="payPhoneC" style="width:100px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+					</div>
 					
 					</div>
+					
+					
+					
+					
 				</div>
 			
 		</div>
@@ -121,6 +192,7 @@ function check(){
 							총 수량</p>
 						<div style="width: auto; height: auto;">
 							<input id="totalBook" readonly="readonly" name="totalBook" value="${totalBook }">
+							<input type="hidden" name="totalBook1" value="${totalBook1 }">
 						</div>
 					</div>
 					<div id="loc_box3" style="height: 100px">
@@ -148,8 +220,16 @@ function check(){
 			</div>
 		</div>
 		</div>
-	
-	
+		
+		<!-- order.do 유저데이터 넘기기 -->
+		<input name="name" type="hidden" value="${orderData.name}">
+		<input name="locaA" type="hidden" value="${orderData.locaA}">
+		<input name="locaB" type="hidden" value="${orderData.locaB}">
+		<input name="locaC" type="hidden" value="${orderData.locaC}">
+		<input name="phone" type="hidden" value="${orderData.phone}">
+		<input name="store" type="hidden" value="${orderData.store}">
+		<input name="note" type="hidden" value="${orderData.note}">
+		
 	<!-- 버튼박스 -->
 	<div class=buttonBox>
 		<button class=button type="button" onclick="history.back(-1);"
@@ -161,6 +241,7 @@ function check(){
 	</form>
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 
 </body>
 </html>

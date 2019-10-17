@@ -120,12 +120,31 @@
 	font-weight: bold;
 	font-size: 18px;
 }
+.section{
+	display:none;
+}
+
 #card{
 	padding-left:10px;
 	margin:20px 0;
 	width: 580px;
 	height: 210px;
 }
+
+#bank{
+	padding-left:10px;
+	margin:20px 0;
+	width: 580px;
+	height: 210px;
+}
+
+#phone{
+	padding-left:10px;
+	margin:20px 0;
+	width: 580px;
+	height: 210px;
+}
+
 #inputBox{
 	font-size:12px; 
 	color:#917EFD; 
@@ -135,6 +154,15 @@
 
 
 #cardInput{
+	width:260px;
+	height: 40px; 
+	border:1px solid #BCB0FE; 
+	border-radius: 7px;
+	color:#917EFD; 
+	padding:10px;
+}
+
+#select{
 	width:260px;
 	height: 40px; 
 	border:1px solid #BCB0FE; 
