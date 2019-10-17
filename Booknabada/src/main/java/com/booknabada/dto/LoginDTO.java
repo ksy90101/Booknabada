@@ -3,7 +3,15 @@ package com.booknabada.dto;
 public class LoginDTO {
 	
 	int user_lover, ranknum;
-	String user_name, user_id, user_pw, user_addr, user_tel, user_email, user_gender, user_birth, user_level;
+	String user_name, user_id, user_no, user_pw, user_addr, user_tel, user_email, user_gender, user_birth, user_level;
+
+	public String getUser_no() {
+		return user_no;
+	}
+
+	public void setUser_no(String user_no) {
+		this.user_no = user_no;
+	}
 
 	//사랑받는 파북이 순위 가져오는 것
 	public int getRanknum() {

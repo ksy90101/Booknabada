@@ -1,5 +1,8 @@
 package com.booknabada.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.BookDTO;
+import com.booknabada.dto.LikeDTO;
 import com.booknabada.dto.LoginDTO;
 import com.booknabada.service.MyService;
 import com.booknabada.util.Util;
@@ -56,6 +61,85 @@ public class MyController {
 		
 		return mv;
 	}
+	
+	
+	//파북이 개인페이지
+	@RequestMapping(value="my/pabook.do")
+    public ModelAndView pabook(HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView();
+    	HttpSession session = request.getSession();
+    	int user_no = Util.checkInt(request.getParameter("pabook_no"));
+
+    	LoginDTO pabookInfo = myService.pabookInfo(user_no);
+    	String like_to = pabookInfo.getUser_id();
+    	String like_from = (String) session.getAttribute("id"); //like_from
+    	
+    	LikeDTO dto = new LikeDTO();
+    	dto.setLike_to(like_to);
+    	dto.setLike_from(like_from);
+
+    	int likeChk = myService.getLikeCheck(dto);	
+
+    	List<BookDTO> bookInfo = myService.bookInfo(user_no);
+    	
+    	mv.addObject("pabook_no",user_no);
+    	mv.addObject("pabookInfo",pabookInfo);
+    	mv.addObject("bookInfo",bookInfo);
+    	mv.addObject("likeChk",likeChk);
+    	    	
+    	mv.setViewName("my/pabook");
+    	return mv;
+    }	
+	
+	//좋아요 액션!
+	@RequestMapping(value="my/likeAction.do")
+    public ModelAndView likeAction(HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView();
+    	HttpSession session =request.getSession();
+    	
+    	if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+    		int user_no = Util.checkInt(request.getParameter("pabook_no"));
+    	
+    		LoginDTO pabookInfo = myService.pabookInfo(user_no);
+	    	String like_to = pabookInfo.getUser_id();
+	    	String like_from = (String) session.getAttribute("id"); //like_from
+	    	//System.out.println(like_to);
+	    	//System.out.println(like_from);
+	    	
+	    	LikeDTO dto = new LikeDTO();
+	    	dto.setLike_to(like_to);
+	    	dto.setLike_from(like_from);
+
+	    	int likeChk = myService.getLikeCheck(dto);	
+	    	
+	    	if(likeChk == 0) { //좋아요를 누른적이 없다면
+		    	myService.likeAction(dto);
+		    			    	
+		    	mv.addObject("pabook_no",user_no);
+		    	mv.addObject("likeChk",likeChk);
+		    	mv.setViewName("redirect:pabook.do");
+		    	
+	    	}else { //좋아요를 누른적이 있다면
+		    	mv.addObject("pabook_no",user_no);
+	    		mv.addObject("likeChk",likeChk);
+		    	mv.setViewName("redirect:pabook.do");
+	    	}
+	    	
+	    	//좋아요 취소하기 선택으로 왔다면
+	    	if(request.getParameter("likeCancel") != null) { 
+	        	String likeCancel = request.getParameter("likeCancel");
+	        	if(likeCancel.equals("true")) {
+	        		myService.likeCancel(dto);
+	        	}
+	    	}
+	    
+    	}else {
+			mv.setViewName("redirect:../login/login.do");
+		}	
+    	
+    	return mv;
+    }	
+	
 	
 	
 }

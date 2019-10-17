@@ -1,7 +1,11 @@
 package com.booknabada.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
+import com.booknabada.dto.BookDTO;
+import com.booknabada.dto.LikeDTO;
 import com.booknabada.dto.LoginDTO;
 import com.common.dao.AbstractDAO;
 
@@ -14,6 +18,27 @@ public class MyDAO extends AbstractDAO{
 	
 	public LoginDTO detail(int reBno) {
 		return(LoginDTO) selectOne("login.detail",reBno);
+	}
+
+	public LoginDTO pabookInfo(int user_no) {
+		return (LoginDTO) selectOne("my.pabookInfo", user_no);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<BookDTO> bookInfo(int user_no) {
+		return selectList("my.bookInfo",user_no);
+	}
+
+	public void lickAction(LikeDTO dto) {
+		insert("my.likeAction",dto);
+	}
+
+	public int getLikeCheck(LikeDTO dto) {
+		return (int) selectOne("my.getLikeCheck",dto);
+	}
+
+	public void likeCancel(LikeDTO dto) {
+		delete("my.likeCancel",dto);
 	}
 
 }

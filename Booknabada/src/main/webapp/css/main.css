@@ -7,7 +7,7 @@
 #visualWrap .v-mask{width: 100%; position: absolute; left: -8%;	top: 105px;}
 #visualWrap .v-banner{width: 5000px;position: relative	; left: 50%;top: 0;margin-left:0px;}
 #visualWrap>h3{width: 90%;}
-#visualWrap .v-banner li{width: 710px; height: 440px; background: #bcb0fe; border-radius: 15px; float: left; margin-right: 50px;}
+#visualWrap .v-banner li{width: 710px; height: 440px;border-radius: 15px; float: left; margin-right: 50px;}
 #mainBook{}
 #mainBook li:after{display: block; clear: both; content:"";}
 #mainBook li .pic{width: 220px;height: 340px; float: left; background: rgba(0,0,0,0.5); margin-left: 45px; margin-top: 50px;}
@@ -17,10 +17,11 @@
 #mainBook li .book_author{margin-bottom: 50px;font-size: 20px;}
 #mainBook li .star{margin-bottom: 50px;font-size: 24px;}
 #mainBook li .read{font-size: 20px;}
-#visualWrap .v-banner li.one{background: skyblue;}
-#visualWrap .v-banner li.three{background: yellow;}
-#visualWrap .v-banner li.four{background: pink;}
-#visualWrap .v-banner li.five{background: gray;}
+#visualWrap .v-banner li.banner1{background: #bcb0fe;}
+#visualWrap .v-banner li.banner2{background: skyblue;}
+#visualWrap .v-banner li.banner3{background: yellow;}
+#visualWrap .v-banner li.banner4{background: pink;}
+#visualWrap .v-banner li.banner5{background: gray;}
 #visualWrap .v-arrow{}
 #visualWrap .v-arrow li{position: absolute;}
 #visualWrap .v-arrow li:nth-child(1){left: 0;top: 280px;}
