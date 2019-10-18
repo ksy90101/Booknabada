@@ -109,17 +109,48 @@
 	margin-top:20px;
 }
 
-#choice{
+.choice{
 	width: 183px;
 	height: 95px;
-	background-color: #BCB0FE;
+	border:1px solid #e5e5e5; 
+	background-color:#f6f6f6;
 	float: left;
-	border: 1px solid #BCB0FE;
 	box-sizing: border-box;
 	border-radius: 10px;
 	font-weight: bold;
 	font-size: 18px;
+	
 }
+/* 	background-color: #BCB0FE;
+	border: 1px solid #BCB0FE; */
+.choice.card{
+	background: #f6f6f6 url("../images/card_false.png") no-repeat;
+	background-position: center;
+	
+}
+.choice.bank{
+	background: #f6f6f6 url('../images/bank_false.png') no-repeat;
+	background-position: center;
+}
+.choice.phone{
+	background: #f6f6f6 url('../images/phone_false.png') no-repeat;
+	background-position: center;
+}
+.choice.card.on{
+	background: #BCB0FE url("../images/card_true.png") no-repeat;
+	background-position: center;
+
+}
+.choice.bank.on{
+	background: #BCB0FE url("../images/bank_true.png") no-repeat;
+	background-position: center;
+}
+.choice.phone.on{
+	background: #BCB0FE url("../images/phone_true.png") no-repeat;
+	background-position: center;
+}
+
+
 .section{
 	display:none;
 }

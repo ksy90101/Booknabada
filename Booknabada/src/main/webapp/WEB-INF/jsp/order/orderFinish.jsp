@@ -106,8 +106,10 @@
 				<div style="line-height: 2.0; font-size: 32px; font-weight: bold; float: left; color: #F1B40B;">
 					${totalPrice }</div>
 			</div>
+			<!-- 포인트적립 -->
 			<div id=box style="height: 15%; font-weight: bold; color: #7c64fd; font-size: 18px; line-height: 1.5;">
-				${totalBook1 * 100 } &nbsp; p</div>
+				${totalBook_point } &nbsp; p</div>
+				
 		</div>
 	</div>
 	

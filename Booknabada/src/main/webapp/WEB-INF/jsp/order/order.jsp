@@ -17,6 +17,12 @@
 
 function locaCheck(){
 	
+	if (document.frm.loca_check == '1') {
+		$("#store").show();
+	} else{
+		$("#store").hide();
+	}
+	
 new daum.Postcode({
     oncomplete: function(data) {
     	
@@ -38,21 +44,31 @@ function check(){
 		document.frm.name.focus();
 		return false;
 	}	
-	if (document.frm.locaA.value == "") {
-		alert("주소를 입력하세요");
-		document.frm.locaA.focus();
-		return false;
+	
+	if (document.frm.loca_check.value == '0' || document.frm.loca_check.value == 'null') {
+		if (document.frm.locaA.value == "") {
+			alert("주소를 입력하세요");
+			document.frm.locaA.focus();
+			return false;
+		}
+		if (document.frm.locaB.value == "") {
+			alert("주소를 입력하세요");
+			document.frm.locaB.focus();
+			return false;
+		}
+		if (document.frm.locaC.value == "") {
+			alert("상세주소를 입력하세요");
+			document.frm.locaC.focus();
+			return false;
+		} 
+	} else if (document.frm.loca_check.value == '1') {
+		if (document.frm.store.value == '선택'){
+			alert("서점을 선택하세요");
+			document.frm.store.focus();
+			return false;
+		}
 	}
-	if (document.frm.locaB.value == "") {
-		alert("주소를 입력하세요");
-		document.frm.locaB.focus();
-		return false;
-	}
-	if (document.frm.locaC.value == "") {
-		alert("상세주소를 입력하세요");
-		document.frm.locaC.focus();
-		return false;
-	}
+	
 	if (document.frm.phoneA.value == "") {
 		alert("핸드폰 번호를 정확히 입력하세요1");
 		document.frm.phoneA.focus();
@@ -73,17 +89,10 @@ function check(){
 	if (document.frm.checkagree.checked == false) {
 		alert("약관에 동의해주세요");
 		return false;
-	} else{
-		//alert("약관");
-	} 
-	
-	if (document.frm.store.option == "선택") {
-		alert("1에 동의해주세요");
-		return false;
-	} else{
-	} 
+	}
 	
 }
+
 </script>
 
 </head>
@@ -176,8 +185,8 @@ function check(){
 				<!-- 배송,지점찾기 -->
 				<div id="loc_box2"
 					style="height: 75px; line-height: 75px; border-bottom: 1px solid #BCB0FE; box-sizing: border-box;">
-					<input type="radio" name="loc_check" value="0" checked>일반택배 
-					<input type="radio" name="loc_check" value="1"> 북나바다 제휴 서점픽업 
+					<input type="radio" name="loca_check" value="0" checked>일반택배 
+					<input type="radio" name="loca_check" value="1"> 북나바다 제휴 서점픽업 
 					<select id="select" style="margin-left: 5px" name="store">
 						<option selected="">선택</option>
 						<c:forEach items="${storelist }" var="i">
@@ -249,8 +258,9 @@ function check(){
 						<p style="font-size: 18px; font-weight: bold; margin-left: 20px">총 수량</p>
 						<div style="width: auto; height: auto;">
 							<!-- 총 책수 -->
-							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(orderBook) } 권">
-							<input type="hidden" name="totalBook1" value="${fn:length(orderBook) }">
+							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(orderBook) }">
+							<p id="totalBook" style="font-size: 30px;">권</p>
+							<input type="hidden" name="totalBook_point" value="${fn:length(orderBook) }">
 							
 						</div>
 					</div>
@@ -261,9 +271,11 @@ function check(){
 						<c:forEach items="${orderBook }" var="i" >     
 						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
 						</c:forEach>
-
+						<div>
 						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
-						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" /> 원">
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />">
+						<p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
+						</div>
 						
 					</div>
 					<!-- 동의 체크박스 -->
@@ -302,8 +314,8 @@ function check(){
 		$("#select").hide();
 	})
 	
-	$("input:radio[name=loc_check]").on("change", function(){
-	        if($("input:radio[name=loc_check]:checked").val() == "0"){
+	$("input:radio[name=loca_check]").on("change", function(){
+	        if($("input:radio[name=loca_check]:checked").val() == "0"){
 	            $("#select").hide();
 	            $("input:submit[name=locaS]").show();
 	            $("input:text[name=locaA]").attr("disabled",false);
