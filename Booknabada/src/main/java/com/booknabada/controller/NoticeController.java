@@ -29,9 +29,10 @@ public class NoticeController {
 	@Resource(name = "noticeService")
 	private NoticeService noticeService;
 
+	//게시판 목록
 	@RequestMapping(value = "notice/noticeBoard.do")
 	public ModelAndView noticeBoard(HttpServletRequest request, CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("notice/noticeBoard");
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("notice/noticeBoard");
 
 		int page = 1;
@@ -40,17 +41,20 @@ public class NoticeController {
 		}
 		if (commandMap.get("page") != null) {
 			page = Util.checkInt((String)commandMap.get("page"));
-		}
-		
-		
+		}		
+	
 		List<NoticeDTO> board = noticeService.board(((page - 1) * 10));
-		// DB에서 온 데이터 jsp에 뿌리기
+		
+		//DB에서 온 데이터 jsp에 뿌리기
 		mv.addObject("board", board);
 		//페이지
 		mv.addObject("page", page);
-				//총글수
+		//총글수
 		mv.addObject("totalCount", board.get(0).getTotalCount());
-//				
+		System.out.println(board.get(0).getTotalCount());
+		String whatBoard = "notice";
+		mv.addObject("whatBoard", whatBoard);
+	
 		return mv;
 
 	}
@@ -194,16 +198,18 @@ public class NoticeController {
 				mv.setViewName("caution");
 				//mv.setViewName("error?code=3");
 			}
-			
-			
+			String whatBoard = "notice";
+			mv.addObject("whatBoard", whatBoard);			
 			return mv;
 		}
+		//수정버튼 실행
 		@RequestMapping(value = "notice/modifyAction.do")
 		public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
 			HttpSession session = request.getSession();
-			
 			String board_no = request.getParameter("board_no");
 			ModelAndView mv = new ModelAndView("redirect:noticeDetail.do?board_no=" + board_no);
+			
+			//세션
 			if (session.getAttribute("name") != null && session.getAttribute("id")!= null ) {
 				
 			mv.setViewName("redirect:noticeDetail.do?board_no=" + board_no);
@@ -212,10 +218,8 @@ public class NoticeController {
 			String content = request.getParameter("content");
 
 			//엔터키 적용
-			
 			content = content.replaceAll("\r\n", "\n");
 			content = content.replaceAll("\n", "<br>");
-			
 			
 			NoticeDTO dto = new NoticeDTO();
 			dto.setBoard_title(title);
@@ -225,26 +229,28 @@ public class NoticeController {
 			
 			//사진업로드
 			if (!file.isEmpty()) {
-			//지금 시간 가져오기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String today = sdf.format(new Date());
-			//시간+파일이름 합치기
-			String upFileName = today + file.getOriginalFilename();
-			//파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
-			//System.out.println("리얼경로 " + path);
-			File f = new File(path + "upimg/" + upFileName); //준비
-			file.transferTo(f); //실제 파일 전송
-			
-			dto.setBoard_picture(upFileName);
-		}
+				//지금 시간 가져오기
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+				String today = sdf.format(new Date());
+				//시간+파일이름 합치기
+				String upFileName = today + file.getOriginalFilename();
+				//파일 업로드 경로
+				String path = request.getSession().getServletContext().getRealPath("");
+				//System.out.println("리얼경로 " + path);
+				File f = new File(path + "upimg/" + upFileName); //준비
+				file.transferTo(f); //실제 파일 전송
+				
+				dto.setBoard_picture(upFileName);
+			}
 			//데이터베이스 쓰기 실행
 			noticeService.modifyAction(dto);
-			}	else {
-				mv.setViewName("error?code=5");
-			}
-			return mv;
+			
+		}	else {
+			mv.setViewName("caution");
 		}
+		
+		return mv;
+	}
 		//댓글 작성
 		@RequestMapping(value="notice/comentAction.do")
 		public ModelAndView comentAction(HttpServletRequest request) throws Exception {
@@ -254,6 +260,7 @@ public class NoticeController {
 			String board_no = request.getParameter("board_no");
 			ModelAndView mv = new ModelAndView("redirect:noticeDetail.do?board_no=" + board_no);
 			String content = request.getParameter("coment_content");
+	
 			
 			ComentDTO dto = new ComentDTO();
 			dto.setBoard_no(Util.checkInt(board_no));

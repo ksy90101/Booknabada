@@ -320,41 +320,4 @@ public class FreeController {
 
 		return mv;
 	}
-	
-	// 책 검색
-	@RequestMapping(value="book/searchbooklist.do")
-	public ModelAndView searchbooklist(HttpServletRequest request, CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		if(request.getParameter("search").equals("")) {
-			return new ModelAndView("redirect:booklist");
-		}else {
-		   	int page = 1;
-	    	
-	    	if(request.getParameter("page") != null) {
-	    		page = Util.checkInt(request.getParameter("page"));
-	    	}
-	    	if(commandMap.get("page") != null) {
-	    		page = Util.checkInt((String) commandMap.get("page"));
-	    	}
-			String searchword = "%" + request.getParameter("search") + "%";
-			System.out.println(searchword);
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("sw", searchword);
-			map.put("pg", (page -1) * 15);
-			
-			System.out.println(map.get("sw"));
-			System.out.println(map.get("page"));
-			List<BookDTO> list = bookService.searchbooklist(map);
-			System.out.println(list);
-			if(list.isEmpty()) {
-				mv.setViewName("redirect:../caution.do");
-			}else {
-			mv.setViewName("book/searchbooklist");
-			mv.addObject("sbl", list);
-			mv.addObject("page", page);
-			}
-			return mv;			
-		}
-	}
 }

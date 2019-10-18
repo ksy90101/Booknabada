@@ -96,28 +96,24 @@
 
 	<!-- 댓글박스 -->
 	<div class="commentPart">
-	
-		<c:if test="${sessionScope.id != null }">
-			<form action="commentAction.do" method="post">
-
-				<div id="commentWriteFill">
-					<div id="commentWritebox">
-						<textarea name="coment_content"
-							style="width: 800px; height: auto; border: 1px solid #D0C8FF; box-sizing: border-box;"></textarea>
-					</div>
-
-					<button id="commentWritebutton">작성</button>
-					<input type="hidden" name="board_no" value="${detail.board_no }">
+		<!-- 작성박스 -->
+	<c:if test="${sessionScope.id != null }">
+	<form action="comentAction.do" method="post">
+		<div id="commentWriteFill">
+			<div id="commentWritebox">
+			<textarea name="coment_content" style="width: 800px; height: auto; border:1px solid #D0C8FF; box-sizing: border-box;"></textarea>
+			</div>
+			<button id="commentWritebutton">작성</button>
+					<input type="hidden" name="board_no" value="${noticeDetail.board_no }">
 				</div>
 			</form>
 
 		</c:if>
-
+<!-- 댓글리스트 -->
 		<c:choose>
 			<c:when test="${fn:length(coment) > 0 }">
 				<c:forEach items="${coment }" var="c">
-					<div id="commentBox"
-						style="border: 1px solid #E7E2FF; box-sizing: border-box;">
+					<div id="commentBox" style="border: 1px solid #E7E2FF; box-sizing: border-box;">
 						<div style="height: 35px; border-bottom: 2px solid #E7E2FF; margin-bottom: 10px">
 							<div style="width: 190px; height: 30px; float: left;">
 								<p id="commentTitle">글번호</p>
@@ -134,9 +130,9 @@
 						</div>
 						<p style="height: 30px; float: left;">${c.coment_content }</p>
 						<c:if test="${sessionScope.name eq c.user_name }">
-							<img alt="삭제" src="../images/coment_delete.png" name="delete"
-								style="float: right; margin-right: 20px;"
-								onclick="comentDel(${c.coment_no}, ${c.board_no })"></img>
+							<img alt="삭제" src="../images/coment_delete.png" name="delete" 
+							style="float: right; margin-right:20px;" onclick="comentDel(${c.coment_no}, ${c.board_no })">
+							</img>
 						</c:if>
 					</div>
 				</c:forEach>

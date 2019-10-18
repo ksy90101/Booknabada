@@ -17,9 +17,9 @@
 	
 	<!-- 해당 글의 카운트 올리기 -->
 	<update id="countUp" parameterType="Integer">
-		<![CDATA[
-			update board set board_count=board_count+1
-			where board_no =#{reBno}
+	<![CDATA[
+		UPDATE board SET board_count = board_count + 1
+		WHERE board_no = #{reBno}
 		]]>
 	</update>
 	
@@ -28,8 +28,8 @@
 	<insert id="writeAction" parameterType="com.booknabada.dto.NoticeDTO">
 		<![CDATA[
 			INSERT INTO board (board_title, board_content, cate_no, user_no, board_picture)
-			VALUES(
-			#{board_title}, #{board_content}, 2, 1, #{board_picture }) 
+			VALUES(#{board_title}, #{board_content}, 2, 
+			(SELECT user_no FROM user_info WHERE user_id=#{user_name}), #{board_picture })
 		]]>
 	</insert>
 	
@@ -65,6 +65,8 @@
 	
 	<!-- 코멘트 삭제 -->
 	<delete id="comentDelete" parameterType="com.booknabada.dto.ComentDTO">
-		DELETE FROM coment WHERE coment_no = #{coment_no} AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name})
+		DELETE FROM coment WHERE coment_no = #{coment_no}
+		AND user_no = (SELECT user_no FROM user_info WHERE user_id=#{user_name})
 	</delete>
+		
 </mapper>

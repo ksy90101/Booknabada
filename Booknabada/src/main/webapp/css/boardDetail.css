@@ -22,7 +22,7 @@ button{
 	vertical-align: middle;
 }
 
-#box01 {
+.box01 {
 	width: 183px;
 	height: 63px;
 	border: 1px solid #BCB0FE;
