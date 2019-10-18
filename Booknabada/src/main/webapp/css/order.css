@@ -23,6 +23,7 @@
 	width: 185px;
 	height: 65px;
 	border: 1px solid #BCB0FE;
+	
 	border-radius: 35px;
 	box-sizing:border-box;
 	Text-align: center;
@@ -68,6 +69,7 @@
 	font-size: 18px;
 	line-height: 60px;
 	float: inline-start;
+	color: #876efd; 
 }
 
 #list_book {
@@ -190,7 +192,7 @@
 }
 
 #totalBook {
-	width: 200px;
+	width: auto;
 	border: none;
 	font-size: 36px;
 	font-weight: bold;
@@ -201,7 +203,7 @@
 }
 
 #totalPrice {
-	width: 260px;
+	width: auto;
 	font-weight: bold;
 	color: #F1B40B;
 	float: left;

@@ -3,9 +3,22 @@
 
 <mapper namespace="order">
 
-	<!-- 결제버튼 눌렀을때, 결제페이지에 책 정보 가져오기 -->
-	<select id="booklist" resultType="com.booknabada.dto.OrderDTO">
+	<!-- 보드 전체 DB가져오기 -->
+	<select id="booklsist" resultType="com.booknabada.dto.BookDTO">
 		SELECT * FROM order_view WHERE book_no = #{book_no }
 	</select>
-
+	
+	<select id="storelist" resultType="com.booknabada.dto.StoreDTO">
+		SELECT * FROM store
+	</select>
+	
+	<insert id="FinishAction" parameterType="com.booknabada.dto.OrderDTO">
+		<![CDATA[
+			INSERT INTO order_info (order_no, name, loca, phone, note, pay_info, totalBook, totalPrice, user_no)
+			VALUES(#{order_no}, #{name}, #{loca}, #{phone}, #{note}, #{pay_info}, #{totalBook}, #{totalPrice}, 1) 
+			
+			
+		]]>
+	</insert>
+	
 </mapper>

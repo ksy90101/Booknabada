@@ -1,58 +1,77 @@
 package com.booknabada.dto;
 
 public class OrderDTO {
-	private int book_no, book_price, user_point, user_no;
-	private String book_title, book_author, book_picture, user_name;
 	
+	private int  user_no, book_no, phone, totalPrice, totalBook, point;
+	private String name, loca, note, pay_info ;
+	private Long order_no;
+	
+	public int getUser_no(int i) {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
 	public int getBook_no() {
 		return book_no;
 	}
 	public void setBook_no(int book_no) {
 		this.book_no = book_no;
 	}
-	public int getBook_price() {
-		return book_price;
+	public int getPhone() {
+		return phone;
 	}
-	public void setBook_price(int book_price) {
-		this.book_price = book_price;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
-	public int getUser_point() {
-		return user_point;
+	public int getTotalPrice() {
+		return totalPrice;
 	}
-	public void setUser_point(int user_point) {
-		this.user_point = user_point;
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public int getUser_no() {
-		return user_no;
+	public int getTotalBook() {
+		return totalBook;
 	}
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setTotalBook(int totalBook) {
+		this.totalBook = totalBook;
 	}
-	public String getBook_title() {
-		return book_title;
+	public String getName() {
+		return name;
 	}
-	public void setBook_title(String book_title) {
-		this.book_title = book_title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getBook_author() {
-		return book_author;
+	public String getLoca() {
+		return loca;
 	}
-	public void setBook_author(String book_author) {
-		this.book_author = book_author;
+	public void setLoca(String loca) {
+		this.loca = loca;
 	}
-	public String getBook_picture() {
-		return book_picture;
+	public String getNote() {
+		return note;
 	}
-	public void setBook_picture(String book_picture) {
-		this.book_picture = book_picture;
+	public void setNote(String note) {
+		this.note = note;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getPay_info() {
+		return pay_info;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setPay_info(String pay_info) {
+		this.pay_info = pay_info;
 	}
-	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public Long getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(Long order_no) {
+		this.order_no = order_no;
+	}
 	
 	
 
