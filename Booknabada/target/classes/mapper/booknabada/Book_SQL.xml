@@ -6,7 +6,7 @@
 	<!-- 책 목록 가져오기 -->
 	<select id="booklist" resultType="com.booknabada.dto.BookDTO">
 		SELECT *, (SELECT COUNT(*) FROM
-		booklist_view) AS totalCount FROM booklist_view limit #{page }, 15
+		booklist_view) AS totalCount FROM booklist_view limit #{page }, 15 ORDER BY boo_no DESC
 	</select>
 
 	<!-- 책 상세보기 -->
