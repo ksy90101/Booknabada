@@ -10,12 +10,12 @@
 	
 	<!-- 사랑받는 파북이 -->
 	<select id="loveuser" resultType="com.booknabada.dto.LoginDTO">
-		SELECT (@rank := @rank+1) AS ranknum ,user_name, user_lover FROM user_info AS a, (SELECT @rank := 0) AS b ORDER BY user_lover DESC LIMIT 5
+		SELECT (@rank := @rank+1) AS ranknum ,user_name, user_lover, user_no FROM user_info AS a, (SELECT @rank := 0) AS b ORDER BY user_lover DESC LIMIT 10
 	</select>
 	
 	<!-- 최근등록한 책 -->
 	<select id="currentbook" resultType="com.booknabada.dto.BookDTO">
-		SELECT book_title, book_author, book_publisher, book_recommend, book_count, book_picture FROM book ORDER BY book_date DESC LIMIT 5
+		SELECT book_title, book_author, book_publisher, book_recommend, book_count, book_picture FROM book ORDER BY book_date DESC LIMIT 12
 	</select>
 	
 </mapper>
