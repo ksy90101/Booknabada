@@ -59,12 +59,6 @@
 		</ul>
 	</nav>
 	
-	<div id="loginPopup">
-	
-	
-	
-	</div>
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
 		var isMenu = false;
@@ -76,9 +70,9 @@
 			}
 			isMenu = !isMenu;
 		})
-		
+	</script>
+	<script>
 		function popuplogin(){
-			var innerHtml = "<div>안뇽</div>";
-			$("#loginPopup").html(innerHtml);
+			window.open("../login/login.do", "loginpopup", "width=500, height=500, toolbar=no, location=no, status=no , menubar=no , scrollbars=auto");
 		}
 	</script>
