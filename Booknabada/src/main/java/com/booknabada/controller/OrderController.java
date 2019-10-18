@@ -29,9 +29,9 @@ public class OrderController {
 	@RequestMapping(value="order/order.do")
 	public ModelAndView order(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/order");
-		
+	
 		int book_no = Util.checkInt(request.getParameter("book_no"));
-		System.out.println(book_no);
+		
 		//해당 book_no -> DB로 보내서 해당 글 가져오기(DTO)
 		List<OrderDTO> board = orderService.orderbook(book_no);
 
