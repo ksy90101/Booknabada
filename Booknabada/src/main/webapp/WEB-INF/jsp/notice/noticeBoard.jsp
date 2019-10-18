@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,20 +12,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,900&display=swap&subset=korean" rel="stylesheet">
-<link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="./css/reset.css" type="text/css"/>
 <link rel="stylesheet" href="../css/boardDetail.css">
 <link rel="stylesheet" href="../css/board.css">
-<link rel="stylesheet" href="../css/header.css">
-
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
-<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	
-	<div class="board">
+	<!-- 카테고리 -->
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
+	
+<div class="board">
 		<table>
-			<tr>
+			<tr id=board_tr>
 				<th id="t1" style="font-weight: bold">No</th>
 				<th id="t2" style="font-weight: bold">Title</th>
 				<th id="t3" style="font-weight: bold">Nickname</th>
@@ -32,7 +32,7 @@
 				<th id="t1" style="font-weight: bold">Count</th>
 			</tr>
 			<c:forEach items="${board }" var="i">
-				<tr onclick="location.href='noticeDetail.do?board_no=${i.board_no }'">
+				<tr id=board_tr  onclick="location.href='noticeDetail.do?board_no=${i.board_no }'">
 					<td id="t1">${i.board_no }</td>
 					<td id="t2" >
 					${i.board_title }
@@ -46,12 +46,12 @@
 		</table>
 	</div>
 
-<!-- 페이징박스 -->
-	<div >
-				<div >
+	<!-- 페이징박스 -->
+	<div class="pagingbox">
+				<div class="paging">
 					<%@include file="../include/boardpaging.jsp"%>
 					<c:if test="${page gt 10 }">
-						<button onclick="location.href='noticeBoard.do?page=${page-10 }'">이전</button>
+						<button style="width:50px;" onclick="location.href='noticeBoard.do?page=${page-10 }'">이전</button>
 					</c:if>
 					<c:if test="${page gt 1 }">
 						<button onclick="location.href='noticeBoard.do?page=${page-1 }'">◀</button>
@@ -69,7 +69,7 @@
 						<button onclick="location.href='noticeBoard.do?page=${page+1 }'">▶</button>
 					</c:if>
 					<c:if test="${page lt totalPage-9 }">
-						<button onclick="location.href='noticeBoard.do?page=${page+10 }'">다음</button>
+						<button style="width:50px;" onclick="location.href='noticeBoard.do?page=${page+10 }'">다음</button>
 					</c:if>
 				</div>
 			</div>

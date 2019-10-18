@@ -15,9 +15,8 @@
 
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
-<jsp:include page="../include/boardMenu.jsp"></jsp:include>
-	
+	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/boardMenu.jsp"></jsp:include>
 	
 	<form action="noticeWriteAction.do" method="post" enctype="multipart/form-data">
 		
@@ -33,12 +32,13 @@
 			<input id="imgUp" type="file" accept="image/*" name="file">
 	</div>
 	
-	<div id="BoardbuttonPart">
+	<!-- 버튼박스 -->
+	<div class="BoardbuttonPart">
 		<button id="Boardbutton" style="background-color: #E8E8E8;" type="button" onclick="history.back(-1);">취소</button>
 		<div id="bin2"></div>
 		<button id="Boardbutton" style="background-color: #BCB0FE; color: white" type="submit">완료</button>
 	</div>
-	</form>
+		</form>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>

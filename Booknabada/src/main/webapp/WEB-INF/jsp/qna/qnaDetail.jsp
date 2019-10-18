@@ -23,7 +23,7 @@
 	
 	function del(num){
 		//alert("삭제하기 숫자: " + num);
-		if(${fn:length(coment) > 0 }){
+		if({fn:length(coment) > 0 }){
 			alert("댓글이 있는 게시물은 삭제할 수 없습니다")
 			return;
 		}
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 버튼박스 -->
 	<div class="BoardbuttonPart">
 		<c:if test="${sessionScope.name eq qnaDetail.user_name }">
@@ -120,7 +120,9 @@
 			</div>
 				<p style="auto; height: 30px; float: left;">${c.coment_content }</p>
 				<c:if test="${sessionScope.name eq c.user_name }">
-				<img alt="삭제" src="../images/coment_delete.png" name="delete" style="float: right; margin-right:20px;" onclick="comentDel(${c.coment_no}, ${c.board_no })"></img>
+				<img alt="삭제" src="../images/coment_delete.png" name="delete" style="float: right;
+				 margin-right:20px;" onclick="comentDel(${c.coment_no}, ${c.board_no })">
+				 </img>
 				</c:if>
 		</div>
 		</c:forEach>
