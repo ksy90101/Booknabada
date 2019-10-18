@@ -16,47 +16,78 @@ body{
 .form_wrap{
 	text-align: center;	
 }
+.radiobox{
+	margin-left:100px;
+	height:45px;
+	width:388px;
+	background-color: #FFFFFF;
+	
+}
+
 ul{
 	list-style-type: none;
 }
 li{
 	height:48px;
+	width: 401px;
+    margin: auto;
+}
+ul li:nth-child(3){
+	margin-bottom:30px;
+}
+ul li:nth-child(6){
+	background: #fff;
+	margin-top:2px;
 }
 input{
 	height:45px;
-	width:330px;
+	width:388px;
 	border: none;
 	border-bottom:1px solid #BCB0FE;
-	padding-left: 20px;
+	padding-left: 13px;
+	margin-top:5px;
+	margin-bottom: 5px;
 }
 
 input[type='radio']{
 	width:14px;
 }
 
-#insertID{
-	width:250px;
+#insertID { width:324px; }
+
+#authCode{ width: 313px; }
+
+
+input[id="rb1"] +label, input[id="rb2"]+label{
+	margin-top:3px;
+	display: inline-block;
+	width: 160px;
+	height: 41px;
+	border: 1px solid #BCB0FE;
+	cursor:pointer;
+	line-height:41px;
 }
 
-.year{
-	width:190px;
+input[id="rb1"]:checked + label ,input[id="rb2"]:checked + label {
+	margin-top:3px;
+	background-color: #BCB0FE;
+	color:#fff;
+	font-weight:bold;
 }
 
-.month{
-	width:70px;
 
+input[id="rb1"], input[id="rb2"] {
+	display: none;
 }
 
-.day{
-	width:40px;
-}
 select{
 	height:48px;
 
 }
-button{
-	height:48px;
-	width:80px;
+
+.insID button {
+	height:45px;
+	width:60px;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
@@ -64,18 +95,39 @@ button{
 	color: white;
 }
 
+#emailBtn, #emailAuthBtn{
+	height: 45px;
+    width: 71px;
+    background-color: #A695FF;
+    border-color: #A695FF;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+}
+
+#emailBtn > span, #emailAuthBtn > span{
+	font-size: 11px;
+}
+
+
 #checkit{
-	
-	width:350px;
+	height:45px;
+	width:400px;
+	background-color: #A695FF;
+	border-color: #A695FF;
+	border-style: none;
+	border-radius:10px;
+	color: white;
 	
 }
 
 .email{
-	width:84px;
+	width:83px;
 }
 
 .sel{
 	width:111px;
+	margin-bottom: 3px;
 }
 
 

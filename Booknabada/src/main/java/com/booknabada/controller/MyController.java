@@ -40,9 +40,9 @@ public class MyController {
     }	
 	
 	// 회원정보변경
-	@RequestMapping(value = "login/modifyuser.do")
+	@RequestMapping(value = "my/modifyuser.do")
 	public ModelAndView modifyuser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("login/modifyuser");
+		ModelAndView mv = new ModelAndView("my/modifyuser");
 		
 		String user_no = request.getParameter("user_no");
 
@@ -56,6 +56,15 @@ public class MyController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "my/modifyAction.do")
+	public ModelAndView modifyAction(HttpServletRequest request) throws Exception {
+		ModelAndView mv = null;
+		
+		return mv;
+	}
+	
+	
 	
 	
 }

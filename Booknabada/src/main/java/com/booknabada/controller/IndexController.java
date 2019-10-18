@@ -27,7 +27,7 @@ public class IndexController {
 		ModelAndView mv = new ModelAndView("index");
 		
 		return mv;
-	}
+	}	
 	
 	// index 화면 출력
 	@RequestMapping(value="index/index.do")
@@ -44,4 +44,9 @@ public class IndexController {
     	return mv;
     }
 
+	@RequestMapping(value="index/privacy.do")
+	public ModelAndView privacy() throws Exception{
+		ModelAndView mv=new ModelAndView("index/privacy");
+		return mv;
+	}
 }
