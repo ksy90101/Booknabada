@@ -97,6 +97,9 @@ public class LoginController {
 	public ModelAndView findpw(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("login/findpw");
 		//HttpSession session = request.getSession();
+		int ran = new Random().nextInt(900000) + 100000; // 랜덤값 생성
+
+		mv.addObject("pageNum", ran); // 난수를 view에 전송
 		
 		return mv;
 	}

@@ -36,4 +36,14 @@
 		SELECT * from user_info where user_no=#{reBno}
 	</select>
 	
+	<!-- 아이디,이름,메일 받아서 정보맞는지 확인 -->
+	<select id="infoCheck" parameterType="com.booknabada.dto.LoginDTO" resultType="int">
+		SELECT COUNT(*) FROM user_info WHERE user_id=#{user_id } AND user_email=#{user_email } AND user_name=#{user_name }
+	</select>
+	
+	<update id="changepw" parameterType="com.booknabada.dto.LoginDTO">
+		UPDATE user_info SET user_pw =(HEX(AES_ENCRYPT(#{user_pw },'new'))) WHERE user_id=#{user_id } 
+	</update>
+	
+	
 </mapper>
