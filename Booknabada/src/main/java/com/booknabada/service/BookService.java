@@ -1,6 +1,7 @@
 package com.booknabada.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.booknabada.dto.BookDTO;
 
@@ -16,5 +17,7 @@ public interface BookService {
 	void bookAddAction(BookDTO dto) throws Exception;
 
 	void countUp(int book_no) throws Exception;
+
+	List<BookDTO> searchbooklist(Map<String, Object> map) throws Exception;
 
 }

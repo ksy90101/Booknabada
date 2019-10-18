@@ -3,7 +3,9 @@ package com.booknabada.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.booknabada.dto.BookDTO;
 import com.booknabada.dto.ComentDTO;
 import com.booknabada.dto.FreeDTO;
 import com.booknabada.service.FreeService;
@@ -93,7 +96,7 @@ public class FreeController {
 		mv.addObject("whatBoard", whatBoard);
 
 		HttpSession session = request.getSession();
-		
+
 		// 로그인 한 사람만 보이게...
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			// Write.do로 가기
@@ -163,43 +166,42 @@ public class FreeController {
 	// 글삭제 실행
 	@RequestMapping(value = "free/detailDelete.do")
 	public ModelAndView detailDetele(HttpServletRequest request) throws Exception {
-			HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
 		// 보드로 되돌아가기 1번
 		ModelAndView mv = new ModelAndView("redirect:freeBoard.do");
 
-	// 세션추가
-	if(session.getAttribute("name")!=null&&session.getAttribute("id")!=null)
+		// 세션추가
+		if (session.getAttribute("name") != null && session.getAttribute("id") != null)
 
-	{
+		{
 
-		String board_no = request.getParameter("board_no");
+			String board_no = request.getParameter("board_no");
 
-		// 숫자를 체크
-		int detail_no = Util.checkInt(board_no);
+			// 숫자를 체크
+			int detail_no = Util.checkInt(board_no);
 
-		FreeDTO dto = new FreeDTO();
-		dto.setBoard_no(detail_no);
-		dto.setUser_name((String) session.getAttribute("id"));
+			FreeDTO dto = new FreeDTO();
+			dto.setBoard_no(detail_no);
+			dto.setUser_name((String) session.getAttribute("id"));
 
-		// DB쪽으로 보내기
-		freeService.detailDelete(dto);
+			// DB쪽으로 보내기
+			freeService.detailDelete(dto);
 
-	}else
-	{
-		mv.setViewName("caution");
-	}
-	String whatBoard = "free";
+		} else {
+			mv.setViewName("caution");
+		}
+		String whatBoard = "free";
 
-	mv.addObject("whatBoard",whatBoard);
+		mv.addObject("whatBoard", whatBoard);
 
-	return mv;
+		return mv;
 	}
 
 	// 수정페이지 이동
 	@RequestMapping(value = "free/freeModify.do")
 	public ModelAndView detailModify(HttpServletRequest request) throws Exception {
-			HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
 		// 수정버튼 누르면 수정페이지로 이동
 		ModelAndView mv = new ModelAndView("free/freeModify");
@@ -213,108 +215,146 @@ public class FreeController {
 		FreeDTO detail = freeService.detail(reBno);
 
 		mv.addObject("modify", detail);
-		
+
 		String whatBoard = "free";
 
 		mv.addObject("whatBoard", whatBoard);
-			if (detail.getUser_name().equals(session.getAttribute("name"))) {
-				mv.addObject("modify", detail);
-				//modify ModelAndView에 DTO 보이게하기
-			} else {
-				mv.setViewName("caution");
-			}
+		if (detail.getUser_name().equals(session.getAttribute("name"))) {
+			mv.addObject("modify", detail);
+			// modify ModelAndView에 DTO 보이게하기
+		} else {
+			mv.setViewName("caution");
+		}
 		mv.addObject("whatBoard", whatBoard);
 		return mv;
 	}
 
 	// 수정버튼 실행
 	@RequestMapping(value = "free/modifyAction.do")
-	public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
+	public ModelAndView modifyAction(HttpServletRequest request, @RequestParam("file") MultipartFile file)
+			throws Exception {
 		HttpSession session = request.getSession();
 		String board_no = request.getParameter("board_no");
 		ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
 
 		// 세션
-		if (session.getAttribute("name") != null && session.getAttribute("id")!= null ) {
-		mv.setViewName("redirect:freeDetail.do?board_no=" + board_no);
+		if (session.getAttribute("name") != null && session.getAttribute("id") != null) {
+			mv.setViewName("redirect:freeDetail.do?board_no=" + board_no);
 
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 
-		//엔터키 적용
-		content = content.replaceAll("\r\n", "\n");
-		content = content.replaceAll("\n", "<br>");
-		
-		FreeDTO dto = new FreeDTO();
-		dto.setBoard_title(title);
-		dto.setBoard_content(content);
-		dto.setBoard_no(Util.checkInt(board_no));
+			// 엔터키 적용
+			content = content.replaceAll("\r\n", "\n");
+			content = content.replaceAll("\n", "<br>");
+
+			FreeDTO dto = new FreeDTO();
+			dto.setBoard_title(title);
+			dto.setBoard_content(content);
+			dto.setBoard_no(Util.checkInt(board_no));
 			dto.setUser_name((String) session.getAttribute("id"));
-		
-		//사진업로드
-			if (!file.isEmpty()) {
-			//지금 시간 가져오기
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String today = sdf.format(new Date());
-			//시간+파일이름 합치기
-			String upFileName = today + file.getOriginalFilename();
-			//파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
-			//System.out.println("리얼경로 " + path);
-			File f = new File(path + "upimg/" + upFileName); //준비
-			file.transferTo(f); //실제 파일 전송
-			
-			dto.setBoard_picture(upFileName);
-		}
-		
-		//데이터베이스 쓰기 실행
-		freeService.modifyAction(dto);
 
-				}	else {
-					mv.setViewName("error?code=5");
-				}
-		
+			// 사진업로드
+			if (!file.isEmpty()) {
+				// 지금 시간 가져오기
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+				String today = sdf.format(new Date());
+				// 시간+파일이름 합치기
+				String upFileName = today + file.getOriginalFilename();
+				// 파일 업로드 경로
+				String path = request.getSession().getServletContext().getRealPath("");
+				// System.out.println("리얼경로 " + path);
+				File f = new File(path + "upimg/" + upFileName); // 준비
+				file.transferTo(f); // 실제 파일 전송
+
+				dto.setBoard_picture(upFileName);
+			}
+
+			// 데이터베이스 쓰기 실행
+			freeService.modifyAction(dto);
+
+		} else {
+			mv.setViewName("error?code=5");
+		}
+
+		return mv;
+	}
+
+	// 댓글 작성
+	@RequestMapping(value = "free/comentAction.do")
+	public ModelAndView comentAction(HttpServletRequest request) throws Exception {
+		// 세션가져오기
+		HttpSession session = request.getSession();
+
+		String board_no = request.getParameter("board_no");
+		ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+		String content = request.getParameter("coment_content");
+
+		ComentDTO dto = new ComentDTO();
+		dto.setBoard_no(Util.checkInt(board_no));
+		dto.setComent_content(content);
+		dto.setUser_name((String) session.getAttribute("id"));
+
+		freeService.comentAction(dto);
+
+		return mv;
+	}
+
+	// 댓글 삭제
+	@RequestMapping(value = "free/comentDelete.do")
+	public ModelAndView comentDelete(HttpServletRequest request) throws Exception {
+
+		HttpSession session = request.getSession();
+
+		String board_no = request.getParameter("board_no");
+		ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
+
+		// 숫자인지 체크
+		int coment_no = Util.checkInt(request.getParameter("coment_no"));
+
+		ComentDTO dto = new ComentDTO();
+		dto.setComent_no(coment_no);
+		dto.setUser_name((String) session.getAttribute("id"));
+
+		freeService.comentDelete(dto);
+
 		return mv;
 	}
 	
-	//댓글 작성
-			@RequestMapping(value="free/comentAction.do")
-			public ModelAndView comentAction(HttpServletRequest request) throws Exception {
-				//세션가져오기
-				HttpSession session = request.getSession();
-				
-				String board_no = request.getParameter("board_no");
-				ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
-				String content = request.getParameter("coment_content");
-				
-				ComentDTO dto = new ComentDTO();
-				dto.setBoard_no(Util.checkInt(board_no));
-				dto.setComent_content(content);
-				dto.setUser_name((String)session.getAttribute("id"));
-				
-				freeService.comentAction(dto);
-				
-				return mv;
-			}
+	// 책 검색
+	@RequestMapping(value="book/searchbooklist.do")
+	public ModelAndView searchbooklist(HttpServletRequest request, CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		if(request.getParameter("search").equals("")) {
+			return new ModelAndView("redirect:booklist");
+		}else {
+		   	int page = 1;
+	    	
+	    	if(request.getParameter("page") != null) {
+	    		page = Util.checkInt(request.getParameter("page"));
+	    	}
+	    	if(commandMap.get("page") != null) {
+	    		page = Util.checkInt((String) commandMap.get("page"));
+	    	}
+			String searchword = "%" + request.getParameter("search") + "%";
+			System.out.println(searchword);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("sw", searchword);
+			map.put("pg", (page -1) * 15);
 			
-			//댓글 삭제
-			@RequestMapping(value="free/comentDelete.do")
-			public ModelAndView comentDelete(HttpServletRequest request) throws Exception {
-				
-				HttpSession session = request.getSession();
-				
-				String board_no = request.getParameter("board_no");
-				ModelAndView mv = new ModelAndView("redirect:freeDetail.do?board_no=" + board_no);
-				
-				//숫자인지 체크
-				int coment_no = Util.checkInt(request.getParameter("coment_no"));
-			
-				ComentDTO dto = new ComentDTO();
-				dto.setComent_no(coment_no);
-				dto.setUser_name((String)session.getAttribute("id"));
-				
-				freeService.comentDelete(dto);
-				
-				return mv;
+			System.out.println(map.get("sw"));
+			System.out.println(map.get("page"));
+			List<BookDTO> list = bookService.searchbooklist(map);
+			System.out.println(list);
+			if(list.isEmpty()) {
+				mv.setViewName("redirect:../caution.do");
+			}else {
+			mv.setViewName("book/searchbooklist");
+			mv.addObject("sbl", list);
+			mv.addObject("page", page);
 			}
+			return mv;			
+		}
+	}
 }

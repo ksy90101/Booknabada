@@ -1,6 +1,7 @@
 package com.booknabada.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -36,9 +37,18 @@ public class BookServiceImpl implements BookService{
 		bookDAO.bookAddAction(dto);
 	}
 
+	// 조회수
 	@Override
 	public void countUp(int book_no) throws Exception {
 		bookDAO.countUp(book_no);
 		
 	}
+
+	// 책 검색
+	@Override
+	public List<BookDTO> searchbooklist(Map<String, Object> map) throws Exception {
+		return bookDAO.searchbooklist(map);
+	}
+	
+	
 }

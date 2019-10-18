@@ -26,7 +26,13 @@
 	]]> 
 	</insert>
 	
+	<!-- 조회수 -->
 	<update id="countUp" parameterType="Integer">
 		UPDATE book SET book_count = book_count + 1 WHERE book_no = #{book_no }
 	</update>
+	
+	<!-- 책 검색 -->
+	<select id="searchbooklist" resultType="com.booknabada.dto.BookDTO" parameterType="HashMap">
+		SELECT * FROM bookdetail_view WHERE book_title LIKE #{sw } LIMIT #{pg }, 15
+	</select>
 </mapper>

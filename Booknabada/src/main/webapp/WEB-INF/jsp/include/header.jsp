@@ -10,7 +10,9 @@
 				</li>
 				<li class="search_box">
 					<img src="../images/search.png" alt ="search">
+					<form action="../book/searchbooklist.do" method="post">
 					<input type="text" name="search" placeholder="필요하신 책을 검색해보세요">
+					</form>
 				</li>
 			</ul>
 			<h1 class="logo">

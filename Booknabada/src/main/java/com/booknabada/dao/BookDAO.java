@@ -1,6 +1,7 @@
 package com.booknabada.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -27,8 +28,15 @@ public class BookDAO extends AbstractDAO{
 		insert("book.bookAddAction", dto);		
 	}
 
+	// 조회수
 	public void countUp(int book_no) {
 		update("book.countUp", book_no);
+	}
+
+	// 책 검색
+	@SuppressWarnings("unchecked")
+	public List<BookDTO> searchbooklist(Map<String, Object> map) {
+		return selectList("book.searchbooklist", map);
 	}
 
 }
