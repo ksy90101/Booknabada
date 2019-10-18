@@ -155,8 +155,7 @@ $(function(){
 		<div class="form_wrap">
 			<form name="join" action="joinAction.do" method="post">
 				<ul>
-					<li><input type="text" id="insertID" placeholder="아이디"
-						name="id">
+					<li><input type="text" id="insertID" placeholder="아이디" name="id">
 						<button type="button" onclick="return checkID();">ID확인</button></li>
 					<li><br>
 					<p id="resulttext">
