@@ -30,8 +30,8 @@
 			<div class="v-mask">
 				<ul class="v-banner cf" id="mainBook">
 				<c:set value="1" var="num"/>
-					<c:forEach items="${lovebook }" var = "i" >
-						<li class="banner${num }"><c:set value="${num+1 }" var="num"/>
+					<c:forEach items="${lovebook }" var = "i" >\
+					<li class="banner${num }"><c:set value="${num+1 }" var="num"/>
 							<input type="hidden" name="book_no" value="${i.book_no }">
 							<div class="pic">
 							<a href="../book/bookDetail.do?book_no=${i.book_no }">	
@@ -41,11 +41,13 @@
 							<a href="../book/bookDetail.do?book_no=${i.book_no }">	
 							<div class="txt">
 								<h5>${i.book_title }</h5>
-								<p class="book_author">${i.book_author } / ${i.book_publisher }</p>
-								<p class="star">${i.book_recommend }</p>
+								<p class="book_author">By ${i.book_author }</p>
+								<p class="book_publisher">${i.book_publisher }</p>
+								<p class="price"><fmt:formatNumber value="${i.book_price }" groupingUsed="true"></fmt:formatNumber>원</p>
+								<!-- <p class="star">${i.book_recommend }</p> -->
 								<p class="read"><span id="cnt">
 								<fmt:formatNumber value="${i.book_count }" groupingUsed="true"/>
-								</span>명이 읽었음</p>
+								</span>명이 읽음</p>
 							</div>
 							</a>
 						</li>
@@ -65,22 +67,27 @@
 				<ul class="list cf">
 				<c:forEach items="${currentbook }" var="i">
 				<li>
+					<a href="../book/bookDetail.do?book_no=${i.book_no }">
 					<div class="currentbookimg"><img alt="최근 등록한 책" src="../upimg/${i.book_picture }"></div>
-					${i.book_title }
-					${i.book_author } / ${i.book_publisher }
-					<span><fmt:formatNumber value="${i.book_count }" groupingUsed="true"></fmt:formatNumber></span>
-					명이 읽었음
+					<p>${i.book_title }</p>
+					<p>${i.book_author }</p>
+					<p>${i.book_publisher }</p>
+					<p><fmt:formatNumber value="${i.book_price }" groupingUsed="true"></fmt:formatNumber>원
+					<p><fmt:formatNumber value="${i.book_count }" groupingUsed="true"></fmt:formatNumber>
+					명이 읽음</p>
+				</a>
 				</li>
 				</c:forEach>
 				</ul>
-				<a href="#"> 전체 책 둘러보기</a>
+				
 			</section> <!-- //bookList -->
 			<aside id="loveBook">
 				<article class="pabook">
 					<h3>사랑받는 파북이</h3>
 					<ul class="list">
 					<c:forEach items="${loveuser }" var="i">
-						<li><a href="../my/pabook.do?pabook_no=${i.user_no }">${i.ranknum}. ${i.user_name }</a></li>
+						<li><a href="../my/pabook.do?pabook_no=${i.user_no }">
+						<span>${i.ranknum}.</span> ${i.user_name }</a></li>
 					</c:forEach>
 					</ul>
 				</article>				

@@ -11,9 +11,6 @@ public interface MyService {
 	// 포인트 가져오기
 	int getPoint(String id) throws Exception;
 
-	// 회원정보변경
-	LoginDTO detail(int reBno) throws Exception;
-
 	LoginDTO pabookInfo(int user_no) throws Exception;
 
 	List<BookDTO> bookInfo(int user_no) throws Exception;
@@ -23,5 +20,8 @@ public interface MyService {
 	int getLikeCheck(LikeDTO dto) throws Exception;
 
 	void likeCancel(LikeDTO dto) throws Exception;
+
+	// 회원정보변경
+	List<LoginDTO> modifyuser(int user_no) throws Exception;
 
 }

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<title>잘못된 경로입니다</title>
+<title>검색결과가 없습니다.</title>
 <style type="text/css">
 .caution{
 	display: table;
@@ -53,8 +53,8 @@
 <body>
 <div class="caution">
 <img src="/images/caution.png">
-<p id=title>OOPS! 해당 페이지는 잘못된 경로입니다.</p>
-<p id=txt>경로를 다시 확인하시고 이용해 주시기 바랍니다.</p>
+<p id=title>OOPS! 검색결과가 존재하지 않습니다.</p>
+<p id=txt>검색어를 다시 확인하시고 이용해 주시기 바랍니다.</p>
 <p id=txt>이용에 불편을 드려 대단히 죄송합니다.</p>
 </div>
 

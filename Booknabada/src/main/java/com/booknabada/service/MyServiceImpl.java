@@ -25,12 +25,6 @@ public class MyServiceImpl implements MyService{
 		return myDAO.getPoint(id);
 	}	
 	
-	//회원정보 변경
-	@Override
-	public LoginDTO detail(int reBno) throws Exception {
-		return myDAO.detail(reBno);
-	}
-	
 	//파북이 페이지에서 파북이정보 가져오기
 	@Override
 	public LoginDTO pabookInfo(int user_no) throws Exception {
@@ -57,6 +51,12 @@ public class MyServiceImpl implements MyService{
 	@Override
 	public void likeCancel(LikeDTO dto) throws Exception {
 		myDAO.likeCancel(dto);
+	}
+
+	// 회원정보 변경
+	@Override
+	public List<LoginDTO> modifyuser(int user_no) throws Exception {
+		return myDAO.modifyuser(user_no);
 	}
 
 

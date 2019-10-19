@@ -87,7 +87,6 @@ function check(){
 		
 	}
 }
-
 function showSection(section){
 	
 	//결제선택버튼값을 hidden으로 보내기
@@ -116,8 +115,6 @@ function showSection(section){
 	}
 	
 }
-
-
 </script>
 </head>
 <body>

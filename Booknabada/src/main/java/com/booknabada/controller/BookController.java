@@ -167,7 +167,7 @@ public class BookController {
 			List<BookDTO> list = bookService.searchbooklist(map);
 			System.out.println(list);
 			if(list.isEmpty()) {
-				mv.setViewName("redirect:../caution.do");
+				mv.setViewName("redirect:../searchcaution.do");
 			}else {
 			mv.setViewName("book/searchbooklist");
 			mv.addObject("sbl", list);
@@ -177,41 +177,4 @@ public class BookController {
 		}
 	}
 
-//	
-//	@RequestMapping(value="event/eventWriteAction.do")
-//    public ModelAndView eventWriteAction(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception{
-//    	ModelAndView mv = new ModelAndView("redirect:event.do");
-//    	String title = request.getParameter("title");
-//		String content = request.getParameter("content");
-//		
-//		HttpSession session = request.getSession();
-//		String name = (String) session.getAttribute("name");
-//		String id = (String) session.getAttribute("id");
-//		
-//		EventDTO dto = new EventDTO();
-//		dto.setUser_name(name);
-//		dto.setUser_id(id);
-//		dto.setEvent_title(title);
-//		dto.setEvent_content(content); //데이터 셋팅
-//		
-//		if(file.getSize() != 0) {
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
-//			String today = sdf.format(new Date());
-//			String upFileName = today+"_"+file.getOriginalFilename();
-//			
-//			//파일 업로드 경로
-//			String path = request.getSession().getServletContext().getRealPath("");
-//			System.out.println("리얼경로 : "+path);
-//			File f = new File(path+"upimg/"+upFileName); //준비
-//			file.transferTo(f); //실제 파일 전송
-//			//System.out.println("저장경로 : "+f.getPath());	
-//
-//			dto.setEvent_picture(upFileName);
-//		}
-//		
-//		//bookService.writeAction(dto);
-//		
-//		return mv;
-//   	
-//    }
 }

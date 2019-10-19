@@ -43,5 +43,13 @@ public class IndexController {
     	mv.addObject("currentbook", currentbook);
     	return mv;
     }
+	
+	// 검색결과 존재하지 않을때 경고창
+	@RequestMapping(value = "searchcaution.do")
+	public ModelAndView searchcation() throws Exception{
+		ModelAndView mv = new ModelAndView("searchcaution");
+		
+		return mv;
+	}
 
 }

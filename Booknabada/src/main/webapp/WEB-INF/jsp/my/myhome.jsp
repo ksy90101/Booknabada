@@ -31,7 +31,7 @@
 				</div>
 				<ul class="my-info">
 					<li><a href="#">내정보</a></li>
-					<li><a href="#">회원정보변경</a></li>
+					<li><a href="modifyuser.do">회원정보변경</a></li>
 				</ul>
 				<ul class="my-pay">
 					<li><a href="#">포인트</a></li>
@@ -94,4 +94,11 @@
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
+<!-- 회원정보 변경을 위한 유저 번호 가져오기 -->
+<script type="text/javascript">
+function modifyuser(){
+	var user_no = '<%session.getAttribute("user_no");%>'
+	location.href="modifyuser.do?user_no="+user_no;
+}
+</script>
 </html>

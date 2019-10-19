@@ -9,8 +9,8 @@
 					<img src="../images/hamburger-menu.png" alt="menu">
 				</li>
 				<li class="search_box">
-					<img src="../images/search.png" alt ="search">
 					<form action="../book/searchbooklist.do" method="post">
+					<img src="../images/search.png" alt ="search">
 					<input type="text" name="search" placeholder="필요하신 책을 검색해보세요">
 					</form>
 				</li>
@@ -32,9 +32,7 @@
 				<c:choose>
 					<c:when test="${sessionScope.id eq null }">
 						<li class="login">
-							<!-- <a href="../login/login.do"> -->
 							<img src="../images/login.png" alt="로그인" onclick="popuplogin()">
-							<!--  							</a>-->
 						</li>
 					</c:when>
 					<c:otherwise>

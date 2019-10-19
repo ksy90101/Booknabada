@@ -5,7 +5,7 @@
 	
 	<!-- 사랑받는 책 -->
 	<select id="lovebook" resultType="com.booknabada.dto.BookDTO">
-		SELECT book_no, book_title, book_author, book_publisher, book_recommend, book_count, book_picture FROM booklist_view ORDER BY book_recommend DESC LIMIT 5
+		SELECT book_no, book_title, book_author, book_publisher, book_recommend, book_count, book_picture FROM booklist_view ORDER BY book_count DESC LIMIT 5
 	</select>
 	
 	<!-- 사랑받는 파북이 -->
@@ -15,7 +15,7 @@
 	
 	<!-- 최근등록한 책 -->
 	<select id="currentbook" resultType="com.booknabada.dto.BookDTO">
-		SELECT book_title, book_author, book_publisher, book_recommend, book_count, book_picture FROM book ORDER BY book_date DESC LIMIT 12
+		SELECT book_no, book_title, book_author, book_publisher, book_price, book_recommend, book_count, book_picture FROM book ORDER BY book_date DESC LIMIT 12
 	</select>
 	
 </mapper>

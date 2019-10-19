@@ -33,6 +33,11 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
+	public int user_no(LoginDTO dto) throws Exception {
+		return loginDAO.user_no(dto);
+	}
+
+	@Override
 	public int checkID(String id) throws Exception {
 		return loginDAO.checkID(id);
 	}
@@ -41,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
 	public String finidAction(LoginDTO dto) throws Exception {
 		return loginDAO.findidAction(dto);
 	}
+
 
 }
 

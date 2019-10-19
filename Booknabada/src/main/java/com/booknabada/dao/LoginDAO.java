@@ -21,6 +21,10 @@ public class LoginDAO extends AbstractDAO {
 		return (int) selectOne("login.level", id);
 	}
 
+	public int user_no(LoginDTO dto) {
+		return (int) selectOne("login.user_no", dto);
+	}
+
 	public int checkID(String id) {
 		return (int) selectOne("login.checkID", id);
 	}
@@ -28,6 +32,7 @@ public class LoginDAO extends AbstractDAO {
 	public String findidAction(LoginDTO dto) {
 		return (String) selectOne("login.findidAction", dto);
 	}
+	
 
 }
 

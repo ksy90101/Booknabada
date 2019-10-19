@@ -120,14 +120,11 @@
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
-
 	$(function() {
 	    getTimeStamp();
 	});
-
 	function getTimeStamp() {
 	    var d = new Date();
-
 	    var date = leadingZeros(d.getFullYear(), 4) + '-' +
 	        leadingZeros(d.getMonth() + 1, 2) + '-' +
 	        leadingZeros(d.getDate(), 2) + ' ';
@@ -137,7 +134,6 @@
 	        
 	    $('#date').val(date + time);
 		}
-
 		function leadingZeros(n, digits) {
 			var zero = '';
 			n = n.toString();

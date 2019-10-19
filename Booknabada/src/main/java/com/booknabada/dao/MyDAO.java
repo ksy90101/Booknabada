@@ -15,10 +15,6 @@ public class MyDAO extends AbstractDAO{
 	public int getPoint(String id) {
 		return (int) selectOne("my.getPoint", id);
 	}
-	
-	public LoginDTO detail(int reBno) {
-		return(LoginDTO) selectOne("login.detail",reBno);
-	}
 
 	public LoginDTO pabookInfo(int user_no) {
 		return (LoginDTO) selectOne("my.pabookInfo", user_no);
@@ -40,5 +36,12 @@ public class MyDAO extends AbstractDAO{
 	public void likeCancel(LikeDTO dto) {
 		delete("my.likeCancel",dto);
 	}
+
+	// 회원정보 변경
+	@SuppressWarnings("unchecked")
+	public List<LoginDTO> modifyuser(int user_no) {
+		return selectList("my.modifyuser", user_no);
+	}
+
 
 }

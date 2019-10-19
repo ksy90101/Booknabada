@@ -14,7 +14,6 @@
 <link href="../css/order.css" rel="stylesheet">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-
 function locaCheck(){
 	
 	if (document.frm.loca_check == '1') {
@@ -36,7 +35,6 @@ new daum.Postcode({
     }
 }).open();
 }
-
 function check(){
 	//alert("작동합니다");
 	if (document.frm.name.value == "") {
@@ -92,7 +90,6 @@ function check(){
 	}
 	
 }
-
 </script>
 
 </head>

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원정보 변경</title>
+<link rel="stylesheet" href="../css/modifyuser.css">
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/modiftuser.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -96,11 +96,13 @@ function check(){
 </script>
 </head>
 <body>
+	<!-- 헤더 -->
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<div class="newuser_wrap">
 
 		<div class="image">
 			<h2>
-				<img src="icon/logo.png" align="middle">
+				<img src="../images/logo.png" align="middle">
 			</h2>
 		</div>
 
@@ -108,7 +110,7 @@ function check(){
 			<form name="join" action="joinAction.do" method="post">
 				<ul>
 					<li><input type="text" id="insertID" placeholder="아이디" name="id" disabled="disabled"></li>
-					<li><input type="password" name="pw1" placeholder="새 비밀번호">${modify.user_title }</li>
+					<li><input type="password" name="pw1" placeholder="새 비밀번호"></li>
 					<li><input type="password" name="pw2" placeholder="새 비밀번호 확인"></li>
 				</ul>
 				<br>
@@ -138,11 +140,8 @@ function check(){
 				
 			</form>
 		</div>
-		<div class="link">
-			<a id="link_" href="">이용약관</a>&nbsp;&nbsp;|&nbsp; <a id="link_"
-				href="">개인정보 취급방침</a>&nbsp;&nbsp;|&nbsp; <a id="link_" href="">책임의
-				한계와 법적고지</a>&nbsp;&nbsp;|&nbsp; <a id="link_" href="">고객센터</a>
-		</div>
-	</div>
+
+		<!-- footer -->
+		<jsp:include page="../include/footer.jsp"></jsp:include>	
 </body>
 </html>

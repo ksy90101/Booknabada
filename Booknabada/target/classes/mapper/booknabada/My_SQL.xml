@@ -20,5 +20,8 @@
 	<delete id="likeCancel" parameterType="com.booknabada.dto.LikeDTO">
 		DELETE FROM like_info WHERE like_to=#{like_to } AND like_from=#{like_from }
 	</delete>
-	
+	<!-- 회원정보변경시 회원정보 보기 -->
+	<select id="modifyuser" parameterType="Integer" resultType="com.booknabada.dto.LoginDTO">
+		SELECT * from user_info where user_no=#{user_no}
+	</select>
 </mapper>

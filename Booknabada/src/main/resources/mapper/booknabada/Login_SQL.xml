@@ -3,9 +3,19 @@
 
 <mapper namespace="login">
 	
-	<!-- 로그인(암호화 구현) -->
+	<!-- 로그인시 유저 네임 가져오기(암호화 구현) -->
 	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
 	SELECT user_name FROM user_info WHERE user_id =#{user_id} AND user_pw =(SELECT HEX(AES_ENCRYPT(#{user_pw},'new')))	
+	</select>
+	
+	<!-- 로그인시 레벨 불러오기 -->
+	<select id="level" parameterType="String" resultType="int">
+		SELECT user_level FROM user_info WHERE user_id=#{id }
+	</select>
+	
+	<!-- 로그인시 유저 번호 불러오기 -->
+	<select id="user_no" parameterType="com.booknabada.dto.LoginDTO" resultType="int">
+		SELECT user_no FROM user_info WHERE user_id =#{user_id} AND user_pw =(SELECT HEX(AES_ENCRYPT(#{user_pw},'new')))	
 	</select>
 	
 	<!-- 중복아이디 확인 -->
@@ -21,19 +31,9 @@
 	]]>
 	</insert>
 	
-	<!-- 로그인시 레벨 불러오기 -->
-	<select id="level" parameterType="String" resultType="int">
-		SELECT user_level FROM user_info WHERE user_id=#{id }
-	</select>
-	
 	<!-- 아이디 찾기 -->
 	<select id="findidAction" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
 		SELECT user_id from user_info where user_name=#{user_name} and user_email=#{user_email}
-	</select>
-	
-	<!-- 회원정보 보기 -->
-	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.LoginDTO">
-		SELECT * from user_info where user_no=#{reBno}
 	</select>
 	
 	<!-- 아이디,이름,메일 받아서 정보맞는지 확인 -->

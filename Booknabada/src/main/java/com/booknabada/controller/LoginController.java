@@ -42,12 +42,14 @@ public class LoginController {
 		
 		int level = loginService.level(id);
 		String name = loginService.login(dto);
-		
+		int user_no = loginService.user_no(dto);
 		if(name != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
 			session.setAttribute("level",level);
+			session.setAttribute("user_no", user_no);
+
 			System.out.println(name);
 			System.out.println(id);
 			System.out.println(level);

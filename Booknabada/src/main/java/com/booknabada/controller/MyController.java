@@ -1,6 +1,5 @@
 package com.booknabada.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -45,20 +44,16 @@ public class MyController {
     }	
 	
 	// 회원정보변경
-	@RequestMapping(value = "login/modifyuser.do")
+	@RequestMapping(value = "my/modifyuser.do")
 	public ModelAndView modifyuser(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("login/modifyuser");
+		ModelAndView mv = new ModelAndView("my/modifyuser");
+		HttpSession session = request.getSession();
 		
-		String user_no = request.getParameter("user_no");
+		int user_no = (int) session.getAttribute("user_no");
 
-		// 숫자체크 후 게시판번호 담기
-		int reBno = Util.checkInt(user_no);
-
-		// 자기글 불러와서 DTO에 담기
-		LoginDTO detail = myService.detail(reBno);
+		List<LoginDTO> modifyuser = myService.modifyuser(user_no);
 		
-		mv.addObject("modify", detail);
-		
+		mv.addObject("modify", modifyuser);
 		return mv;
 	}
 	

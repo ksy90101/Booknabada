@@ -73,6 +73,4 @@ public class OrderDTO {
 		this.order_no = order_no;
 	}
 	
-	
-
 }
