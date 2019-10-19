@@ -20,9 +20,7 @@
 			userinput.email2.value = email3;
 			userinput.email2.readOnly = true;
 		}
-
 	}
-
 	function checkID() {
 		var id = $('#insertID').val();
 		//alert(id);
@@ -52,19 +50,16 @@
 			},
 			error : function(xhr, status, e) {
 				alert("error : " + e);
-
 			}
 		});
 		return false;
 	}
-
 	function check() {
 		if (document.join.id.value == "") {
 			alert("ID를 입력하세요.");
 			document.join.id.focus();
 			return false;
 		}
-
 		if (document.join.name.value == "") {
 			alert("이름을 입력하세요.");
 			document.join.name.focus();
@@ -81,7 +76,6 @@
 			document.join.pw2.focus();
 			return false;
 		}
-
 		if (document.join.pw1.value != document.join.pw2.value) {
 			alert("암호가 일치 하지 않습니다.");
 			document.getElementByName('pw1').value = "";
@@ -89,7 +83,6 @@
 			document.join.pw1.focus();
 			return false;
 		}
-
 		document.join.submit();
 	}
 </script>
@@ -97,7 +90,6 @@
 $(function(){
 	/* 이메일 인증 버튼 클릭시 발생하는 이벤트 */
 	$("#emailBtn").on("click", function(){
-
 		/* 이메일 중복 체크 후 메일 방송 비동기 처리 */
 		$.ajax({
 			beforeSend: function(){ // HTTP Request를 하기전에 호출
@@ -155,12 +147,6 @@ $(function(){
 		<div class="form_wrap">
 			<form name="join" action="joinAction.do" method="post">
 				<ul>
-					<li><input type="text" id="insertID" placeholder="아이디" name="id">
-						<button type="button" onclick="return checkID();">ID확인</button></li>
-					<li><br>
-					<p id="resulttext">
-							아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.
-						</p></li>
 					<li class="insID"><input type="text" id="insertID" placeholder="아이디" name="id">
 						<button type="button" id="checkID" onclick="return checkID();">ID확인</button></li>
 					<li><input type="password" name="pw1" placeholder="비밀번호"></li>

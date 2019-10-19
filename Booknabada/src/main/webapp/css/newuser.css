@@ -27,7 +27,6 @@ body{
 ul{
 	list-style-type: none;
 }
-
 li{
 	height:48px;
 	width: 401px;
@@ -57,6 +56,7 @@ input[type='radio']{
 #insertID { width:324px; }
 
 #authCode{ width: 313px; }
+
 
 input[id="rb1"] +label, input[id="rb2"]+label{
 	margin-top:3px;
