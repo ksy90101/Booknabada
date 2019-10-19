@@ -97,7 +97,7 @@
 $(function(){
 	/* 이메일 인증 버튼 클릭시 발생하는 이벤트 */
 	$("#emailBtn").on("click", function(){
-		alert("ㅎㅇ");
+
 		/* 이메일 중복 체크 후 메일 방송 비동기 처리 */
 		$.ajax({
 			beforeSend: function(){ // HTTP Request를 하기전에 호출
@@ -161,15 +161,18 @@ $(function(){
 					<p id="resulttext">
 							아이디를 입력하세요. <br>아이디는 중복될 수 없습니다.
 						</p></li>
+					<li class="insID"><input type="text" id="insertID" placeholder="아이디" name="id">
+						<button type="button" id="checkID" onclick="return checkID();">ID확인</button></li>
 					<li><input type="password" name="pw1" placeholder="비밀번호"></li>
-					<li><input type="password" name="pw2" placeholder="비밀번호 확인"></li>
-				</ul>
-				<br>
-				<ul>
+					<li><input type="password" name="pw2" placeholder="비밀번호 확인"></li>	
 					<li><input type="text" placeholder="이름" name="name"></li>
-					<li><input type="radio" name="gender" value="man">남자<input
-						type="radio" name="gender" value="woman">여자</li>
 					<li><input type="date" class="birth" name="birth"></li>
+					<li><input type="radio" id="rb1" name="gender" value="man">
+					<label for="rb1">남자</label>
+					<input type="radio" id="rb2" name="gender" value="woman">
+					<label for="rb2">여자</label>
+					</li>
+
 					<li><input class="email" type="text" name="email1"
 						placeholder="이메일" id="email"> @ <input class="email" type="text"
 						name="email2" readonly="readonly" id="email2"> <select class="sel"
@@ -181,15 +184,12 @@ $(function(){
 							<option value="gmail.com">gmail.com</option>
 							<option value="nate.com">nate.com</option>
 							<option value="hotmail.com">hotmail.com</option>
-							<option value="freechal.com">freechal.com</option>
-							<option value="empal.com">empal.com</option>
 							<option value="korea.com">korea.com</option>
-							<option value="paran.com">paran.com</option>
 					</select>
 						<input type="hidden" path="random" id="random" value="${random }" name="random"/>
-						<button type="button" id="emailBtn">이메일발송</button></li>
-					<li><input type="text" id="authCode" name="authCode" path="authCode">
-						<button type="button" id="emailAuthBtn">이메일인증</button></li>
+						<button type="button" id="emailBtn"><span>이메일발송</span></button></li>
+					<li><input type="text" id="authCode" name="authCode" path="authCode" placeholder="인증 번호">
+						<button type="button" id="emailAuthBtn"><span>이메일인증</span></button></li>
 					<li><input type="text" placeholder="핸드폰 번호" name="tel"></li>
 					<br>
 					<li><button type="button" id="checkit"
