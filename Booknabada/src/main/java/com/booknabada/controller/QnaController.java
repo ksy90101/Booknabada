@@ -95,14 +95,16 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String whatBoard = "qna";
-		mv.addObject("whatBoard", whatBoard);
+
 		//로그인 한 사람만 보이게...
 		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			mv.addObject("whatBoard", whatBoard);
 			//Write.do로 가기
-			return new ModelAndView("qna/qnaWrite");
+			mv.setViewName("qna/qnaWrite");
+			return mv;
 		} else {
-			
-			return new ModelAndView("redirect:index.do");
+			mv.setViewName("redirect:index.do");
+			return mv;
 		}
 	}
 		

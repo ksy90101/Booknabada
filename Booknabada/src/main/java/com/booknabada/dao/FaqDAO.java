@@ -53,5 +53,9 @@ public class FaqDAO extends AbstractDAO{
 		
 	}
 
+	public void faqCountUp(int faq_no) {
+		update("faq.faqCountUp", faq_no);
+	}
+
 
 }

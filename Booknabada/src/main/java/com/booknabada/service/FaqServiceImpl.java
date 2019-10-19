@@ -67,4 +67,10 @@ public class FaqServiceImpl implements FaqService{
 		
 	}
 
+	@Override
+	public void faqCountUp(int faq_no) throws Exception {
+		faqDAO.faqCountUp(faq_no);
+		
+	}
+
 }

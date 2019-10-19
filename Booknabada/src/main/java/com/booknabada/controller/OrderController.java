@@ -3,10 +3,8 @@ package com.booknabada.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.BookDTO;
 import com.booknabada.dto.OrderDTO;
-import com.booknabada.dto.QnaDTO;
 import com.booknabada.dto.StoreDTO;
 import com.booknabada.service.OrderService;
 import com.booknabada.util.Util;
@@ -38,7 +35,7 @@ public class OrderController {
 		int book_no = Util.checkInt(request.getParameter("book_no"));
 		
 		//해당 book_no -> DB로 보내서 해당 글 가져오기(DTO)
-		List<BookDTO> orderBook = orderService.orderbook("book_no");
+		List<BookDTO> orderBook = orderService.orderbook(book_no);
 		List<StoreDTO> storeList = orderService.storeList(store);
 		
 		mv.addObject("storelist", storeList);
@@ -197,7 +194,6 @@ public class OrderController {
 			dto.setTotalPrice(totalPrice);
 			
 			orderService.orderFinishAction(dto);
-			
 			
 			//화면에 결과값 뿌리기
 			mv.addObject("totalBook",totalBook);

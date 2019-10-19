@@ -24,5 +24,7 @@ public interface FaqService {
 
 	void faqModifyAction(FaqDTO dto) throws Exception;
 
+	void faqCountUp(int faq_no) throws Exception;
+
 
 }

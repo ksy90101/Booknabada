@@ -77,6 +77,7 @@ function del(num){
 		<button id="eventbutton" style="background-color: #BCB0FE; color: white" onclick="location.href='event.do'">목록</button>
 	</div>
 	
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 </body>
 </html>

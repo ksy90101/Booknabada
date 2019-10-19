@@ -37,4 +37,9 @@
 	<update id="faqModifyAction" parameterType="com.booknabada.dto.FaqDTO">
 		UPDATE faq_board SET faq_qustion = #{faq_qustion }, faq_answer = #{faq_answer } WHERE faq_no = #{faq_no }
 	</update>
+	
+	<!-- qustion 클릭시 Count UP-->
+	<update id="faqCountUp" parameterType="Integer">
+		UPDATE faq_board SET faq_count = faq_count + 1 WHERE faq_no = #{faq_no }
+	</update>
 </mapper>

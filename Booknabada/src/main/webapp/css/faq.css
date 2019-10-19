@@ -11,7 +11,6 @@
 	height: 1080px;
 	top: 50%;
 	overflow: hidden;
-	margin-top: 100px;
 	padding: 0;
 }
 
@@ -85,11 +84,35 @@
 }
 
 #faqtitle {
-	padding-left: 210px;
+	padding-left: 105px;
 	padding-bottom: 50px;
 	font-size: 30px;
 	color: #B3B0FE;
+	font-weight: bold;
 }
+
+.writeButton{
+	height:30px;
+	width:120px;
+	background-color: #BCB0FE;
+	border-color: #D1C9FE;
+	border-radius:5px;
+	color: white;
+	border-style: none;
+}
+
+.modifybutton{
+	width: 90px;
+	height: 32px;
+	border-radius: 5px;
+	Text-align: center;
+	line-height: 32px;
+	font-size: 14px;
+	font-family: roboto;
+	font-weight: bold;
+	border: none;
+}
+
 .faq_wrap:after {
 	display: block;
 	content: "";
@@ -97,11 +120,11 @@
 }
 
 .dl_wrap {
-	width: 90%;
+	width: 70%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
-	margin: 0 auto; 
+	margin: 0 100px; 
 	text-align: left;
 }
 
@@ -124,7 +147,7 @@
 /* dd */
 .answer {
 	margin-right: 50px;
-	width: 500px;
+	width: 100%;
 	padding: 10px;
 	margin-bottom: 5px;
 	display: none;

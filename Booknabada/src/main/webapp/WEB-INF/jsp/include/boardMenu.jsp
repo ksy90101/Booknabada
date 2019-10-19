@@ -13,6 +13,13 @@
 		</ul>
 	</div>
 	
+	<c:if test="${whatBoard eq 'notice' }">
+	<script>
+	console.log("나오나?");
+		$(".top_content li").removeClass("on");
+		$(".top_content li").eq(0).addClass("on");
+	</script>
+	</c:if>
 	<c:if test="${whatBoard eq 'event' }">
 	<script>
 	console.log("나오나?");

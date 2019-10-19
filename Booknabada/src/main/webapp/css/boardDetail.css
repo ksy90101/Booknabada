@@ -173,12 +173,12 @@ li{
 	border-style: none;
 	border: 1px solid #A797FE;
 }
-.BoardbuttonPart{
+.BoardbuttonPart, .eventbuttonPart{
 	display: table;
 	height: 35px;
 	margin: 30px auto;
 }
-#Boardbutton{
+#Boardbutton, #eventbutton{
 	width: 90px;
 	height: 32px;
 	border-radius: 5px;
