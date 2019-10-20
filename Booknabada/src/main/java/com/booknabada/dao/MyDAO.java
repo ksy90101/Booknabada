@@ -37,11 +37,14 @@ public class MyDAO extends AbstractDAO{
 		delete("my.likeCancel",dto);
 	}
 
-	// 회원정보 변경
-	@SuppressWarnings("unchecked")
-	public List<LoginDTO> modifyuser(int user_no) {
-		return selectList("my.modifyuser", user_no);
+	public LoginDTO modifyuser(int user_no) {
+		return (LoginDTO) selectOne("my.modifyuser", user_no);
 	}
+
+	public void modifyuserAction(LoginDTO dto) {
+		update("my.modifyuserAction", dto);
+	}
+
 
 
 }

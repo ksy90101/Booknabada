@@ -87,7 +87,7 @@ select{
 
 .insID button {
 	height:45px;
-	width:60px;
+	width:59px;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
@@ -97,7 +97,7 @@ select{
 
 #emailBtn, #emailAuthBtn{
 	height: 45px;
-    width: 71px;
+    width: 70px;
     background-color: #A695FF;
     border-color: #A695FF;
     border-style: none;
@@ -122,14 +122,17 @@ select{
 }
 
 .email{
-	width:83px;
+	margin-top: 1px;
+	width:80px;
+	height: 102%;
 }
 
 .sel{
 	width:111px;
-	margin-bottom: 3px;
+	height: 107%;
+	margin-top: -7px;
+	margin-bottom: -2px;
 }
-
 
 .link{
 	margin-top:30px;

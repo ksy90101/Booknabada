@@ -49,14 +49,11 @@ input{
 	margin-bottom: 5px;
 }
 
-input[type='radio']{
-	width:14px;
-}
+input[type='radio']{ width:14px; }
 
-#insertID { width:324px; }
+#insertID { width:97%; }
 
 #authCode{ width: 313px; }
-
 
 input[id="rb1"] +label, input[id="rb2"]+label{
 	margin-top:3px;
@@ -87,7 +84,7 @@ select{
 
 .insID button {
 	height:45px;
-	width:60px;
+	width:59px;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
@@ -97,7 +94,7 @@ select{
 
 #emailBtn, #emailAuthBtn{
 	height: 45px;
-    width: 71px;
+    width: 70px;
     background-color: #A695FF;
     border-color: #A695FF;
     border-style: none;
@@ -109,27 +106,29 @@ select{
 	font-size: 11px;
 }
 
-
-#checkit{
+#checkit, #btn1{
+	margin-top: 8px;
 	height:45px;
-	width:400px;
+	width:49%;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
 	border-radius:10px;
 	color: white;
-	
 }
 
 .email{
-	width:83px;
+	margin-top: 1px;
+	width:78%;
+	height: 102%;
 }
 
 .sel{
 	width:111px;
-	margin-bottom: 3px;
+	height: 107%;
+	margin-top: -7px;
+	margin-bottom: -2px;
 }
-
 
 .link{
 	margin-top:30px;

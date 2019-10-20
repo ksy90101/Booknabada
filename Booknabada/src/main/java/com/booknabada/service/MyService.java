@@ -21,7 +21,9 @@ public interface MyService {
 
 	void likeCancel(LikeDTO dto) throws Exception;
 
-	// 회원정보변경
-	List<LoginDTO> modifyuser(int user_no) throws Exception;
+	LoginDTO modifyuser(int user_no) throws Exception;
+
+	void modifyuserAction(LoginDTO dto) throws Exception;
+
 
 }

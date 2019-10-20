@@ -53,11 +53,19 @@ public class MyServiceImpl implements MyService{
 		myDAO.likeCancel(dto);
 	}
 
-	// 회원정보 변경
+	// 회원정보변경 시 회원 정보 가져오기
 	@Override
-	public List<LoginDTO> modifyuser(int user_no) throws Exception {
+	public LoginDTO modifyuser(int user_no) throws Exception {
 		return myDAO.modifyuser(user_no);
 	}
+
+	// 회원정보변경 실행
+	@Override
+	public void modifyuserAction(LoginDTO dto) throws Exception {
+		myDAO.modifyuserAction(dto);
+	}
+
+
 
 
 }

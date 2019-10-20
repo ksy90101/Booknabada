@@ -21,7 +21,15 @@
 		DELETE FROM like_info WHERE like_to=#{like_to } AND like_from=#{like_from }
 	</delete>
 	<!-- 회원정보변경시 회원정보 보기 -->
-	<select id="modifyuser" parameterType="Integer" resultType="com.booknabada.dto.LoginDTO">
+	<select id="modifyuser" parameterType="int" resultType="com.booknabada.dto.LoginDTO">
 		SELECT * from user_info where user_no=#{user_no}
 	</select>
+	<!-- 회원정보변경 -->
+	<update id="modifyuserAction" parameterType="com.booknabada.dto.LoginDTO">
+		UPDATE user_info SET 
+		<if test="#{user_pw } != null">
+			user_pw = (SELECT HEX(AES_ENCRYPT(#{user_pw},'new'))),
+		</if>
+		user_email = #{user_email } ,user_tel = #{user_tel } WHERE user_no = #{user_no }
+	</update>
 </mapper>

@@ -2,14 +2,14 @@ package com.booknabada.dto;
 
 public class LoginDTO {
 	
-	int user_lover, ranknum;
-	String user_name, user_id, user_no, user_pw, user_addr, user_tel, user_email, user_gender, user_birth, user_level;
+	int user_lover, ranknum, user_no;
+	String user_name, user_id, user_pw, user_addr, user_tel, user_email, user_gender, user_birth, user_level;
 
-	public String getUser_no() {
+	public int getUser_no() {
 		return user_no;
 	}
 
-	public void setUser_no(String user_no) {
+	public void setUser_no(int user_no) {
 		this.user_no = user_no;
 	}
 

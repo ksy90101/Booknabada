@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/newuser.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function email3(userinput) {
 		var email3 = userinput.m_email3.value;

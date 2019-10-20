@@ -1,5 +1,8 @@
 package com.booknabada.controller;
 
+import java.util.List;
+import java.util.Random;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -47,15 +50,39 @@ public class MyController {
 		ModelAndView mv = new ModelAndView("my/modifyuser");
 		HttpSession session = request.getSession();
 		
-		int user_no = (int) session.getAttribute("user_no");
-
-		List<LoginDTO> modifyuser = myService.modifyuser(user_no);
+		int ran = new Random().nextInt(900000) + 100000; // 랜덤값 생성
+		mv.addObject("random", ran); // 난수를 view에 전송
 		
-		mv.addObject("modify", modifyuser);
+		int user_no = (int) session.getAttribute("user_no");
+		LoginDTO modifyuser = myService.modifyuser(user_no);
+		mv.addObject("modifyuser", modifyuser);
 		return mv;
 	}
 	
-	
+	//회원정보변경 실행
+	@RequestMapping(value="my/modifyuserAction")
+	public ModelAndView modifyuserAction(HttpServletRequest requset) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:myhome.do");
+		LoginDTO dto = new LoginDTO();
+		HttpSession session = requset.getSession();
+		
+		String user_pw = requset.getParameter("pw1");
+		String user_email = requset.getParameter("email1");
+		String user_tel = requset.getParameter("tel");
+		int user_no = (int) session.getAttribute("user_no");
+		if(user_pw != "") { dto.setUser_pw(user_pw); }
+		if(user_email != null) { dto.setUser_email(user_email); }
+		if(user_tel != null) {dto.setUser_tel(user_tel); }
+		dto.setUser_no(user_no);
+		myService.modifyuserAction(dto);
+		
+		System.out.println(user_pw);
+		System.out.println(user_email);
+		System.out.println(user_tel);
+		System.out.println(user_no);
+		
+		return mv;
+	}
 	//파북이 개인페이지
 	@RequestMapping(value="my/pabook.do")
     public ModelAndView pabook(HttpServletRequest request) throws Exception{
