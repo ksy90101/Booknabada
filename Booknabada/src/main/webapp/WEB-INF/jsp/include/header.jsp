@@ -32,7 +32,13 @@
 				<c:choose>
 					<c:when test="${sessionScope.id eq null }">
 						<li class="login">
-							<img src="../images/login.png" alt="로그인" onclick="popuplogin()">
+							<a href="#" class="openMask"><img src="../images/login.png" alt="로그인"></a>
+							<div id = "mask">
+								<div class="window">
+								<jsp:include page="../login/login.jsp"></jsp:include>
+								<input type="button" class="close" value="닫기" />
+								</div>
+							</div>
 						</li>
 					</c:when>
 					<c:otherwise>
@@ -71,8 +77,45 @@
 			isMenu = !isMenu;
 		})
 	</script>
+	
+	<!-- 로그인 팝업창 -->
 	<script>
-		function popuplogin(){
-			window.open("../login/login.do", "loginpopup", "width=500, height=500, toolbar=no, location=no, status=no , menubar=no , scrollbars=auto");
-		}
-	</script>
+    function wrapWindowByMask(){
+        // 화면의 높이와 너비를 구한다.
+        var maskHeight = '68%'; // 화면 높이
+        var maskWidth = '54%'; // 화면 넓이
+
+        //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+        $('#mask').css({'width':maskWidth}, {'height':maskHeight});
+
+        // 애니메이션 효과
+        $('#mask').fadeIn(1000); // 선택 요소를 서서히 나타나게 함, 1: 1000분의 1초 즉, 1000은 1초
+        $('#mask').fadeTo("slow", 1); // 투명도를 지정, slow는 시간값, 0.8은 투명도 값
+
+        //윈도우 같은 거 띄운다.
+        $('.window').show(); // display속성을 block으로 바꾼다.
+    }
+
+    $(document).ready(function(){ // window.onload와 동일한 기능으로 body에 태그들이 출력된 다음 호출되는 코드
+        //검은 막 띄우기
+        $('.openMask').click(function(e){
+            e.preventDefault(); // 현재 이벤트의 기본 동작을 중단한다.
+            wrapWindowByMask();
+        });
+
+        //닫기 버튼을 눌렀을 떄
+        $('.close').click(function(e){
+        	//링크 기본동작은 작동하지 않도록 한다.
+        	 e.preventDefault();
+        	$('#mask').fadeOut(1000);
+        	$('.window').fadeOut(1000);
+        	// 숨기기
+        });
+        
+        //검은 막을 눌렀을 때
+        $('mask').click(function(){
+        	$(this).hide();
+        	$('.window').hide();
+        });
+    });
+</script>

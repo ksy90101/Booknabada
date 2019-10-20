@@ -31,3 +31,31 @@
 #gnb li{border-bottom: 1px solid #fff; height: 90px; line-height: 100px; text-indent: 50px; font-size: 18px;}
 #gnb li:last-child{border:none;}
 #gnb li a{color:#fff;}
+
+/* 로그인 팝업창 */
+#mask{
+	height: 66%;
+	position: fixed;
+    left: 50%;
+    margin-left: -20%; /* half of width */
+    top: 50%;
+    margin-top: -250px; /* half of height */
+	background-color:#BCB0FE;
+	display: none;
+}
+.window{
+	display: none;
+	margin: 0 auto;
+}
+
+.close{
+	margin-top: 5px;
+	margin-left: 160px;
+	height:48px;
+	width:380px;
+	background-color: #A695FF;
+	border-color: #A695FF;
+	border-style: none;
+	border-radius:10px;
+	color: white;
+}

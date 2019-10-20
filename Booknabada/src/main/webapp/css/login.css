@@ -2,12 +2,11 @@
 
 
 body{
-	background-color:#D6C9FC;
-	
+	/*  background-color:#D6C9FC; */
 }
 .login_wrap{
 	margin: auto;
-	
+	width: 50%;
 }
 
 .image{
@@ -25,7 +24,7 @@ li{
 }
 
 
-input{
+.form_wrap input{
 	background-color:#D0C8FF;
 	color: white;
 	height:45px;
@@ -36,7 +35,11 @@ input{
 	margin-bottom:15px;
 	padding-left: 20px;
 }
-
+#logincontinue{
+	width: 20px;
+	height: 20px;
+	color: #D0C8FE;
+}
 button{
 	height:48px;
 	width:380px;

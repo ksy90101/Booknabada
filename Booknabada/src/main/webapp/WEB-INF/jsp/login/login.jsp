@@ -6,68 +6,8 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="./css/header.css">
-<style type="text/css">
-
-body{
-	background-color:#D6C9FC;
-	
-}
-.login_wrap{
-	margin: auto;
-	
-}
-
-.image{
-	text-align: center;
-	padding-top:130px;
-	padding-bottom: 50px;
-}
-
-.form_wrap{
-	text-align: center;	
-}
-
-li{
-	color:white;
-}
-input[type='text'],input[type='password']{
-	width:358px;
-}
-
-input{
-	background-color:#D0C8FF;
-	color: white;
-	height:45px;
-	border:1px solid;
-	border-color:#FFFFFF;
-	border-radius:10px;
-	margin-bottom:15px;
-	padding-left: 20px;
-}
-
-button{
-	height:48px;
-	width:380px;
-	background-color: #A695FF;
-	border-color: #A695FF;
-	border-style: none;
-	border-radius:10px;
-	color: white;
-}
-
-.link{
-	margin-top:20px;
-	color:#BCB0FE;
-	text-align: center;
-}
-
-#link_{
-	color:white;
-	
-}
-
-</style>
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
@@ -80,7 +20,7 @@ button{
 		</div>
 		
 		<div class="form_wrap">
-			<form action="loginAction.do" method="POST">
+			<form action="../login/loginAction.do" method="POST">
 				<div class="inp">
 					<ul>
 						<li><input type="text" placeholder="아이디를 입력하세요" name = "id"></li>
@@ -89,7 +29,7 @@ button{
 				</div>
 				<div class="check">
 					<ul>
-						<li><input type="checkbox">로그인 상태 유지</li>
+						<li><input type="checkbox" id="logincontinue">로그인 상태 유지</li>
 					</ul>
 				</div>
 				<br>
