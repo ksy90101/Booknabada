@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,8 @@ public class OrderController {
 	public ModelAndView order(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/order");
 		
+		HttpSession session = request.getSession();
+		
 		int page = 1;
 		int store = 1;
 		
@@ -45,7 +48,13 @@ public class OrderController {
 		mv.addObject("storelist", storeList);
 		mv.addObject("orderBook", orderBook);	
 		
-		return mv;
+		//로그인 안한 사람은 메인으로
+		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			return mv;
+		} else {
+			return new ModelAndView("redirect:../index.do");
+		}
+		
 	}
 	
 	//결제페이지
@@ -53,6 +62,7 @@ public class OrderController {
 	public ModelAndView orderPay(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/orderPay");
 		
+		HttpSession session = request.getSession();
 		
 		//이전페이지 태그값 맵에 넣기
 		Map<Object, String> orderData = new HashMap<Object, String>();
@@ -103,14 +113,26 @@ public class OrderController {
 		mv.addObject("totalPrice2", totalPrice2);
 		mv.addObject("orderData", orderData);
 		
+		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			return mv;
+		} else {
+			mv.setViewName("caution");
+		}
+		
 		return mv;
 	}
 	
 	//주문완료
-		@RequestMapping(value="order/orderFinish.do")
-		public ModelAndView orderFinish(HttpServletRequest request) throws Exception{
-			ModelAndView mv = new ModelAndView("order/orderFinish");
+	@RequestMapping(value="order/orderFinish.do")
+	public ModelAndView orderFinish(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("order/orderFinish");
 			
+			HttpSession session = request.getSession();	
+		
+			//주문번호
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String today = sdf.format(new Date());
+			Long order_no = Long.parseLong(today + "1");
 			
 			//order.do에서 넘어온 값 담기
 			Map<Object, String> orderData = new HashMap<Object, String>();
@@ -146,26 +168,24 @@ public class OrderController {
 //			    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 //			}
 			
+			
 			//결제값 담기
 			Map<Object, String> payData = new HashMap<Object, String>();
 			//결제선택 체크
 			//System.out.println("결제선택 " + request.getParameter("what"));
 				payData.put("payChoice", request.getParameter("what"));
 			if (request.getParameter("what").equals("card")) {
-				payData.put("card_info", "카드번호:" + request.getParameter("cardNo") +
-						"카드유효기간:" + request.getParameter("cardYear") + request.getParameter("cardMonth") +
-						"카드사용자:" + request.getParameter("cardUser") + 
-						"카드cvv:" + request.getParameter("cardCvv")
-						);
+				payData.put("cardNo", request.getParameter("cardNo"));
+				payData.put("cardYearMonth", request.getParameter("cardYear") + request.getParameter("cardMonth"));
+				payData.put("cardUser", request.getParameter("cardUser"));
+				payData.put("cardCvv", request.getParameter("cardCvv"));
 			} if (request.getParameter("what").equals("bank")) {
-				payData.put("bank_info", "예금주:" + request.getParameter("bankUser") + 
-						"은행명:" + request.getParameter("bankName") + 
-						"계좌번호:" + request.getParameter("bankNo")
-						);
+				payData.put("bankUser", request.getParameter("bankUser"));
+				payData.put("bankName", request.getParameter("bankName"));
+				payData.put("bankNo", request.getParameter("bankNo"));
 			} if (request.getParameter("what").equals("phone")) {
-				payData.put("phone_info", "성명:" + request.getParameter("phoneUser") + 
-						"핸드폰번호:" + request.getParameter("payPhoneA") + request.getParameter("payPhoneB") + request.getParameter("payPhoneC")
-						);
+				payData.put("phoneUser", request.getParameter("phoneUser"));
+				payData.put("phoneNo",request.getParameter("payPhoneA") + request.getParameter("payPhoneB") + request.getParameter("payPhoneC"));
 			}
 			
 			//payData값 확인
@@ -175,37 +195,55 @@ public class OrderController {
 //			    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 //			}
 			
-			//주문번호
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String today = sdf.format(new Date());
 			
 			//오더내역 DB에 삽입
 			OrderDTO dto = new OrderDTO();
-			Long order_no = Long.parseLong(today + "1");
-			
 			dto.setOrder_no(order_no);
 			dto.setUser_no(1);
 			dto.setName(orderData.get("name"));
-			dto.setLoca(orderData.get("locaA" + "locaB" + "locaC"));
-			dto.setLoca(orderData.get("store"));
+			if (orderData.get("store") != null) {
+				dto.setLoca(orderData.get("store"));
+			} else {
+				dto.setLoca(orderData.get("locaA") + 
+						" " + orderData.get("locaB") + 
+						" " + orderData.get("locaC"));
+			}
 			dto.setPhone(phone);
 			dto.setNote(orderData.get("note"));
-			dto.setPay_info(payData.get("card_info"));
-			dto.setPay_info(payData.get("bank_info"));
-			dto.setPay_info(payData.get("phone_info"));
+			
+			if (payData.get("payChoice").equals("card")) {
+				dto.setPay_info("결제선택: " + payData.get("payChoice").replace("card", "카드결제") + 
+						" / 카드번호: " + payData.get("cardNo") + 
+						" / 카드유효기간: " + payData.get("cardYearMonth") + 
+						" / 카드성명: " + payData.get("cardUser") + 
+						" / 카드cvv: " + payData.get("cardCvv"));
+			} else if (payData.get("payChoice").equals("bank")) {
+				dto.setPay_info("결제선택: " + payData.get("payChoice").replace("bank", "계좌이체") + 
+						" / 예금자: " + payData.get("bankUser") + 
+						" / 은행이름: " + payData.get("bankName") + 
+						" / 계좌번호: " + payData.get("bankNo"));
+			} else if (payData.get("payChoice").equals("phone")) {
+				dto.setPay_info("결제선택: " + payData.get("payChoice").replace("phone", "핸드폰결제") + 
+						" / 성명: " + payData.get("phoneUser") + 
+						" / 핸드폰번호: " + payData.get("phoneNo"));
+			}
 			dto.setPoint(totalBook_point);
 			dto.setTotalBook(totalBook);
 			dto.setTotalPrice(totalPrice);
 			
 			orderService.orderFinishAction(dto);
 			
-			
 			//화면에 결과값 뿌리기
+			mv.addObject("orderNo", order_no);
+			mv.addObject("orderData", orderData);
+			mv.addObject("payData", payData);
 			mv.addObject("totalBook",totalBook);
 			mv.addObject("totalPrice", totalPrice);
 			mv.addObject("totalBook_point",totalBook_point);
-			mv.addObject("orderData", orderData);
-			mv.addObject("payData", payData);
+			
+			if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
+				return mv;
+			}
 			
 			return mv;
 		}
