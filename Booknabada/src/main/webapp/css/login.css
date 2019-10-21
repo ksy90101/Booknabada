@@ -6,12 +6,12 @@ body{
 }
 .login_wrap{
 	margin: auto;
-	width: 50%;
+	width: 80%;
 }
 
 .image{
 	text-align: center;
-	padding-top:130px;
+	padding-top:80px;
 	padding-bottom: 50px;
 }
 

@@ -34,25 +34,35 @@
 
 /* 로그인 팝업창 */
 #mask{
-	height: 66%;
+	width:100%;
+	height: 100%;
 	position: fixed;
-    left: 50%;
-    margin-left: -20%; /* half of width */
-    top: 50%;
-    margin-top: -250px; /* half of height */
-	background-color:#BCB0FE;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,0.6);
 	display: none;
+	z-index:100;
 }
-.window{
-	display: none;
-	margin: 0 auto;
-}
+.window{ 
+	position:absolute;
+	background-color:#BCB0FE; 
+	display: none; 
+	margin: 0 auto; 
+	width:600px;
+	height:600px;
+	left:50%;
+	top:50%;
+	margin-left:-300px;
+	margin-top:-300px;
+	border-radius: 15px;
+	border: 2px solid #fff;
+	}
 
 .close{
-	margin-top: 5px;
-	margin-left: 160px;
+	display:block;
+	margin:20px auto;
 	height:48px;
-	width:380px;
+	width:64%;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;

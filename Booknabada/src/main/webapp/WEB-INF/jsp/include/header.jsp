@@ -33,12 +33,7 @@
 					<c:when test="${sessionScope.id eq null }">
 						<li class="login">
 							<a href="#" class="openMask"><img src="../images/login.png" alt="로그인"></a>
-							<div id = "mask">
-								<div class="window">
-								<jsp:include page="../login/login.jsp"></jsp:include>
-								<input type="button" class="close" value="닫기" />
-								</div>
-							</div>
+							
 						</li>
 					</c:when>
 					<c:otherwise>
@@ -51,6 +46,13 @@
 			</ul>
 		</div><!-- inner-wrap -->
 	</header>
+	
+	<div id = "mask">
+		<div class="window">
+		<jsp:include page="../login/login.jsp"></jsp:include>
+		<input type="button" class="close" value="닫기" />
+		</div>
+	</div>
 
 	<nav id="nav">
 		<ul id="gnb">
@@ -82,9 +84,9 @@
 	<script>
     function wrapWindowByMask(){
         // 화면의 높이와 너비를 구한다.
-        var maskHeight = '68%'; // 화면 높이
-        var maskWidth = '54%'; // 화면 넓이
-
+        var maskHeight = $(document).height(); // 화면 높이
+        var maskWidth = $(window).width; // 화면 넓이
+        
         //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
         $('#mask').css({'width':maskWidth}, {'height':maskHeight});
 
