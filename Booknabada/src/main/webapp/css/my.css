@@ -49,11 +49,26 @@
 
 /* pabook */
 #container.pabook{}
-#container.pabook .inner-wrap{width: 90%; margin: 80px auto;}
-
-
-
-
+#container.pabook .inner-wrap{width: 80%; margin: 80px auto;}
+#container.pabook .top{width: 100%; border-radius:20px; background: #D1C9FE; padding: 50px 50px; box-sizing:border-box;}
+#container.pabook .top .profile{float: left;text-align: center; margin-right:80px; width: 200px;height: 200px; border-radius:50%; background: #fff;}
+#container.pabook .top .profile img{margin-top: 30px;}
+#container.pabook .top p{margin-top: 50px; margin-bottom: 20px;font-size: 36px; color:#7C64FD; font-weight: 600;}
+#container.pabook .top span{}
+#likeCnt{margin-left: 20px; font-size: 26px; color:#7C64FD; font-weight: bold;}
+#container.pabook .top span img{width: 40px;margin-top: -8px;}
+#container.pabook .bottom{margin-bottom: 100px;}
+#container.pabook .bottom h4{font-size: 30px; font-weight: 500; margin: 50px 0 30px;}
+#container.pabook .bottom ul{}
+#container.pabook .bottom ul li{width: 33%;height: 200px; float: left; margin-bottom: 20px;}
+#container.pabook .bottom ul li .bookimg{width: 150px;height: 200px;float: left;margin-right: 20px;}
+#container.pabook .bottom ul li .booktxt{}
+#container.pabook .bottom ul li .booktxt h5{font-size: 26px; width: 58%;line-height:30px; display: -webkit-box; display: -ms-flexbox; display: box;max-height:76px; overflow:hidden; vertical-align:top; text-overflow: ellipsis; word-break:break-all; -webkit-box-or
+	ient:vertical; -webkit-line-clamp:2; margin-bottom: 10px; margin-top: 10px;height: 60px;}
+#container.pabook .bottom ul li .booktxt .book_author{margin-bottom: 10px;}
+#container.pabook .bottom ul li .booktxt .star{font-size: 24px;margin-bottom: 20px;}
+#container.pabook .bottom ul li .booktxt .read{}
+#cnt{font-weight: bold;}
 
 
 

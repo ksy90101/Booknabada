@@ -59,5 +59,10 @@ public class MyServiceImpl implements MyService{
 		myDAO.likeCancel(dto);
 	}
 
+	@Override
+	public int likeCnt(String like_to) throws Exception {
+		return myDAO.likeCnt(like_to);
+	}
+
 
 }

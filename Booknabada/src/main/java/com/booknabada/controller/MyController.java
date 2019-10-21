@@ -81,7 +81,12 @@ public class MyController {
     	int likeChk = myService.getLikeCheck(dto);	
 
     	List<BookDTO> bookInfo = myService.bookInfo(user_no);
+    	int likeCnt = myService.likeCnt(like_to);
     	
+    	//System.out.println(like_to);
+    	//System.out.println(likeCnt);
+    	
+    	mv.addObject("likeCnt",likeCnt);
     	mv.addObject("pabook_no",user_no);
     	mv.addObject("pabookInfo",pabookInfo);
     	mv.addObject("bookInfo",bookInfo);

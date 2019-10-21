@@ -10,7 +10,7 @@
 	
 	<!-- 사랑받는 파북이 -->
 	<select id="loveuser" resultType="com.booknabada.dto.LoginDTO">
-		SELECT (@rank := @rank+1) AS ranknum ,user_name, user_lover, user_no FROM user_info AS a, (SELECT @rank := 0) AS b ORDER BY user_lover DESC LIMIT 10
+		SELECT (@rank := @rank+1) AS ranknum ,user_name, (SELECT COUNT(*) FROM like_info WHERE like_to=a.user_id) as user_lover, user_no FROM user_info AS a, (SELECT @rank := 0) AS b ORDER BY user_lover DESC LIMIT 10
 	</select>
 	
 	<!-- 최근등록한 책 -->

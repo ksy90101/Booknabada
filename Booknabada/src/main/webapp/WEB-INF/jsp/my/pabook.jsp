@@ -25,29 +25,46 @@
 
 <div id="container" class="pabook">
 	<div class="inner-wrap cf">
-	파북넘버 : ${pabook_no }
-	<br>
-	${pabookInfo.user_name } 
-	<c:if test="${likeChk eq 0 }">
-		<span onclick="like_off(${pabookInfo.user_no})">
-			<img src="../images/like_off.png" alt="좋아요" >
-		</span>
-	</c:if>
-	<c:if test="${likeChk eq 1 }">
-		<span onclick="like_on(${pabookInfo.user_no })">
-			<img src="../images/like_on.png" alt="좋아요" >
-		</span>
-	</c:if>
-		
-	
-	<br><br>
-	<c:forEach items="${bookInfo }" var="b">
-		${b.book_title }
-		${b.book_author }
-		<br>
-	</c:forEach>
-	
-	
+		<div class="top cf">
+			<div class="profile">
+				<img src="../images/profile.png" alt="프로필 사진">			
+			</div>
+			<p>${pabookInfo.user_name } </p>
+			<c:if test="${likeChk eq 0 }">
+				<span onclick="like_off(${pabookInfo.user_no })">
+					<img src="../images/like_off.png" alt="좋아요" >
+				</span>
+			</c:if>
+			<c:if test="${likeChk eq 1 }">
+				<span onclick="like_on(${pabookInfo.user_no })">
+					<img src="../images/like_on.png" alt="좋아요" >
+				</span>
+			</c:if>
+			<span id="likeCnt">${likeCnt }</span>
+		</div>
+		<div class="bottom">
+			<h4>등록된 책 둘러보기</h4>
+			<ul class="cf">
+			<c:forEach items="${bookInfo }" var="b">
+				<li class="cf">
+					<div class="bookimg">
+						<img alt="파북이가 등록한 책" src="../upimg/${b.book_picture }">
+					</div>
+					<a href="../book/bookDetail.do?book_no=${b.book_no }">	
+					<div class="booktxt">
+						<h5>${b.book_title }</h5>
+						<p class="book_author">${b.book_author } / ${b.book_publisher }</p>
+						<p class="star">${b.book_recommend }</p>
+						<p class="read"><span id="cnt">
+						<fmt:formatNumber value="${b.book_count }" groupingUsed="true"/>
+						</span>명이 읽었음</p>
+					</div>
+					</a>
+				</li>
+			</c:forEach>
+			</ul>
+		</div>
+<%-- 	파북넘버 : ${pabook_no } --%>
 	</div>
 </div><!-- //container -->
 

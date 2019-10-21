@@ -20,5 +20,8 @@
 	<delete id="likeCancel" parameterType="com.booknabada.dto.LikeDTO">
 		DELETE FROM like_info WHERE like_to=#{like_to } AND like_from=#{like_from }
 	</delete>
+	<select id="likeCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM like_info WHERE like_to=#{like_to }
+	</select>
 	
 </mapper>

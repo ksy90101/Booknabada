@@ -24,4 +24,6 @@ public interface MyService {
 
 	void likeCancel(LikeDTO dto) throws Exception;
 
+	int likeCnt(String like_to) throws Exception;;
+
 }

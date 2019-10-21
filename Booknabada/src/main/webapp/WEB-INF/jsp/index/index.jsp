@@ -38,7 +38,7 @@
 							<img alt="책이미지" src="../upimg/${i.book_picture }">
 							</a>
 							</div>
-							<a href="../book/bookDetail.do?book_no=${i.book_no }">	
+							
 							<div class="txt">
 								<h5>${i.book_title }</h5>
 								<p class="book_author">${i.book_author } / ${i.book_publisher }</p>
@@ -64,13 +64,21 @@
 				<h3>최근 등록된 책</h3>
 				<ul class="list cf">
 				<c:forEach items="${currentbook }" var="i">
-				<li>
-					<div class="currentbookimg"><img alt="최근 등록한 책" src="../upimg/${i.book_picture }"></div>
-					${i.book_title }
-					${i.book_author } / ${i.book_publisher }
-					<span><fmt:formatNumber value="${i.book_count }" groupingUsed="true"></fmt:formatNumber></span>
-					명이 읽었음
-				</li>
+					<li class="cf">
+						<div class="bookimg">
+							<img alt="파북이가 등록한 책" src="../upimg/${i.book_picture }">
+						</div>
+						<a href="../book/bookDetail.do?book_no=${i.book_no }">	
+						<div class="booktxt">
+							<h5>${i.book_title }</h5>
+							<p class="book_author">${i.book_author } / ${i.book_publisher }</p>
+							<p class="star">${i.book_recommend }</p>
+							<p class="read"><span id="cnt">
+							<fmt:formatNumber value="${i.book_count }" groupingUsed="true"/>
+							</span>명이 읽었음</p>
+						</div>
+						</a>
+					</li>
 				</c:forEach>
 				</ul>
 				<a href="#"> 전체 책 둘러보기</a>
@@ -80,7 +88,10 @@
 					<h3>사랑받는 파북이</h3>
 					<ul class="list">
 					<c:forEach items="${loveuser }" var="i">
-						<li><a href="../my/pabook.do?pabook_no=${i.user_no }">${i.ranknum}. ${i.user_name }</a></li>
+						<li>
+						<a href="../my/pabook.do?pabook_no=${i.user_no }">
+						${i.ranknum}. ${i.user_name }
+						</a></li>
 					</c:forEach>
 					</ul>
 				</article>				

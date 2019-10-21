@@ -41,4 +41,8 @@ public class MyDAO extends AbstractDAO{
 		delete("my.likeCancel",dto);
 	}
 
+	public int likeCnt(String like_to) {
+		return (int) selectOne("my.likeCnt",like_to);
+	}
+
 }
