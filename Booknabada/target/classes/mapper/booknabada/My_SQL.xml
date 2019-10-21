@@ -32,4 +32,7 @@
 		</if>
 		user_email = #{user_email } ,user_tel = #{user_tel } WHERE user_no = #{user_no }
 	</update>
+	<select id="likeCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM like_info WHERE like_to=#{like_to }
+	</select>
 </mapper>

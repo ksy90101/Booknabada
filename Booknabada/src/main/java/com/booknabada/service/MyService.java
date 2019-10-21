@@ -25,5 +25,6 @@ public interface MyService {
 
 	void modifyuserAction(LoginDTO dto) throws Exception;
 
+	int likeCnt(String like_to) throws Exception;;
 
 }

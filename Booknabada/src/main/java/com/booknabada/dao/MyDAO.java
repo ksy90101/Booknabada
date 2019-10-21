@@ -45,6 +45,8 @@ public class MyDAO extends AbstractDAO{
 		update("my.modifyuserAction", dto);
 	}
 
-
+	public int likeCnt(String like_to) {
+		return (int) selectOne("my.likeCnt",like_to);
+	}
 
 }
