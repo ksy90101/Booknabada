@@ -12,11 +12,6 @@
 <script type="text/javascript">
 function check(){
 	
-	if (document.frm.checkagree.checked == false) {
-		alert("약관에 동의해주세요");
-		return false;
-	}
-	
 	if (document.frm.what.value == 'card') {
 		if (document.frm.cardNo.value == "") {
 			alert("카드번호를 입력하세요");
@@ -85,6 +80,11 @@ function check(){
 			return false;
 		}
 		
+	}
+	
+	if (document.frm.checkagree.checked == false) {
+		alert("약관에 동의해주세요");
+		return false;
 	}
 }
 function showSection(section){

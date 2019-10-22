@@ -49,7 +49,7 @@
 		</div>
 		<div id="boxcontent">
 			<div id=box style="height: 15%;">
-				<p>20191025101058</p>
+				<p>${orderNo }</p>
 			</div>
 			<div id=box style="height: 15%;">
 				
@@ -73,7 +73,7 @@
 			<div id=box style="height: 30%;">
 				<p>카드 결제</p>
 				<br>
-				<p style="float: left;">${payData.cardUser }(${payData.cardNo })</p>
+				<p style="float: left;">${payData.cardNo }</p>
 				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
 				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
 			</div>
@@ -83,7 +83,7 @@
 			<div id=box style="height: 30%;">
 				<p>계좌이체</p>
 				<br>
-				<p style="float: left;">${payData.bankName } ${payData.bankNo }</p>
+				<p style="float: left;">${payData.bankName }  ${payData.bankNo }</p>
 				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
 				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
 			</div>
@@ -93,7 +93,7 @@
 			<div id=box style="height: 30%;">
 				<p>핸드폰 결제</p>
 				<br>
-				<p style="float: left;">${payData.phoneUser} ${payData.phoneNo }</p>
+				<p style="float: left;">${payData.phoneNo}</p>
 				<p style="margin: 0 10px; float: left; font-weight: inherit;">승인일시:</p>
 				<input type="text" id='date' name="orderTime"readonly style="border:none; background-color:transparent;">
 			</div>
