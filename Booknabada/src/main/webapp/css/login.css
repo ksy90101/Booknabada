@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 
-body{
-	/*  background-color:#D6C9FC; */
+#login{
+	width: 100%;
+	height: 100%;
 }
 .login_wrap{
 	margin: auto;
@@ -19,7 +20,7 @@ body{
 	text-align: center;	
 }
 
-li{
+.form_wrap li{
 	color:white;
 }
 

@@ -35,7 +35,6 @@
 #bookList{width: 73%;float: left;}
 #bookList .currentbookimg{width: 120px; height:100%; float:left; margin-right: 10px;}
 #bookList .list{width: 100%; margin-bottom: 20px}
-<<<<<<< HEAD
 #bookList .list li{width: 32%; float: left; margin: 3px;}
 .currentbookimg img{ width: 100%; height: 100%;}
 .list li p{
@@ -49,30 +48,13 @@
 .list li p:nth-child(2){font-weight: bold;}
 
 /* 사랑받는 파북이 */
-=======
-#bookList .list li{width: 33%;height: 200px; float: left; margin-bottom: 20px;}
-#bookList .list li .bookimg{width: 150px;height: 200px;float: left;margin-right: 20px;}
-#bookList .list li .booktxt{}
-#bookList .list li .booktxt h5{font-size: 26px; width: 58%;line-height:30px; display: -webkit-box; display: -ms-flexbox; display: box;max-height:76px; overflow:hidden; vertical-align:top; text-overflow: ellipsis; word-break:break-all; -webkit-box-or
-	ient:vertical; -webkit-line-clamp:2; margin-bottom: 10px; margin-top: 10px;height: 60px;}
-#bookList .list li .booktxt .book_author{margin-bottom: 10px;}
-#bookList .list li .booktxt .star{font-size: 24px;margin-bottom: 20px;}
-#bookList .list li .booktxt .read{}
-#cnt{font-weight: bold;}
-
-
->>>>>>> refs/remotes/origin/heeeeejin5
 #loveBook{width: 25%;float: right;}
 #loveBook .list li{width: 215px; height: 73px;}
 #loveBook .pabook{margin-top:100px}
 #loveBook .pabook .list{}
 #loveBook .pabook .list li{}
-<<<<<<< HEAD
 #loveBook .pabook .list li span{color: #bcb0fe; font-size: 30px;}
 #loveBook .pabook .list li a{font-size: 30px;}
 #loveBook .sabook{}
 #loveBook .sabook .list{}
 #loveBook .sabook .list li{}
-
-=======
->>>>>>> refs/remotes/origin/heeeeejin5

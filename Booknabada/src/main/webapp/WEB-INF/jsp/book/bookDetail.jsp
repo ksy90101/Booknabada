@@ -21,7 +21,7 @@
 		<p>책 카테고리 경로</p>
 		<div class="booktop_left">
 			<div class="bookimage">
-				<img alt="이미지를 올려주세요" src="../upimg/${bookdetail.book_title }">
+				<img alt="이미지를 올려주세요" src="../upimg/${bookdetail.book_picture }">
 			</div>
 			<div class="bookinfo">
 				<ul class="book_info">

@@ -115,7 +115,7 @@ input[type="radio"]:checked + label span { /* 라디오 버튼 체크되었을�
     width: 1000px;
 }
 .book_info2 .name{
-    width: 270px;
+    width: 250px;
     background-color: #BCB0FE;
 }
 .bnt1, .bnt2{
@@ -139,6 +139,6 @@ input[type="radio"]:checked + label span { /* 라디오 버튼 체크되었을�
 hr{
     border: 1px solid #BCB0FE;
 }
-.book_intro{
-	height: 500px;
-}
+.book_intro{ height: 500px; }
+.book_intro h4 { font-size: 30px !important;}
+.book_intro p { font-size : 15px; }

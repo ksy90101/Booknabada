@@ -4,7 +4,7 @@
 <mapper namespace="order">
 
 	<!-- 보드 전체 DB가져오기 -->
-	<select id="booklsist" resultType="com.booknabada.dto.BookDTO">
+	<select id="orderBook" resultType="com.booknabada.dto.BookDTO">
 		SELECT * FROM order_view WHERE book_no = #{book_no }
 	</select>
 	
@@ -16,8 +16,6 @@
 		<![CDATA[
 			INSERT INTO order_info (order_no, name, loca, phone, note, pay_info, totalBook, totalPrice, user_no)
 			VALUES(#{order_no}, #{name}, #{loca}, #{phone}, #{note}, #{pay_info}, #{totalBook}, #{totalPrice}, 1) 
-			
-			
 		]]>
 	</insert>
 	

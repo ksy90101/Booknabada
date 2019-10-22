@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-
+<div id="login">
 	<div class="login_wrap">
 	
 		<div class="image">
@@ -38,11 +38,11 @@
 			</form>
 		</div>
 		<div class="link">
-			<a id="link_" href="findid.do">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;
-			<a id="link_" href="findpw.do">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;
-			<a id="link_" href="newuser.do">회원가입</a>
+			<a id="link_" href="../login/findid.do">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;
+			<a id="link_" href="../login/findpw.do">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;
+			<a id="link_" href="../login/newuser.do">회원가입</a>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

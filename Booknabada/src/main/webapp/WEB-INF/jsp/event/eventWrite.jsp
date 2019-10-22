@@ -34,7 +34,7 @@ function check(){
 		document.frm.title.focus();
 		return false;
 	}
-	if(document.frm.content.value == ""){
+	if(CKEDITOR.instances.content.getData() == ""){
 		alert("내용을 입력해주세요");
 		document.frm.content.focus();
 		return false;
@@ -53,7 +53,7 @@ function check(){
 			<h3 id="writetitle">제목</h3>
 			<input type="text" name="title" />
 			<h3 id="writetitle">내용</h3>
-			<textarea name="content"></textarea>
+			<textarea name="content" id="content"></textarea>
 			<script type="text/javascript">
 			CKEDITOR.replace('content', {width:980, height:340});
 			</script>

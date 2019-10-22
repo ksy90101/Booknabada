@@ -50,16 +50,16 @@
 					<div class="bookimg">
 						<img alt="파북이가 등록한 책" src="../upimg/${b.book_picture }">
 					</div>
-					<a href="../book/bookDetail.do?book_no=${b.book_no }">	
 					<div class="booktxt">
-						<h5>${b.book_title }</h5>
-						<p class="book_author">${b.book_author } / ${b.book_publisher }</p>
-						<p class="star">${b.book_recommend }</p>
-						<p class="read"><span id="cnt">
-						<fmt:formatNumber value="${b.book_count }" groupingUsed="true"/>
-						</span>명이 읽었음</p>
+						<a href="../book/bookDetail.do?book_no=${b.book_no }">	
+							<h5>${b.book_title }</h5>
+							<p class="book_author">${b.book_author } / ${b.book_publisher }</p>
+							<p class="star">${b.book_recommend }</p>
+							<p class="read"><span id="cnt">
+							<fmt:formatNumber value="${b.book_count }" groupingUsed="true"/>
+							</span>명이 읽었음</p>
+						</a>
 					</div>
-					</a>
 				</li>
 			</c:forEach>
 			</ul>

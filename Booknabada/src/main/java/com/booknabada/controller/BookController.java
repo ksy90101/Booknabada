@@ -43,7 +43,7 @@ public class BookController {
     		page = Util.checkInt((String) commandMap.get("page"));
     	}
     	List<BookDTO> booklist = bookService.booklist(((page-1) * 15));
-   
+    	System.out.println(page);
     	mv.addObject("booklist", booklist);
     	mv.addObject("page", page);
     	mv.addObject("totalCount", booklist.get(0).getTotalCount());

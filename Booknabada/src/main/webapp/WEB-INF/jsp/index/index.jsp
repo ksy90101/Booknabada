@@ -38,7 +38,7 @@
 							<img alt="책이미지" src="../upimg/${i.book_picture }">
 							</a>
 							</div>
-							
+							<a href="../book/bookDetail.do?book_no=${i.book_no }">	
 							<div class="txt">
 								<h5>${i.book_title }</h5>
 								<p class="book_author">By ${i.book_author }</p>
@@ -66,7 +66,6 @@
 				<h3>최근 등록된 책</h3>
 				<ul class="list cf">
 				<c:forEach items="${currentbook }" var="i">
-<<<<<<< HEAD
 				<li>
 					<a href="../book/bookDetail.do?book_no=${i.book_no }">
 					<div class="currentbookimg"><img alt="최근 등록한 책" src="../upimg/${i.book_picture }"></div>
@@ -78,23 +77,6 @@
 					명이 읽음</p>
 				</a>
 				</li>
-=======
-					<li class="cf">
-						<div class="bookimg">
-							<img alt="파북이가 등록한 책" src="../upimg/${i.book_picture }">
-						</div>
-						<a href="../book/bookDetail.do?book_no=${i.book_no }">	
-						<div class="booktxt">
-							<h5>${i.book_title }</h5>
-							<p class="book_author">${i.book_author } / ${i.book_publisher }</p>
-							<p class="star">${i.book_recommend }</p>
-							<p class="read"><span id="cnt">
-							<fmt:formatNumber value="${i.book_count }" groupingUsed="true"/>
-							</span>명이 읽었음</p>
-						</div>
-						</a>
-					</li>
->>>>>>> refs/remotes/origin/heeeeejin5
 				</c:forEach>
 				</ul>
 				
@@ -104,15 +86,8 @@
 					<h3>사랑받는 파북이</h3>
 					<ul class="list">
 					<c:forEach items="${loveuser }" var="i">
-<<<<<<< HEAD
 						<li><a href="../my/pabook.do?pabook_no=${i.user_no }">
 						<span>${i.ranknum}.</span> ${i.user_name }</a></li>
-=======
-						<li>
-						<a href="../my/pabook.do?pabook_no=${i.user_no }">
-						${i.ranknum}. ${i.user_name }
-						</a></li>
->>>>>>> refs/remotes/origin/heeeeejin5
 					</c:forEach>
 					</ul>
 				</article>				
@@ -124,25 +99,17 @@
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
 <script>
-
 /*visual banner*/
 $(function(){
 	var width=$(window).width();
 	$("#visualWrap .v-mask").css("width",width).css("margin-left",-(width/2));
-
-
 	var first = "", last = "", cnt = 0, timer =0, delay=3000;
-
 	timer = setInterval(make, delay);
-
 	function make(){
 		next();
 	}
-
-
 	last = $(".v-banner li").last();
 	$(".v-banner").prepend(last).css("margin-left","-=760px")
-
 	$(".prev").click(function(){
 		if(!$(".v-banner").is(":animated")){	
 			$(".v-banner").stop().animate({marginLeft:"+=760px"},1000,function(){
@@ -153,8 +120,6 @@ $(function(){
 		})
 		}
 	})
-
-
 	$(".next").click(function(){
 		if(!$(".v-banner").is(":animated")){	
 			next();
@@ -162,8 +127,6 @@ $(function(){
 			timer = setInterval(make,delay)
 		}
 	})
-
-
 	function next(){
 		$(".v-banner").stop().animate({marginLeft:"-=760px"},1000,function(){
 			first = $(".v-banner li").first();
@@ -171,9 +134,6 @@ $(function(){
 		})
 	}
 })
-
-
 </script>
-
 </body>
 </html>

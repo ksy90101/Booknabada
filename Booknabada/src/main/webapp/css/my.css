@@ -61,9 +61,10 @@
 #container.pabook .bottom h4{font-size: 30px; font-weight: 500; margin: 50px 0 30px;}
 #container.pabook .bottom ul{}
 #container.pabook .bottom ul li{width: 33%;height: 200px; float: left; margin-bottom: 20px;}
-#container.pabook .bottom ul li .bookimg{width: 150px;height: 200px;float: left;margin-right: 20px;}
-#container.pabook .bottom ul li .booktxt{}
-#container.pabook .bottom ul li .booktxt h5{font-size: 26px; width: 58%;line-height:30px; display: -webkit-box; display: -ms-flexbox; display: box;max-height:76px; overflow:hidden; vertical-align:top; text-overflow: ellipsis; word-break:break-all; -webkit-box-or
+#container.pabook .bottom ul li .bookimg{width: 28%; overflow:hidden; height: 200px;float: left;margin-right: 20px;}
+#container.pabook .bottom ul li .bookimg img{width:100%}
+#container.pabook .bottom ul li .booktxt{float:right; width:70%; margin-top:-200px}
+#container.pabook .bottom ul li .booktxt h5{font-size: 26px; width: 90%;line-height:30px; display: -webkit-box; display: -ms-flexbox; display: box;max-height:76px; overflow:hidden; vertical-align:top; text-overflow: ellipsis; word-break:break-all; -webkit-box-or
 	ient:vertical; -webkit-line-clamp:2; margin-bottom: 10px; margin-top: 10px;height: 60px;}
 #container.pabook .bottom ul li .booktxt .book_author{margin-bottom: 10px;}
 #container.pabook .bottom ul li .booktxt .star{font-size: 24px;margin-bottom: 20px;}

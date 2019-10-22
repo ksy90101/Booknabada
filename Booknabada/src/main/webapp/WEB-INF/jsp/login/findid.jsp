@@ -44,9 +44,9 @@ select {
 	width: 95px;
 }
 
-button {
+.form_wrap button {
 	height: 48px;
-	width: 200px;
+	width: 282px;
 	background-color: #A695FF;
 	border-color: #A695FF;
 	border-style: none;
@@ -64,6 +64,8 @@ button {
 #link_ {
 	color: white;
 }
+
+.inp input { margin-bottom: 5px; }
 </style>
 </head>
 <body>
@@ -79,18 +81,7 @@ button {
 				<div class="inp">
 					<ul>
 						<li><input type="text" placeholder="이름을 입력해주세요." name ="name"></li>
-	
 						<li><input type="text" placeholder="이메일을 입력해주세요." name ="email"></li>
-						<li><input type="text" id="name" name="name"
-							placeholder="이름을 입력해주세요."></li>
-
-						<li><input type="text" id="email" name="email"
-							placeholder="이메일을 입력하세요" class="form-control" /></li>
-						<li><button type="button" class="btn btn-info" id="emailBtn">이메일
-							발송</button>
-						<button type="button" class="btn btn-info" id="emailAuthBtn">이메일
-							인증</button>
-						</li>
 					</ul>
 				</div>
 				<br>
@@ -103,6 +94,5 @@ button {
 			<a id="link_" href="newuser.do">회원가입</a>
 		</div>
 	</div>
-	<input type="hidden" path="random" id="random" value="${random }" />
 </body>
 </html>
