@@ -1,5 +1,7 @@
 package com.booknabada.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -22,7 +24,7 @@ public class LoginController {
 	@Resource(name = "loginService")
 	private LoginService loginService;
 
-	// 로그인 화면 
+	// 로그인 화면 보여주기
 	@RequestMapping(value = "login/login.do")
 	public ModelAndView login() throws Exception{
 		ModelAndView mv = new ModelAndView("login/login");
@@ -33,29 +35,31 @@ public class LoginController {
 	// 로그인 구현
 	@RequestMapping(value = "login/loginAction.do")
 	public ModelAndView loginAction(HttpServletRequest request) throws Exception {
-		ModelAndView mv = null;
+		ModelAndView mv = new ModelAndView();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		LoginDTO dto = new LoginDTO();
-		dto.setUser_id(id);
-		dto.setUser_pw(pw);
 		
-		int level = loginService.level(id);
-		String name = loginService.login(dto);
-		int user_no = loginService.user_no(dto);
-		if(name != null) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("pw", pw);
+		
+		LoginDTO dto = loginService.login(map);
+		
+		if(dto != null) {
+			String name = dto.getUser_name();
+			String level = dto.getUser_level();
+			int user_no = dto.getUser_no();
+			// 섹션에 넣기
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("id", id);
 			session.setAttribute("level",level);
 			session.setAttribute("user_no", user_no);
 
-			System.out.println(name);
-			System.out.println(id);
-			System.out.println(level);
-			mv = new ModelAndView("redirect:../index.do");
+			mv.setViewName("redirect:../index.do");
 		}else {
-			mv = new ModelAndView("redirect:login.do");
+			mv.setViewName("redirect:../login/login.do");
 		}
 		return mv;
 	}
