@@ -269,9 +269,9 @@ function check(){
 						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
 						</c:forEach>
 						<div>
-						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
-						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />">
-						<p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
+						<span><input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />"></span>
+						<span id="totalPrice" style="font-size: 30px;">원</span>
 						</div>
 						
 					</div>

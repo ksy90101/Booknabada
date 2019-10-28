@@ -198,7 +198,6 @@ public class OrderController {
 			
 			//오더내역 DB에 삽입
 			OrderDTO dto = new OrderDTO();
-			Long order_no = Long.parseLong(today + "1");
 			
 			dto.setOrder_no(order_no);
 			dto.setUser_no(1);
