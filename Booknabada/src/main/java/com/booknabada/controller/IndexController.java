@@ -57,4 +57,13 @@ public class IndexController {
 		ModelAndView mv=new ModelAndView("index/privacy");
 		return mv;
 	}
+	
+	@RequestMapping(value = "index/company.do")
+	public ModelAndView company() throws Exception{
+		ModelAndView mv=new ModelAndView("index/company");
+		
+		return mv;
+	}
+	
+	
 }
