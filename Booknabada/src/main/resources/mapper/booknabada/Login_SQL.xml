@@ -4,8 +4,8 @@
 <mapper namespace="login">
 	
 	<!-- 로그인시 유저 네임 가져오기(암호화 구현) -->
-	<select id="login" parameterType="com.booknabada.dto.LoginDTO" resultType="String">
-	SELECT user_name FROM user_info WHERE user_id =#{user_id} AND user_pw =(SELECT HEX(AES_ENCRYPT(#{user_pw},'new')))	
+	<select id="login" parameterType="HashMap" resultType="com.booknabada.dto.LoginDTO">
+	SELECT * FROM user_info WHERE user_id =#{id } AND user_pw =(SELECT HEX(AES_ENCRYPT(#{pw },'new')))	
 	</select>
 	
 	<!-- 로그인시 레벨 불러오기 -->

@@ -1,5 +1,7 @@
 package com.booknabada.service;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -20,22 +22,6 @@ public class LoginServiceImpl implements LoginService {
 	public int joinAction(LoginDTO dto) throws Exception {
 		return loginDAO.joinAction(dto);
 	}
-	
-	@Override
-	public String login(LoginDTO dto) throws Exception {
-		
-		return loginDAO.login(dto);
-	}
-
-	@Override
-	public int level(String id) throws Exception {
-		return loginDAO.level(id);
-	}
-
-	@Override
-	public int user_no(LoginDTO dto) throws Exception {
-		return loginDAO.user_no(dto);
-	}
 
 	@Override
 	public int checkID(String id) throws Exception {
@@ -45,6 +31,11 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String finidAction(LoginDTO dto) throws Exception {
 		return loginDAO.findidAction(dto);
+	}
+
+	@Override
+	public LoginDTO login(Map<String, Object> map) throws Exception {
+		return loginDAO.login(map);
 	}
 
 

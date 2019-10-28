@@ -13,16 +13,16 @@
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/order.css" rel="stylesheet">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 function locaCheck(){
-	
 	if (document.frm.loca_check == '1') {
 		$("#store").show();
 	} else{
 		$("#store").hide();
 	}
 	
-new daum.Postcode({
+new daum.Postcode({ // 다음 주소 API
     oncomplete: function(data) {
     	
     	var zonecode = data.zonecode
@@ -35,6 +35,7 @@ new daum.Postcode({
     }
 }).open();
 }
+
 function check(){
 	//alert("작동합니다");
 	if (document.frm.name.value == "") {
@@ -92,6 +93,9 @@ function check(){
 }
 </script>
 
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 	
@@ -269,9 +273,9 @@ function check(){
 						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
 						</c:forEach>
 						<div>
-						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
-						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />">
-						<p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
+						<%-- <input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />"> --%>
+						 <p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
 						</div>
 						
 					</div>
