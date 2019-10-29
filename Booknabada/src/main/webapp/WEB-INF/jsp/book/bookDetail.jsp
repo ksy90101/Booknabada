@@ -12,6 +12,14 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>책 상세보기 - ${bookdetail.book_title }</title> <!-- 책 상세보기 브라우저 제목 : 상세보기 하고 있는 책 제목 나오기 -->
 <link rel="stylesheet" href="../css/bookdetail.css">
+<script type="text/javascript">
+	function wishlistcheck(num){
+		alert("장바구니에 추가하였습니다");
+		//결제선택버튼값을 hidden으로 보내기
+		location.href= 'wishlistAction.do?book_no='+num;
+		//frm.book_no.value = ${bookdetail.book_no};
+	}
+</script>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -47,7 +55,7 @@
 				</p>
 			</div>
 			<div class="orderbnt">
-				<button class="bnt1">장바구니</button>
+				<button class="bnt1" onclick="wishlistcheck(${bookdetail.book_no})">장바구니</button>
 				<button class="bnt2" onclick="location.href='../order/order.do?book_no=${bookdetail.book_no}'">바로구매</button>
 			</div>
 		</div>

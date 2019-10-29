@@ -29,11 +29,32 @@ public class OrderServiceImpl implements OrderService{
 		return orderDAO.storeList(store);
 	}
 	
+	// 포인트 가져오기
+	@Override
+	public int getPoint(String id) throws Exception {
+			return orderDAO.getPoint(id);
+	}	
+	
 	//주문값 입력
 	@Override
 	public void orderFinishAction(OrderDTO dto) throws Exception {
 		orderDAO.orderFinish(dto);
 	}
+
+	@Override
+	public void wishlistAction(OrderDTO dto) throws Exception {
+		orderDAO.wishlistAction(dto);
+		
+	}
+
+	@Override
+	public List<BookDTO> wishlistBook(int user_no) throws Exception {
+		return orderDAO.wishlistBook(user_no);
+	}
+
+	
+
+
 
 	
 	

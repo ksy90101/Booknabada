@@ -271,7 +271,6 @@
 }
 
 #totalBook {
-	width: 200px;
 	border: none;
 	font-size: 36px;
 	font-weight: bold;
@@ -282,7 +281,6 @@
 }
 
 #totalPrice {
-	width: 260px;
 	font-weight: bold;
 	color: #F1B40B;
 	float: left;

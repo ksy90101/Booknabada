@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.BookDTO;
+import com.booknabada.dto.OrderDTO;
+import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.BookService;
+import com.booknabada.service.OrderService;
 import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
@@ -29,6 +32,9 @@ public class BookController {
 	
 	@Resource(name="bookService")
 	private BookService bookService;
+	
+	@Resource(name="orderService")
+	private OrderService orderService;
 	
 	@RequestMapping(value="book/booklist.do")
     public ModelAndView booklist(CommandMap commandMap, HttpServletRequest request) throws Exception{
@@ -56,12 +62,42 @@ public class BookController {
 		ModelAndView mv = new ModelAndView("book/bookDetail");
 		
 		int book_no = Util.checkInt(request.getParameter("book_no")); // 책 번호 가져오기 -> 책 번호는 String으로 들어오기때문에 int형으로 변경
-		System.out.println(book_no);
+		//System.out.println(book_no);
 
 		bookService.countUp(book_no);
 		
 		BookDTO dto = bookService.bookDetail(book_no);
 		mv.addObject("bookdetail", dto);
+		return mv;
+	}
+	
+	//장바구니 추가실행
+	@RequestMapping(value = "book/wishlistAction.do")
+	public ModelAndView wishlistAction(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		
+		int book_no = Util.checkInt(request.getParameter("book_no")); // 책 번호 가져오기 -> 책 번호는 String으로 들어오기때문에 int형으로 변경
+		
+		
+		if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			mv.setViewName("book/bookDetail");
+			
+			OrderDTO dto = new OrderDTO();
+			dto.setBook_no(book_no);
+			dto.setUser_name((String)session.getAttribute("id"));
+			
+			//DB쪽으로 보내기
+    		orderService.wishlistAction(dto);
+    	}else {
+    		mv.setViewName("redirect:../login/login.do");
+    	}
+		
+		//화면에 뿌려주기
+		BookDTO dto = bookService.bookDetail(book_no);
+		mv.addObject("bookdetail", dto);
+		
 		return mv;
 	}
 	
@@ -120,7 +156,7 @@ public class BookController {
     			String upFileName = today+"_"+file.getOriginalFilename();	
     			//파일 업로드 경로
     			String path = request.getSession().getServletContext().getRealPath("");
-    			System.out.println("리얼경로 : "+path);
+    			//System.out.println("리얼경로 : "+path);
     			File f = new File(path+"upimg/"+upFileName); //준비
     			file.transferTo(f); //실제 파일 전송
     			//System.out.println("저장경로 : "+f.getPath());	

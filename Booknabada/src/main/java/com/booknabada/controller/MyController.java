@@ -1,5 +1,6 @@
 package com.booknabada.controller;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -15,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.booknabada.dto.BookDTO;
 import com.booknabada.dto.LikeDTO;
 import com.booknabada.dto.LoginDTO;
+import com.booknabada.dto.OrderDTO;
 import com.booknabada.service.MyService;
+import com.booknabada.service.OrderService;
 import com.booknabada.util.Util;
 import com.common.common.CommandMap;
 
@@ -25,6 +28,9 @@ public class MyController {
 	
 	@Resource(name="myService")
 	private MyService myService;
+	@Resource(name="orderService")
+	private OrderService orderService;
+	
 	
 	@RequestMapping(value="my/myhome.do")
     public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
@@ -164,6 +170,27 @@ public class MyController {
     	
     	return mv;
     }	
+	
+	//장바구니 페이지
+	@RequestMapping(value="my/mywishlist.do")
+    public ModelAndView mywishlist(HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		
+		//세션에 맞는 장바구니 목록가져오기
+		int user_no = (int) session.getAttribute("user_no");
+		List<BookDTO> wishlistBook = orderService.wishlistBook(user_no);
+		
+		if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+			mv.addObject("wishlistBook", wishlistBook);
+			mv.setViewName("my/mywishlist");
+    	}else {
+    		mv.setViewName("redirect:../login/login.do");
+    	}
+		
+		return mv;
+	}
 	
 	
 	

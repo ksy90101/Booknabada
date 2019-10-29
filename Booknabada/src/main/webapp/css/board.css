@@ -85,20 +85,8 @@ a:hover{
 	display: table;
 	line-height: 60px;
 }
-.pagingbox{
-	display:table;
-	margin:30px auto;
-}
 
-.paging button{
-	height:30px;
-	width:30px;
-	border-color: #D1C9FE;
-	border-radius:5px;
-	color: #535353;
-	border-style: none;
-}
-=======
+
 @charset "UTF-8";
 .board table {
 	width: 1000px;
@@ -190,17 +178,14 @@ a:hover{
 	margin:30px auto;
 }
 
-.paging button{
+
+.pagingbox button{
 	height:30px;
 	width:30px;
 	border-color: #D1C9FE;
 	border-radius:5px;
-<<<<<<< HEAD
 	color: #535353;
 	border-style: none;
+	background-color: #E8E8E8;
 }
-=======
-	color: white;
-	border-style: none;
->>>>>>> refs/heads/yehee
->>>>>>> refs/heads/Yehee
+
