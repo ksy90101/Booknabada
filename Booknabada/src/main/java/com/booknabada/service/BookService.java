@@ -16,8 +16,10 @@ public interface BookService {
 	// 책 추가
 	void bookAddAction(BookDTO dto) throws Exception;
 
+	// 조회수
 	void countUp(int book_no) throws Exception;
 
+	// 책 검색
 	List<BookDTO> searchbooklist(Map<String, Object> map) throws Exception;
 
 }

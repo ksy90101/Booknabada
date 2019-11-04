@@ -27,7 +27,6 @@ public class BookServiceImpl implements BookService{
 	// 도서 상세 정보
 	@Override
 	public BookDTO bookDetail(int book_no) throws Exception {
-
 		return bookDAO.bookDetail(book_no);
 	}
 
@@ -41,7 +40,6 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public void countUp(int book_no) throws Exception {
 		bookDAO.countUp(book_no);
-		
 	}
 
 	// 책 검색
@@ -49,6 +47,5 @@ public class BookServiceImpl implements BookService{
 	public List<BookDTO> searchbooklist(Map<String, Object> map) throws Exception {
 		return bookDAO.searchbooklist(map);
 	}
-	
 	
 }

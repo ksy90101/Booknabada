@@ -1,6 +1,5 @@
 package com.booknabada.controller;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.booknabada.dao.LoginDAO;
 import com.booknabada.dto.LoginDTO;
 import com.booknabada.service.MailService;
 

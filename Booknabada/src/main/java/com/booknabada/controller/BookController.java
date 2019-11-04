@@ -13,14 +13,15 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.booknabada.dto.BookDTO;
 import com.booknabada.dto.OrderDTO;
-import com.booknabada.dto.QnaDTO;
 import com.booknabada.service.BookService;
 import com.booknabada.service.OrderService;
 import com.booknabada.util.Util;
@@ -36,11 +37,19 @@ public class BookController {
 	@Resource(name="orderService")
 	private OrderService orderService;
 	
+	@RequestMapping(value = "book/infiniteScrollDown.do")
+	@ResponseBody
+	public List<BookDTO> infiniteScrollDown(@RequestBody Map<String, Object> map) throws Exception {
+		int page = (int) map.get("page");
+		System.out.println(page);
+		return bookService.booklist((page-1)*15);
+	}
+	
 	@RequestMapping(value="book/booklist.do")
-    public ModelAndView booklist(CommandMap commandMap, HttpServletRequest request) throws Exception{
-    	ModelAndView mv = new ModelAndView("book/booklist");
+	public ModelAndView booklist(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("book/booklist");
     	
-    	int page = 1;
+		int page = 1;
     	
     	if(request.getParameter("page") != null) {
     		page = Util.checkInt(request.getParameter("page"));
@@ -49,7 +58,6 @@ public class BookController {
     		page = Util.checkInt((String) commandMap.get("page"));
     	}
     	List<BookDTO> booklist = bookService.booklist(((page-1) * 15));
-    	System.out.println(page);
     	mv.addObject("booklist", booklist);
     	mv.addObject("page", page);
     	mv.addObject("totalCount", booklist.get(0).getTotalCount());
