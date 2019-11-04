@@ -38,7 +38,8 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
+		System.out.println(id);
+		System.out.println(pw);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("pw", pw);
@@ -57,9 +58,9 @@ public class LoginController {
 			session.setAttribute("level",level);
 			session.setAttribute("user_no", user_no);
 
-			mv.setViewName("redirect:../index.do");
+			mv.setViewName("redirect:../index/index.do");
 		}else {
-			mv.setViewName("redirect:../login/login.do");
+			mv.setViewName("redirect:../index/index.do");
 		}
 		return mv;
 	}

@@ -48,7 +48,7 @@ public class BookController {
     	mv.addObject("page", page);
     	mv.addObject("totalCount", booklist.get(0).getTotalCount());
     	return mv;
-    }	
+    }
 	
 	// 책 상세 보기
 	@RequestMapping(value = "book/bookDetail.do")
@@ -119,7 +119,7 @@ public class BookController {
     			String today = sdf.format(new Date());
     			String upFileName = today+"_"+file.getOriginalFilename();	
     			//파일 업로드 경로
-    			String path = request.getSession().getServletContext().getRealPath("");
+    			String path = "/home/booknabada/webapps/upload/";
     			System.out.println("리얼경로 : "+path);
     			File f = new File(path+"upimg/"+upFileName); //준비
     			file.transferTo(f); //실제 파일 전송

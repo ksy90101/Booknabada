@@ -33,7 +33,6 @@
 					<c:when test="${sessionScope.id eq null }">
 						<li class="login">
 							<a href="#" class="openMask"><img src="../images/login.png" alt="로그인"></a>
-							
 						</li>
 					</c:when>
 					<c:otherwise>

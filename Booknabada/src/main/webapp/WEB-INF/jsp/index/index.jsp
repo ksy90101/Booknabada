@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<title>index</title>
+<title>BOOKNABADA</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -134,6 +134,9 @@ $(function(){
 		})
 	}
 })
+</script>
+<script type="text/javascript">
+
 </script>
 </body>
 </html>
