@@ -1,8 +1,86 @@
 @charset "UTF-8";
 
+.booklist_box{
+	margin: auto 100px;
+    width: 890px;
+    height: 720px;
+    border-bottom: 1px solid #BCB0FE;
+}
+
+.booklist_wrap{
+    width: 890px;
+    height: 700px;
+    overflow: auto; overflow-x: hidden;
+}
+
+.bookimage{
+    width: 130px;
+    height: 203px;
+}
+
+.bookimg{
+    width:150px;
+    height: 203px;
+    float:left;
+}
+
+.booklist:after{
+	clear:both;
+	content:"";
+	display:block;
+}
+
+.book{
+	width:400px;
+    max-width: 450px;
+    height: 220px;
+    margin: 10px;
+    float:left;
+   	background-color: white;
+}
+.bookinfo{
+	float:left;	
+	width: 250px;
+	height: 203px;
+}
+
+.bookinfo li{
+	margin: 10px 0;
+}
+
+.booktitle{
+	text-overflow:ellipsis; /* 책 제목이 넓이보다 많이 입력한다면 생략 */
+	overflow:hidden; /* 최대 넓이 이상 넘어가면 감추기 */
+	white-space: nowrap; /* 공백문자가 있는 경우 줄바꿈하지 않고 한줄로 나오게 함 */
+	max-height:30px;
+    font-size: 25px;
+   	font-weight: bold;
+   	margin-bottom:10px;
+}
+
+.bookwriter{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.button{
+	width: 200px;
+	height: 60px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 3;
+	border-style: none;
+	margin: 20px 400px 0;
+	display: table;
+}
+
+
 
 /* myhome1 */
-#container{width:100%;height: 100%;margin-top: 60px}
+#container{width:100%;height: 1000px;margin-top: 60px}
 #container .inner-wrap{width: 90%; margin :auto;height: 100%}
 #container .side-menu{width:20%; height: 100%;float: right; background:#BCB0FE; }
 #container .side-menu a{color:#fff;}
@@ -11,7 +89,7 @@
 #container .side-menu ul li:last-child{}
 #container .side-menu ul li:hover{background: rgba(255,255,255,1)}
 #container .side-menu ul li:hover a{color:#BCB0FE;}
-#container .content{width: 80%; float: left;height:100%;background: #f9f9f9}
+#container .content{width: 80%; float: left;height:800px;background: #f9f9f9}
 #container .content .content-wrap{width:800px; margin: 60px auto;}
 #container .content-wrap li{width:49%; height: 300px; float: left; background: #fff; margin-bottom: 10px; border:1px solid #eee;box-sizing: border-box;color:#aaa;}
 #container .content-wrap li:nth-child(2n+1){margin-right:1%;}
@@ -34,10 +112,10 @@
 #container.myhome2 .side-menu ul li:hover{background: rgba(255,255,255,1)}
 #container.myhome2 .side-menu ul li:hover a{color:#BCB0FE;}
 
-#container .content{width: 80%; float: left;height:100%;background: #fff}
+#container .content{width: 80%; float: left;height:800px;background: #fff}
 #container.myhome2 .profile-icon{width: 150px; height: 150px; border-radius: 50%; background: #f5f5f5; margin: auto;text-align: center; margin-top: 20px}
 #container.myhome2 .profile-icon img{width: 80px; margin-top: 30px;}
-#container.myhome2 .content{width: 80%; float: left;height:100%;background: #fff; margin-top: 100px;}
+#container.myhome2 .content{width: 80%; float: left;height:800px;background: #fff; margin-top: 100px;}
 #container.myhome2 .content .content-wrap{width:820px; margin: 0 auto 60px;}
 #container.myhome2 .content-wrap li{width:400px; height: 260px; float: left; background: #fff; margin-bottom: 10px; border:1px solid #BCB0FE; border-radius:5px; box-sizing: border-box;color:#aaa;text-align: center; color:#917EFD; font-size: 20px;}
 #container.myhome2 .content-wrap li:last-child{background: #917EFD; text-align: center;}
@@ -70,11 +148,6 @@
 #container.pabook .bottom ul li .booktxt .star{font-size: 24px;margin-bottom: 20px;}
 #container.pabook .bottom ul li .booktxt .read{}
 #cnt{font-weight: bold;}
-
-
-
-
-
 
 
 

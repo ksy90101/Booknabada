@@ -102,9 +102,14 @@
 			
 			<div id=box style="height: 25%;">
 				<div style="float: left; font-size: 32px; font-weight: bold; line-height: 2.0; color: #7c64fd; margin-right: 50px;">
-				${totalBook }</div>
+				<input id="totalBook" style="width:70px" readonly="readonly" name="totalBook" value="${totalBook }">
+				<p id="totalBook" style="font-size: 30px;">권</p>
+				</div>
 				<div style="line-height: 2.0; font-size: 32px; font-weight: bold; float: left; color: #F1B40B;">
-					${totalPrice }</div>
+					<input id="totalPrice" style="width:160px; font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />">
+					 <p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>	
+				</div>
 			</div>
 			<!-- 포인트적립 -->
 			<div id=box style="height: 15%; font-weight: bold; color: #7c64fd; font-size: 18px; line-height: 1.5;">

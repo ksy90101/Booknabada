@@ -46,15 +46,15 @@
 .order {
 	margin: 0 auto;
 	width: 1200px;
-	height: 946.5px;
-	margin-bottom: 20px;
+	height: auto;
+	margin-bottom: 40px;
 }
 
 .list {
 	width: 1200px;
 	overflow: scroll;
 	overflow-x: hidden;
-	height: 810px;
+	height: auto;
 }
 
 #list {
@@ -192,7 +192,6 @@
 }
 
 #totalBook {
-	width: auto;
 	border: none;
 	font-size: 36px;
 	font-weight: bold;
@@ -203,7 +202,6 @@
 }
 
 #totalPrice {
-	width: auto;
 	font-weight: bold;
 	color: #F1B40B;
 	float: left;

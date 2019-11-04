@@ -3,7 +3,7 @@ package com.booknabada.dto;
 public class OrderDTO {
 	
 	private int  user_no, book_no, phone, totalPrice, totalBook, point;
-	private String name, loca, note, pay_info ;
+	private String name, loca, note, pay_info, user_name;
 	private Long order_no;
 	
 	public int getUser_no(int i) {
@@ -71,6 +71,12 @@ public class OrderDTO {
 	}
 	public void setOrder_no(Long order_no) {
 		this.order_no = order_no;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	
 }

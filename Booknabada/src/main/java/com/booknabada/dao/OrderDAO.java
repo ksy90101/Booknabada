@@ -23,9 +23,24 @@ public class OrderDAO extends AbstractDAO{
 		return selectList("order.storelist", store);
 	}
 
+	public int getPoint(String id) {
+		return (int) selectOne("my.getPoint", id);
+	}
+	
 	public void orderFinish(OrderDTO dto) {
 		insert("order.FinishAction", dto);
 	}
-	
+
+	public void wishlistAction(OrderDTO dto) {
+		insert("order.wishlistAction", dto);
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<BookDTO> wishlistBook(int user_no) {
+		return selectList("order.wishlistBook", user_no);
+	}
+
+
 	
 }

@@ -12,8 +12,13 @@ public interface OrderService {
 
 	List<StoreDTO> storeList(int store) throws Exception;
 
+	int getPoint(String id) throws Exception;
+
 	void orderFinishAction(OrderDTO dto) throws Exception;
 
+	void wishlistAction(OrderDTO dto) throws Exception;
+
+	List<BookDTO> wishlistBook(int user_no) throws Exception;
 
 
 }

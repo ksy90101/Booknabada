@@ -35,7 +35,7 @@
 				</ul>
 				<ul class="my-pay">
 					<li><a href="#">포인트</a></li>
-					<li><a href="#">장바구니</a></li>
+					<li><a href="../my/mywishlist.do">장바구니</a></li>
 					<li><a href="#">주문내역</a></li>
 				</ul>
 				<ul class="my-book">
@@ -56,7 +56,7 @@
 						<div class="cart-icon icon">
 							<img src="../images/cart.png" alt="나의 장바구니">
 						</div>
-						<p><a href="#">장바구니 바로가기 →</a></p>
+						<p><a href="../my/mywishlist.do">장바구니 바로가기 →</a></p>
 					</li>
 					<li>
 						<div class="order-list icon">

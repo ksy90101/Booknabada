@@ -10,7 +10,7 @@
 <link href="../css/reset.css" rel="stylesheet">
 <link href="../css/orderPay.css" rel="stylesheet">
 <script type="text/javascript">
-function check(){
+function ordercheck(){
 	
 	if (document.frm.what.value == 'card') {
 		if (document.frm.cardNo.value == "") {
@@ -151,7 +151,8 @@ function showSection(section){
 				<div class=point style="height: 25%;">
 					<div style="float: left; width: 100%; height: 40px; margin-left:20px">
 						<p id=pointTxt style="width: 106px;">보유 포인트</p>
-						<p id=pointTxt style="width: 120px; text-align: right;">199000</p>
+						<p id=pointTxt style="width: 120px; text-align: right;">
+						<fmt:formatNumber value="${point}" groupingUsed="true" /></p>
 						<p id=pointTxt style="width: 40px; margin-left:14px">P</p>
 						<!-- <button id=pointButton>충전하기</button> -->
 					</div>
@@ -265,7 +266,7 @@ function showSection(section){
 					<div>
 						<div id="user_img"></div>
 						<div id="list_book_txt">
-							<p id="user_txt_n">사랑받는 파북이</p>
+							<p id="user_txt_n">${sessionScope.name}</p>
 						</div>
 					</div>
 				</div>
@@ -274,15 +275,17 @@ function showSection(section){
 						<p id=user_title style="margin-left: 20px">
 							총 수량</p>
 						<div style="width: auto; height: auto;">
-							<input id="totalBook" readonly="readonly" name="totalBook" value="${totalBook }">
+							<input id="totalBook" style="width:100px" readonly="readonly" name="totalBook" value="${totalBook }">
+							<p id="totalBook" style="font-size: 30px;">권</p>
 							<input type="hidden" name="totalBook_point" value="${totalBook_point }">
 						</div>
 					</div>
 					<div id="loc_box3" style="height: 100px">
 
 						<p id=user_title style="margin-left: 20px;">결제금액</p>
-						<input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
+						<input id="totalPrice" style="width:180px; font-size: 40px; margin-left: 20px;" 
 						readonly="readonly" name="totalPrice" value="${totalPrice}">
+						 <p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
 
 					</div>
 					<div id="loc_box3" style="height: 100px; margin-top: 18px">
@@ -319,7 +322,7 @@ function showSection(section){
 		<button class=button type="button" onclick="history.back(-1);"
 			style="background-color: rgba(232, 232, 232, 1);">뒤로</button>
 		<div style="width: 15px; height: 30px; float: left;"></div>
-		<button class=button type="submit" onclick="return check();"
+		<button class=button type="submit" onclick="return ordercheck();"
 			style="background-color: #876EFD; color: white;">결제</button>
 	</div>
 	</form>

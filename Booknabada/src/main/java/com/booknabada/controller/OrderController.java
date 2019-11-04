@@ -35,10 +35,8 @@ public class OrderController {
 	public ModelAndView order(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("order/order");
 
-		
 		HttpSession session = request.getSession();
 		
-		int page = 1;
 		int store = 1;
 		int book_no = Util.checkInt(request.getParameter("book_no"));
 		
@@ -107,18 +105,22 @@ public class OrderController {
 //		}
 		
 		
-		//추가하기
-		mv.addObject("totalBook",totalBook);
-		mv.addObject("totalBook_point",totalBook_point);
-		mv.addObject("totalPrice", totalPrice);
-		mv.addObject("totalPrice2", totalPrice2);
-		mv.addObject("orderData", orderData);
-		
-		if (session.getAttribute("id") != null && session.getAttribute("name") != null) {
-			return mv;
-		} else {
-			mv.setViewName("caution");
+		if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
+	    	String id = (String) session.getAttribute("id");
+			int point = orderService.getPoint(id);	    	
+			//추가하기
+	    	mv.addObject("point",point);
+	    	mv.addObject("totalBook",totalBook);
+	    	mv.addObject("totalBook_point",totalBook_point);
+	    	mv.addObject("totalPrice", totalPrice);
+	    	mv.addObject("totalPrice2", totalPrice2);
+	    	mv.addObject("orderData", orderData);
+	    	return mv;
+		}else {
+			mv.setViewName("redirect:../caution.do");
 		}
+		
+		
 		
 		return mv;
 	}
@@ -133,7 +135,7 @@ public class OrderController {
 			//주문번호
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String today = sdf.format(new Date());
-			Long order_no = Long.parseLong(today + "1");
+			Long order_no = Long.parseLong(today + session.getAttribute("user_no"));
 			
 			//order.do에서 넘어온 값 담기
 			Map<Object, String> orderData = new HashMap<Object, String>();
@@ -200,7 +202,7 @@ public class OrderController {
 			OrderDTO dto = new OrderDTO();
 			
 			dto.setOrder_no(order_no);
-			dto.setUser_no(1);
+			dto.setUser_no((int) session.getAttribute("user_no"));
 			dto.setName(orderData.get("name"));
 			if (orderData.get("store") != null) {
 				dto.setLoca(orderData.get("store"));

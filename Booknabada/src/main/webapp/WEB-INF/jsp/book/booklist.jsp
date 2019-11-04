@@ -37,8 +37,23 @@
 							<li class="booktitle">${i.book_title }</li>
 							<li class="bookwriter">${i.book_author }/${i.book_publisher }</li>
 							<li>${i.book_recommend }</li>
-							<li>${i.book_count }</li>
-							<li>${i.book_price }</li>
+							<li>조회수: ${i.book_count }</li>
+							<li><fmt:formatNumber value="${i.book_price }" groupingUsed="true" /></li>
+							<li>${i.user_name }</li>
+						</ul>
+				</a></li>
+				
+				<li class="book">
+				<a href="bookDetail.do?book_no=${i.book_no }">
+						<div class="bookimg">
+							<img src="../upimg/${i.book_picture }" class="bookimage">
+						</div>
+						<ul class="bookinfo">
+							<li class="booktitle">${i.book_title }</li>
+							<li class="bookwriter">${i.book_author }/ ${i.book_publisher }</li>
+							<li>${i.book_recommend }</li>
+							<li>조회수: ${i.book_count }</li>
+							<li><fmt:formatNumber value="${i.book_price }" groupingUsed="true" /></li>
 							<li>${i.user_name }</li>
 						</ul>
 				</a></li>

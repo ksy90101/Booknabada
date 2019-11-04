@@ -36,7 +36,7 @@ new daum.Postcode({ // 다음 주소 API
 }).open();
 }
 
-function check(){
+function ordercheck(){
 	//alert("작동합니다");
 	if (document.frm.name.value == "") {
 		alert("이름을 입력하세요");
@@ -250,16 +250,16 @@ function check(){
 					<p style="font-size: 18px; font-weight: bold; margin: 20px 0 0 20px;">주문자 정보</p>
 					<div>
 						<div id="user_img"></div>
-						<div id="list_book_txt"> <p id="user_txt_n">사랑받는 파북이</p>
+						<div id="list_book_txt"> <p id="user_txt_n">${sessionScope.name}</p>
 						</div>
 					</div>
 				</div>
 				<div id=loc_info>
 					<div id="loc_box3" style="height: 100px; padding-top: 20px">
 						<p style="font-size: 18px; font-weight: bold; margin-left: 20px">총 수량</p>
-						<div style="width: auto; height: auto;">
+						<div>
 							<!-- 총 책수 -->
-							<input id="totalBook" readonly="readonly" name="totalBook" value="${fn:length(orderBook) }">
+							<input id="totalBook" style="width:100px" readonly="readonly" name="totalBook" value="${fn:length(orderBook) }">
 							<p id="totalBook" style="font-size: 30px;">권</p>
 							<input type="hidden" name="totalBook_point" value="${fn:length(orderBook) }">
 							
@@ -273,8 +273,8 @@ function check(){
 						<c:set var= "totalPrice" value="${totalPrice + i.book_price}"/>
 						</c:forEach>
 						<div>
-						<%-- <input id="totalPrice" style="font-size: 40px; margin-left: 20px;" 
-						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />"> --%>
+						<input id="totalPrice" style="width:180px; font-size: 40px; margin-left: 20px;" 
+						readonly="readonly" name="totalPrice" value="<fmt:formatNumber value="${totalPrice}" groupingUsed="true" />">
 						 <p id="totalPrice" style="font-size: 30px; margin-left: 20px;">원</p>
 						</div>
 						
@@ -300,7 +300,7 @@ function check(){
 		<button class=button type="button" onclick="location.href='../index/index.do'"
 			style="background-color: rgba(232, 232, 232, 1);">취소</button>
 		<div style="width: 15px; height: 30px; float: left;"></div>
-		<button class=button type="submit" onclick="return check();"
+		<button class=button type="submit" onclick="return ordercheck();"
 			style="background-color: #876EFD; color: white;">다음</button>
 	</div>
 	</div>
