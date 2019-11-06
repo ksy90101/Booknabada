@@ -76,6 +76,19 @@
 					<!-- endPage -10보다 작으면  -->
 				</div>
 			</div>
+			
+			<div class="search-wrap">
+				<form action="event.do" name="searchfrm" method="post" >
+					<select name="search-opt">
+						<option selected disabled>검색</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>						
+					</select>
+					<input type="text" name="search-txt" >
+					<input type="hidden" name="search" value="1" />
+					<button type="submit">검색</button>
+				</form>
+			</div>
 				
 			<c:if test="${sessionScope.level == 1 }">			
 				<button onclick="location.href='eventWrite.do'">글쓰기</button>

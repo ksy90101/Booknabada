@@ -32,31 +32,55 @@ public class EventController {
     public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("event/event");
     	
+    	int search=0;
+    	if(request.getAttribute("search") != null) {
+    		search = (int) request.getAttribute("search");
+
+	    	System.out.println(search);
+    	}
+
     	int page =1;
     	String whatBoard = "event";
     	
-    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
-    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
-		}
-    	
-    	
-    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
-    	
-    	mv.addObject("eboard",eboard);
-    	mv.addObject("page", page);
-    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
-    	//System.out.println(eboard.get(0).getTotalCount());
+    	if(search == 1) {
+    		if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    		
+    	}else {
+	    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	System.out.println(search);
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    	}
     	
     	mv.addObject("whatBoard", whatBoard);
+
     	return mv;
+    	
     }	
 	
 	@RequestMapping(value="event/eventWrite.do")
     public ModelAndView eventWrite(HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
-    	int level = (int) session.getAttribute("level");
-
+    	System.out.println(session.getAttribute("level"));
+    	int level = Integer.parseInt((String) session.getAttribute("level"));
+    	 
     	String whatBoard = "event";
     	mv.addObject("whatBoard", whatBoard);
     	
