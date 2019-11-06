@@ -76,6 +76,8 @@ public class EventController {
 		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("name"));
+		System.out.println(session.getAttribute("id"));
 		String name = (String) session.getAttribute("name");
 		String id = (String) session.getAttribute("id");
 		

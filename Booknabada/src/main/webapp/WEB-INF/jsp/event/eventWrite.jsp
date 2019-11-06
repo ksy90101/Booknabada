@@ -28,7 +28,7 @@ function cancel(){
 	}
 }
 
-function check(){
+function eventcheck(){
 	if(document.frm.title.value == ""){
 		alert("제목을 입력해주세요");
 		document.frm.title.focus();
@@ -39,7 +39,6 @@ function check(){
 		document.frm.content.focus();
 		return false;
 	}
-	
 }
 
 
@@ -61,7 +60,7 @@ function check(){
 			<input type="file" name="file" accept="image/*" />
 			<div id="button">
 				<button type="button" onclick="cancel()">취소</button>
-				<button type="submit" onclick="return check()">완료</button>
+				<button type="submit" onclick="return eventcheck()">완료</button>
 			</div>
 		</form>
 	</div>
