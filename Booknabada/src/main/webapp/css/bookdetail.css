@@ -21,6 +21,10 @@ li{
     background-color: purple;
     float: left;
 }
+.bookimage img{
+	width: 100%;
+	height: 100%;
+}
 .bookinfo{
     float: left;
     width:	400px;

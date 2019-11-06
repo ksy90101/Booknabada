@@ -140,7 +140,7 @@ public class FreeController {
 				// 시간+파일이름 합치기
 				String upFileName = today + file.getOriginalFilename();
 				// 파일 업로드 경로
-				String path = request.getSession().getServletContext().getRealPath("");
+    			String path = "/home/booknabada/webapps/upload/";
 				// System.out.println("리얼경로 " + path);
 				File f = new File(path + "upimg/" + upFileName); // 준비
 				file.transferTo(f); // 실제 파일 전송

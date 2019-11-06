@@ -37,6 +37,7 @@ public class BookController {
 	@Resource(name="orderService")
 	private OrderService orderService;
 	
+	// 무한스크롤 구현
 	@RequestMapping(value = "book/infiniteScrollDown.do")
 	@ResponseBody
 	public List<BookDTO> infiniteScrollDown(@RequestBody Map<String, Object> map) throws Exception {
@@ -45,22 +46,15 @@ public class BookController {
 		return bookService.booklist((page-1)*15);
 	}
 	
+	// 책 목록 보기
 	@RequestMapping(value="book/booklist.do")
 	public ModelAndView booklist(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView("book/booklist");
     	
 		int page = 1;
-    	
-    	if(request.getParameter("page") != null) {
-    		page = Util.checkInt(request.getParameter("page"));
-    	}
-    	if(commandMap.get("page") != null) {
-    		page = Util.checkInt((String) commandMap.get("page"));
-    	}
+   
     	List<BookDTO> booklist = bookService.booklist(((page-1) * 15));
     	mv.addObject("booklist", booklist);
-    	mv.addObject("page", page);
-    	mv.addObject("totalCount", booklist.get(0).getTotalCount());
     	return mv;
     }
 	
@@ -88,7 +82,6 @@ public class BookController {
 		
 		int book_no = Util.checkInt(request.getParameter("book_no")); // 책 번호 가져오기 -> 책 번호는 String으로 들어오기때문에 int형으로 변경
 		
-		
 		if(session.getAttribute("id") != null && session.getAttribute("name") != null) {
 			mv.setViewName("book/bookDetail");
 			
@@ -105,7 +98,7 @@ public class BookController {
 		//화면에 뿌려주기
 		BookDTO dto = bookService.bookDetail(book_no);
 		mv.addObject("bookdetail", dto);
-		
+	
 		return mv;
 	}
 	
@@ -119,7 +112,6 @@ public class BookController {
     	}else {
     		mv.setViewName("redirect:../login/login.do");
     	}
-    	
     	return mv;
     }	
 	
@@ -176,7 +168,7 @@ public class BookController {
         	bookService.bookAddAction(dto);
         	
         	//mv.addObject("book",dto);    	
-    		mv.setViewName("book/bookaddaction");
+    		mv.setViewName("redirect:../my/myhome.do");
     	}else {
     		mv.setViewName("redirect:../login/login.do");
     	}

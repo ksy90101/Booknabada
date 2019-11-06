@@ -57,7 +57,6 @@ public class LoginController {
 			session.setAttribute("id", id);
 			session.setAttribute("level",level);
 			session.setAttribute("user_no", user_no);
-
 			mv.setViewName("redirect:../index/index.do");
 		}else {
 			mv.setViewName("redirect:../index/index.do");

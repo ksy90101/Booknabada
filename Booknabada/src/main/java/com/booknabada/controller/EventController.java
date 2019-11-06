@@ -55,8 +55,8 @@ public class EventController {
     public ModelAndView eventWrite(HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
-    	int level = (int) session.getAttribute("level");
-
+    	int level = Integer.parseInt((String) session.getAttribute("level"));
+ 
     	String whatBoard = "event";
     	mv.addObject("whatBoard", whatBoard);
     	
@@ -91,7 +91,7 @@ public class EventController {
 			String upFileName = today+"_"+file.getOriginalFilename();
 			
 			//파일 업로드 경로
-			String path = request.getSession().getServletContext().getRealPath("");
+			String path = "/home/booknabada/webapps/upload/";
 			System.out.println("리얼경로 : "+path);
 			File f = new File(path+"upimg/"+upFileName); //준비
 			file.transferTo(f); //실제 파일 전송
