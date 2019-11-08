@@ -1,28 +1,23 @@
 * {
     font-family: 'Noto Sans KR', sans-serif;
 }
-<<<<<<< HEAD
 html,body{height:100%}
 
-li{ /* 리스트 type 제거 */
+.booklist_wrap li{ /* 리스트 type 제거 */
     list-style-type: none;
 }
 .booklist_wrap{
 	margin: 100px auto 0;
     width: 1500px;
-    height: 1280px;
+    height: 1500px;
 }
-/* .nevi{
-    display: inline-block;
-    width: 300px;
-    height: 1080px;
-    float: left;
-} */
+
 .bookimage{
     width: 130px;
     height: 203px;
 }
 
+.booklist_wrap .booklist{ margin-left: 3%; }
 .booklist:after{
 	clear:both;
 	content:"";
@@ -61,21 +56,15 @@ li{ /* 리스트 type 제거 */
 	width:280px;
 	max-height:30px;
     font-size: 25px;
-=======
-.booklist_wrap{
-	margin: 100px auto 0;
-    width: 1500px;
-    height: 1500px;
 }
+
 .nevi{
     display: inline-block;
     width: 300px;
     height: 1080px;
     float: left;
 }
-li{
-    list-style-type: none;
-}
+
 .bookimage{
     width: 130px;
     height: 203px;
@@ -91,9 +80,7 @@ li{
 	max-width:160px;     
 	float:left;	
 }
-.bookinfo li {
-	margin-bottom: 10px;
-}
+.bookinfo li { margin-bottom: 10px; }
 .bookimg{
     width:150px;
     height: 203px;
@@ -111,9 +98,7 @@ li{
 	width:280px;
 	max-height:30px;
     font-size: 30px;
->>>>>>> refs/heads/Yehee
     font-weight: bold;
 }
-.bookwriter{
-    font-size: 20px;
-}
+
+.bookwriter{ font-size: 20px; }

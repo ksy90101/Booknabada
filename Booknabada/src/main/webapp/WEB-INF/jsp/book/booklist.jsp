@@ -88,9 +88,9 @@ var easeEffect = 'easeInQuint';
 								if(this.bookprice )
 								console.log(this);
 								str += "<li class=" + "'book'" + ">"
-								+ "<a href=" + "'bookDetail.do?book_no='" + this.book_no + ">"
+								+ "<a href=" + "'bookDetail.do?book_no=" + this.book_no + "'>"
 								+ "<div class=" + "'bookimg'" + ">"
-								+ "<img src=" + "'../upimg/" + this.book_picture + "class=" + "'bookimage'" + ">"
+								+ "<img src=" + "'../upimg/" + this.book_picture + "' class=" + "'bookimage'" + ">"
 								+ "</div>"
 								+ "<ul class=" + "'bookinfo'" + ">"
 								+ "<li class=" + "'scrolling'" + "data-bno='" + this.book_no + "'>"
