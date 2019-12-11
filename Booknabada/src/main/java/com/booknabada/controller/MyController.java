@@ -33,7 +33,7 @@ public class MyController {
 	
 	
 	@RequestMapping(value="my/myhome.do")
-    public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
+    public ModelAndView myhome(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView();
     	HttpSession session = request.getSession();
     	

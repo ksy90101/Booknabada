@@ -18,5 +18,7 @@ public interface EventService {
 
 	void eventModify(EventDTO detail) throws Exception;
 
+	List<EventDTO> searchboard(int i) throws Exception;
+
 
 }

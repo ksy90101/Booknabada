@@ -114,6 +114,21 @@
 #eventWrap .paging-wrap{width:100%; text-align:center}
 #eventWrap .paging{display:inline-block; }
 #eventWrap .paging button{width:60px; display:inline-block; margin:auto;}
+#eventWrap .search-wrap{width:100%; height:50px; padding-top:10px; background:#D1C9FE; margin:30px 0;}
+#eventWrap .search-wrap form{}
+#eventWrap .search-wrap form select{width:100px; margin-left:100px; vertical-align:top; height:38px; box-sizing:border-box;}
+#eventWrap .search-wrap form input{margin-left:20px; vertical-align:top; width:60%; height:38px; box-sizing:border-box;}
+#eventWrap .search-wrap form button{
+    display: inline-block;
+    margin: 0 30px;
+    line-height: 40px;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: bold;
+    border: none;
+    background: #BCB0FE;
+    color: #fff;
+}
 
 
 /* eventDetail */

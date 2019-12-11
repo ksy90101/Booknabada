@@ -35,5 +35,10 @@ public class EventDAO extends AbstractDAO{
 		update("event.eventModify",detail);		
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<EventDTO> searchboard(int page) {
+		return selectList("event.searchboard", page);
+	}
+
 
 }

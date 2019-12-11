@@ -35,4 +35,10 @@
 	 	<if test="event_picture != null">, event_picture=#{event_picture } </if>
 	 	WHERE event_no=#{event_no }
 	</update>	
+	<select id="searchboard" parameterType="int" resultType="com.booknabada.dto.EventDTO">
+		<![CDATA[
+		SELECT *, (SELECT COUNT(*) FROM event_view) AS totalCount 
+		FROM event_view where LIMIT #{page },6
+		]]> 
+	</select>
 </mapper>

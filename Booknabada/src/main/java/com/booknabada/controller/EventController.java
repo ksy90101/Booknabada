@@ -32,14 +32,117 @@ public class EventController {
     public ModelAndView event(CommandMap commandMap, HttpServletRequest request) throws Exception{
     	ModelAndView mv = new ModelAndView("event/event");
     	
+    	int search=0;
+    	if(request.getAttribute("search") != null) {
+    		search = (int) request.getAttribute("search");
+
+	    	System.out.println(search);
+    	}
+
     	int page =1;
     	String whatBoard = "event";
     	
-    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
-    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
-		}
+    	if(search == 1) {
+    		if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    		
+    	}else {
+	    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	System.out.println(search);
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    	}
     	
-    	
+    	if(search == 1) {
+    		if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    		
+    	}else {
+	    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	System.out.println(search);
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    	}
+    	if(search == 1) {
+    		if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    		
+    	}else {
+	    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	System.out.println(search);
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    	}
+    	if(search == 1) {
+    		if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    		
+    	}else {
+	    	if(request.getParameter("page") != null && Integer.parseInt(String.valueOf(commandMap.get("page"))) >0){
+	    		page = Integer.parseInt(String.valueOf(commandMap.get("page")));
+			}
+
+	    	System.out.println(search);
+	    	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
+	    	
+	    	mv.addObject("eboard",eboard);
+	    	mv.addObject("page", page);
+	    	mv.addObject("totalCount", eboard.get(0).getTotalCount());
+	    	//System.out.println(eboard.get(0).getTotalCount());
+    	}
     	List<EventDTO> eboard = eventService.eboard(((page-1)*6));
     	
     	mv.addObject("eboard",eboard);
@@ -57,6 +160,9 @@ public class EventController {
     	HttpSession session = request.getSession();
     	int level = Integer.parseInt((String) session.getAttribute("level"));
  
+    	System.out.println(session.getAttribute("level"));
+    	int level = Integer.parseInt((String) session.getAttribute("level"));
+    	 
     	String whatBoard = "event";
     	mv.addObject("whatBoard", whatBoard);
     	
@@ -76,8 +182,6 @@ public class EventController {
 		String content = request.getParameter("content");
 		
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("name"));
-		System.out.println(session.getAttribute("id"));
 		String name = (String) session.getAttribute("name");
 		String id = (String) session.getAttribute("id");
 		
@@ -85,19 +189,19 @@ public class EventController {
 		dto.setUser_name(name);
 		dto.setUser_id(id);
 		dto.setEvent_title(title);
-		dto.setEvent_content(content); //ë°ì´í„° ì…‹íŒ…
+		dto.setEvent_content(content); //?°?´?„° ?…‹?Œ…
 		
 		if(file.getSize() != 0) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
 			String today = sdf.format(new Date());
 			String upFileName = today+"_"+file.getOriginalFilename();
 			
-			//íŒŒì¼ ì—…ë¡œë“œ ê²½ë¡œ
-			String path = "/home/booknabada/webapps/upload/";
+			//?ŒŒ?¼ ?—…ë¡œë“œ ê²½ë¡œ
+			String path = request.getSession().getServletContext().getRealPath("");
 			System.out.println("ë¦¬ì–¼ê²½ë¡œ : "+path);
-			File f = new File(path+"upimg/"+upFileName); //ì¤€ë¹„
-			file.transferTo(f); //ì‹¤ì œ íŒŒì¼ ì „ì†¡
-			//System.out.println("ì €ì¥ê²½ë¡œ : "+f.getPath());	
+			File f = new File(path+"upimg/"+upFileName); //ì¤?ë¹?
+			file.transferTo(f); //?‹¤? œ ?ŒŒ?¼ ? „?†¡
+			//System.out.println("???¥ê²½ë¡œ : "+f.getPath());	
 
 			dto.setEvent_picture(upFileName);
 		}
@@ -117,21 +221,21 @@ public class EventController {
 		String whatBoard = "event";
 
 		
-		//count upì„ ì–´ë””ì„œ í•˜ëƒ~!
+		//count up?„ ?–´?””?„œ ?•˜?ƒ~!
 		eventService.countUp(reBno);
 		
-		EventDTO detail = eventService.detail(reBno); //ë ˆì½”ë“œ í•œì¤„ì„ dtoê°€ ë°›ì„ê±°ì„!
+		EventDTO detail = eventService.detail(reBno); //? ˆì½”ë“œ ?•œì¤„ì„ dtoê°? ë°›ì„ê±°ì„!
 		
-		//ëŒ“ê¸€ì˜ ìˆ«ìê°€ ëª‡ì¸ì§€??
-		//System.out.println("ëŒ“ê¸€ìˆ˜ : "+detail.getCommentcount());
+		//?Œ“ê¸??˜ ?ˆ«?ê°? ëª‡ì¸ì§???
+		//System.out.println("?Œ“ê¸??ˆ˜ : "+detail.getCommentcount());
 		//if(detail.getCommentcount()>0) {
-			//ëŒ“ê¸€ ê°€ì ¸ì˜¤ê¸°
+			//?Œ“ê¸? ê°?? ¸?˜¤ê¸?
 			//1.CommentDTO
 			//2.list
 			//List<CommentDTO> comment = sampleService.comment(reBno);
 			//mv.addObject("comment",comment);
 		//}		
-		//jspë¡œ ë„˜ê¸°ê¸°
+		//jspë¡? ?„˜ê¸°ê¸°
 		mv.addObject("detail",detail);
 		mv.addObject("whatBoard", whatBoard);
 		return mv;
@@ -202,7 +306,7 @@ public class EventController {
 		detail.setEvent_content(content);
 		//System.out.println(file.getOriginalFilename());
 		
-		if(file.getOriginalFilename() != "") { //ìˆ˜ì •í•˜ë ¤ê³  ìƒˆë¡œ ì˜¬ë¦¬ëŠ” íŒŒì¼ì´ ì‡ë‹¤ë©´!
+		if(file.getOriginalFilename() != "") { //?ˆ˜? •?•˜? ¤ê³? ?ƒˆë¡? ?˜¬ë¦¬ëŠ” ?ŒŒ?¼?´ ?‡?‹¤ë©?!
 			String[] bFile =request.getParameter("bFile").split("_", 2);
 			//System.out.println(bFile[1]);
 			
@@ -211,12 +315,12 @@ public class EventController {
 				String today = sdf.format(new Date());
 				String upFileName = today +"_"+ file.getOriginalFilename();
 				
-				//íŒŒì¼ ì—…ë¡œë“œ ê²½ë¡œ
+				//?ŒŒ?¼ ?—…ë¡œë“œ ê²½ë¡œ
 				String path = request.getSession().getServletContext().getRealPath("");
 				System.out.println("ë¦¬ì–¼ê²½ë¡œ : "+path);
-				File f = new File(path+"upimg/"+upFileName); //ì¤€ë¹„
-				file.transferTo(f); //ì‹¤ì œ íŒŒì¼ ì „ì†¡
-				//System.out.println("ì €ì¥ê²½ë¡œ : "+f.getPath());	
+				File f = new File(path+"upimg/"+upFileName); //ì¤?ë¹?
+				file.transferTo(f); //?‹¤? œ ?ŒŒ?¼ ? „?†¡
+				//System.out.println("???¥ê²½ë¡œ : "+f.getPath());	
 
 				detail.setEvent_picture(upFileName);
 			}

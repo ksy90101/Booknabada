@@ -56,4 +56,10 @@ public class EventServiceImpl implements EventService{
 	}
 
 
+	@Override
+	public List<EventDTO> searchboard(int page) throws Exception {
+		return eventDAO.searchboard(page);
+	}
+
+
 }
