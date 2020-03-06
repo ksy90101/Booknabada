@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#container{width:100%; height:100%; margin-top:60px;background:#917EFD; padding-bottom:40px}
+#content{width:96%;border-radius:20px; background:#fff; margin: -15px auto 0; min-height:700px}
+#content .inner-wrap{width:1100px; margin: auto; padding-top:80px; padding-bottom:100px;}	
+#content .inner-wrap>p{color:#7C64FD; font-family: 'Roboto', 'Noto Sans KR', sans-serif; font-size:18px; width:600px; margin: 50px auto 150px}
+#content .member{}
+#content .member li{height:300px; width:950px; margin-top:80px; visibility: hidden}
+#content .member li.on{visibility: visible; animation: on 1s;}
+@-webkit-keyframes on {
+  0% {
+    transform:translate(0, 40px);
+  }
+  100% {
+    transform:translate(0, 0);
+   }
+}
+
+
+#content .member li:nth-child(even){margin-left:250px}
+#content .member li .pic{background:#7C64FD;float:left; width:250px; height:250px; text-align:center;border-radius:50%; overflow:hidden}
+#content .member li .pic img{display:none}
+#content .member li .txt{float:right;width:680px;}
+#content .member li .txt h5{color:#7C64FD; font-size:60px;height:80px;line-height:60px; margin-left:-20px}
+#content .member li .txt h5 span{font-siz	e:24px;}
+#content .member li .txt .tech{}
+#content .member li .txt p{color:#7C64FD; font-size:18px;width:600px; line-height:1.5}
+#content .logo{text-align:center; margin:100px auto;}

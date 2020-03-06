@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.faq {
+	box-sizing: border-box;
+	width: 1920px;
+	height: 1080px;
+	top: 50%;
+	overflow: hidden;
+	padding: 0;
+}
+
+.menu_wrap {
+	width: 100%;
+	height: 65px;
+	float: left;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.menu {
+	border: 2px solid #BCB0FE;
+	color: #BCB0FE;
+	width: 185px;
+	height: 65px;
+	border-radius: 32.5px;
+	text-align: center;
+	margin: 5px;
+	display: inline-block;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.menutext {
+	width: 185px;
+	height: 65px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.faq_wrap {
+	width: 100%;
+	height: 44px;
+	float: left;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.faq_menu {
+	border: 2px solid #BCB0FE;
+	width: 224px;
+	height: 44px;
+	margin: 3px; display : inline-block;
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.faqtext a {
+	color: #B3B0FE !important;
+	text-decoration: none;
+}
+
+.faqtext_click {
+	background-color: #B3B0FE;
+	color:white;
+}
+
+
+.faqtext{
+	width: 224px;
+	height: 44px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.faqtext_click a{
+	color : white !important;
+}
+
+#faqtitle {
+	padding-left: 105px;
+	padding-bottom: 50px;
+	font-size: 30px;
+	color: #B3B0FE;
+	font-weight: bold;
+}
+
+.writeButton{
+	height:30px;
+	width:120px;
+	background-color: #BCB0FE;
+	border-color: #D1C9FE;
+	border-radius:5px;
+	color: white;
+	border-style: none;
+}
+
+.modifybutton{
+	width: 90px;
+	height: 32px;
+	border-radius: 5px;
+	Text-align: center;
+	line-height: 32px;
+	font-size: 14px;
+	font-family: roboto;
+	font-weight: bold;
+	border: none;
+}
+
+.faq_wrap:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+.dl_wrap {
+	width: 70%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+	margin: 0 100px; 
+	text-align: left;
+}
+
+.dl_wrap dl {
+	width: 600px;
+}
+/* dt */
+.question {
+	margin-right: 100px;
+	float: left;
+	padding: 10px;
+	margin-bottom: 5px;
+	width: 100%;
+	font-weight: bold;
+	color: #B3B0FE;
+	border-bottom: 1px solid #B3B0FE;
+	font-size: 25px;
+}
+
+/* dd */
+.answer {
+	margin-right: 50px;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 5px;
+	display: none;
+}
+
+.question.on {
+	margin-right: 50px;
+	float: left;
+}

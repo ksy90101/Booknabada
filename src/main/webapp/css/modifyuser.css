@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+body{
+	background-color: #BCB0FE;
+	
+}
+.newuser_wrap{
+	margin: auto;
+	
+}
+.image{
+	text-align: center;
+	padding-top:130px;
+	padding-bottom: 50px;
+}
+.form_wrap{
+	text-align: center;	
+}
+.radiobox{
+	margin-left:100px;
+	height:45px;
+	width:388px;
+	background-color: #FFFFFF;
+	
+}
+
+ul{
+	list-style-type: none;
+}
+li{
+	height:48px;
+	width: 401px;
+    margin: auto;
+}
+ul li:nth-child(3){
+	margin-bottom:30px;
+}
+ul li:nth-child(6){
+	background: #fff;
+	margin-top:2px;
+}
+input{
+	height:45px;
+	width:388px;
+	border: none;
+	border-bottom:1px solid #BCB0FE;
+	padding-left: 13px;
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+
+input[type='radio']{ width:14px; }
+
+#insertID { width:97%; }
+
+#authCode{ width: 313px; }
+
+input[id="rb1"] +label, input[id="rb2"]+label{
+	margin-top:3px;
+	display: inline-block;
+	width: 160px;
+	height: 41px;
+	border: 1px solid #BCB0FE;
+	cursor:pointer;
+	line-height:41px;
+}
+
+input[id="rb1"]:checked + label ,input[id="rb2"]:checked + label {
+	margin-top:3px;
+	background-color: #BCB0FE;
+	color:#fff;
+	font-weight:bold;
+}
+
+
+input[id="rb1"], input[id="rb2"] {
+	display: none;
+}
+
+select{
+	height:48px;
+
+}
+
+.insID button {
+	height:45px;
+	width:59px;
+	background-color: #A695FF;
+	border-color: #A695FF;
+	border-style: none;
+	border-radius:10px;
+	color: white;
+}
+
+#emailBtn, #emailAuthBtn{
+	height: 45px;
+    width: 70px;
+    background-color: #A695FF;
+    border-color: #A695FF;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+}
+
+#emailBtn > span, #emailAuthBtn > span{
+	font-size: 11px;
+}
+
+#checkit, #btn1{
+	margin-top: 8px;
+	height:45px;
+	width:49%;
+	background-color: #A695FF;
+	border-color: #A695FF;
+	border-style: none;
+	border-radius:10px;
+	color: white;
+}
+
+.email{
+	margin-top: 1px;
+	width:78%;
+	height: 102%;
+}
+
+.sel{
+	width:111px;
+	height: 107%;
+	margin-top: -7px;
+	margin-bottom: -2px;
+}
+
+.link{
+	margin-top:30px;
+	color:#A695FF;
+	text-align: center;
+}
+
+#link_{
+	color:white;
+	
+}

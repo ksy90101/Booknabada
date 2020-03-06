@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+	<select id="faqboardall" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion, faq_category, faq_no FROM faq_board
+	</select>
+
+	<select id="faqboardbest" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion, faq_category, faq_no FROM faq_board ORDER BY faq_count DESC;
+	</select>
+	
+	<select id="faqboarddelivery" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '2'
+	</select>
+
+	<select id="faqboardorder" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '1'
+	</select>
+	
+	<select id="faqboardhomepage" resultType="com.booknabada.dto.FaqDTO">
+		SELECT faq_answer, faq_qustion FROM faq_board WHERE faq_category = '3'
+	</select>
+	
+	<insert id="faqWriteAction" parameterType="com.booknabada.dto.FaqDTO">
+		INSERT INTO faq_board(faq_qustion, faq_answer, faq_category) VALUES(#{faq_qustion }, #{faq_answer }, #{faq_category })
+	</insert>
+	
+	<delete id="faqDelete" parameterType="com.booknabada.dto.FaqDTO">
+		DELETE FROM faq_board WHERE faq_no = #{faq_no }
+	</delete>
+	
+	<select id="detail" parameterType="Integer" resultType="com.booknabada.dto.FaqDTO">
+		SELECT * FROM faq_board WHERE faq_no = #{faq_no }
+	</select>
+	
+	<update id="faqModifyAction" parameterType="com.booknabada.dto.FaqDTO">
+		UPDATE faq_board SET faq_qustion = #{faq_qustion }, faq_answer = #{faq_answer } WHERE faq_no = #{faq_no }
+	</update>
+	
+	<!-- qustion 클릭시 Count UP-->
+	<update id="faqCountUp" parameterType="Integer">
+		UPDATE faq_board SET faq_count = faq_count + 1 WHERE faq_no = #{faq_no }
+	</update>
+</mapper>
